@@ -10,24 +10,24 @@
                         <div class="main_menu menu_two">
                             <nav>
                                 <ul>
-                                    <li class="active"><a href="index-5.html"> Trang Chủ</a>
+                                    <li class="active"><a href="{{route('home')}}"> Trang Chủ</a>
 
                                     </li>
-                                    <li class="sub_menu pages"><a href="shop.html"> Sản Phẩm</a>
+                                    <li class="sub_menu pages"><a href="{{route('product')}}"> Sản Phẩm</a>
                                         <ul class="sub_menu pages">
                                             <li><a href="#">danh mục 1</a></li>
                                             <li><a href="#">Danh mục 2</a></li>
 
                                         </ul>
                                     </li>
-                                    <li><a href="services.html"> Dịch Vụ</a>
+                                    <li><a href="{{route('service')}}"> Dịch Vụ</a>
                                         <ul class="sub_menu pages">
                                             <li><a href="#">dịch vụ 1</a></li>
                                             <li><a href="#"></a>dịch vụ 2</a></li>
 
                                         </ul>
                                     </li>
-                                    <li><a href="blog.html">Tin Tức </a>
+                                    <li><a href="{{route('blog')}}">Tin Tức </a>
                                         <ul class="sub_menu pages">
                                             <li><a href="#">Tin Tức 1</a></li>
                                             <li><a href="#">Tin Tức 2</a></li>
@@ -36,8 +36,8 @@
                                     </li>
 
 
-                                    <li><a href="about.html">Giới Thiệu</a></li>
-                                    <li><a href="contact.html">Liên Hệ</a></li>
+                                    <li><a href="{{route('about')}}">Giới Thiệu</a></li>
+                                    <li><a href="{{route('contact')}}">Liên Hệ</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -86,14 +86,14 @@
                             <nav>
                                 <ul>
 
-                                    <li class="sub_menu pages"><a href="my-account.html"><svg
+                                    <li class="sub_menu pages"><a href="{{route('myAccount')}}"><svg
                                                 xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                                                 fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                                 <path
                                                     d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                             </svg></a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="login.html">Đăng Nhập</a></li>
+                                            <li><a href="{{route('login')}}">Đăng Nhập</a></li>
                                           
 
                                         </ul>

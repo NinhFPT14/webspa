@@ -726,18 +726,4 @@ Trang chủ
 
 
     <!-- Call -->
-
-    <div class="fix_tel">
-        <div class="ring-alo-phone ring-alo-green ring-alo-show" id="ring-alo-phoneIcon"
-            style="right: -7px; bottom: -12px;">
-            <div class="ring-alo-ph-circle"></div>
-            <div class="ring-alo-ph-circle-fill"></div>
-            <div class="ring-alo-ph-img-circle">
-                <a href="tel:0946673322"><img class="lazy" src="https://khomaythegioi.com/icon/goi.png" alt="G"></a>
-            </div>
-        </div>
-        <div class="tel">
-
-        </div>
-    </div>
     @endsection
