@@ -43,7 +43,7 @@ Bài viết
                                 <div class="row">
                                     <div class="col-lg-4 col-md-5">
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="assets/img/blog/blog1.jpg" alt=""></a>
+                                            <a href="blog-details.html"><img src="fontEnd/img/blog/blog1.jpg" alt=""></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-7">

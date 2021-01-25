@@ -54,7 +54,7 @@ Tài khoản của tôi
                        
                       
                         <div class="shop_sidebar_banner">
-                            <a href="#"><img src="assets/img/bg/banner31.jpg" alt=""></a>
+                            <a href="#"><img src="fontEnd/img/bg/banner31.jpg" alt=""></a>
                         </div>
                     </aside>
                     <!--sidebar widget end-->
@@ -66,7 +66,7 @@ Tài khoản của tôi
                        
                     </div>
                     <div class="shop_banner">
-                        <img src="assets/img/bg/banner30.jpg" alt="">
+                        <img src="fontEnd/img/bg/banner30.jpg" alt="">
                     </div>
 
                     <div class="shop_toolbar_wrapper">
@@ -108,9 +108,9 @@ Tài khoản của tôi
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="product-details.html"><img
-                                            src="assets/img/product/product1.jpg" alt=""></a>
+                                            src="fontEnd/img/product/product1.jpg" alt=""></a>
                                     <a class="secondary_img" href="product-details.html"><img
-                                            src="assets/img/product/product2.jpg" alt=""></a>
+                                            src="fontEnd/img/product/product2.jpg" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">new</span>
                                     </div>

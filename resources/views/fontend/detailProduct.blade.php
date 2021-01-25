@@ -29,32 +29,32 @@ Chi tiết sản phẩm
                            <div class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
                                     <a href="#">
-                                        <img id="zoom1" src="assets/img/product/productbig1.jpg" data-zoom-image="assets/img/product/productbig1.jpg" alt="big-1">
+                                        <img id="zoom1" src="fontEnd/img/product/productbig1.jpg" data-zoom-image="fontEnd/img/product/productbig1.jpg" alt="big-1">
                                     </a>
                                 </div>
                                 <div class="single-zoom-thumb">
                                     <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                                         <li>
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="assets/img/product/productbig2.jpg" data-zoom-image="assets/img/product/productbig2.jpg">
-                                                <img src="assets/img/product/productbig2.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig2.jpg" data-zoom-image="fontEnd/img/product/productbig2.jpg">
+                                                <img src="fontEnd/img/product/productbig2.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="assets/img/product/productbig3.jpg" data-zoom-image="assets/img/product/productbig3.jpg">
-                                                <img src="assets/img/product/productbig3.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig3.jpg" data-zoom-image="fontEnd/img/product/productbig3.jpg">
+                                                <img src="fontEnd/img/product/productbig3.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="assets/img/product/productbig4.jpg" data-zoom-image="assets/img/product/productbig4.jpg">
-                                                <img src="assets/img/product/productbig4.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig4.jpg" data-zoom-image="fontEnd/img/product/productbig4.jpg">
+                                                <img src="fontEnd/img/product/productbig4.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="assets/img/product/productbig5.jpg" data-zoom-image="assets/img/product/productbig5.jpg">
-                                                <img src="assets/img/product/productbig5.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig5.jpg" data-zoom-image="fontEnd/img/product/productbig5.jpg">
+                                                <img src="fontEnd/img/product/productbig5.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
@@ -175,7 +175,7 @@ Chi tiết sản phẩm
                                             <h2></h2>
                                             <div class="reviews_comment_box">
                                                 <div class="comment_thmb">
-                                                    <img src="assets/img/blog/comment2.jpg" alt="">
+                                                    <img src="fontEnd/img/blog/comment2.jpg" alt="">
                                                 </div>
                                                 <div class="comment_text">
                                                     <div class="reviews_meta">
@@ -248,8 +248,8 @@ Chi tiết sản phẩm
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="assets/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
@@ -289,8 +289,8 @@ Chi tiết sản phẩm
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="assets/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
@@ -330,8 +330,8 @@ Chi tiết sản phẩm
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="assets/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
@@ -371,8 +371,8 @@ Chi tiết sản phẩm
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="assets/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="assets/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>

@@ -1,4 +1,4 @@
-<footer class="footer_widgets footer_three">
+<footer class="footer_widgets footer_three" style="backgrounp-color:red">
         <div class="container">
             <div class="footer_top">
                 <div class="row">
