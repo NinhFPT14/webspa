@@ -17,8 +17,13 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('phone_number',11);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('name',255);
+            $table->integer('age',10);
+            $table->string('avatar',255);
+            $table->integer('status')->comment('trạng thái 0: hoạt động 1: ngưng hoạt động');
+            $table->integer('role')->comment('quyền tài khoản 0:client 1:admin');
             $table->rememberToken();
             $table->timestamps();
         });
