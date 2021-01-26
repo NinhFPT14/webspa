@@ -15,11 +15,11 @@ class CreateProductOdersTable extends Migration
     {
         Schema::create('product_oders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id',10);
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->unsignedBigInteger('oder_id',10);
+            $table->unsignedBigInteger('oder_id');
             $table->foreign('oder_id')->references('id')->on('oders');
-            $table->integer('quality',10)->comment('số lượng sản phẩm');
+            $table->integer('quality')->comment('số lượng sản phẩm');
             $table->timestamps();
         });
     }

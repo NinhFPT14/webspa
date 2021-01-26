@@ -15,7 +15,7 @@ class CreateBillProductsTable extends Migration
     {
         Schema::create('bill_products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('oder_id',10);
+            $table->unsignedBigInteger('oder_id');
             $table->foreign('oder_id')->references('id')->on('oders');
             $table->integer('payment_methods')->comment('phương thức thanh toán 0: tiền mặt 1: chuyển khoản');
             $table->timestamps();

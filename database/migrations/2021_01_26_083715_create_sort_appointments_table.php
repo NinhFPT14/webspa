@@ -15,11 +15,11 @@ class CreateSortAppointmentsTable extends Migration
     {
         Schema::create('sort_appointments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('appointment_id',10);
+            $table->unsignedBigInteger('appointment_id');
             $table->foreign('appointment_id')->references('id')->on('appointments');
-            $table->unsignedBigInteger('location_id',10);
+            $table->unsignedBigInteger('location_id');
             $table->foreign('location_id')->references('id')->on('locations');
-            $table->unsignedBigInteger('bill_service_id',10);
+            $table->unsignedBigInteger('bill_service_id');
             $table->foreign('bill_service_id')->references('id')->on('bill_services');
             $table->dateTime('time_start');
             $table->dateTime('time_end');

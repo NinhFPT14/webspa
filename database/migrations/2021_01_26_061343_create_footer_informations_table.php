@@ -15,10 +15,10 @@ class CreateFooterInformationsTable extends Migration
     {
         Schema::create('footer_informations', function (Blueprint $table) {
             $table->id();
-            $table->string('address',255);
-            $table->string('phone_number',255);
-            $table->string('email',255);
-            $table->string('link_fanpage',255);
+            $table->string('address');
+            $table->string('phone_number');
+            $table->string('email');
+            $table->string('link_fanpage');
             $table->timestamps();
         });
     }

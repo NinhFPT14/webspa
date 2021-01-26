@@ -15,13 +15,13 @@ class CreateOdersTable extends Migration
     {
         Schema::create('oders', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->integer('phone_number',11);
-            $table->string('address',255);
+            $table->string('name');
+            $table->integer('phone_number');
+            $table->string('address');
             $table->text('note');
-            $table->unsignedBigInteger('voucher_id',10)->nullable();
+            $table->unsignedBigInteger('voucher_id')->nullable();
             $table->foreign('voucher_id')->references('id')->on('product_vouchers');
-            $table->unsignedBigInteger('user_id',10)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });

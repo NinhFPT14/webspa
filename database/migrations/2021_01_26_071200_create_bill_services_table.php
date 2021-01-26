@@ -15,9 +15,9 @@ class CreateBillServicesTable extends Migration
     {
         Schema::create('bill_services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('appointment_id',10);
+            $table->unsignedBigInteger('appointment_id');
             $table->foreign('appointment_id')->references('id')->on('appointments');
-            $table->integer('payment_methods',10)->comment('phương thức thanh toán 0: tiền mặt 1: chuyển khoản');
+            $table->integer('payment_methods')->comment('phương thức thanh toán 0: tiền mặt 1: chuyển khoản');
             $table->timestamps();
         });
     }

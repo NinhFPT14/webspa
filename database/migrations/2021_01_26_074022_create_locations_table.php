@@ -16,9 +16,9 @@ class CreateLocationsTable extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('staff_id',10);
+            $table->unsignedBigInteger('staff_id');
             $table->foreign('staff_id')->references('id')->on('staffs');
-            $table->integer('status',10)->comment('trạng thái ghế 0:');
+            $table->integer('status')->comment('trạng thái ghế 0:');
             $table->timestamps();
         });
     }

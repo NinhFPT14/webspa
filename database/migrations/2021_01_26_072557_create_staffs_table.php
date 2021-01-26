@@ -15,8 +15,8 @@ class CreateStaffsTable extends Migration
     {
         Schema::create('staffs', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
-            $table->string('image',255);
+            $table->string('name');
+            $table->string('image');
             $table->integer('status')->comment('trạng thái 0:hoạt động 1: ngừng');
             $table->timestamps();
         });

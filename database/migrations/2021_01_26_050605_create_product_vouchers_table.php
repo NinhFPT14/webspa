@@ -15,12 +15,12 @@ class CreateProductVouchersTable extends Migration
     {
         Schema::create('product_vouchers', function (Blueprint $table) {
             $table->id();
-            $table->string('code',255)->comment('mã giảm giá');
-            $table->integer('discount',10)->comment('số phần trăm giảm giá');
+            $table->string('code')->comment('mã giảm giá');
+            $table->integer('discount')->comment('số phần trăm giảm giá');
             $table->dateTime('time_start')->comment('thời gian bắt đầu');
             $table->dateTime('time_end')->comment('thời gian kết thúc');
-            $table->integer('status',10)->comment('trạng thái bật tắt voucher 0: hoạt động , 1: tắt');
-            $table->unsignedBigInteger('product_id',10)->comment('id sản phẩm');
+            $table->integer('status')->comment('trạng thái bật tắt voucher 0: hoạt động , 1: tắt');
+            $table->unsignedBigInteger('product_id')->comment('id sản phẩm');
             $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
