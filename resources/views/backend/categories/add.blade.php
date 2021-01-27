@@ -17,7 +17,8 @@ Tạo danh mục
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form>
+                    <form method="POST" action="{{route('storeCategory')}}" >
+                        @csrf
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên danh mục</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
