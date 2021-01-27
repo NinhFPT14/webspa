@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class SlideController extends Controller
+class CategoryController extends Controller
 {
     public function add(){
-        return view('backend.slides.add');
+        return view('backend.categories.add');
     }
 }

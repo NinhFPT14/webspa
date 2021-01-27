@@ -1,6 +1,6 @@
 @extends('backEnd.layouts.master')
 @section('title')
-  Tạo slide
+  Tạo danh mục
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -14,7 +14,7 @@
                 <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h4 class="m-0 font-weight-bold text-primary">Tạo slide</h4>
+                    <h4 class="m-0 font-weight-bold text-primary">Tạo danh mục</h4>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

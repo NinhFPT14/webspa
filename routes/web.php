@@ -41,5 +41,8 @@ Route::get('dashboard',function(){
 })->name('dashboard');
 
 //SlideController
-Route::get('them-slide','Backend\SlideController@addSlide')->name('addSlide');
+Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
 
+
+//CategoryController 
+Route::get('tao-danh-muc','Backend\CategoryController@add')->name('addCategory');
