@@ -42,4 +42,5 @@ Route::get('dashboard',function(){
 
 //SlideController
 Route::get('them-slide','Backend\SlideController@addSlide')->name('addSlide');
-
+Route::post('store-slide','Backend\SlideController@storeSlide')->name('storeSlide');
+Route::get('list-slide','Backend\SlideController@listSlide')->name('listSlide');
