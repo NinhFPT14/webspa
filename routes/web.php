@@ -46,7 +46,7 @@ Route::get('dashboard',function(){
 //CategoryController 
 Route::get('tao-danh-muc','Backend\CategoryController@add')->name('addCategory');
 Route::post('luu-danh-muc','Backend\CategoryController@store')->name('storeCategory');
-Route::get('danh-sach-danh-muc','Backend\CategoryController@list')->name('listCategory');
+Route::get('danh-sach-danh-muc/{type}','Backend\CategoryController@list')->name('listCategory');
 //SlideController
 Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
 Route::post('luu-slide','Backend\SlideController@store')->name('storeSlide');

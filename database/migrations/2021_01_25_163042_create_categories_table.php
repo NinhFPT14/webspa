@@ -16,7 +16,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('type');
+            $table->integer('type')->comment('Loại danh mục 0:sản phẩm ,1: dịch vụ ,2: bài viết');
             $table->integer('status');
             $table->timestamps();
         });

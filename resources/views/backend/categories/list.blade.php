@@ -9,11 +9,18 @@ Danh sách danh mục
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
             <li class="breadcrumb-item active" aria-current="page">Danh sách danh mục</li>
+            @if($type == 0)
+            <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            @elseif($type == 1)
+            <li class="breadcrumb-item active" aria-current="page">Dịch vụ</li>
+            @elseif($type == 2)
+            <li class="breadcrumb-item active" aria-current="page">Bài viết</li>
+            @endif
         </ol>
     </nav>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Danh sách danh mục</h6>
+        <a href="{{route('addCategory')}}" class="btn btn-primary" role="button">Tạo Mới</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

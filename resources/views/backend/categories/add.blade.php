@@ -17,12 +17,15 @@ Tạo danh mục
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form method="POST" action="{{route('storeCategory')}}" >
+                    <form method="POST" action="{{route('storeCategory')}}">
                         @csrf
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên danh mục</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập tên danh mục">
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Loại danh mục</label>
@@ -31,6 +34,9 @@ Tạo danh mục
                                 <option value="1">Dịch vụ</option>
                                 <option value="2">Bài viết</option>
                             </select>
+                            @error('type')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button type="submit" class="btn btn-primary float-right ">Tạo</button>
                     </form>

@@ -13,6 +13,13 @@ class CategoryController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'name' => 'required|max:255',
+            'type' => 'required',
+        ],[
+            'name.required' => 'Tên danh mục không được để trống',
+            'name.max' => 'Tên danh mục không được vượt quá 255 ký tự',
+        ]);
         $data = $request->all();
         unset($data['_token']);
         $data['status'] =0;
@@ -20,8 +27,8 @@ class CategoryController extends Controller
         return redirect()->route('addCategory');
     }
 
-    public function list(){
-        $data = Category::get();
-        return view('backend.categories.list',compact('data'));
+    public function list($type){
+        $data = Category::where('type',$type)->get();
+        return view('backend.categories.list',compact('data','type'));
     }
 }
