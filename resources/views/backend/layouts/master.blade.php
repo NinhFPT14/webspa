@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>@yield('title')</title>
+    <base href="{{asset('')}}">
 
     <!-- Custom fonts for this template-->
     <link href="backEnd/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
