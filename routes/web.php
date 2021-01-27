@@ -51,4 +51,7 @@ Route::get('danh-sach-danh-muc','Backend\CategoryController@list')->name('listCa
 Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
 Route::post('luu-slide','Backend\SlideController@store')->name('storeSlide');
 Route::get('danh-sach-slide','Backend\SlideController@list')->name('listSlide');
+Route::get('xoa-slide/{id}','Backend\SlideController@delete')->name('deleteSlide');
+Route::get('/sua-slide/{id}', 'Backend\SlideController@edit')->name('editSlide');
+Route::post('/cap-nhat-slide/{id}', 'Backend\SlideController@update')->name('updateSlide');
 
