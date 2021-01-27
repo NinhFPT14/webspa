@@ -23,18 +23,30 @@
                             <div class="form-group">
                               <label for="formGroupExampleInput">Tiêu đề</label>
                               <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="Nhập tiêu đề">
+                              @error('title')
+                              <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                             </div>
                               <div class="form-group">
                               <label for="formGroupExampleInput2">Nội dung</label>
-                              <textarea name="content" class="form-control" id="formGroupExampleInput2" cols="30" rows="4"></textarea>
+                              <textarea name="content" class="form-control" id="formGroupExampleInput2" placeholder="Nhập nội dung" cols="30" rows="4"></textarea>
+                              @error('content')
+                              <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                             </div>
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Ảnh</label>
                                 <input type="file" name="image" class="form-control" id="formGroupExampleInput">
+                                @error('image')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                               </div>
                               <div class="form-group">
                                 <label for="formGroupExampleInput">Đường dẫn</label>
                                 <input type="text" name="link" class="form-control" id="formGroupExampleInput" placeholder="Nhập đường dẫn">
+                                @error('link')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                               </div>
                               <div class="form-group">
                                 <label for="exampleFormControlSelect1">Trạng Thái</label>
@@ -42,6 +54,9 @@
                                   <option value="0">Dùng luôn</option>
                                   <option value="1">Chờ sau</option>
                                 </select>
+                                @error('status')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                               </div>
                               <button type="submit" class="btn btn-primary float-right ">Tạo</button>
                           </form>
