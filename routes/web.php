@@ -40,9 +40,14 @@ Route::get('dashboard',function(){
     return view('backend.dashboard');
 })->name('dashboard');
 
-//SlideController
-Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
+
 
 
 //CategoryController 
+Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
+//SlideController
 Route::get('tao-danh-muc','Backend\CategoryController@add')->name('addCategory');
+Route::get('them-slide','Backend\SlideController@addSlide')->name('addSlide');
+Route::post('store-slide','Backend\SlideController@storeSlide')->name('storeSlide');
+Route::get('list-slide','Backend\SlideController@listSlide')->name('listSlide');
+

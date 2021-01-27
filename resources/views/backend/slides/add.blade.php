@@ -18,7 +18,8 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                        <form>
+                        <form method="POST"  action="{{route('storeSlide')}}"  enctype="multipart/form-data">
+                            @csrf
                             <div class="form-group">
                               <label for="formGroupExampleInput">Tiêu đề</label>
                               <input type="text" name="title" class="form-control" id="formGroupExampleInput" placeholder="Nhập tiêu đề">
@@ -34,6 +35,13 @@
                               <div class="form-group">
                                 <label for="formGroupExampleInput">Đường dẫn</label>
                                 <input type="text" name="link" class="form-control" id="formGroupExampleInput" placeholder="Nhập đường dẫn">
+                              </div>
+                              <div class="form-group">
+                                <label for="exampleFormControlSelect1">Trạng Thái</label>
+                                <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                  <option>Dùng luôn</option>
+                                  <option>Chờ sau</option>
+                                </select>
                               </div>
                               <button type="submit" class="btn btn-primary float-right ">Tạo</button>
                           </form>
