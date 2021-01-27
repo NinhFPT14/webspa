@@ -38,6 +38,8 @@ Route::get('/appointment','Fontend\AppointmentController@appointment')->name('ap
 
 Route::get('dashboard',function(){
     return view('backend.dashboard');
-});
+})->name('dashboard');
 
+//SlideController
+Route::get('them-slide','Backend\SlideController@addSlide')->name('addSlide');
 
