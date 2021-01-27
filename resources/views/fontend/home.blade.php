@@ -136,16 +136,16 @@ Trang chủ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
+                                        <a class="primary_img" href="{{route('detailService')}}"><img
                                                 src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
+                                        <a class="secondary_img" href="{{route('detailService')}}"><img
                                                 src="fontEnd/img/product/product27.jpg" alt=""></a>
                                         <div class="label_product">
 
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
+                                                <li class="add_to_cart"><a href="{{route('cart')}}" title="thêm vào giỏ hàng"><i
                                                             class="ion-bag"></i></a></li>
 
                                                 <li class="quick_view"><a href="#" data-toggle="modal"
@@ -157,11 +157,11 @@ Trang chủ
 
                                     <div class="product_content">
                                         <div class="product_name" style="text-align: center;">
-                                            <h4><a href="product-details.html">Demo</a></h4>
+                                            <h4><a href="{{route('detailService')}}">Demo</a></h4>
                                         </div>
 
                                         <div class="text">
-                                            <a href="#">Đặt Lịch</a>
+                                            <a href="{{route('appointment')}}">Đặt Lịch</a>
                                         </div>
 
 
@@ -171,120 +171,7 @@ Trang chủ
 
 
                             </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="product_content">
-                                        <div class="product_name" style="text-align: center;">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="text">
-                                            <a href="#">Đặt Lịch</a>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="product_content">
-                                        <div class="product_name" style="text-align: center;">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="text">
-                                            <a href="#">Đặt Lịch</a>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-
-
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="product_content">
-                                        <div class="product_name" style="text-align: center;">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="text">
-                                            <a href="#">Đặt Lịch</a>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-
-
-                            </div>
+                           
                         </div>
 
 
@@ -377,16 +264,16 @@ Trang chủ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
+                                        <a class="primary_img" href="{{route('detailProduct')}}"><img
                                                 src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
+                                        <a class="secondary_img" href="{{route('detailProduct')}}"><img
                                                 src="fontEnd/img/product/product27.jpg" alt=""></a>
                                         <div class="label_product">
 
                                         </div>
                                         <div class="action_links">
                                             <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
+                                                <li class="add_to_cart"><a href="{{route('cart')}}" title="thêm vào giỏ hàng"><i
                                                             class="ion-bag"></i></a></li>
 
                                                 <li class="quick_view"><a href="#" data-toggle="modal"
@@ -397,7 +284,7 @@ Trang chủ
                                     </div>
                                     <div class="product_content">
                                         <div class="product_name">
-                                            <h4><a href="product-details.html">Demo</a></h4>
+                                            <h4><a href="{{route('detailProduct')}}">Demo</a></h4>
                                         </div>
 
                                         <div class="price-container">
@@ -413,162 +300,7 @@ Trang chủ
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="price-container">
-                                            <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>
-                                            </div>
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="price-container">
-                                            <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>
-                                            </div>
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="price-container">
-                                            <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>
-                                            </div>
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img
-                                                src="fontEnd/img/product/product27.jpg" alt=""></a>
-                                        <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Demo</a></h4>
-                                        </div>
-
-                                        <div class="price-container">
-                                            <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>
-                                            </div>
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
+                           
 
                         </div>
                     </div>

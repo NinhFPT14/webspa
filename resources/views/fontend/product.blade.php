@@ -107,16 +107,16 @@ Sản phẩm
                         <div class="col-lg-4 col-md-4 col-12 ">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img
+                                    <a class="primary_img" href="{{route('detailProduct')}}"><img
                                             src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img
+                                    <a class="secondary_img" href="{{route('detailProduct')}}"><img
                                             src="fontEnd/img/product/product2.jpg" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">new</span>
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="add_to_cart"><a href="cart.html" title="Thêm vào giỏ hàng"><i
+                                            <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
                                                         class="ion-bag"></i></a></li>
                                             <li class="quick_view"><a href="{{route('detailProduct')}}" title="xem chi tiết"><i
                                                             class="ion-eye"></i></a></li>
@@ -150,7 +150,7 @@ Sản phẩm
                                 </div>
                                 <div class="product_content list_content">
                                     <div class="product_name">
-                                        <h4><a href="product-details.html">Hpoly and Bark Eames...</a></h4>
+                                        <h4><a href="{{route('detailProduct')}}">Hpoly and Bark Eames...</a></h4>
                                     </div>
                                     <div class="product_rating">
                                         <ul>

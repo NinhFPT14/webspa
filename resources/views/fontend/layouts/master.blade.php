@@ -16,6 +16,8 @@
     <!-- CSS 
     ========================= -->
     <!-- Plugins CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('fontEnd/vendor/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="fontEnd/css/plugins.css">
 
     <!-- Main Style CSS -->
@@ -38,17 +40,21 @@
 
     <!-- JS
 ============================================ -->
-
-    <!-- Plugins JS -->
-    <script src="fontEnd/js/plugins.js"></script>
-
-    <!-- Main JS -->
-    <script src="fontEnd/js/main.js"></script>
-
-
+   
 
 </body>
+<script src="fontEnd/js/plugins.js"></script>
 
+<!-- Main JS -->
+<script src="fontEnd/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="{{asset('fontEnd/vendor/select2/js/select2.min.js')}}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+<!-- Plugins JS -->
+
+
+@yield('page-script')
 
 <!-- Mirrored from demo.hasthemes.com/alista-preview/alista/index-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Jun 2020 05:28:21 GMT -->
 

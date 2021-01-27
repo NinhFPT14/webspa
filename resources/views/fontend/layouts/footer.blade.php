@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="widgets_container contact_us">
-                            <a href="index.html"><img src="assets/img/logo/logo11.png" alt=""></a>
+                            <a href="index.html"><img src="fontEnd/img/logo/logo11.png" alt=""></a>
                             <div class="footer_contact">
                                 <ul>
                                     <li><i class="ion-ios-location"></i><span>Addresss:</span> The Barn, Ullenhall,
@@ -62,22 +62,22 @@
                             <h3>instagram</h3>
                             <div class="instagram_gallery">
                                 <div class="single_instagram">
-                                    <a href="#"><img src="assets/img/about/instagram1.jpg" alt=""></a>
+                                    <a href="#"><img src="fontEnd/img/about/instagram1.jpg" alt=""></a>
                                 </div>
                                 <div class="single_instagram">
-                                    <a href="#"><img src="assets/img/about/instagram2.jpg" alt=""></a>
+                                    <a href="#"><img src="fontEnd/img/about/instagram2.jpg" alt=""></a>
                                 </div>
                                 <div class="single_instagram">
-                                    <a href="#"><img src="assets/img/about/instagram3.jpg" alt=""></a>
+                                    <a href="#"><img src="fontEnd/img/about/instagram3.jpg" alt=""></a>
                                 </div>
                                 <div class="single_instagram">
-                                    <a href="#"><img src="assets/img/about/instagram4.jpg" alt=""></a>
+                                    <a href="#"><img src="fontEnd/img/about/instagram4.jpg" alt=""></a>
                                 </div>
                                 <div class="single_instagram">
-                                    <a href="#"><img src="assets/img/about/instagram5.jpg" alt=""></a>
+                                    <a href="#"><img src="fontEnd/img/about/instagram5.jpg" alt=""></a>
                                 </div>
                                 <div class="single_instagram">
-                                    <a href="#"><img src="assets/img/about/instagram6.jpg" alt=""></a>
+                                    <a href="#"><img src="fontEnd/img/about/instagram6.jpg" alt=""></a>
                                 </div>
 
                             </div>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="col-lg-6 col-md-5">
                         <div class="footer_payment text-right">
-                            <a><img src="assets/img/icon/papyel.png" alt=""></a>
+                            <a><img src="fontEnd/img/icon/papyel.png" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -119,22 +119,22 @@
                                     <div class="tab-content product-details-large">
                                         <div class="tab-pane fade show active" id="tab1" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets/img/product/product1.jpg" alt=""></a>
+                                                <a href="#"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab2" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets/img/product/product5.jpg" alt=""></a>
+                                                <a href="#"><img src="fontEnd/img/product/product5.jpg" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab3" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets/img/product/product8.jpg" alt=""></a>
+                                                <a href="#"><img src="fontEnd/img/product/product8.jpg" alt=""></a>
                                             </div>
                                         </div>
                                         <div class="tab-pane fade" id="tab4" role="tabpanel">
                                             <div class="modal_tab_img">
-                                                <a href="#"><img src="assets/img/product/product6.jpg" alt=""></a>
+                                                <a href="#"><img src="fontEnd/img/product/product6.jpg" alt=""></a>
                                             </div>
                                         </div>
                                     </div>
@@ -143,22 +143,22 @@
                                             <li>
                                                 <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab"
                                                     aria-controls="tab1" aria-selected="false"><img
-                                                        src="assets/img/s-product/product.jpg" alt=""></a>
+                                                        src="fontEnd/img/s-product/product.jpg" alt=""></a>
                                             </li>
                                             <li>
                                                 <a class="nav-link" data-toggle="tab" href="#tab2" role="tab"
                                                     aria-controls="tab2" aria-selected="false"><img
-                                                        src="assets/img/s-product/product2.jpg" alt=""></a>
+                                                        src="fontEnd/img/s-product/product2.jpg" alt=""></a>
                                             </li>
                                             <li>
                                                 <a class="nav-link button_three" data-toggle="tab" href="#tab3"
                                                     role="tab" aria-controls="tab3" aria-selected="false"><img
-                                                        src="assets/img/s-product/product3.jpg" alt=""></a>
+                                                        src="fontEnd/img/s-product/product3.jpg" alt=""></a>
                                             </li>
                                             <li>
                                                 <a class="nav-link" data-toggle="tab" href="#tab4" role="tab"
                                                     aria-controls="tab4" aria-selected="false"><img
-                                                        src="assets/img/s-product/product6.jpg" alt=""></a>
+                                                        src="fontEnd/img/s-product/product6.jpg" alt=""></a>
                                             </li>
 
                                         </ul>

@@ -86,10 +86,7 @@ Chi tiết dịch vụ
                                         <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl</p>
                                     </div>
                                   
-                                    <div class="product_variant quantity">
-                                        <label>Số Lượng</label>
-                                        <input min="0" max="100" value="1" type="number">
-                                    </div>
+                                   
                                      <div class="action_links">
                                         <ul>
                                             <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
@@ -104,13 +101,13 @@ Chi tiết dịch vụ
                                 </form>
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="checkout.html">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('appointment')}}">
                                         <i class="fas fa-cart-plus"></i>
-                                      Mua Ngay
+                                      Đặt Lịch Ngay
                                     </a>
                                 </div>
                                 <div class="rounded-3xl mt-30 bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="cart.html">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('cart')}}">
                                         <i class="fas fa-cart-plus"></i>
                                       Thêm vào giỏ hàng
                                     </a>
@@ -242,7 +239,7 @@ Chi tiết dịch vụ
                 <div class="row">
                     <div class="col-12">
                         <div class="section_title title_style4">
-                                <h3>Sản Phẩm Liên Quan</h3>
+                                <h3>Dịch Vụ</h3>
                         </div>
                         <div class="row product_slick_row4">
                             <div class="col-lg-3">

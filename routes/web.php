@@ -25,6 +25,17 @@ Route::get('/dang-nhap','Fontend\LoginController@login')->name('login');
 Route::get('/dang-ky','Fontend\LoginController@register')->name('register');
 Route::get('/tai-khoan-cua-toi','Fontend\LoginController@myAccount')->name('myAccount');
 
+//cartController
+
+Route::get('/cart','Fontend\CartController@cart')->name('cart');
+
+
+//checkoutcontroller
+Route::get('/checkout','Fontend\CheckoutController@checkout')->name('checkout');
+
+//appointmentcontroller
+Route::get('/appointment','Fontend\AppointmentController@appointment')->name('appointment');
+
 Route::get('dashboard',function(){
     return view('backend.dashboard');
 });

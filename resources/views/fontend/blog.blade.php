@@ -3,7 +3,10 @@
 Bài viết
 @endsection
 @section('content')
-<!--breadcrumbs area start-->
+<!--Fontawesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+<link rel="stylesheet" href="assets/css/plugins.css">
+<!-- fdsgs -->
 <div class="breadcrumbs_area">
         <div class="container">
             <div class="row">
@@ -56,8 +59,7 @@ Bài viết
                                                 <div class="blog_social">
                                                     <h3>Chia sẻ với</h3>
                                                     <ul>
-                                                        <li><a href="#" title="Facebook"><i
-                                                                    class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                                         <li><a href="#" title="Facebook"><i
                                                                     class="fa fa-twitter"></i></a></li>
                                                         <li><a href="#" title="Facebook"><i
@@ -137,4 +139,6 @@ Bài viết
 
         </div>
     </div>
+
+
     @endsection

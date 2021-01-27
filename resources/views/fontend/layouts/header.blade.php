@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="header_container_inner container_position">
                     <div class="logo">
-                        <a href="index-5.html"><img width="250" height="90" src="fontEnd/img/logo/logo11.png" alt=""></a>
+                        <a href="index-5.html"><img width="200" height="90" src="fontEnd/img/logo/logo11.png" alt=""></a>
                     </div>
                     <div class="header_container_right">
                         <div class="main_menu menu_two">
@@ -27,6 +27,7 @@
 
                                         </ul>
                                     </li>
+                                    <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
                                     <li><a href="{{route('blog')}}">Tin Tức </a>
                                         <ul class="sub_menu pages">
                                             <li><a href="#">Tin Tức 1</a></li>
@@ -74,8 +75,8 @@
                                         </div>
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
-                                                <a href="cart.html">Giỏ Hàng</a>
-                                                <a href="checkout.html">Thanh Toán</a>
+                                                <a href="{{route('cart')}}">Giỏ Hàng</a>
+                                                <a href="{{route('checkout')}}">Thanh Toán</a>
                                             </div>
                                         </div>
                                     </div>
@@ -127,4 +128,30 @@
                 <button type="submit"><i class="ion-ios-search-strong"></i></button>
             </form>
         </div>
+    </div>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v9.0'
+        });
+      };
+
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your Chat Plugin code -->
+    <div class="fb-customerchat"
+      attribution=setup_tool
+      page_id="104391394563784"
+theme_color="#0A7CFF"
+logged_in_greeting="chào bạn"
+logged_out_greeting="chào bạn">
     </div>
