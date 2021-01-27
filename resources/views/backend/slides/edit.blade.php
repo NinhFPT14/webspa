@@ -37,9 +37,6 @@
                             <div class="form-group">
                                 <label for="formGroupExampleInput">Ảnh</label>
                                 <input type="file" name="image" class="form-control" id="formGroupExampleInput"><br>
-                                @error('image')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                                 <img src="{{$data->image}}" style="width:200px">
                               </div>
                               <div class="form-group">

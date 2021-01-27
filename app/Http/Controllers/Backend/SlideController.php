@@ -61,6 +61,25 @@ public function edit($id){
   return view('backend.slides.edit',compact('data'));
 }
 public function update(Request $request ,$id){
+  $request->validate([
+    'title' => 'required|max:250|min:5',
+    'content' => 'required|max:255|min:5',
+    'link' => 'required|max:255|min:5|',
+    'status' => 'required'
+],[
+    'title.required' => 'Không được để trống tiêu để',
+    'title.min' => 'tiêu đề ít nhất phải trên 5 kí tự',
+    'title.max' => 'tiêu đề không được vượt quá 250 kí tự',
+    'content.required' => 'Không được để trống nội dung',
+    'content.min' => 'tiêu đề ít nhất phải trên 5 kí tự',
+    'content.max' => 'tiêu đề không được vượt quá 255 kí tự',
+    'link.required' => 'Không được để trống link',
+    'link.min' => 'đường link ít nhất phải trên 5 kí tự',
+    'link.max' => 'đường link không được vượt quá 5 kí tự',
+    'status.required' => 'không được để trống trạng thái',
+    
+]
+);
   $flight = Slide::find($id);
   $flight->title = $request->title;
   $flight->content = $request->content;
