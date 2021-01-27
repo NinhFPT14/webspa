@@ -10,10 +10,10 @@ class SlideController extends Controller
     public function add(){
         return view('backend.slides.add');
     }
-    public function storeSlide (Request $request){
+    public function store(Request $request){
         $flight = new Slide;
         $flight->title = $request->title;
-        $flight->contet = $request->contet;
+        $flight->content = $request->content;
         if($request->hasFile('image')){
             $extension = $request->image->extension();
             $filename =  uniqid(). "." . $extension;
@@ -25,11 +25,11 @@ class SlideController extends Controller
         $flight->link = $request->link;
         $flight->status = $request->status;
         $flight->save();
-      return redirect('list-slide');
+      return redirect()->route('listSlide');
     }
-    public function index (){
+    public function list (){
         $data = Slide::get();
-        return view('list-slide',compact('data'));
+        return view('backend.slides.list',compact('data'));
  
      }
 }

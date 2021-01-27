@@ -39,8 +39,8 @@
                               <div class="form-group">
                                 <label for="exampleFormControlSelect1">Trạng Thái</label>
                                 <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                  <option>Dùng luôn</option>
-                                  <option>Chờ sau</option>
+                                  <option value="0">Dùng luôn</option>
+                                  <option value="1">Chờ sau</option>
                                 </select>
                               </div>
                               <button type="submit" class="btn btn-primary float-right ">Tạo</button>

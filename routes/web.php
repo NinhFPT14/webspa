@@ -44,10 +44,9 @@ Route::get('dashboard',function(){
 
 
 //CategoryController 
-Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
-//SlideController
 Route::get('tao-danh-muc','Backend\CategoryController@add')->name('addCategory');
-Route::get('them-slide','Backend\SlideController@addSlide')->name('addSlide');
-Route::post('store-slide','Backend\SlideController@storeSlide')->name('storeSlide');
-Route::get('list-slide','Backend\SlideController@listSlide')->name('listSlide');
+//SlideController
+Route::get('tao-slide','Backend\SlideController@add')->name('addSlide');
+Route::post('luu-slide','Backend\SlideController@store')->name('storeSlide');
+Route::get('danh-sach-slide','Backend\SlideController@list')->name('listSlide');
 
