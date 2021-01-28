@@ -1,10 +1,10 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
-Đăng nhập
+Đăng ký
 @endsection
 @section('content')
-    <!--breadcrumbs area start-->
-    <div class="breadcrumbs_area">
+  <!--breadcrumbs area start-->
+  <div class="breadcrumbs_area">
         <div class="container">   
             <div class="row">
                 <div class="col-12">
@@ -28,7 +28,7 @@
                <!--login area start-->
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form">
-                        <h2>Đăng Nhập</h2>
+                        <h2>Đăng Ký</h2>
                         <form action="#">
                             <p>   
                                 <label>Tài Khoản <span>*</span></label>
@@ -37,14 +37,15 @@
                              <p>   
                                 <label>Mật Khẩu <span>*</span></label>
                                 <input type="password">
-                             </p>   
+                             </p> 
+                             <p>   
+                                <label>Số Điện Thoại <span>*</span></label>
+                                <input type="password">
+                             </p> 
+
                             <div class="login_submit">
-                               <a href="#">Quên Mật Khẩu?</a>
-                                <label for="remember">
-                                    <input id="remember" type="checkbox">
-                                    Nhớ Đăng Nhập
-                                </label>
-                                <button type="submit">Đăng Nhập</button>
+                               
+                                <button type="submit">Đăng Ký</button>
                                 
                             </div>
 
@@ -71,12 +72,7 @@
                                 Đăng nhập bằng Google
                             </a>
                         </div>
-                        <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
-                            <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('register')}}">
-                                <i class="far fa-user-circle "></i>
-                                Đăng Kí
-                            </a>
-                        </div>
+                        
                         
                     </div>    
                 </div>

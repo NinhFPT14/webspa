@@ -1,6 +1,6 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
-Sản phẩm
+Dịch Vụ
 @endsection
 @section('content')
 <div class="breadcrumbs_area">
@@ -21,14 +21,14 @@ Sản phẩm
     <!--breadcrumbs area end-->
 
     <!--shop  area start-->
-    <div class="shop_area shop_reverse">
+     <div class="shop_area shop_reverse">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-12">
                     <!--sidebar widget start-->
                     <aside class="sidebar_widget">
                         <div class="widget_list widget_filter">
-                            <h2>Lọc Giá</h2>
+                            <h2>Lọc Dịch Vụ</h2>
                             <form action="#">
                                 <div id="slider-range"></div>
                                 <button type="submit">Lọc</button>
@@ -36,25 +36,17 @@ Sản phẩm
 
                             </form>
                         </div>
-                        <div class="widget_list">
-                            <h2>Danh Mục Sản Phẩm</h2>
-                            <ul>
-                                <li>
-                                    <a href="#">Danh Mục 1 <span>(6)</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">Danh Mục 1 <span>(6)</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">Danh Mục 1 <span>(6)</span></a>
-                                </li>
-
-                            </ul>
+                       <div class="widget_list widget_search mb-30">
+                            <h2>Tìm Kiếm</h2>
+                            <form action="#">
+                                <input placeholder="Tìm Kiếm.." type="text">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                        
                       
                         <div class="shop_sidebar_banner">
-                            <a href="#"><img src="fontEnd/img/bg/banner31.jpg" alt=""></a>
+                            <a href="#"><img src="frontEnd/img/slider/slider11.jpg" alt=""></a>
                         </div>
                     </aside>
                     <!--sidebar widget end-->
@@ -66,7 +58,7 @@ Sản phẩm
                        
                     </div>
                     <div class="shop_banner">
-                        <img src="fontEnd/img/bg/banner30.jpg" alt="">
+                        <img src="frontEnd/img/slider/slider9.jpg" alt="">
                     </div>
 
                     <div class="shop_toolbar_wrapper">
@@ -86,7 +78,7 @@ Sản phẩm
                             <form class="select_option" action="#">
                                 <select name="orderby" id="short">
 
-                                    <option selected value="1">Lọc sản phẩm</option>
+                                    <option selected value="1">Lọc Dịch Vụ</option>
                                     <option value="2">Sort by popularity</option>
                                     <option value="3">Sort by newness</option>
                                     <option value="4">Sort by price: low to high</option>
@@ -107,10 +99,10 @@ Sản phẩm
                         <div class="col-lg-4 col-md-4 col-12 ">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{route('detailProduct')}}"><img
-                                            src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{route('detailProduct')}}"><img
-                                            src="fontEnd/img/product/product2.jpg" alt=""></a>
+                                    <a class="primary_img" href="{{route('detailService')}}"><img
+                                            src="frontEnd/img/product/product1.jpg" alt=""></a>
+                                    <a class="secondary_img" href="{{route('detailService')}}"><img
+                                            src="frontEnd/img/product/product2.jpg" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">new</span>
                                     </div>
@@ -118,15 +110,14 @@ Sản phẩm
                                         <ul>
                                             <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
                                                         class="ion-bag"></i></a></li>
-                                            <li class="quick_view"><a href="{{route('detailProduct')}}" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                         
+                                           
+                                          
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="product_content grid_content">
                                     <div class="product_name">
-                                        <h4><a href="{{route('detailProduct')}}">Pendant, Made of White Pl...</a></h4>
+                                        <h4><a href="{{route('detailService')}}">Pendant, Made of White Pl...</a></h4>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -146,11 +137,15 @@ Sản phẩm
                                             <a href="wishlist.html" title="wishlist"><i
                                                     class="ion-android-favorite-outline"></i></a>
                                         </div>
+                                      
+                                    </div>
+                                    <div class="text" style="margin-top: 10px;">
+                                        <a href="{{route('appointment')}}">Đặt Lịch</a>
                                     </div>
                                 </div>
                                 <div class="product_content list_content">
                                     <div class="product_name">
-                                        <h4><a href="{{route('detailProduct')}}">Hpoly and Bark Eames...</a></h4>
+                                        <h4><a href="product-details.html">Hpoly and Bark Eames...</a></h4>
                                     </div>
                                     <div class="product_rating">
                                         <ul>
@@ -210,7 +205,14 @@ Sản phẩm
             </div>
         </div>
     </div>
-    <!--shop  area end-->
+  
+
+
+   
+
+    <!-- Call -->
+
+    
 
     <!-- Call -->
 

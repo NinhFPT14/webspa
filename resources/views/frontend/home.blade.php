@@ -1,4 +1,4 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
 Trang chủ
 @endsection
@@ -96,7 +96,7 @@ Trang chủ
                 </div>
                 <div class="col-lg-6 col-md-12">
                     <div class="deals_banner">
-                        <img src="fontEnd/img/bg/banner22.jpg" alt="">
+                        <img src="frontEnd/img/bg/banner22.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -126,9 +126,9 @@ Trang chủ
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{route('detailService')}}"><img
-                                            src="fontEnd/img/product/product25.jpg" alt=""></a>
+                                            src="frontEnd/img/product/product25.jpg" alt=""></a>
                                     <a class="secondary_img" href="{{route('detailService')}}"><img
-                                            src="fontEnd/img/product/product27.jpg" alt=""></a>
+                                            src="frontEnd/img/product/product27.jpg" alt=""></a>
                                     <div class="label_product">
 
                                     </div>
@@ -178,7 +178,7 @@ Trang chủ
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="single_banner">
                     <div class="banner_thumb">
-                        <a href="shop.html"><img src="fontEnd/img/bg/banner32.jpg" alt=""></a>
+                        <a href="shop.html"><img src="frontEnd/img/bg/banner32.jpg" alt=""></a>
                         <div class="banner_content">
                             <h3>NAil</h3>
 
@@ -191,7 +191,7 @@ Trang chủ
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="single_banner">
                     <div class="banner_thumb">
-                        <a href="shop.html"><img src="fontEnd/img/bg/banner33.jpg" alt=""></a>
+                        <a href="shop.html"><img src="frontEnd/img/bg/banner33.jpg" alt=""></a>
                         <div class="banner_content">
                             <h3>Trang điểm</h3>
 
@@ -204,7 +204,7 @@ Trang chủ
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="single_banner">
                     <div class="banner_thumb">
-                        <a href="shop.html"><img src="fontEnd/img/bg/banner34.jpg" alt=""></a>
+                        <a href="shop.html"><img src="frontEnd/img/bg/banner34.jpg" alt=""></a>
                         <div class="banner_content">
                             <h3>Nối Mi</h3>
 
@@ -218,7 +218,7 @@ Trang chủ
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="single_banner">
                     <div class="banner_thumb">
-                        <a href="shop.html"><img src="fontEnd/img/bg/banner35.jpg" alt=""></a>
+                        <a href="shop.html"><img src="frontEnd/img/bg/banner35.jpg" alt=""></a>
                         <div class="banner_content">
                             <h3>Phun Xăm</h3>
                             <h3>Độc Lạ</h3>
@@ -254,9 +254,9 @@ Trang chủ
                             <div class="single_product">
                                 <div class="product_thumb">
                                     <a class="primary_img" href="{{route('detailProduct')}}"><img
-                                            src="fontEnd/img/product/product25.jpg" alt=""></a>
+                                            src="frontEnd/img/product/product25.jpg" alt=""></a>
                                     <a class="secondary_img" href="{{route('detailProduct')}}"><img
-                                            src="fontEnd/img/product/product27.jpg" alt=""></a>
+                                            src="frontEnd/img/product/product27.jpg" alt=""></a>
                                     <div class="label_product">
 
                                     </div>
@@ -321,7 +321,7 @@ Trang chủ
                 <div class="col-lg-12">
                     <div class="single_blog">
                         <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="fontEnd/img/blog/blog7.jpg" alt=""></a>
+                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
                             <div class="articles_date">
                                 <span class="date">Hot </span>
                                 <span>new</span>
@@ -340,7 +340,7 @@ Trang chủ
                 <div class="col-lg-12">
                     <div class="single_blog">
                         <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="fontEnd/img/blog/blog7.jpg" alt=""></a>
+                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
                             <div class="articles_date">
                                 <span class="date">Hot </span>
                                 <span>new</span>
@@ -359,7 +359,7 @@ Trang chủ
                 <div class="col-lg-12">
                     <div class="single_blog">
                         <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="fontEnd/img/blog/blog7.jpg" alt=""></a>
+                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
                             <div class="articles_date">
                                 <span class="date">Hot </span>
                                 <span>new</span>
@@ -378,7 +378,7 @@ Trang chủ
                 <div class="col-lg-12">
                     <div class="single_blog">
                         <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="fontEnd/img/blog/blog7.jpg" alt=""></a>
+                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
                             <div class="articles_date">
                                 <span class="date">Hot </span>
                                 <span>new</span>
@@ -420,7 +420,7 @@ Trang chủ
                 <div class="testimonial_container testimonial_active owl-carousel">
                     <div class="single_testimonial">
                         <div class="testimonial_thumb">
-                            <a href="#"><img src="fontEnd/img/about/testimonial.jpg" alt=""></a>
+                            <a href="#"><img src="frontEnd/img/about/testimonial.jpg" alt=""></a>
                         </div>
                         <div class="testimonial_content">
                             <h3><a href="#">Nguyễn Thanh Tâm</a></h3>
@@ -430,7 +430,7 @@ Trang chủ
                     </div>
                     <div class="single_testimonial">
                         <div class="testimonial_thumb">
-                            <a href="#"><img src="fontEnd/img/about/testimonial.jpg" alt=""></a>
+                            <a href="#"><img src="frontEnd/img/about/testimonial.jpg" alt=""></a>
                         </div>
                         <div class="testimonial_content">
                             <h3><a href="#">Nguyễn Thanh Tâm</a></h3>

@@ -1,4 +1,4 @@
-@extends('fontEnd.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
 Giỏ Hàng
 @endsection
@@ -45,7 +45,7 @@ Giỏ Hàng
                         <tbody>
                             <tr>
                                <td class="product_remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="fontEnd/img/s-product/product.jpg" alt=""></a></td>
+                                <td class="product_thumb"><a href="#"><img src="frontEnd/img/s-product/product.jpg" alt=""></a></td>
                                 <td class="product_name"><a href="#">Handbag fringilla</a></td>
                                 <td class="product-price">£65.00</td>
                                 <td class="product_quantity"><label>Quantity</label> <input min="0" max="100" value="1" type="number"></td>

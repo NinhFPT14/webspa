@@ -1,4 +1,4 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title', 'Đặt Lịch')
 
 @section('content')
@@ -19,7 +19,7 @@
 </div>
 <div class="container mx-auto pt-4">
     <div class="pt-24">
-        <img src="fontEnd/img/logo/logo11.png" style="margin:auto;margin-top:-50px;"  alt="">
+        <img src="frontEnd/img/logo/logo11.png" style="margin:auto;margin-top:-50px;"  alt="">
         <h1 class="text-center " style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;">ĐẶT LỊCH HẸN</h1>
         <p class="text-center pt-6" >KHUYẾN KHÍCH ĐẶT LỊCH HẸN TRƯỚC. XIN VUI LÒNG LIÊN HỆ VỚI CHÚNG TÔI NẾU QUÝ KHÁCH CÓ
             BẤT KỲ THẮC MẮC NÀO
@@ -86,7 +86,7 @@
                             </div> 
                            <div class="panel-default">
                                 <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="fontEnd/img/icon/papyel.png" alt=""></label>
+                                <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="frontEnd/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">

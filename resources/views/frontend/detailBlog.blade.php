@@ -1,4 +1,4 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
 Chi tiết bài viết
 @endsection
@@ -39,7 +39,7 @@ Chi tiết bài viết
                                 </div>
                             </div>
                             <div class="blog_thumb">
-                               <a href="#"><img src="fontEnd/img/blog/blog-big1.jpg" alt=""></a>
+                               <a href="#"><img src="frontEnd/img/blog/blog-big1.jpg" alt=""></a>
                            </div>
                             <div class="blog_content">
                                 <div class="post_content">
@@ -77,7 +77,7 @@ Chi tiết bài viết
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single_related">
                                         <div class="related_thumb">
-                                            <img src="fontEnd/img/blog/blog3.jpg" alt="">
+                                            <img src="frontEnd/img/blog/blog3.jpg" alt="">
                                         </div>
                                         <div class="related_content">
                                            <h4><a href="#">Post with Gallery</a></h4>
@@ -88,7 +88,7 @@ Chi tiết bài viết
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single_related">
                                         <div class="related_thumb">
-                                            <img src="fontEnd/img/blog/blog4.jpg" alt="">
+                                            <img src="frontEnd/img/blog/blog4.jpg" alt="">
                                         </div>
                                         <div class="related_content">
                                            <h4><a href="#">Post with Audio</a></h4>
@@ -99,7 +99,7 @@ Chi tiết bài viết
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single_related column_3">
                                         <div class="related_thumb">
-                                            <img src="fontEnd/img/blog/blog5.jpg" alt="">
+                                            <img src="frontEnd/img/blog/blog5.jpg" alt="">
                                         </div>
                                         <div class="related_content">
                                            <h4><a href="#">Post with Video</a></h4>
@@ -114,7 +114,7 @@ Chi tiết bài viết
                             <h3>3 Comments	</h3>
                             <div class="comment_list">
                                 <div class="comment_thumb">
-                                    <img src="fontEnd/img/blog/comment3.png.jpg" alt="">
+                                    <img src="frontEnd/img/blog/comment3.png.jpg" alt="">
                                 </div>
                                 <div class="comment_content">
                                     <div class="comment_meta">
@@ -130,7 +130,7 @@ Chi tiết bài viết
                             </div>
                             <div class="comment_list list_two">
                                 <div class="comment_thumb">
-                                    <img src="fontEnd/img/blog/comment3.png.jpg" alt="">
+                                    <img src="frontEnd/img/blog/comment3.png.jpg" alt="">
                                 </div>
                                 <div class="comment_content">
                                     <div class="comment_meta">
@@ -145,7 +145,7 @@ Chi tiết bài viết
                             </div>
                             <div class="comment_list">
                                 <div class="comment_thumb">
-                                    <img src="fontEnd/img/blog/comment3.png.jpg" alt="">
+                                    <img src="frontEnd/img/blog/comment3.png.jpg" alt="">
                                 </div>
                                 <div class="comment_content">
                                     <div class="comment_meta">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Fontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function blog(){
-        return view('fontend.blog');
+        return view('frontend.blog');
     }
     public function detailBlog(){
-        return view('fontend.detailBlog');
+        return view('frontend.detailBlog');
     }
 }

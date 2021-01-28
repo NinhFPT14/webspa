@@ -1,4 +1,4 @@
-@extends('fontEnd.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
 Thanh Toán
 @endsection
@@ -126,7 +126,7 @@ Thanh Toán
                             </div> 
                            <div class="panel-default">
                                 <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
-                                <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="fontEnd/img/icon/papyel.png" alt=""></label>
+                                <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="frontEnd/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult" class="collapse one" data-parent="#accordion">
                                     <div class="card-body1">

@@ -1,6 +1,6 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
-Chi tiết dịch vụ
+Chi tiết sản phẩm
 @endsection
 @section('content')
 <div class="breadcrumbs_area">
@@ -29,32 +29,32 @@ Chi tiết dịch vụ
                            <div class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
                                     <a href="#">
-                                        <img id="zoom1" src="fontEnd/img/product/productbig1.jpg" data-zoom-image="fontEnd/img/product/productbig1.jpg" alt="big-1">
+                                        <img id="zoom1" src="frontEnd/img/product/productbig1.jpg" data-zoom-image="frontEnd/img/product/productbig1.jpg" alt="big-1">
                                     </a>
                                 </div>
                                 <div class="single-zoom-thumb">
                                     <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
                                         <li>
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig2.jpg" data-zoom-image="fontEnd/img/product/productbig2.jpg">
-                                                <img src="fontEnd/img/product/productbig2.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig2.jpg" data-zoom-image="frontEnd/img/product/productbig2.jpg">
+                                                <img src="frontEnd/img/product/productbig2.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig3.jpg" data-zoom-image="fontEnd/img/product/productbig3.jpg">
-                                                <img src="fontEnd/img/product/productbig3.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig3.jpg" data-zoom-image="frontEnd/img/product/productbig3.jpg">
+                                                <img src="frontEnd/img/product/productbig3.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig4.jpg" data-zoom-image="fontEnd/img/product/productbig4.jpg">
-                                                <img src="fontEnd/img/product/productbig4.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig4.jpg" data-zoom-image="frontEnd/img/product/productbig4.jpg">
+                                                <img src="frontEnd/img/product/productbig4.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
                                         <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="fontEnd/img/product/productbig5.jpg" data-zoom-image="fontEnd/img/product/productbig5.jpg">
-                                                <img src="fontEnd/img/product/productbig5.jpg" alt="zo-th-1"/>
+                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig5.jpg" data-zoom-image="frontEnd/img/product/productbig5.jpg">
+                                                <img src="frontEnd/img/product/productbig5.jpg" alt="zo-th-1"/>
                                             </a>
 
                                         </li>
@@ -86,7 +86,10 @@ Chi tiết dịch vụ
                                         <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl</p>
                                     </div>
                                   
-                                   
+                                    <div class="product_variant quantity">
+                                        <label>Số Lượng</label>
+                                        <input min="0" max="100" value="1" type="number">
+                                    </div>
                                      <div class="action_links">
                                         <ul>
                                             <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
@@ -101,9 +104,9 @@ Chi tiết dịch vụ
                                 </form>
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('appointment')}}">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('checkout')}}">
                                         <i class="fas fa-cart-plus"></i>
-                                      Đặt Lịch Ngay
+                                      Mua Ngay
                                     </a>
                                 </div>
                                 <div class="rounded-3xl mt-30 bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
@@ -172,7 +175,7 @@ Chi tiết dịch vụ
                                             <h2></h2>
                                             <div class="reviews_comment_box">
                                                 <div class="comment_thmb">
-                                                    <img src="fontEnd/img/blog/comment2.jpg" alt="">
+                                                    <img src="frontEnd/img/blog/comment2.jpg" alt="">
                                                 </div>
                                                 <div class="comment_text">
                                                     <div class="reviews_meta">
@@ -239,14 +242,14 @@ Chi tiết dịch vụ
                 <div class="row">
                     <div class="col-12">
                         <div class="section_title title_style4">
-                                <h3>Dịch Vụ</h3>
+                                <h3>Sản Phẩm Liên Quan</h3>
                         </div>
                         <div class="row product_slick_row4">
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="frontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="frontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
@@ -286,8 +289,8 @@ Chi tiết dịch vụ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="frontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="frontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
@@ -327,8 +330,8 @@ Chi tiết dịch vụ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="frontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="frontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
@@ -368,8 +371,8 @@ Chi tiết dịch vụ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="product-details.html"><img src="frontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="product-details.html"><img src="frontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>

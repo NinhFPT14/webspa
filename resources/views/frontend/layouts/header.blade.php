@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="header_container_inner container_position">
                     <div class="logo">
-                        <a href="index-5.html"><img width="200" height="90" src="fontEnd/img/logo/logo11.png" alt=""></a>
+                        <a href="index-5.html"><img width="200" height="90" src="frontEnd/img/logo/logo11.png" alt=""></a>
                     </div>
                     <div class="header_container_right">
                         <div class="main_menu menu_two">
@@ -53,7 +53,7 @@
                                     <div class="mini_cart">
                                         <div class="cart_item">
                                             <div class="cart_img">
-                                                <a href="#"><img src="fontEnd/img/s-product/product.jpg" alt=""></a>
+                                                <a href="#"><img src="frontEnd/img/s-product/product.jpg" alt=""></a>
                                             </div>
                                             <div class="cart_info">
                                                 <a href="#">Tên Sản Phẩm</a>

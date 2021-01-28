@@ -1,4 +1,4 @@
-@extends('fontEnd.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
 Giới thiệu
 @endsection
@@ -26,7 +26,7 @@ Giới thiệu
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="about_thumb">
-                            <img src="fontEnd/img/about/about1.jpg" alt="">
+                            <img src="frontEnd/img/about/about1.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
@@ -53,7 +53,7 @@ Giới thiệu
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single_counterup">
                             <div class="counter_img">
-                                <img src="fontEnd/img/about/count.png" alt="">
+                                <img src="frontEnd/img/about/count.png" alt="">
                             </div>
                             <div class="counter_info">
                                 <h2 class="counter_number">2170</h2>
@@ -64,7 +64,7 @@ Giới thiệu
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single_counterup count-two">
                             <div class="counter_img">
-                                <img src="fontEnd/img/about/count2.png" alt="">
+                                <img src="frontEnd/img/about/count2.png" alt="">
                             </div>
                             <div class="counter_info">
                                 <h2 class="counter_number">8080</h2>
@@ -75,7 +75,7 @@ Giới thiệu
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single_counterup">
                             <div class="counter_img">
-                                <img src="fontEnd/img/about/count3.png" alt="">
+                                <img src="frontEnd/img/about/count3.png" alt="">
                             </div>
                             <div class="counter_info">
                                 <h2 class="counter_number">2150</h2>
@@ -86,7 +86,7 @@ Giới thiệu
                     <div class="col-lg-3 col-md-6 col-sm-6">
                         <div class="single_counterup count-two">
                             <div class="counter_img">
-                                <img src="fontEnd/img/about/count4.png" alt="">
+                                <img src="frontEnd/img/about/count4.png" alt="">
                             </div>
                             <div class="counter_info">
                                 <h2 class="counter_number">2170</h2>
@@ -154,7 +154,7 @@ Giới thiệu
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="about__img">
-                            <img src="fontEnd/img/about/about2.jpg" alt="">
+                            <img src="frontEnd/img/about/about2.jpg" alt="">
                         </div>
                     </div>
                 </div>

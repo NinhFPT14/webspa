@@ -1,4 +1,4 @@
-@extends('fontend.layouts.master')
+@extends('frontend.layouts.master')
 @section('title')
 Tài khoản của tôi
 @endsection

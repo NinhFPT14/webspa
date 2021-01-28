@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Fontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,15 +10,15 @@ class HomeController extends Controller
 {
     public function home(){
         $slide = Slide::where('status', 0)->get();
-        return view('fontend.home',compact('slide'));
+        return view('frontend.home',compact('slide'));
     }
 
     public function contact(){
-        return view('fontend.contact');
+        return view('frontend.contact');
     }
 
     public function about(){
-        return view('fontend.about');
+        return view('frontend.about');
     }
 
 }
