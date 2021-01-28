@@ -9,8 +9,8 @@ Giới thiệu
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="about.html">about us</a></li>
+                            <li><a href="index.html">Trang Chủ</a></li>
+                            <li><a href="">Giới Thiệu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,16 +31,14 @@ Giới thiệu
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="about_content">
-                            <h1>Welcome To alista Store!</h1>
+                            <h1>Chào Mừng Bạn Đến Với SPA QUEEN BEAUTY</h1>
                             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ducimus id mollitia
                                 quisquam accusamus recusandae enim dolorem vitae laborum amet molestiae, molestias
                                 alias, neque impedit, assumenda corporis. Facere esse, error? Molestias explicabo
                                 voluptate, odit excepturi molestiae pariatur facilis facere, sunt laborum earum tenetur
                                 inventore! Error voluptatum iusto quidem officia, et omnis cupiditate rem, tenetur odit
                                 explicabo adipisci totam, eius?</p>
-                            <div class="view__work">
-                                <a href="#">view work </a>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -57,7 +55,7 @@ Giới thiệu
                             </div>
                             <div class="counter_info">
                                 <h2 class="counter_number">2170</h2>
-                                <p>happy customers</p>
+                                <p>Khách hàng đã tham gia</p>
                             </div>
                         </div>
                     </div>
@@ -67,8 +65,8 @@ Giới thiệu
                                 <img src="frontEnd/img/about/count2.png" alt="">
                             </div>
                             <div class="counter_info">
-                                <h2 class="counter_number">8080</h2>
-                                <p>AWARDS won</p>
+                                <h2 class="counter_number">100</h2>
+                                <p>Đạt 100 giải thưởng về thẩm mỹ</p>
                             </div>
                         </div>
                     </div>
@@ -78,8 +76,8 @@ Giới thiệu
                                 <img src="frontEnd/img/about/count3.png" alt="">
                             </div>
                             <div class="counter_info">
-                                <h2 class="counter_number">2150</h2>
-                                <p>HOURS WORKED</p>
+                                <h2 class="counter_number">14</h2>
+                                <p>14 Năm phát triển</p>
                             </div>
                         </div>
                     </div>
@@ -89,8 +87,8 @@ Giới thiệu
                                 <img src="frontEnd/img/about/count4.png" alt="">
                             </div>
                             <div class="counter_info">
-                                <h2 class="counter_number">2170</h2>
-                                <p>COMPLETE PROJECTS</p>
+                                <h2 class="counter_number">2015</h2>
+                                <p>Được bình chọn là spa yêu thích</p>
                             </div>
                         </div>
                     </div>
@@ -103,16 +101,19 @@ Giới thiệu
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="progressbar_inner">
-                            <h2>We have Skills to show</h2>
-                            <div class="progress_skill one">
+                            <h2>Đánh Giá</h2>
+                           
+                            <div class="progress_skill two">
                                 <div class="progress">
                                     <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s"
-                                        data-wow-delay=".3s" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+                                        data-wow-delay=".5s" role="progressbar" aria-valuenow="25" aria-valuemin="0"
                                         aria-valuemax="100">
-                                        <span class="progress_persent">html/css</span>
+
+                                        <span class="progress_persent">Khách Hàng yêu mếm</span>
                                     </div>
+
                                 </div>
-                                <span class="progress_discount">60%</span>
+                                <span class="progress_discount">90%</span>
                             </div>
                             <div class="progress_skill two">
                                 <div class="progress">
@@ -120,35 +121,11 @@ Giới thiệu
                                         data-wow-delay=".5s" role="progressbar" aria-valuenow="25" aria-valuemin="0"
                                         aria-valuemax="100">
 
-                                        <span class="progress_persent">ecommerce theme </span>
+                                        <span class="progress_persent">dịch vụ tại spa được yêu mến</span>
                                     </div>
 
                                 </div>
                                 <span class="progress_discount">90%</span>
-                            </div>
-                            <div class="progress_skill three">
-                                <div class="progress">
-                                    <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s"
-                                        data-wow-delay=".7s" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                        aria-valuemax="100">
-
-                                        <span class="progress_persent">Typhography </span>
-                                    </div>
-
-                                </div>
-                                <span class="progress_discount">70%</span>
-                            </div>
-                            <div class="progress_skill four">
-                                <div class="progress">
-                                    <div class="progress-bar about_prog wow fadeInLeft" data-wow-duration="0.8s"
-                                        data-wow-delay=".7s" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-                                        aria-valuemax="100">
-
-                                        <span class="progress_persent">Branding </span>
-                                    </div>
-
-                                </div>
-                                <span class="progress_discount">80%</span>
                             </div>
                         </div>
                     </div>

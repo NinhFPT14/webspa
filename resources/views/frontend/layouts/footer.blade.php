@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="widgets_container contact_us">
-                            <a href="index.html"><img src="frontEnd/img/logo/logo11.png" alt=""></a>
+                            <a href="{{route('home')}}"><img src="frontEnd/img/logo/logo11.png" alt=""></a>
                             <div class="footer_contact">
                                 <?php
                                 $data = App\Model\Footer::get();
@@ -62,26 +62,9 @@
 
                     <div class="col-lg-3 col-md-6 offset-md-3 offset-lg-0">
                         <div class="widgets_container">
-                            <h3>instagram</h3>
+                            <h3>FACEBOOK</h3>
                             <div class="instagram_gallery">
-                                <div class="single_instagram">
-                                    <a href="#"><img src="frontEnd/img/about/instagram1.jpg" alt=""></a>
-                                </div>
-                                <div class="single_instagram">
-                                    <a href="#"><img src="frontEnd/img/about/instagram2.jpg" alt=""></a>
-                                </div>
-                                <div class="single_instagram">
-                                    <a href="#"><img src="frontEnd/img/about/instagram3.jpg" alt=""></a>
-                                </div>
-                                <div class="single_instagram">
-                                    <a href="#"><img src="frontEnd/img/about/instagram4.jpg" alt=""></a>
-                                </div>
-                                <div class="single_instagram">
-                                    <a href="#"><img src="frontEnd/img/about/instagram5.jpg" alt=""></a>
-                                </div>
-                                <div class="single_instagram">
-                                    <a href="#"><img src="frontEnd/img/about/instagram6.jpg" alt=""></a>
-                                </div>
+                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F1998-Confessions-104391394563784%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                             </div>
                         </div>

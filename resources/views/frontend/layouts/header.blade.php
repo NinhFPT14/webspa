@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="header_container_inner container_position">
                     <div class="logo">
-                        <a href="index-5.html"><img width="200" height="90" src="frontEnd/img/logo/logo11.png" alt=""></a>
+                        <a href="{{route('home')}}"><img width="200" height="90" src="frontEnd/img/logo/logo11.png" alt=""></a>
                     </div>
                     <div class="header_container_right">
                         <div class="main_menu menu_two">
