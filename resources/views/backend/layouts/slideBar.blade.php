@@ -34,9 +34,9 @@
         </a>
         <div id="category" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('listCategory',['type'=>0])}}">Sản phẩm</a>
-                <a class="collapse-item" href="{{route('listCategory',['type'=>1])}}">Dịch vụ</a>
-                <a class="collapse-item" href="{{route('listCategory',['type'=>2])}}">Bài viết</a>
+                <a class="collapse-item" target="_blank" href="{{route('listCategory',['type'=>0])}}">Sản phẩm</a>
+                <a class="collapse-item" target="_blank" href="{{route('listCategory',['type'=>1])}}">Dịch vụ</a>
+                <a class="collapse-item" target="_blank" href="{{route('listCategory',['type'=>2])}}">Bài viết</a>
             </div>
         </div>
     </li>
