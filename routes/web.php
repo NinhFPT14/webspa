@@ -54,4 +54,10 @@ Route::get('danh-sach-slide','Backend\SlideController@list')->name('listSlide');
 Route::get('xoa-slide/{id}','Backend\SlideController@delete')->name('deleteSlide');
 Route::get('/sua-slide/{id}', 'Backend\SlideController@edit')->name('editSlide');
 Route::post('/cap-nhat-slide/{id}', 'Backend\SlideController@update')->name('updateSlide');
-
+//FooterController
+Route::get('tao-footer','Backend\FooterController@add')->name('addFooter');
+Route::post('luu-footer','Backend\FooterController@save')->name('saveFooter');
+Route::get('danh-sach-footer','Backend\FooterController@list')->name('listFooter');
+Route::get('xoa-footer/{id}','Backend\FooterController@delete')->name('deleteFooter');
+Route::get('/sua-footer/{id}', 'Backend\FooterController@edit')->name('editFooter');
+Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('updateFooter');

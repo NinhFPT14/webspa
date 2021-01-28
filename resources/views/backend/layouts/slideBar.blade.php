@@ -68,7 +68,11 @@
             </div>
         </div>
     </li>
-
+    <li class="nav-item">
+        <a class="nav-link" href="{{route('listSlide')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Slide</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
