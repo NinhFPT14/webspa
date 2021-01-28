@@ -6,13 +6,16 @@
                         <div class="widgets_container contact_us">
                             <a href="index.html"><img src="fontEnd/img/logo/logo11.png" alt=""></a>
                             <div class="footer_contact">
+                                <?php
+                                $data = App\Model\Footer::get();
+                                ?>
+                                @foreach ($data as $item)
                                 <ul>
-                                    <li><i class="ion-ios-location"></i><span>Addresss:</span> The Barn, Ullenhall,
-                                        Henley in Arden B578 5CC, England</li>
-                                    <li><i class="ion-ios-telephone"></i><span>Call Us:</span> +123.456.789 -
-                                        +123.456.678</li>
-                                    <li><i class="ion-android-mail"></i><span>Email:</span> support@plazathemes.com</li>
+                                    <li><i class="ion-ios-location"></i><span>Addresss:</span>{{$item->address}}</li>
+                                    <li><i class="ion-ios-telephone"></i><span>Call Us:</span> {{$item->phone_number}}</li>
+                                    <li><i class="ion-android-mail"></i><span>Email:</span> {{$item->email}}</li>
                                 </ul>
+                                @endforeach
                             </div>
                         </div>
                     </div>

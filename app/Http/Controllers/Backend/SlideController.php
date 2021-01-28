@@ -52,6 +52,12 @@ class SlideController extends Controller
         $data = Slide::get();
         return view('backend.slides.list',compact('data'));
      }
+     public function status($id ,$status){
+      $flight = Slide::find($id);
+      $flight->status = $status;
+      $flight->save();
+      return redirect()->route('listSlide',['type'=>$flight->type]);
+  }
    public function delete($id){
     Slide::where('id', $id)->delete();
     return redirect()->route('listSlide');

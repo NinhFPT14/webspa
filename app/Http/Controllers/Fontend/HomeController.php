@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Fontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Slide;
+use App\Model\Footer;
 class HomeController extends Controller
 {
     public function home(){
@@ -19,4 +20,5 @@ class HomeController extends Controller
     public function about(){
         return view('fontend.about');
     }
+
 }

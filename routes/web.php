@@ -58,6 +58,7 @@ Route::get('danh-sach-slide','Backend\SlideController@list')->name('listSlide');
 Route::get('xoa-slide/{id}','Backend\SlideController@delete')->name('deleteSlide');
 Route::get('/sua-slide/{id}', 'Backend\SlideController@edit')->name('editSlide');
 Route::post('/cap-nhat-slide/{id}', 'Backend\SlideController@update')->name('updateSlide');
+Route::get('trang-thai-slide/{id}/{status}','Backend\SlideController@status')->name('statusSlide');
 //FooterController
 Route::get('tao-footer','Backend\FooterController@add')->name('addFooter');
 Route::post('luu-footer','Backend\FooterController@save')->name('saveFooter');
