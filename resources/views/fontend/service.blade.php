@@ -10,8 +10,8 @@ Dịch Vụ
                     <div class="breadcrumb_content">
                         <h3>Shop</h3>
                         <ul>
-                            <li><a href="index.html">Trang chủ</a></li>
-                            <li><a href="shop.html">Sản Phẩm</a></li>
+                            <li><a href="">Trang chủ</a></li>
+                            <li><a href="">Dịch Vụ</a></li>
                         </ul>
                     </div>
                 </div>

@@ -4,9 +4,9 @@ Bài viết
 @endsection
 @section('content')
 <!--Fontawesome-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-<link rel="stylesheet" href="assets/css/plugins.css">
-<!-- fdsgs -->
+
+
+<!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
         <div class="container">
             <div class="row">
@@ -34,7 +34,7 @@ Bài viết
                         </div>
                         <div class="single_blog">
                             <div class="blog_title">
-                                <h2><a href="#">Demo1</a></h2>
+                                <h2><a href="{{route('detailBlog')}}">Demo1</a></h2>
                                 <div class="blog_post">
                                     <ul>
                                         <li class="post_author">Đăng bởi : admin</li>
@@ -46,7 +46,7 @@ Bài viết
                                 <div class="row">
                                     <div class="col-lg-4 col-md-5">
                                         <div class="blog_thumb">
-                                            <a href="blog-details.html"><img src="fontEnd/img/blog/blog1.jpg" alt=""></a>
+                                            <a href="{{route('detailBlog')}}"><img src="fontEnd/img/blog/blog1.jpg" alt=""></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-7">
@@ -60,14 +60,9 @@ Bài viết
                                                     <h3>Chia sẻ với</h3>
                                                     <ul>
                                                         <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                        <li><a href="#" title="Facebook"><i
-                                                                    class="fa fa-twitter"></i></a></li>
-                                                        <li><a href="#" title="Facebook"><i
-                                                                    class="fa fa-pinterest"></i></a></li>
-                                                        <li><a href="#" title="Facebook"><i
-                                                                    class="fa fa-google-plus"></i></a></li>
-                                                        <li><a href="#" title="Facebook"><i
-                                                                    class="fa fa-linkedin"></i></a></li>
+                                                        <li><a href="#" title="Facebook"><i class="fab fa-youtube"></i></a></li>
+                                                        <li><a href="#" title="Facebook"><i class="fab fa-instagram-square"></i></a></li>
+                                                       
                                                     </ul>
                                                 </div>
                                                 

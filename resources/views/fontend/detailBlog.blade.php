@@ -10,8 +10,8 @@ Chi tiết bài viết
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="blog.html">blog</a></li>
+                            <li><a href="{{route('home')}}">Trang Chủ</a></li>
+                            <li><a href="{{route('detailBlog')}}">Chi Tiết Bài Viết</a></li>
                         </ul>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ Chi tiết bài viết
                                 <h2><a href="#">Blog image post</a></h2>
                                 <div class="blog_post">
                                     <ul>
-                                        <li class="post_author">Posts by : admin</li>
+                                        <li class="post_author">Đăng Bởi : admin</li>
                                         <li class="post_date"> Mar102015	</li>
                                     </ul>
                                 </div>
@@ -59,59 +59,37 @@ Chi tiết bài viết
                                     </div>
 
                                     <div class="social_sharing">
-                                        <p>share this post:</p>
+                                        <p>Chia sẻ:</p>
                                         <ul>
-                                            <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
-                                            <li><a href="#" title="google+"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-youtube"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="fab fa-instagram-square"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
                            </div>
                         </div>
                         <div class="related_posts">
-                           <h3>Related posts</h3>
+                           <h3>Bài Viết Liên Quan</h3>
                             <div class="row">
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single_related">
                                         <div class="related_thumb">
-                                            <img src="fontEnd/img/blog/blog3.jpg" alt="">
+                                            <a href="{{route('detailBlog')}}"><img src="fontEnd/img/blog/blog3.jpg" alt=""></a>
+                                            
                                         </div>
                                         <div class="related_content">
-                                           <h4><a href="#">Post with Gallery</a></h4>
+                                           <h4><a href="{{route('detailBlog')}}">Post with Gallery</a></h4>
                                            <span><i class="fa fa-calendar" aria-hidden="true"></i> December 10, 2019 </span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single_related">
-                                        <div class="related_thumb">
-                                            <img src="fontEnd/img/blog/blog4.jpg" alt="">
-                                        </div>
-                                        <div class="related_content">
-                                           <h4><a href="#">Post with Audio</a></h4>
-                                           <span><i class="fa fa-calendar" aria-hidden="true"></i> December 10, 2019 </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="single_related column_3">
-                                        <div class="related_thumb">
-                                            <img src="fontEnd/img/blog/blog5.jpg" alt="">
-                                        </div>
-                                        <div class="related_content">
-                                           <h4><a href="#">Post with Video</a></h4>
-                                           <span><i class="fa fa-calendar" aria-hidden="true"></i> December 10, 2019 </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                        </div> 
                         <div class="comments_area">
                             <div class="comments_box">
-                            <h3>3 Comments	</h3>
+                            <h3>Bình Luận	</h3>
                             <div class="comment_list">
                                 <div class="comment_thumb">
                                     <img src="fontEnd/img/blog/comment3.png.jpg" alt="">
@@ -123,7 +101,7 @@ Chi tiết bài viết
                                     </div>
                                     <p>But I must explain to you how all this mistaken idea of denouncing pleasure</p>
                                     <div class="comment_reply">
-                                        <a href="#">Reply</a>
+                                        <a href="#">Trả Lời</a>
                                     </div>
                                 </div>
 
@@ -139,7 +117,7 @@ Chi tiết bài viết
                                     </div>
                                     <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
                                     <div class="comment_reply">
-                                        <a href="#">Reply</a>
+                                        <a href="#">Trả Lời</a>
                                     </div>
                                 </div>
                             </div>
@@ -154,22 +132,21 @@ Chi tiết bài viết
                                     </div>
                                     <p>Quisque orci nibh, porta vitae sagittis sit amet, vehicula vel mauris. Aenean at</p>
                                     <div class="comment_reply">
-                                        <a href="#">Reply</a>
+                                        <a href="#">Trả Lời</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                             <div class="comments_form">
-                                <h3>Leave a Reply </h3>
-                                <p>Your email address will not be published. Required fields are marked *</p>
+                                <h3>Bản có thể bình luận </h3>
                                 <form action="#">
                                     <div class="row">
                                         <div class="col-12">
-                                            <label for="review_comment">Comment </label>
+                                            <label for="review_comment">Bình Luận </label>
                                             <textarea name="comment" id="review_comment" ></textarea>
                                         </div> 
                                         <div class="col-lg-4 col-md-4">
-                                            <label for="author">Name</label>
+                                            <label for="author">Tên</label>
                                             <input id="author"  type="text">
 
                                         </div> 
@@ -178,11 +155,12 @@ Chi tiết bài viết
                                             <input id="email"  type="text">
                                         </div>
                                         <div class="col-lg-4 col-md-4">
-                                            <label for="website">Website </label>
-                                            <input id="website"  type="text">
-                                        </div>   
+                                            <label for="email">Số điện thoại </label>
+                                            <input id="email"  type="text">
+                                        </div>
+                                           
                                     </div>
-                                    <button class="button" type="submit">Post Comment</button>
+                                    <button class="button" type="submit">Bình Luận</button>
                                  </form>    
                             </div>
                         </div>    
@@ -193,7 +171,7 @@ Chi tiết bài viết
                 <div class="col-lg-3 col-md-12">
                      <div class="blog_sidebar_widget">
                         <div class="widget_list widget_categories">
-                            <h2>categories</h2>
+                            <h2>Danh Mục Bài Viết</h2>
                             <ul>
                                 <li>
                                     <a href="#">Creative <span>(6)</span></a> 
@@ -201,99 +179,17 @@ Chi tiết bài viết
                                 <li>
                                     <a href="#">Fashion <span>(10)</span></a> 
                                 </li>
-                                <li>
-                                    <a href="#">Image <span>(4)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">Travel <span>(10)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">Videos <span>(8)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">ecommerce <span>(3)</span></a> 
-                                </li>
-
+                               
                             </ul>
                         </div>
                         <div class="widget_list widget_search mb-30">
-                           <h2>Search</h2>
+                           <h2>Tìm Kiếm</h2>
                            <form action="#">
-                               <input placeholder="search.." type="text">
+                               <input placeholder="..." type="text">
                                <button type="submit"><i class="fa fa-search"></i></button>
                            </form>
                         </div>
-                        <div class="widget_list recent_post">
-                            <h2>Recent Posts</h2>
-                            <ul>
-                                <li>
-                                    <a href="#">Blog image post</a> 
-                                </li>
-                                <li>
-                                    <a href="#">Post with Gallery</a> 
-                                </li>
-                                <li>
-                                    <a href="#">Post with Audio</a> 
-                                </li>
-                                <li>
-                                    <a href="#">Post with Video</a> 
-                                </li>
-                                <li>
-                                    <a href="#">Maecenas ultricies</a> 
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="widget_list widget_archives">
-                            <h2>Blog Archives</h2>
-                            <ul>
-                                <li>
-                                    <a href="#">March 2019 <span>(1)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">December 2019 <span>(5)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">November 2019 <span>(7)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">September 2019 <span>(3)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">August  2019 <span>(4)</span></a> 
-                                </li>
-
-                            </ul>
-                        </div>
-                        <div class="widget_list widget_tags">
-                            <h2>Tags</h2>
-                            <div class="tag_cloud">
-                                <ul>
-                                    <li><a href="#">asian</a></li>
-                                    <li><a href="#">brown</a></li>
-                                    <li><a href="#">camera</a></li>
-                                    <li><a href="#">chilled</a></li>
-                                    <li><a href="#">coctail</a></li>
-                                    <li><a href="#">cool</a></li>
-                                    <li><a href="#">dark</a></li>
-                                    <li><a href="#">euro</a></li>
-                                    <li><a href="#">fashion</a></li>
-                                    <li><a href="#">food</a></li>
-                                    <li><a href="#">france</a></li>
-                                    <li><a href="#">hardware</a></li>
-                                    <li><a href="#">light</a></li>
-                                    <li><a href="#">mac</a></li>
-                                    <li><a href="#">place</a></li>
-                                    <li><a href="#">retro</a></li>
-                                    <li><a href="#">t-shirt</a></li>
-                                    <li><a href="#">teen</a></li>
-                                    <li><a href="#">travel</a></li>
-                                    <li><a href="#">video-2</a></li>
-                                    <li><a href="#">watch</a></li>
-                                    <li><a href="#">white</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                       
                    </div>
                 </div>
             </div>

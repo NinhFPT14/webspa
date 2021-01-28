@@ -7,7 +7,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb_content">
-                <!-- test 1 -->
                     <ul>
                         <li><a href="">Trang Chủ</a></li>
                         <li><a href="">Đặt Lịch</a></li>
@@ -17,7 +16,7 @@
         </div>
     </div>
 </div>
-<div class="container mx-auto pt-4">
+<div class="container  pt-4">
     <div class="pt-24">
         <img src="fontEnd/img/logo/logo11.png" style="margin:auto;margin-top:-50px;"  alt="">
         <h1 class="text-center " style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;">ĐẶT LỊCH HẸN</h1>
@@ -26,15 +25,14 @@
             LIÊN QUAN ĐẾN <br> CÁC GÓI DỊCH VỤ </p>
 
     </div>
+    
     <form action="">
-    <div class="">
-        <div class="">
+        <div class="grid grid-cols-2 gap-4 ">         
             <div action="" class="p-4">
-                <div class="col-md-13 pl-4" >
-                    <label>Chọn Dịch Vụ<span>*</span></label>
-                    <select class="mul-select" style="width:100%" multiple>
-                        <optgroup label="Chọn dịch vụ/"></optgroup>
-                 
+                <div class="col-md-13 pl-4 " >
+                    <label>Chọn Dịch Vụ*</label>
+                    <select class="mul-select form-control"  multiple>
+                        <optgroup label="Chọn dịch vụ/"></optgroup>                 
                         <option value="Cambodia">tu dep trai</option>
                         <option value="Khmer">thi xinh gai</option>
                         <option value="Thiland">vinh lon</option>
@@ -47,7 +45,7 @@
                 <div class="pt-4 ">
                     <div class=" row pl-4">
                         <div class="col-md-6 ">
-                            <label>Chọn Thời Gian<span>*</span></label>
+                            <label>Chọn Thời Gian*</label>
                             <select class="form-control" id="validationCustom04" required>
                                 <option selected disabled value="">Chọn thời gian</option>
                                 <option>Sáng</option>
@@ -89,7 +87,7 @@
                                 <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="fontEnd/img/icon/papyel.png" alt=""></label>
 
                                 <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                    <div class="card-body1">
+                                     <div class="card-body1">
                                        <p>Thanh Toán Bằng ATM, các Ứng dụng tiết kiệm tiền online.</p> 
                                     </div>
                                 </div>
@@ -100,14 +98,24 @@
                     <button class="btn btn-primary form-control"  type="submit">Đặt lịch</button>
                 </div>
             </div>
-
+            <div class="pt-4  m mt-10 border-l">
+                <div class="ml-10">
+                     <i class="fas fa-map-marker-alt fa-2x "><span class="ml-4">aaaaaa</span></i> <br> <br>
+                <i class="fas fa-phone fa-2x"><span class="ml-4">aaaaaa</span></i> <br> <br>
+                <i class="fas fa-envelope-square fa-2x"><span class="ml-4">aaaaaa</span></i>
+                <div class="mt-40">
+                <img src="fontEnd/img/service/address.jpg" alt="">
+                </div>
+            </div>
+            </div>
+            
+            
         </div>
-      
-
-    </div>
+        </div>
     </form>
-</div>
 
+
+</div>
 
 
     

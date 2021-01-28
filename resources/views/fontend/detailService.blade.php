@@ -102,7 +102,7 @@ Chi tiết dịch vụ
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
                                     <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('appointment')}}">
-                                        <i class="fas fa-cart-plus"></i>
+                                        <i class="fas fa-table"></i>    
                                       Đặt Lịch Ngay
                                     </a>
                                 </div>
@@ -245,19 +245,19 @@ Chi tiết dịch vụ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
+                                        <a class="primary_img" href="{{route('detailService')}}"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
+                                        <a class="secondary_img" href="{{route('detailService')}}"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="product-details.html" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
+                                                <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
+                                                <li class="quick_view"><a href="{{route('detailService')}}" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product_content">
                                         <div class="product_name">
-                                            <h4><a href="product-details.html">Pendant, Made of White Pl...</a></h4>
+                                            <h4><a href="{{route('detailService')}}">Pendant, Made of White Pl...</a></h4>
                                         </div>
                                         <div class="product_rating">
                                             <ul>
@@ -283,129 +283,7 @@ Chi tiết dịch vụ
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
-                                      
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="product-details.html" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Pendant, Made of White Pl...</a></h4>
-                                        </div>
-                                        <div class="product_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="price-container">
-                                             <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>   
-                                            </div>
-                                            <div class="wishlist_btn">
-                                                <a href="wishlist.html" title="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
-                                      
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="product-details.html" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Pendant, Made of White Pl...</a></h4>
-                                        </div>
-                                        <div class="product_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="price-container">
-                                             <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>   
-                                            </div>
-                                            <div class="wishlist_btn">
-                                                <a href="wishlist.html" title="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="fontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="product-details.html"><img src="fontEnd/img/product/product2.jpg" alt=""></a>
-                                      
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="product-details.html" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="product-details.html">Pendant, Made of White Pl...</a></h4>
-                                        </div>
-                                        <div class="product_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="price-container">
-                                             <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>   
-                                            </div>
-                                            <div class="wishlist_btn">
-                                                <a href="wishlist.html" title="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
+                          
                            
                         </div>
                     </div>
