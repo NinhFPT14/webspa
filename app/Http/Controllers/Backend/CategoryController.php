@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Category;
+use App\Http\Requests\AddCategoryRequest;
+use App\Http\Requests\EditCategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -12,15 +14,7 @@ class CategoryController extends Controller
         return view('backend.categories.add');
     }
 
-    public function store(Request $request){
-        $request->validate([
-            'name' => 'required|max:255',
-            'type' => 'required',
-        ],[
-            'name.required' => 'Tên danh mục không được để trống',
-            'type.required' => 'loại danh mục không được để trống',
-            'name.max' => 'Tên danh mục không được vượt quá 255 ký tự',
-        ]);
+    public function store(AddCategoryRequest $request){
         $data = $request->all();
         unset($data['_token']);
         $data['status'] =0;
@@ -51,15 +45,7 @@ class CategoryController extends Controller
         return view('backend.categories.edit',compact('data'));
     }
 
-    public function update(Request $request ,$id){
-        $request->validate([
-            'name' => 'required|max:255',
-            'type' => 'required',
-        ],[
-            'name.required' => 'Tên danh mục không được để trống',
-            'type.required' => 'loại danh mục không được để trống',
-            'name.max' => 'Tên danh mục không được vượt quá 255 ký tự',
-        ]);
+    public function update(EditCategoryRequest $request ,$id){
         $data = $request->all();
         unset($data['_token']);
         $flight = Category::where('id',$id)->update($data);

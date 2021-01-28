@@ -5,7 +5,12 @@ Tạo danh mục
 @section('content')
 <div class="container-fluid">
     <!-- Content Row -->
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tạo danh mục</li>
+        </ol>
+    </nav>
     <div class="row">
 
         <!-- Area Chart -->

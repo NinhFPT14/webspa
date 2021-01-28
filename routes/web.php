@@ -66,3 +66,8 @@ Route::get('danh-sach-footer','Backend\FooterController@list')->name('listFooter
 Route::get('xoa-footer/{id}','Backend\FooterController@delete')->name('deleteFooter');
 Route::get('/sua-footer/{id}', 'Backend\FooterController@edit')->name('editFooter');
 Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('updateFooter');
+
+// ProductController
+
+Route::get('tao-san-pham','Backend\ProductController@add')->name('addProduct');
+Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduct');

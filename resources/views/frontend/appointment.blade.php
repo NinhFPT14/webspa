@@ -104,7 +104,7 @@
                 <i class="fas fa-phone fa-2x"><span class="ml-4">aaaaaa</span></i> <br> <br>
                 <i class="fas fa-envelope-square fa-2x"><span class="ml-4">aaaaaa</span></i>
                 <div class="mt-40">
-                <img src="fontEnd/img/service/address.jpg" alt="">
+                <img src="frontEnd/img/service/address.jpg" alt="">
                 </div>
             </div>
             </div>
