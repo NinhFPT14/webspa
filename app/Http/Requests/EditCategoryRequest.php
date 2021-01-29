@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EditCategoryRequest extends FormRequest
 {
@@ -24,8 +25,12 @@ class EditCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
             'type' => 'required',
+            'name' =>
+                    [
+                        'required','max:255',
+                        Rule::unique('categories')->ignore($this->id,'id'),
+                    ],
         ];
         
     }
@@ -34,6 +39,7 @@ class EditCategoryRequest extends FormRequest
         return [
             'required' =>':attribute không được để trống',
             'max' =>':attribute không được vượt quá 255 ký tự',
+            'unique'=>':attribute đã được sử dụng'
         ];
     }
     public function attributes()

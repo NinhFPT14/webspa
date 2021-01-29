@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('discount');
             $table->integer('quality');
             $table->string('slug');
+            $table->string('image');
             $table->integer('status');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');

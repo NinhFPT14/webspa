@@ -11,23 +11,34 @@ Tạo sản phẩm
             <li class="breadcrumb-item active" aria-current="page">Tạo sản phẩm</li>
         </ol>
     </nav>
-    <div class="row">
 
-        <!-- Area Chart -->
-        <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h4 class="m-0 font-weight-bold text-primary">Tạo sản phẩm</h4>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <form method="POST" action="{{route('storeProduct')}}" enctype="multipart/form-data" >
-                        @csrf
+
+    <form method="POST" action="{{route('storeProduct')}}" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+                <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Tạo sản phẩm</h6>
+                    </div>
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên sản phẩm</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput">
                             @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Danh mục</label>
+                            <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+                                @foreach($category as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -45,6 +56,16 @@ Tạo sản phẩm
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 mb-4">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                    </div>
+                    <div class="card-body">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Giá cũ</label>
                             <input type="text" name="price" class="form-control" id="formGroupExampleInput">
@@ -74,10 +95,10 @@ Tạo sản phẩm
                             @enderror
                         </div>
                         <button type="submit" class="btn btn-primary float-right ">Tạo</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 @endsection

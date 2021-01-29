@@ -32,7 +32,7 @@ class AddCategoryRequest extends FormRequest
     {
         return [
             'required' =>':attribute không được để trống',
-            'unique' =>'attribute đã tồn tại',
+            'unique' =>':attribute đã tồn tại',
             'max' =>':attribute không được vượt quá 255 ký tự',
         ];
     }
