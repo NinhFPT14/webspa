@@ -88,9 +88,16 @@ Tạo sản phẩm
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Ảnh</label>
-                            <input type="file" class="form-control" name="image" multiple="multiple">
+                            <label for="formGroupExampleInput">Ảnh chính</label>
+                            <input type="file" class="form-control" name="image">
                             @error('image')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Ảnh phụ</label>
+                            <input type="file" class="form-control" name="secondary_photo" multiple="multiple">
+                            @error('secondary_photo')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

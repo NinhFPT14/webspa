@@ -16,13 +16,12 @@ class ProductController extends Controller
         return view('backend.products.add',compact('category'));
     }
     public function store(AddProductRequest $request){
-        $product = new Product;
         $data = $request->all();
-        unset($data['_token'],$data['image']);
+        unset($data['_token'],$data['secondary_photo']);
         $data['slug'] = Str::slug($request->name,'-');
         $data['status'] = 0;
-        // dd($data);
-        $product->save();
+        dd($data);
+        $product = Product::create($data);
         dd($product);
         return redirect()->route('addProduct');
     }

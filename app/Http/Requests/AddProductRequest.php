@@ -32,6 +32,7 @@ class AddProductRequest extends FormRequest
          'discount' =>'required|digits_between:4,11',
          'quality' =>'required|digits_between:4,11',
          'image' =>'required',
+         'secondary_photo'=>'required',
         ];
     }
 
@@ -53,7 +54,8 @@ class AddProductRequest extends FormRequest
             'price' =>'Giá cũ',
             'discount' =>'Giá giảm',
             'quality' =>'Số lượng',
-            'image' =>'Ảnh',
+            'image' =>'Ảnh chính',
+            'secondary_photo' => ' Ảnh phụ',
         ];
     }
 }
