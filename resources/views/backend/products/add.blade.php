@@ -26,7 +26,7 @@ Tạo sản phẩm
                     <div class="card-body">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên sản phẩm</label>
-                            <input type="text" name="name" class="form-control" id="formGroupExampleInput">
+                            <input type="text" name="name" class="form-control" id="formGroupExampleInput" value="{{ old('name')}}">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -44,14 +44,14 @@ Tạo sản phẩm
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Mô tả</label>
-                            <textarea class="form-control" name="description" id="" cols="30" rows="4"></textarea>
+                            <textarea class="form-control" name="description" id="" cols="30" rows="4">{{ old('description')}}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Chi tiết</label>
-                            <textarea class="form-control" name="detail" id="" cols="30" rows="10"></textarea>
+                            <textarea class="form-control" name="detail" id="" cols="30" rows="10">{{ old('detail')}}</textarea>
                             @error('detail')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -68,28 +68,28 @@ Tạo sản phẩm
                     <div class="card-body">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Giá cũ</label>
-                            <input type="text" name="price" class="form-control" id="formGroupExampleInput">
+                            <input type="text" name="price" class="form-control" id="formGroupExampleInput" value="{{ old('price')}}">
                             @error('price')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group">detail
                             <label for="formGroupExampleInput">Giá giảm</label>
-                            <input type="text" name="discount" class="form-control" id="formGroupExampleInput">
+                            <input type="text" name="discount" class="form-control" id="formGroupExampleInput" value="{{ old('discount')}}">
                             @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Số lượng</label>
-                            <input type="text" name="quality" class="form-control" id="formGroupExampleInput">
+                            <input type="text" name="quality" class="form-control" id="formGroupExampleInput" value="{{ old('quality')}}">
                             @error('quality')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Ảnh</label>
-                            <input type="file" class="form-control" name="image" multiple="multiple">
+                            <label for="formGroupExampleInput">Ảnh phụ</label>
+                            <input type="file" class="form-control" name="image[]" multiple="multiple">
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

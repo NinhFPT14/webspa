@@ -16,14 +16,21 @@ class ProductController extends Controller
         return view('backend.products.add',compact('category'));
     }
     public function store(AddProductRequest $request){
-        $product = new Product;
         $data = $request->all();
-        unset($data['_token'],$data['image']);
+        unset($data['_token']);
         $data['slug'] = Str::slug($request->name,'-');
         $data['status'] = 0;
-        // dd($data);
-        $product->save();
-        dd($product);
+        dd($data);
+        $product = Product::create($data);
+        Product::where('id',$product->id)->update(['slug'=>Str::slug($request->name.$product->id,'-')]);
+        // if($request->hasFile('image')){
+        //     $extension = $request->image->extension();
+        //     $filename =  uniqid(). "." . $extension;
+        //     $path = $request->image->storeAs(
+        //       'image', $filename, 'public'
+        //     );
+        //     $data['image'] = "storage/".$path;  
+        //    }
         return redirect()->route('addProduct');
     }
 }
