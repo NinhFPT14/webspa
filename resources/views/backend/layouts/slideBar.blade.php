@@ -69,9 +69,14 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('listSlide')}}">
+        <a class="nav-link" target="_blank" href="{{route('listSlide')}}">
             <i class="fas fa-fw fa-table"></i>
             <span>Slide</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" target="_blank" href="{{route('listFooter')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Footer</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider">

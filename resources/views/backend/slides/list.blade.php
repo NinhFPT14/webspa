@@ -21,11 +21,11 @@
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Content</th>
-                            <th scope="col">Image</th>
+                            <th scope="col">Tiêu đề</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Ảnh</th>
                             <th scope="col">Link</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Trạng thái</th>
                             <th scope="col">Hành động</th>
                           </tr>
                     </thead>
@@ -37,9 +37,17 @@
                           <th scope="row">{{$item->content}}</th>
                           <th><img src="{{$item->image}}" style="width: 100px"></th>
                           <th scope="row">{{$item->link}}</th>
-                          <th scope="row">{{$item->status == 0 ? 'Hoạt động':'Tạm ngừng'}}</th>
-                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteSlide',['id'=>$item->id])}}" class="btn btn-warning">Xóa</a>
-                          <a href="{{route('editSlide',['id'=>$item->id])}}"  role="button" class="btn btn-success">Sửa</a></th>
+                          <td>
+                            @if($item->status == 0)
+                            <a onclick="return confirm('Bạn có chắc chắn muốn tắt')" href="{{route('statusSlide',['id'=>$item->id,'status'=>1])}}"
+                                class="btn btn-success">ON</a>
+                            @else
+                            <a onclick="return confirm('Bạn có chắc chắn muốn bật')" href="{{route('statusSlide',['id'=>$item->id ,'status'=>0])}}"
+                                class="btn btn-danger">OFF</a>
+                            @endif
+                        </td>
+                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteSlide',['id'=>$item->id])}}" class="btn btn-danger">Xóa</a>
+                          <a href="{{route('editSlide',['id'=>$item->id])}}"  role="button" class="btn btn-warning">Sửa</a></th>
                         </tr>
                         @endforeach
                     </tbody>
