@@ -17,12 +17,20 @@ class ProductController extends Controller
     }
     public function store(AddProductRequest $request){
         $data = $request->all();
-        unset($data['_token'],$data['secondary_photo']);
+        unset($data['_token']);
         $data['slug'] = Str::slug($request->name,'-');
         $data['status'] = 0;
         dd($data);
         $product = Product::create($data);
-        dd($product);
+        Product::where('id',$product->id)->update(['slug'=>Str::slug($request->name.$product->id,'-')]);
+        // if($request->hasFile('image')){
+        //     $extension = $request->image->extension();
+        //     $filename =  uniqid(). "." . $extension;
+        //     $path = $request->image->storeAs(
+        //       'image', $filename, 'public'
+        //     );
+        //     $data['image'] = "storage/".$path;  
+        //    }
         return redirect()->route('addProduct');
     }
 }
