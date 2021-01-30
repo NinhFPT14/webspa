@@ -22,7 +22,7 @@
                             @csrf
                             <div class="form-group">
                               <label for="formGroupExampleInput">Tiêu đề</label>
-                              <input type="text" value="{{$data->title}}" name="title" class="form-control" id="formGroupExampleInput" placeholder="Nhập tiêu đề">
+                              <input type="text" value="{{$data->title}}" name="title" class="form-control" id="formGroupExampleInput" placeholder="Nhập tiêu đề" >
                               @error('title')
                               <div class="alert alert-danger">{{ $message }}</div>
                           @enderror
