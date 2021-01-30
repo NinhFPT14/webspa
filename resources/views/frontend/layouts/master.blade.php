@@ -39,7 +39,6 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="frontEnd/css/style.css">
     <link href="frontEnd/css/tailwind.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
 
 </head>
@@ -63,7 +62,6 @@
 
 <!-- Main JS -->
 <script src="frontEnd/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{{asset('frontEnd/vendor/select2/js/select2.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.bundle.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.bundle.js.map')}}"></script>

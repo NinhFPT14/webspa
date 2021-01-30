@@ -3,9 +3,7 @@
 Giỏ Hàng
 @endsection
 @section('content')
-<!--Fontawesome-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-<link rel="stylesheet" href="assets/css/plugins.css">
+
 
 <div class="breadcrumbs_area">
     <div class="container">   
@@ -44,7 +42,7 @@ Giỏ Hàng
                         </thead>
                         <tbody>
                             <tr>
-                               <td class="product_remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
+                               <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
                                 <td class="product_thumb"><a href="#"><img src="frontEnd/img/s-product/product.jpg" alt=""></a></td>
                                 <td class="product_name"><a href="#">Handbag fringilla</a></td>
                                 <td class="product-price">£65.00</td>
