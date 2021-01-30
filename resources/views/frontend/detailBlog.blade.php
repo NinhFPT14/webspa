@@ -61,9 +61,9 @@ Chi tiết bài viết
                                     <div class="social_sharing">
                                         <p>Chia sẻ:</p>
                                         <ul>
-                                            <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#" title="Facebook"><i class="fab fa-youtube"></i></a></li>
-                                            <li><a href="#" title="Facebook"><i class="fab fa-instagram-square"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="ion-social-facebook"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="ion-social-youtube"></i></a></li>
+                                            <li><a href="#" title="Facebook"><i class="ion-social-instagram"></i></i></a></li>
                                         </ul>
                                     </div>
                                 </div>

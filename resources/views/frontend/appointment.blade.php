@@ -100,9 +100,9 @@
             </div>
             <div class="pt-4  m mt-10 border-l">
                 <div class="ml-10">
-                     <i class="fas fa-map-marker-alt fa-2x "><span class="ml-4">Thái Nguyên</span></i> <br> <br>
-                <i class="fas fa-phone fa-2x"><span class="ml-4">0373551630</span></i> <br> <br>
-                <i class="fas fa-envelope-square fa-2x"><span class="ml-4">dinhthi1091@gmail.com</span></i>
+                    <i class="ion-ios-location fa-2x"><span class="ml-4">Thái Nguyên</span></i> <br> <br>
+                    <i class="ion-ios-telephone fa-2x"><span class="ml-4">0373551630</span></i> <br> <br>
+                <i class="ion-android-mail fa-2x"><span class="ml-4">dinhthi1091@gmail.com</span></i>
                 <div class="mt-40">
                 <img src="frontEnd/img/service/address.jpg" alt="">
                 </div>

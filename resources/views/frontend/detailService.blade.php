@@ -102,7 +102,7 @@ Chi tiết dịch vụ
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
                                     <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('appointment')}}">
-                                        <i class="fas fa-table"></i>    
+                                        <i class="ion-ios-alarm fa-2x"></i>    
                                       Đặt Lịch Ngay
                                     </a>
                                 </div>
