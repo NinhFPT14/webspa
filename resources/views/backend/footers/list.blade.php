@@ -1,6 +1,6 @@
 @extends('backEnd.layouts.master')
 @section('title')
-  Danh Sách Slide
+  Danh Sách Footer
 @endsection
 @section('content')
 <div class="container-fluid">
