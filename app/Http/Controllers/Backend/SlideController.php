@@ -4,34 +4,15 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddSlideRequest;
+use App\Http\Requests\EditSlideRequest;
 use App\Model\Slide;
 class SlideController extends Controller
 {
     public function add(){
         return view('backend.slides.add');
     }
-    public function store(Request $request){
-      $request->validate([
-        'title' => 'required|max:250|min:5',
-        'content' => 'required|max:255|min:5',
-        'image' => 'required',
-        'link' => 'required|max:255|min:5|',
-        'status' => 'required'
-    ],[
-        'title.required' => 'Không được để trống tiêu để',
-        'title.min' => 'tiêu đề ít nhất phải trên 5 kí tự',
-        'title.max' => 'tiêu đề không được vượt quá 250 kí tự',
-        'content.required' => 'Không được để trống nội dung',
-        'content.min' => 'tiêu đề ít nhất phải trên 5 kí tự',
-        'content.max' => 'tiêu đề không được vượt quá 255 kí tự',
-        'image.required' => 'Không được để trống ảnh',
-        'link.required' => 'Không được để trống link',
-        'link.min' => 'đường link ít nhất phải trên 5 kí tự',
-        'link.max' => 'đường link không được vượt quá 5 kí tự',
-        'status.required' => 'không được để trống trạng thái',
-        
-    ]
-);
+    public function store(AddSlideRequest $request){
         $flight = new Slide;
         $flight->title = $request->title;
         $flight->content = $request->content;
@@ -52,6 +33,12 @@ class SlideController extends Controller
         $data = Slide::get();
         return view('backend.slides.list',compact('data'));
      }
+     public function status($id ,$status){
+      $flight = Slide::find($id);
+      $flight->status = $status;
+      $flight->save();
+      return redirect()->route('listSlide',['type'=>$flight->type]);
+  }
    public function delete($id){
     Slide::where('id', $id)->delete();
     return redirect()->route('listSlide');
@@ -60,26 +47,8 @@ public function edit($id){
   $data = Slide::find($id);
   return view('backend.slides.edit',compact('data'));
 }
-public function update(Request $request ,$id){
-  $request->validate([
-    'title' => 'required|max:250|min:5',
-    'content' => 'required|max:255|min:5',
-    'link' => 'required|max:255|min:5|',
-    'status' => 'required'
-],[
-    'title.required' => 'Không được để trống tiêu để',
-    'title.min' => 'tiêu đề ít nhất phải trên 5 kí tự',
-    'title.max' => 'tiêu đề không được vượt quá 250 kí tự',
-    'content.required' => 'Không được để trống nội dung',
-    'content.min' => 'tiêu đề ít nhất phải trên 5 kí tự',
-    'content.max' => 'tiêu đề không được vượt quá 255 kí tự',
-    'link.required' => 'Không được để trống link',
-    'link.min' => 'đường link ít nhất phải trên 5 kí tự',
-    'link.max' => 'đường link không được vượt quá 5 kí tự',
-    'status.required' => 'không được để trống trạng thái',
-    
-]
-);
+public function update(EditSlideRequest $request ,$id){
+  
   $flight = Slide::find($id);
   $flight->title = $request->title;
   $flight->content = $request->content;
