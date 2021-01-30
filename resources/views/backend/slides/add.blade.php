@@ -37,7 +37,7 @@ Tạo slide
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh</label>
-                            <input type="file" name="image" class="form-control" id="formGroupExampleInput">
+                            <input type="file" name="image"  value="{{ old('image')}}"  class="form-control" id="formGroupExampleInput">
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
