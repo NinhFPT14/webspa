@@ -164,28 +164,27 @@ Trang chủ
 <!-- dịch vụ -->
 <!--banner area start-->
 <div class="banner_section_two mb-77">
-    <div class="container-fluid p-0">
-        <div class="row no-gutters">
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="frontEnd/img/bg/banner32.jpg" alt=""></a>
-                        <div class="banner_content">
-                            <h3>NAil</h3>
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="single_banner">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="frontEnd/img/bg/banner32.jpg" alt=""></a>
+                            <div class="banner_content">
+                                <h3>NAil</h3>
 
-                            <h3>Chuyên Nghiệp</h3>
+                                <h3>Chuyên Nghiệp</h3>
 
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="frontEnd/img/bg/banner33.jpg" alt=""></a>
-                        <div class="banner_content">
-                            <h3>Trang điểm</h3>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="single_banner">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="frontEnd/img/bg/banner33.jpg" alt=""></a>
+                            <div class="banner_content">
+                                <h3>Trang điểm</h3>
 
                                 <h3>Chất Lượng</h3>
 
@@ -193,13 +192,12 @@ Trang chủ
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="frontEnd/img/bg/banner34.jpg" alt=""></a>
-                        <div class="banner_content">
-                            <h3>Nối Mi</h3>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="single_banner">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="frontEnd/img/bg/banner34.jpg" alt=""></a>
+                            <div class="banner_content">
+                                <h3>Nối Mi</h3>
 
                                 <h3>Cực xinh</h3>
 
@@ -208,14 +206,13 @@ Trang chủ
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="single_banner">
-                    <div class="banner_thumb">
-                        <a href="shop.html"><img src="frontEnd/img/bg/banner35.jpg" alt=""></a>
-                        <div class="banner_content">
-                            <h3>Phun Xăm</h3>
-                            <h3>Độc Lạ</h3>
+                <div class="col-lg-3 col-md-3 col-sm-3">
+                    <div class="single_banner">
+                        <div class="banner_thumb">
+                            <a href="shop.html"><img src="frontEnd/img/bg/banner35.jpg" alt=""></a>
+                            <div class="banner_content">
+                                <h3>Phun Xăm</h3>
+                                <h3>Độc Lạ</h3>
 
                             </div>
                         </div>
@@ -226,84 +223,6 @@ Trang chủ
     </div>
     <!--banner area end-->
 
-
-
-    <!--new product area start-->
-    <section class="product_area product_three mt-70 mb-40">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section_title title_style3">
-                        <h3>Sản Phẩm Nổi Bật</h3>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class="product_wrapper product_color3">
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="Skincare" role="tabpanel">
-                    <div class="row product_slick_row4">
-
-                        <div class="col-lg-3">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{route('detailProduct')}}"><img
-                                            src="frontEnd/img/product/product25.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{route('detailProduct')}}"><img
-                                            src="frontEnd/img/product/product27.jpg" alt=""></a>
-                                    <div class="label_product">
-
-                                        </div>
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="{{route('cart')}}" title="thêm vào giỏ hàng"><i
-                                                            class="ion-bag"></i></a></li>
-
-                                                <li class="quick_view"><a href="#" data-toggle="modal"
-                                                        data-target="#modal_box" title="xem chi tiết"><i
-                                                            class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="{{route('detailProduct')}}">Demo</a></h4>
-                                        </div>
-
-                                        <div class="price-container">
-                                            <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>
-                                            </div>
-
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                           
-
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--new product area end-->
-
-
-
-
-
-
-<!--blog area start-->
 <section class="blog_area blog_three red-violet_color">
     <div class="container">
         <div class="row">
