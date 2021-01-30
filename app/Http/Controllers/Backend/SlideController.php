@@ -48,7 +48,6 @@ public function edit($id){
   return view('backend.slides.edit',compact('data'));
 }
 public function update(EditSlideRequest $request ,$id){
-  
   $flight = Slide::find($id);
   $flight->title = $request->title;
   $flight->content = $request->content;
@@ -58,10 +57,10 @@ public function update(EditSlideRequest $request ,$id){
       $path = $request->image->storeAs(
         'image_slide', $filename, 'public'
       );
-      $flight->image = "storage/".$path;  
+     $flight->image = "storage/".$path;  
      } 
      $flight->link = $request->link;
-        $flight->status = $request->status;
+     $flight->status = $request->status;
   $flight->save();
    return redirect()->route('listSlide');
 
