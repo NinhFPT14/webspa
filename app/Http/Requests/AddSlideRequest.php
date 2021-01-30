@@ -24,7 +24,7 @@ class AddSlideRequest extends FormRequest
     public function rules()
     {
         return [
-        'title' => 'required|max:250|min:5',
+        'title' => 'required|max:250|min:5||unique:slides',
         'content' => 'required|max:255|min:5',
         'image' => 'required',
         'link' => 'required|max:255|min:5|',
@@ -36,6 +36,7 @@ class AddSlideRequest extends FormRequest
                 'required'=>':attribute không được để trống',
                 'max'=>':attribute không được vượt quá :max',
                 'min'=>':attribute ít nhất phải trên :min kí tự',
+                'unique'=>':attribute đã được sử dụng',
             ];
         }
     

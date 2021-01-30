@@ -22,7 +22,7 @@ Tạo slide
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tiêu đề</label>
                             <input type="text" name="title" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập tiêu đề">
+                                placeholder="Nhập tiêu đề" value="{{ old('title')}}">
                             @error('title')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -30,14 +30,14 @@ Tạo slide
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Nội dung</label>
                             <textarea name="content" class="form-control" id="formGroupExampleInput2"
-                                placeholder="Nhập nội dung" cols="30" rows="4"></textarea>
+                                placeholder="Nhập nội dung" cols="30" rows="4">{{ old('content')}}</textarea>
                             @error('content')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh</label>
-                            <input type="file" name="image" class="form-control" id="formGroupExampleInput">
+                            <input type="file" name="image"  value="{{ old('image')}}"  class="form-control" id="formGroupExampleInput">
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -45,7 +45,7 @@ Tạo slide
                         <div class="form-group">
                             <label for="formGroupExampleInput">Đường dẫn</label>
                             <input type="text" name="link" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập đường dẫn">
+                                placeholder="Nhập đường dẫn" value="{{ old('link')}}">
                             @error('link')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
