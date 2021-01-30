@@ -26,7 +26,6 @@ class EditSlideRequest extends FormRequest
         return [
         'title' => 'required|max:250|min:5',
         'content' => 'required|max:255|min:5',
-        'image' => 'required',
         'link' => 'required|max:255|min:5|',
         'status' => 'required'
         ];
@@ -43,7 +42,6 @@ class EditSlideRequest extends FormRequest
             return [
                 'title' => 'Tiêu đề',
                 'content' =>'Nội dung',
-                'image' =>'Ảnh',
                 'link' =>'Link',
                 'status' =>'Trạng Thái',
             ];
