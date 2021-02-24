@@ -53,7 +53,7 @@ class AddProductRequest extends FormRequest
             'price' =>'Giá cũ',
             'discount' =>'Giá giảm',
             'quality' =>'Số lượng',
-            'image' =>'Ảnh chính',
+            'image' =>'Ảnh',
         ];
     }
 }
