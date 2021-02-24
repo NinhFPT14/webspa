@@ -21,6 +21,7 @@ class ProductController extends Controller
         return view('backend.products.add',compact('category'));
     }
     public function store(AddProductRequest $request){
+        dd($request->image);
         $data = $request->all();
         unset($data['_token'],$data['image']);
         $data['slug'] = Str::slug($request->name.rand(1000,10000),'-');
