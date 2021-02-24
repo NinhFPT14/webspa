@@ -27,7 +27,7 @@
 <link rel="stylesheet"  href="frontEnd/css/bootstrap-reboot.css.map">
 <link rel="stylesheet"  href="frontEnd/css/bootstrap-reboot.min.css">
 <link rel="stylesheet"  href="frontEnd/css/bootstrap-reboot.min.css.map">
-
+<link rel="stylesheet"  href="frontEnd/css/dropzone.min.css">
 
 
 {{-- ======= --}}
@@ -71,6 +71,8 @@
 <script src="{{asset('frontEnd/js/bootstrap.js.map')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.min.js.map')}}"></script>
+
+<script src="{{asset('frontEnd/js/dropzone.min.js')}}"></script>
 <!-- Plugins JS -->
 
 
