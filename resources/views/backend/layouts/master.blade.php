@@ -29,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('backEnd.layouts.slideBar')
+        @include('backend.layouts.slideBar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -39,7 +39,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('backEnd.layouts.topBar')
+                @include('backend.layouts.topBar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -50,7 +50,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('backEnd.layouts.footer')
+            @include('backend.layouts.footer')
             <!-- End of Footer -->
 
         </div>
