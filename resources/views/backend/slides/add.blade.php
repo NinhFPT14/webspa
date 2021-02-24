@@ -28,9 +28,9 @@ Tạo slide
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2">Nội dung</label>
-                            <textarea name="content" class="form-control" id="formGroupExampleInput2"
-                                placeholder="Nhập nội dung" cols="30" rows="4">{{ old('content')}}</textarea>
+                            <label for="formGroupExampleInput2" >Nội dung</label>
+                            <textarea name="content" class="form-control" id="formGroupExampleInput2" 
+                                placeholder="Nhập nội dung"  cols="30" rows="4">{{ old('content')}}</textarea>
                             @error('content')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -45,7 +45,7 @@ Tạo slide
                         <div class="form-group">
                             <label for="formGroupExampleInput">Đường dẫn</label>
                             <input type="text" name="link" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập đường dẫn" value="{{ old('link')}}">
+                            value="{{ old('link')}}"   placeholder="Nhập đường dẫn">
                             @error('link')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

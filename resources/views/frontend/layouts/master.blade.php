@@ -13,17 +13,32 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="frontEnd/img/favicon.ico">
 
-    <!-- CSS 
-    ========================= -->
+    {{-- <!-- CSS 
+        {{-- scc --}}
+<link rel="stylesheet" href="frontEnd/css/bootstrap.css">
+<link rel="stylesheet" href="frontEnd/css/bootstrap.css.map">
+<link rel="stylesheet" href="frontEnd/css/bootstrap.min.css">
+<link rel="stylesheet" href="frontEnd/css/bootstrap.min.css.map">
+<link rel="stylesheet" href="frontEnd/css/bootstrap-grid.css">
+<link rel="stylesheet" href="frontEnd/css/bootstrap-grid.css.map">
+<link rel="stylesheet" href="frontEnd/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="frontEnd/css/bootstrap-grid.min.css.map">
+<link rel="stylesheet" href="frontEnd/css/bootstrap-reboot.css">
+<link rel="stylesheet"  href="frontEnd/css/bootstrap-reboot.css.map">
+<link rel="stylesheet"  href="frontEnd/css/bootstrap-reboot.min.css">
+<link rel="stylesheet"  href="frontEnd/css/bootstrap-reboot.min.css.map">
+<link rel="stylesheet"  href="frontEnd/css/dropzone.min.css">
+
+
+{{-- ======= --}}
+  
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('frontEnd/vendor/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="frontEnd/css/plugins.css">
 
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="frontEnd/css/style.css">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link href="frontEnd/css/tailwind.min.css" rel="stylesheet">
 
 
 </head>
@@ -47,11 +62,21 @@
 
 <!-- Main JS -->
 <script src="frontEnd/js/main.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="{{asset('frontEnd/vendor/select2/js/select2.min.js')}}"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="{{asset('frontEnd/js/bootstrap.bundle.js')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.bundle.js.map')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.bundle.min.js.map')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.js')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.js.map')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('frontEnd/js/bootstrap.min.js.map')}}"></script>
 
+<script src="{{asset('frontEnd/js/dropzone.min.js')}}"></script>
 <!-- Plugins JS -->
+
+
+
 
 
 @yield('page-script')

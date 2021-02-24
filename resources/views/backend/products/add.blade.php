@@ -3,6 +3,9 @@
 Tạo sản phẩm
 @endsection
 @section('content')
+
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 <div class="container-fluid">
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
@@ -11,9 +14,10 @@ Tạo sản phẩm
             <li class="breadcrumb-item active" aria-current="page">Tạo sản phẩm</li>
         </ol>
     </nav>
+   
+   
 
-
-    <form method="POST" action="{{route('storeProduct')}}" enctype="multipart/form-data">
+    <form method="POST"  action="{{route('storeProduct')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <!-- Content Column -->
@@ -89,7 +93,7 @@ Tạo sản phẩm
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh phụ</label>
-                            <input type="file" class="form-control" name="image[]" multiple="multiple">
+                            <input type="file"  name="image[]" multiple="multiple">
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -101,4 +105,28 @@ Tạo sản phẩm
         </div>
     </form>
 </div>
+ <!-- Add plugin scripts -->
+ <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+ <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+ <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+<script>
+    FilePond.registerPlugin(
+        FilePondPluginImagePreview,
+        FilePondPluginImageResize,
+        FilePondPluginImageTransform
+    );
+
+
+
+    const inputElement = document.querySelector("input[type='file']");
+    const pond = FilePond.create(inputElement,{
+        imageResizeTargetWidth:256,
+
+
+
+     
+
+    })
+</script>
 @endsection

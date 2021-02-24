@@ -71,3 +71,13 @@ Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('u
 
 Route::get('tao-san-pham','Backend\ProductController@add')->name('addProduct');
 Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduct');
+
+
+
+//LogoController
+Route::get('tao-logo','Backend\LogoController@add')->name('addLogo');
+Route::post('luu-logo','Backend\LogoController@store')->name('storeLogo');
+Route::get('danh-sach-logo','Backend\LogoController@list')->name('listLogo');
+Route::get('xoa-logo/{id}','Backend\LogoController@delete')->name('deleteLogo');
+Route::get('/sua-logo/{id}', 'Backend\LogoController@edit')->name('editLogo');
+Route::post('/cap-nhat-logo/{id}', 'Backend\LogoController@update')->name('updateLogo');

@@ -68,16 +68,6 @@
             </div>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" target="_blank" href="{{route('listSlide')}}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Slide</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" target="_blank" href="{{route('listFooter')}}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Footer</span></a>
-    </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -96,9 +86,9 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                <a class="collapse-item"  target="_blank" href="{{route('listFooter')}}">Footer</a>
+                <a class="collapse-item"  target="_blank" href="{{route('listSlide')}}">Slide</a>
+                <a class="collapse-item"  target="_blank" href="{{route('listLogo')}}">Logo</a>
                 <a class="collapse-item" href="utilities-other.html">Other</a>
             </div>
         </div>
