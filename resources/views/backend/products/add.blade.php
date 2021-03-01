@@ -120,10 +120,6 @@ Tạo sản phẩm
     const inputElement = document.querySelector("input[type='file']");
     const pond = FilePond.create(inputElement,{
         imageResizeTargetWidth:256,
-
-        // onaddfile:(err,fileItem)=>{
-        //     console.log(err,fileItem.getMetadata('resize'))
-        // }
     })
 
     
