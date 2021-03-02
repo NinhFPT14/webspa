@@ -3,8 +3,13 @@
         <div class="header_container header_container_two sticky-header">
             <div class="container-fluid">
                 <div class="header_container_inner container_position">
+                    <?php 
+                    $logo = DB::table('logos')->where('status',0)->get();
+                    ?>
                     <div class="logo">
-                        <a href="{{route('home')}}"><img width="200" height="90" src="frontEnd/img/logo/logo11.png" alt=""></a>
+                        @foreach ($logo as $value)
+                        <a href="{{route('home')}}"><img width="200" height="90" src="{{$value->image}}" alt=""></a>
+                        @endforeach
                     </div>
                     <div class="header_container_right">
                         <div class="main_menu menu_two">

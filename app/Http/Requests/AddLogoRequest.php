@@ -24,12 +24,14 @@ class AddLogoRequest extends FormRequest
     public function rules()
     {
         return [
-        'image' => 'required'
+        'image' => 'required|image|max:10000'
         ];
     }
         public function messages(){
             return [
                 'required'=>':attribute không được để trống',
+                'image'=>':attribute phải là ảnh',
+                'max'=>':attribute ảnh không được vượt quá 10MB',
             ];
         }
     

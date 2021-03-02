@@ -4,7 +4,12 @@
                 <div class="row">
                     <div class="col-lg-4 col-md-5">
                         <div class="widgets_container contact_us">
-                            <a href="{{route('home')}}"><img src="frontEnd/img/logo/logo11.png" alt=""></a>
+                            <?php 
+                            $logo = DB::table('logos')->where('status',0)->get();
+                            ?>
+                            @foreach ($logo as $value)
+                            <a href="{{route('home')}}"><img src="{{ $value->image}}" alt=""></a>
+                            @endforeach
                             <div class="footer_contact">
                                 <?php
                                 $data = App\Model\Footer::get();
