@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Logo extends Model
 {
     public  $table = 'logos';
-    public  $filebale = ['image'];
+    public  $filebale = ['image','status'];
 }

@@ -81,3 +81,4 @@ Route::get('danh-sach-logo','Backend\LogoController@list')->name('listLogo');
 Route::get('xoa-logo/{id}','Backend\LogoController@delete')->name('deleteLogo');
 Route::get('/sua-logo/{id}', 'Backend\LogoController@edit')->name('editLogo');
 Route::post('/cap-nhat-logo/{id}', 'Backend\LogoController@update')->name('updateLogo');
+Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->name('statusLogo');
