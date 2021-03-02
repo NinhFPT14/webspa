@@ -81,9 +81,7 @@ Route::get('danh-sach-logo','Backend\LogoController@list')->name('listLogo');
 Route::get('xoa-logo/{id}','Backend\LogoController@delete')->name('deleteLogo');
 Route::get('/sua-logo/{id}', 'Backend\LogoController@edit')->name('editLogo');
 Route::post('/cap-nhat-logo/{id}', 'Backend\LogoController@update')->name('updateLogo');
-<<<<<<< HEAD
 Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->name('statusLogo');
-=======
 
 //Dich-Vu-Controller
 Route::get('/tao-dich-vu','Backend\dichvuController@add')->name('addService');
@@ -93,4 +91,3 @@ Route::get('trang-thai-dich-vu/{id}/{status}','Backend\dichvuController@status')
 Route::get('xoa-dich-vu/{id}','Backend\dichvuController@delete')->name('deleteService');
 Route::get('sua-dich-vu/{id}','Backend\dichvuController@edit')->name('editService');
 Route::post('cap-nhat-dich-vu/{id}','Backend\dichvuController@update')->name('updateService');
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
