@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected  $table = "products";
     public $timestamps = true;
-    protected  $fillable =['name','description','detail','price','discount','quality','slug','status','category_id'];
+    protected  $fillable =['name','description','detail','price','discount','quality','slug','status','avatar','category_id'];
     public function ProductImage()
     {
         return $this->hasMany('App\Model\ProductImage');

@@ -21,11 +21,18 @@ class ProductController extends Controller
         return view('backend.products.add',compact('category'));
     }
     public function store(AddProductRequest $request){
-        dd($request->all());
         $data = $request->all();
         unset($data['_token'],$data['image']);
         $data['slug'] = Str::slug($request->name.rand(1000,10000),'-');
         $data['status'] = 0;
+        if($request->hasFile('avatar')){
+            $extension = $request->avatar->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $request->avatar->storeAs(
+              'avatar', $filename, 'public'
+            );
+            $data['avatar'] = "storage/".$path;  
+           }
         $product = Product::create($data);
         if($request->hasFile('image')){
             $data = [];
@@ -35,7 +42,7 @@ class ProductController extends Controller
             $path = $value->storeAs( 
               'image', $filename, 'public'
             );
-            ProductImage::create(['product_id'=> $product , 'image' => "storage/".$path ]);
+            ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
             }
            }
         return redirect()->route('addProduct');
