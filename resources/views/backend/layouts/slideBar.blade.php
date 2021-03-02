@@ -63,8 +63,8 @@
         </a>
         <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Danh sách</a>
-                <a class="collapse-item" href="404.html">Đơn đặt lịch</a>
+                <a class="collapse-item" href="{{ route('danh-sach-dich-vu') }}">Danh sách</a>
+                <a class="collapse-item" href="{{ route('tao-dich-vu') }}">Thêm mới dịch vụ</a>
             </div>
         </div>
     </li>
