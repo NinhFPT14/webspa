@@ -1,6 +1,6 @@
-@extends('backend.layouts.master')
-@section('title')
-Danh sách danh mục
+@extends("backEnd.layouts.master")
+@section("title")
+Danh sách dịch vụ
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -25,13 +25,12 @@ Danh sách danh mục
                         @foreach ($data as $value)
                         <tr scope="col">{{ $value->id}}</tr>    
                         <tr scope="col">{{ $value->name}}</tr>
-
                         <tr>
                             <td>
                                 @if($value->status == 0)
-                                <a class="btn btn-success" href=" {{route('trang-thai-dich-vu',['id'=>$value->id, 'status' => 1])}} " onclick="return confirm('Bạn có chắc chắn muốn tắt')">ON</a>
+                                <a class="btn btn-success" href="{{route('statusService', ['id'=>$value->id, 'status' => 1])}}" onclick="return confirm('Bạn có chắc chắn muốn tắt')">ON</a>
                                 @else
-                                <a class="btn btn-danger" href="{{route('trang-thai-dich-vu',['id'=>$value->id ,'status' => 0])}}" onclick="return confirm('Bạn có chắc chắn muốn bật')">OFF</a>
+                                <a class="btn btn-danger" href="{{route('statusService', ['id'=>$value->id ,'status' => 0])}}" onclick="return confirm('Bạn có chắc chắn muốn bật')">OFF</a>
                                 @endif
                             </td>
                             <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('xoa-dich-vu',['id'=>$value->id])}}"
