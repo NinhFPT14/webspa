@@ -8,7 +8,7 @@ use App\Model\Service;
 class dichvuController extends Controller
 {
     public function add(){
-        return view('backend.dichvus.add');
+        return view('backend.services.add');
     }
 
     public function store(AddServiceRequest $request){
@@ -22,7 +22,7 @@ class dichvuController extends Controller
     public function list(){
         $data = Service::all();
         // dd($data);
-        return view('backend.dichvus.list',compact('data'));
+        return view('backend.services.list',compact('data'));
     }
 
     public function status($id ,$status){
@@ -41,7 +41,7 @@ class dichvuController extends Controller
 
     public function edit($id){
         $data = Service::find($id);
-        return view('backend.dichvus.edit',compact('data'));
+        return view('backend.services.edit',compact('data'));
     }
 
     public function update(EditServiceRequest $request ,$id){
