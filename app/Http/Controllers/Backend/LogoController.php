@@ -39,7 +39,7 @@ class LogoController extends Controller
         $data = Logo::get();
         return view('backend.logos.list',compact('data'));
      }
-
+//new code
     public function delete($id){
       $data = Logo::find($id);
       File::delete($data->image);
