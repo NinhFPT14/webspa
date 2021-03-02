@@ -10,8 +10,8 @@ Sản phẩm
                     <div class="breadcrumb_content">
                         <h3>Shop</h3>
                         <ul>
-                            <li><a href="index.html">Trang chủ</a></li>
-                            <li><a href="shop.html">Sản Phẩm</a></li>
+                            <li><a href="{{route('home')}}">Trang chủ</a></li>
+                            <li><a href="{{route('product')}}">Sản Phẩm</a></li>
                         </ul>
                     </div>
                 </div>

@@ -11,7 +11,7 @@ Dịch Vụ
                         <h3>Shop</h3>
                         <ul>
                             <li><a href="">Trang chủ</a></li>
-                            <li><a href="">Dịch Vụ</a></li>
+                            <li><a href="{{route('service')}}">Dịch Vụ</a></li>
                         </ul>
                     </div>
                 </div>

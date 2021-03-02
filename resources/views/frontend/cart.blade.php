@@ -11,8 +11,8 @@ Giỏ Hàng
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="index-5.html">Trang Chủ</a></li>
-                        <li><a href="cart.html">Giỏ Hàng</a></li>
+                        <li><a href="">Trang Chủ</a></li>
+                        <li><a href="{{route('cart')}}">Giỏ Hàng</a></li>
                     </ul>
                 </div>
             </div>

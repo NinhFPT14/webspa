@@ -9,8 +9,8 @@ Giới thiệu
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">Trang Chủ</a></li>
-                            <li><a href="">Giới Thiệu</a></li>
+                            <li><a href="">Trang Chủ</a></li>
+                            <li><a href="{{route('about')}}">Giới Thiệu</a></li>
                         </ul>
                     </div>
                 </div>
