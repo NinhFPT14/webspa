@@ -7,13 +7,12 @@ Danh sách sản phẩm
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
             <li class="breadcrumb-item active" aria-current="page">Danh sách sản phẩm</li>
         </ol>
     </nav>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="{{route('addProduct')}}" class="btn btn-primary" target="_blank" role="button">Tạo Mới</a>
+            <a href="{{route('addProduct')}}" class="btn btn-primary" role="button">Tạo Mới</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">

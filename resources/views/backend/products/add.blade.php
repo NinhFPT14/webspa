@@ -92,6 +92,13 @@ Tạo sản phẩm
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="formGroupExampleInput">Ảnh chính</label>
+                            <input type="file"  name="avatar">
+                            @error('avatar')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh phụ</label>
                             <input type="file"  name="image[]" multiple="multiple">
                             @error('image')
@@ -105,23 +112,4 @@ Tạo sản phẩm
         </div>
     </form>
 </div>
- <!-- Add plugin scripts -->
- <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
- <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
- <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
-<script src="https://unpkg.com/filepond/dist/filepond.js"></script>
-<script>
-    FilePond.registerPlugin(
-        FilePondPluginImagePreview,
-        FilePondPluginImageResize,
-        FilePondPluginImageTransform
-    );
-
-    const inputElement = document.querySelector("input[type='file']");
-    const pond = FilePond.create(inputElement,{
-        imageResizeTargetWidth:256,
-    })
-
-    
-</script>
 @endsection
