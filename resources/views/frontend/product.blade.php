@@ -102,8 +102,8 @@ Sản phẩm
                         </div>
                     </div>
                     <!--shop toolbar end-->
-                    @foreach($data as $value)
                     <div class="row shop_wrapper">
+                    @foreach($data as $value)
                         <div class="col-lg-4 col-md-4 col-12 ">
                             <div class="single_product">
                                 <div class="product_thumb">
@@ -139,8 +139,8 @@ Sản phẩm
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
 
                     <div class="shop_toolbar t_bottom">
                         <div class="pagination">
