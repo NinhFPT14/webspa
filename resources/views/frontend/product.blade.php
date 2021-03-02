@@ -102,15 +102,13 @@ Sản phẩm
                         </div>
                     </div>
                     <!--shop toolbar end-->
-
+                    @foreach($data as $value)
                     <div class="row shop_wrapper">
                         <div class="col-lg-4 col-md-4 col-12 ">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{route('detailProduct')}}"><img
-                                            src="frontEnd/img/product/product1.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{route('detailProduct')}}"><img
-                                            src="frontEnd/img/product/product2.jpg" alt=""></a>
+                                    <a class="primary_img" href="{{route('detailProduct',['id'=>$value->id])}}"><img
+                                            src="{{$value->avatar}}" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">new</span>
                                     </div>
@@ -118,7 +116,7 @@ Sản phẩm
                                         <ul>
                                             <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
                                                         class="ion-bag"></i></a></li>
-                                            <li class="quick_view"><a href="{{route('detailProduct')}}" title="xem chi tiết"><i
+                                            <li class="quick_view"><a href="{{route('detailProduct',['id'=>$value->id])}}" title="xem chi tiết"><i
                                                             class="ion-eye"></i></a></li>
                                          
                                         </ul>
@@ -126,21 +124,12 @@ Sản phẩm
                                 </div>
                                 <div class="product_content grid_content">
                                     <div class="product_name">
-                                        <h4><a href="{{route('detailProduct')}}">Pendant, Made of White Pl...</a></h4>
-                                    </div>
-                                    <div class="product_rating">
-                                        <ul>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                        </ul>
+                                        <h4><a href="{{route('detailProduct',['id'=>$value->id])}}">{{$value->name}}</a></h4>
                                     </div>
                                     <div class="price-container">
                                         <div class="price_box">
-                                            <span class="current_price">$65.00</span>
-                                            <span class="old_price">$70.00</span>
+                                            <span class="current_price">{{number_format($value->discount)}}VNĐ</span>
+                                            <span class="old_price">{{number_format($value->price)}}VNĐ</span>
                                         </div>
                                         <div class="wishlist_btn">
                                             <a href="wishlist.html" title="wishlist"><i
@@ -148,50 +137,10 @@ Sản phẩm
                                         </div>
                                     </div>
                                 </div>
-                                <div class="product_content list_content">
-                                    <div class="product_name">
-                                        <h4><a href="{{route('detailProduct')}}">Hpoly and Bark Eames...</a></h4>
-                                    </div>
-                                    <div class="product_rating">
-                                        <ul>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="price_box">
-                                        <span class="current_price">$65.00</span>
-                                        <span class="old_price">$70.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Engineered with pro-level features and performance, the
-                                            12.3-effective-megapixel D300 combines brand new technologies with advanced
-                                            features inherited from Nikon's newly announced D3 professional digital SLR
-                                            camera to offer serious photographers remarkable performance combined with
-                                            agility... </p>
-
-
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart">Add to
-                                                    Cart</a></li>
-                                            <li class="compare"><a href="#" title="Add to Compare"><i
-                                                        class="ion-ios-shuffle-strong"></i></a></li>
-                                            <li class="quick_view"><a href="#" data-toggle="modal"
-                                                    data-target="#modal_box" title="Quick View"><i
-                                                        class="ion-eye"></i></a></li>
-                                            <li><a href="wishlist.html" title="wishlist"><i
-                                                        class="ion-android-favorite-outline"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
                     </div>
+                    @endforeach
 
                     <div class="shop_toolbar t_bottom">
                         <div class="pagination">

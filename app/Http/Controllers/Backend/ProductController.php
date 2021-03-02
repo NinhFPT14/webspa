@@ -6,11 +6,16 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use App\Model\Category;
+use App\Model\ProductImage;
 use App\Http\Requests\AddProductRequest;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+    public function list(){
+        $data = Product::where('status',0)->get();
+        return view('backend.products.list',compact('data'));
+    }
     public function add(){
         $category = Category::where('type',0)->get();
         return view('backend.products.add',compact('category'));
@@ -18,21 +23,28 @@ class ProductController extends Controller
     public function store(AddProductRequest $request){
         $data = $request->all();
         unset($data['_token'],$data['image']);
-        $data['slug'] = 'slug';
+        $data['slug'] = Str::slug($request->name.rand(1000,10000),'-');
         $data['status'] = 0;
-        dd($data);
+        if($request->hasFile('avatar')){
+            $extension = $request->avatar->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $request->avatar->storeAs(
+              'avatar', $filename, 'public'
+            );
+            $data['avatar'] = "storage/".$path;  
+           }
         $product = Product::create($data);
-        Product::where('id',$product->id)->update(['slug'=>Str::slug($request->name.$product->id,'-')]);
-        dd(count($request->image));
-
-        // if($request->hasFile('image')){
-        //     $extension = $request->image->extension();
-        //     $filename =  uniqid(). "." . $extension;
-        //     $path = $request->image->storeAs(
-        //       'image', $filename, 'public'
-        //     );
-        //     $data['image'] = "storage/".$path;  
-        //    }
+        if($request->hasFile('image')){
+            $data = [];
+            foreach($request->image as $key =>$value){
+            $extension = $value->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $value->storeAs( 
+              'image', $filename, 'public'
+            );
+            ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
+            }
+           }
         return redirect()->route('addProduct');
     }
 }

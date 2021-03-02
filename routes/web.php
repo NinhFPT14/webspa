@@ -10,7 +10,7 @@ Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
 //ProductController
 Route::get('/san-pham','Frontend\ProductController@product')->name('product');
-Route::get('/chi-tiet-san-pham','Frontend\ProductController@detailProduct')->name('detailProduct');
+Route::get('/chi-tiet-san-pham/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
 //ServiceController
 Route::get('/dich-vu','Frontend\ServiceController@service')->name('service');
@@ -71,7 +71,7 @@ Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('u
 
 Route::get('tao-san-pham','Backend\ProductController@add')->name('addProduct');
 Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduct');
-
+Route::get('danh-sach-san-pham','Backend\ProductController@list')->name('listProduct');
 
 
 //LogoController

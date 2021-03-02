@@ -11,7 +11,7 @@ class FooterController extends Controller
 {
     
         public function add(){
-            return view('Backend.footers.add');
+            return view('backend.footers.add');
         }
         public function save(AddFooterRequest $request){
               $flight = new Footer;
@@ -24,7 +24,7 @@ class FooterController extends Controller
           }
           public function list (){
             $data = Footer::get();
-            return view('Backend.footers.list',compact('data'));
+            return view('backend.footers.list',compact('data'));
          }
          public function delete($id){
             Footer::where('id', $id)->delete();
@@ -32,7 +32,7 @@ class FooterController extends Controller
         }
         public function edit($id){
           $data = Footer::find($id);
-          return view('Backend.footers.edit',compact('data'));
+          return view('backend.footers.edit',compact('data'));
         }
         public function update(EditFooterRequest $request ,$id){
           $flight = Footer::find($id);

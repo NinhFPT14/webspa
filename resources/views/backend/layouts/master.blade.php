@@ -29,7 +29,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('backEnd.layouts.slideBar')
+        @include('backend.layouts.slideBar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -39,7 +39,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('backEnd.layouts.topBar')
+                @include('backend.layouts.topBar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -50,21 +50,17 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-            @include('backEnd.layouts.footer')
+            @include('backend.layouts.footer')
             <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->
 
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

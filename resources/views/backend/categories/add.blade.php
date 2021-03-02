@@ -1,4 +1,4 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
 Tạo danh mục
 @endsection
@@ -7,7 +7,6 @@ Tạo danh mục
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tạo danh mục</li>
         </ol>
     </nav>

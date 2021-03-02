@@ -1,4 +1,4 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
   Danh Sách Slide
 @endsection
@@ -40,14 +40,14 @@
                           <td>
                             @if($item->status == 0)
                             <a onclick="return confirm('Bạn có chắc chắn muốn tắt')" href="{{route('statusSlide',['id'=>$item->id,'status'=>1])}}"
-                                class="btn btn-info">ON</a>
+                                class="btn btn-success">ON</a>
                             @else
                             <a onclick="return confirm('Bạn có chắc chắn muốn bật')" href="{{route('statusSlide',['id'=>$item->id ,'status'=>0])}}"
                                 class="btn btn-danger">OFF</a>
                             @endif
                         </td>
-                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteSlide',['id'=>$item->id])}}" class="btn btn-warning">Xóa</a>
-                          <a href="{{route('editSlide',['id'=>$item->id])}}"  role="button" class="btn btn-success">Sửa</a></th>
+                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteSlide',['id'=>$item->id])}}" class="btn btn-danger">Xóa</a>
+                          <a href="{{route('editSlide',['id'=>$item->id])}}"  role="button" class="btn btn-warning">Sửa</a></th>
                         </tr>
                         @endforeach
                     </tbody>

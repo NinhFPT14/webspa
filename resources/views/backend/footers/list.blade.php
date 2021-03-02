@@ -1,4 +1,4 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
   Danh Sách Footer
 @endsection
@@ -36,8 +36,8 @@
                           <th scope="row">{{$item->phone_number}}</th>
                           <th scope="row">{{$item->email}}</th>
                           <th scope="row">{{$item->link_fanpage}}</th>
-                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteFooter',['id'=>$item->id])}}" class="btn btn-warning">Xóa</a>
-                          <a href="{{route('editFooter',['id'=>$item->id])}}"  role="button" class="btn btn-success">Sửa</a></th>
+                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteFooter',['id'=>$item->id])}}" class="btn btn-danger">Xóa</a>
+                          <a href="{{route('editFooter',['id'=>$item->id])}}"  role="button" class="btn btn-warning">Sửa</a></th>
                         </tr>
                         @endforeach
                     </tbody>

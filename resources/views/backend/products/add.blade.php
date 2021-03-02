@@ -1,8 +1,11 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
 Tạo sản phẩm
 @endsection
 @section('content')
+
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 <div class="container-fluid">
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
@@ -11,9 +14,10 @@ Tạo sản phẩm
             <li class="breadcrumb-item active" aria-current="page">Tạo sản phẩm</li>
         </ol>
     </nav>
+   
+   
 
-
-    <form method="POST" action="{{route('storeProduct')}}" enctype="multipart/form-data">
+    <form method="POST"  action="{{route('storeProduct')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <!-- Content Column -->
@@ -88,8 +92,15 @@ Tạo sản phẩm
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="formGroupExampleInput">Ảnh chính</label>
+                            <input type="file"  name="avatar">
+                            @error('avatar')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh phụ</label>
-                            <input type="file" class="form-control" name="image[]" multiple="multiple">
+                            <input type="file"  name="image[]" multiple="multiple">
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

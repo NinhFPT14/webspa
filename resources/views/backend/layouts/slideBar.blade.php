@@ -34,9 +34,9 @@
         </a>
         <div id="category" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" target="_blank" href="{{route('listCategory',['type'=>0])}}">Sản phẩm</a>
-                <a class="collapse-item" target="_blank" href="{{route('listCategory',['type'=>1])}}">Dịch vụ</a>
-                <a class="collapse-item" target="_blank" href="{{route('listCategory',['type'=>2])}}">Bài viết</a>
+                <a class="collapse-item" href="{{route('listCategory',['type'=>0])}}">Sản phẩm</a>
+                <a class="collapse-item" href="{{route('listCategory',['type'=>1])}}">Dịch vụ</a>
+                <a class="collapse-item" href="{{route('listCategory',['type'=>2])}}">Bài viết</a>
             </div>
         </div>
     </li>
@@ -49,7 +49,7 @@
         </a>
         <div id="product" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Danh sách</a>
+                <a class="collapse-item" href="{{route('listProduct')}}">Danh sách</a>
                 <a class="collapse-item" href="404.html">Quản lý đơn</a>
             </div>
         </div>
@@ -86,28 +86,12 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item"  target="_blank" href="{{route('listFooter')}}">Footer</a>
-                <a class="collapse-item"  target="_blank" href="{{route('listSlide')}}">Slide</a>
-                <a class="collapse-item"  target="_blank" href="{{route('listLogo')}}">Logo</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
+                <a class="collapse-item"  href="{{route('listFooter')}}">Footer</a>
+                <a class="collapse-item"  href="{{route('listSlide')}}">Slide</a>
+                <a class="collapse-item"  href="{{route('listLogo')}}">Logo</a>
             </div>
         </div>
     </li>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

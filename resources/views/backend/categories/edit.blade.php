@@ -1,4 +1,4 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
 Sửa danh mục
 @endsection
@@ -7,7 +7,7 @@ Sửa danh mục
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+            <li class="breadcrumb-item"><a href="{{route('listCategory',['type' =>$data->type])}}">Danh sách danh mục</a></li>
             <li class="breadcrumb-item active" aria-current="page">Sửa danh mục</li>
             @if($data->type == 0)
             <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>

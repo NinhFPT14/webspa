@@ -1,4 +1,4 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
 Danh sách danh mục
 @endsection
@@ -7,7 +7,6 @@ Danh sách danh mục
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
             <li class="breadcrumb-item active" aria-current="page">Danh sách danh mục</li>
             @if($type == 0)
             <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
