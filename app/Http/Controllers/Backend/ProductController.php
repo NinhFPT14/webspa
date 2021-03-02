@@ -21,9 +21,10 @@ class ProductController extends Controller
         return view('backend.products.add',compact('category'));
     }
     public function store(AddProductRequest $request){
+        // dd($request->all());
         $data = $request->all();
         unset($data['_token'],$data['image']);
-        $data['slug'] = Str::slug($request->name.rand(1000,10000),'-');
+        $data['slug'] = Str::slug($request->name.rand(10000,100000),'-');
         $data['status'] = 0;
         if($request->hasFile('avatar')){
             $extension = $request->avatar->extension();
@@ -46,5 +47,17 @@ class ProductController extends Controller
             }
            }
         return redirect()->route('addProduct');
+    }
+
+    public function delete($id){
+        $data = Product::find($id);
+        Storage::delete($data->avatar);
+        $image = ProductImage::where('product_id',$data->id)->get();
+        foreach($image as $value){
+            Storage::delete($$value->image);
+        }
+        $data->ProductImage->delete();
+        Product::delete($id);
+        return redirect()->route('listProduct');
     }
 }

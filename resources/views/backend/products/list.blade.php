@@ -42,7 +42,7 @@ Danh sách sản phẩm
                             <td>{{number_format($value->price)}} VNĐ</td>
                             <td>{{number_format($value->discount)}} VNĐ</td>
                             <td>
-                                <a href="{{route('statusCategory',['id'=>$value->id ,'status'=>0])}}" 
+                                <a href="{{route('detailProduct',['id'=>$value->id])}}" 
                                     class="btn btn-primary" target="_blank">Xem</a>
                             </td>
                             <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')"
