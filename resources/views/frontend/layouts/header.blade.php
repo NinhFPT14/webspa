@@ -47,13 +47,13 @@
                                 <li class="search_bar"><a href="javascript:void(0)"><i
                                             class="ion-ios-search-strong"></i></a>
                                 </li>
-                                <li class="mini_cart_wrapper"><a href="javascript:void(0)"><i class="ion-bag"></i>
+                                <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
                                         <span>1</span></a>
                                     <!--mini cart-->
                                     <div class="mini_cart">
                                         <div class="cart_item">
                                             <div class="cart_img">
-                                                <a href="#"><img src="frontEnd/img/s-product/product.jpg" alt=""></a>
+                                                <a href=""><img src="frontEnd/img/s-product/product.jpg" alt=""></a>
                                             </div>
                                             <div class="cart_info">
                                                 <a href="#">Tên Sản Phẩm</a>

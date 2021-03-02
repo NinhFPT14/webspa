@@ -9,7 +9,7 @@
                 <div class="breadcrumb_content">
                     <ul>
                         <li><a href="">Trang Chủ</a></li>
-                        <li><a href="">Đặt Lịch</a></li>
+                        <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
                     </ul>
                 </div>
             </div>

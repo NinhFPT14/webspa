@@ -10,8 +10,8 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="login.html">login</a></li>
+                            <li><a href="">Trang Chủ</a></li>
+                            <li><a href="{{route('login')}}">Đăng nhập</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,24 +56,22 @@
                 <!--register area start-->
                 <div class="col-lg-6 col-md-6">
                     <div class="account_form register mt-70">
-                       <!-- <div>Đăng Nhập Bằng Facebook</div>
-                       <img src="assets/img/icon/fb.png" alt="">
-                         -->
+                     
                          <div class="rounded-3xl bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
                              <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
-                                <i class="fab fa-facebook"></i>
+                                <i class="ion-social-facebook fa-1x"></i>
                                  Đăng nhập bằng Facebook
                              </a>
                          </div>
                          <div class="rounded-3xl mt-30 bg-red-400 w-80 h-12 flex items-center bg-red-500 hover:bg-red-700">
                             <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
-                                <i class="fab fa-google"></i>
+                                <i class="ion-social-google fa-1x"></i>
                                 Đăng nhập bằng Google
                             </a>
                         </div>
                         <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
                             <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('register')}}">
-                                <i class="far fa-user-circle "></i>
+                                <i class="ios-contact-outline fa-1x"></i>
                                 Đăng Kí
                             </a>
                         </div>

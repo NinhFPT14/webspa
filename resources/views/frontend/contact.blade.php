@@ -9,8 +9,8 @@ Liên hệ
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index-5.html">Trang Chủ</a></li>
-                            <li><a href="contact.html">Liên Hệ</a></li>
+                            <li><a href="">Trang Chủ</a></li>
+                            <li><a href="{{route('contact')}}">Liên Hệ</a></li>
                         </ul>
                     </div>
                 </div>

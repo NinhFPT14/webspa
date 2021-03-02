@@ -11,8 +11,8 @@
                                 ?>
                                 @foreach ($data as $item)
                                 <ul>
-                                    <li><i class="ion-ios-location"></i><span>Addresss:</span>{{$item->address}}</li>
-                                    <li><i class="ion-ios-telephone"></i><span>Call Us:</span> {{$item->phone_number}}</li>
+                                    <li><i class="ion-ios-location"></i><span>Địa Chỉ:</span>{{$item->address}}</li>
+                                    <li><i class="ion-ios-telephone"></i><span>Liên Hệ:</span> {{$item->phone_number}}</li>
                                     <li><i class="ion-android-mail"></i><span>Email:</span> {{$item->email}}</li>
                                 </ul>
                                 @endforeach
@@ -21,15 +21,13 @@
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <div class="widgets_container widget_menu">
-                            <h3>Information</h3>
+                            <h3>Thông Tin</h3>
                             <div class="footer_menu">
                                 <ul>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Delivery infomation</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#"> Travel</a></li>
-                                    <li><a href="#">Conditions</a></li>
-                                    <li><a href="#"> Frequently Questions</a></li>
+                                    <li><a href="{{route('about')}}">Giới Thiệu</a></li>
+                                    <li><a href="{{route('blog')}}">Bài Viết</a></li>
+                                    <li><a href="{{route('contact')}}">Liên Hệ</a></li>
+                                  
 
                                 </ul>
                             </div>
@@ -38,14 +36,14 @@
                     </div>
                     <div class="col-lg-3 col-md-4">
                         <div class="widgets_container widget_newsletter">
-                            <h3>Newsletter</h3>
+                            <h3>Đăng Ký</h3>
                             <div class="newsletter_desc">
-                                <p>Join <strong>69.000+ subscribers</strong> & get a new discount coupon every Monday.
+                                <p>Join <strong>69.000+ đã đăng ký</strong> & để lấy thông tin và giảm giá.
                                 </p>
                             </div>
                             <div class="newsletter_form">
                                 <form action="#">
-                                    <input placeholder="Email Address" type="text">
+                                    <input placeholder="Địa Chỉ Email" type="text">
                                     <button type="submit"><i class="ion-android-mail"></i></button>
                                 </form>
                             </div>
@@ -73,22 +71,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer_bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="copyright_area">
-                            <p>Copyright &copy; 2019 <a href="#"> alista </a> All Right Reserved.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="footer_payment text-right">
-                            <a><img src="frontEnd/img/icon/papyel.png" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
     </footer>
 
     <div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
