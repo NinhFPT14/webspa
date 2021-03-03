@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Service;
 
-class dichvuController extends Controller
+class ServiceController extends Controller
 {
     public function add(){
         return view('backend.services.add');

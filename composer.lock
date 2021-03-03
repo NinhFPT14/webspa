@@ -3211,11 +3211,7 @@
                 "portable"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-ctype/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3295,11 +3291,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-iconv/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-iconv/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3380,11 +3372,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3471,11 +3459,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3559,11 +3543,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3643,11 +3623,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3723,11 +3699,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-php72/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-php72/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3806,11 +3778,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-php73/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-php73/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -3893,11 +3861,7 @@
                 "shim"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/polyfill-php80/tree/v1.22.1"
-=======
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.22.0"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -4819,11 +4783,7 @@
             ],
             "support": {
                 "issues": "https://github.com/facade/flare-client-php/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/facade/flare-client-php/tree/1.4.0"
-=======
-                "source": "https://github.com/facade/flare-client-php/tree/1.3.7"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
             },
             "funding": [
                 {
@@ -4835,7 +4795,6 @@
         },
         {
             "name": "facade/ignition",
-<<<<<<< HEAD
             "version": "2.5.13",
             "source": {
                 "type": "git",
@@ -4846,18 +4805,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/facade/ignition/zipball/5e9ef386aaad9985cee2ac23281a27568d083b7e",
                 "reference": "5e9ef386aaad9985cee2ac23281a27568d083b7e",
-=======
-            "version": "2.5.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/ignition.git",
-                "reference": "e91d67353054bf827c64687fcac5ea44e4dcec54"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/e91d67353054bf827c64687fcac5ea44e4dcec54",
-                "reference": "e91d67353054bf827c64687fcac5ea44e4dcec54",
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
                 "shasum": ""
             },
             "require": {
@@ -4921,11 +4868,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-<<<<<<< HEAD
             "time": "2021-02-16T12:46:19+00:00"
-=======
-            "time": "2021-02-05T12:52:11+00:00"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
         },
         {
             "name": "facade/ignition-contracts",
@@ -5159,16 +5102,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "20cab678faed06fac225193be281ea0fddb43b93"
+                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/20cab678faed06fac225193be281ea0fddb43b93",
-                "reference": "20cab678faed06fac225193be281ea0fddb43b93",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/d1339f64479af1bee0e82a0413813fe5345a54ea",
+                "reference": "d1339f64479af1bee0e82a0413813fe5345a54ea",
                 "shasum": ""
             },
             "require": {
@@ -5225,9 +5168,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mockery/mockery/issues",
-                "source": "https://github.com/mockery/mockery/tree/master"
+                "source": "https://github.com/mockery/mockery/tree/1.4.3"
             },
-            "time": "2020-08-11T18:10:13+00:00"
+            "time": "2021-02-24T09:51:49+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -5482,15 +5425,9 @@
             "description": "Library for handling version information and constraints",
             "support": {
                 "issues": "https://github.com/phar-io/version/issues",
-<<<<<<< HEAD
                 "source": "https://github.com/phar-io/version/tree/3.1.0"
             },
             "time": "2021-02-23T14:00:09+00:00"
-=======
-                "source": "https://github.com/phar-io/version/tree/3.0.4"
-            },
-            "time": "2020-12-13T23:18:30+00:00"
->>>>>>> f690677b72bccab05fbd9fa9dcad5fad5167b924
         },
         {
             "name": "phpdocumentor/reflection-common",
