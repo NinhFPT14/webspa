@@ -96,7 +96,7 @@
     <!-- Page level custom scripts -->
     <script src="backEnd/js/demo/chart-area-demo.js"></script>
     <script src="backEnd/js/demo/chart-pie-demo.js"></script>
-
+    @yield('ckeditor')
 </body>
 
 </html>
