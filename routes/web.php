@@ -85,10 +85,10 @@ Route::post('/cap-nhat-logo/{id}', 'Backend\LogoController@update')->name('updat
 Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->name('statusLogo');
 
 //Dich-Vu-Controller
-Route::get('/tao-dich-vu','Backend\dichvuController@add')->name('addService');
-Route::post('luu-dich-vu','Backend\dichvuController@store')->name('saveService');
-Route::get('/danh-sach-dich-vu','Backend\dichvuController@list')->name('listService');
-Route::get('trang-thai-dich-vu/{id}/{status}','Backend\dichvuController@status')->name('statusService');
-Route::get('xoa-dich-vu/{id}','Backend\dichvuController@delete')->name('deleteService');
-Route::get('sua-dich-vu/{id}','Backend\dichvuController@edit')->name('editService');
-Route::post('cap-nhat-dich-vu/{id}','Backend\dichvuController@update')->name('updateService');
+Route::get('/tao-dich-vu','Backend\ServiceController@add')->name('addService');
+Route::post('luu-dich-vu','Backend\ServiceController@store')->name('saveService');
+Route::get('/danh-sach-dich-vu','Backend\ServiceController@list')->name('listService');
+Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status')->name('statusService');
+Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
+Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
+Route::post('cap-nhat-dich-vu/{id}','Backend\ServiceController@update')->name('updateService');
