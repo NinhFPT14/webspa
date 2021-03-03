@@ -30,7 +30,7 @@ class AddProductRequest extends FormRequest
          'detail' =>'required|max:65535',
          'price' =>'required|digits_between:4,11',
          'discount' =>'required|digits_between:4,11',
-         'quality' =>'required|digits_between:4,11',
+         'quality' =>'required|digits_between:1,11',
          'image' =>'required|size:4',
          'image.*' =>'required|image|max:10000',
          'avatar' =>'required|image|max:10000',

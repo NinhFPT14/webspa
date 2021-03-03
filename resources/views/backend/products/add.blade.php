@@ -48,14 +48,14 @@ Tạo sản phẩm
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Mô tả</label>
-                            <textarea class="form-control" name="descs" id="descs" cols="30" rows="4">{{ old('description')}}</textarea>
+                            <textarea class="form-control" name="description" id="descs" cols="30" rows="4">{{ old('description')}}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Chi tiết</label>
-                            <textarea class="form-control" name="details" id="details" cols="30" rows="10">{{ old('detail')}}</textarea>
+                            <textarea class="form-control" name="detail" id="details" cols="30" rows="10">{{ old('detail')}}</textarea>
                             @error('detail')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

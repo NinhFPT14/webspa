@@ -42,11 +42,11 @@ Danh sách sản phẩm
                             <td>{{number_format($value->price)}} VNĐ</td>
                             <td>{{number_format($value->discount)}} VNĐ</td>
                             <td>
-                                <a href="{{route('detailProduct',['id'=>$value->id])}}" 
+                                <a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}" 
                                     class="btn btn-primary" target="_blank">Xem</a>
                             </td>
                             <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')"
-                                    href="{{route('deleteCategory',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
+                                    href="{{route('deleteProduct',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
                                 <a href="{{route('editCategory',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
                             </td>
                         </tr>

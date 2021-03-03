@@ -63,12 +63,12 @@
         </a>
         <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('danh-sach-dich-vu') }}">Danh sách</a>
-                <a class="collapse-item" href="{{ route('tao-dich-vu') }}">Thêm mới dịch vụ</a>
+                <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
+                <a class="collapse-item" href="{{ route('listService') }}">Thêm mới dịch vụ</a>
             </div>
         </div>
     </li>
-    <!-- Divider -->
+    <!-- Divider
     <hr class="sidebar-divider">
 
     <!-- Heading -->

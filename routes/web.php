@@ -10,7 +10,7 @@ Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
 //ProductController
 Route::get('/san-pham','Frontend\ProductController@product')->name('product');
-Route::get('/chi-tiet-san-pham/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
+Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
 //ServiceController
 Route::get('/dich-vu','Frontend\ServiceController@service')->name('service');
