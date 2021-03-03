@@ -64,7 +64,7 @@
         <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
-                <a class="collapse-item" href="{{ route('listService') }}">Thêm mới dịch vụ</a>
+                <a class="collapse-item" href="{{ route('addService') }}">Thêm mới dịch vụ</a>
             </div>
         </div>
     </li>

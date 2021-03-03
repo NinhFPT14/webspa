@@ -1,6 +1,6 @@
 @extends('backEnd.layouts.master')
 @section('title')
-Sửa danh mục
+Sửa dịch vụ
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -15,24 +15,13 @@ Sửa danh mục
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form method="POST" action="{{route('updateCategory',['id'=>$data->id])}}">
+                    <form method="POST" action="{{route('updateService',['id'=>$data->id])}}">
                         @csrf
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên danh mục</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập tên danh mục" value="{{$data->name}}">
                             @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Loại danh mục</label>
-                            <select name="type" class="form-control" id="exampleFormControlSelect1">
-                                <option value="0" {{$data->type == 0 ? 'selected':''}}>Sản phẩm</option>
-                                <option value="1" {{$data->type == 1 ? 'selected':''}}>Dịch vụ</option>
-                                <option value="2" {{$data->type == 2 ? 'selected':''}}>Bài viết</option>
-                            </select>
-                            @error('type')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
