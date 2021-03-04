@@ -47,7 +47,7 @@ Danh sách sản phẩm
                             </td>
                             <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')"
                                     href="{{route('deleteProduct',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
-                                <a href="{{route('editCategory',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
+                                <a href="{{route('editProduct',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
                             </td>
                         </tr>
                         @endforeach

@@ -5,8 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 // HomeController
 Route::get('/','Frontend\HomeController@home')->name('home');
-Route::get('/lien-he','Frontend\HomeController@contact')->name('contact');
 Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
+
+//FeedbackController
+Route::get('/lien-he','Frontend\HomeController@contact')->name('contact');
+Route::post('luu-feedback','Frontend\FeedbackController@save')->name('saveFeedback');
+Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listFeedback');
 
 //ProductController
 Route::get('/san-pham','Frontend\ProductController@product')->name('product');
@@ -72,7 +76,9 @@ Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('u
 Route::get('tao-san-pham','Backend\ProductController@add')->name('addProduct');
 Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduct');
 Route::get('danh-sach-san-pham','Backend\ProductController@list')->name('listProduct');
+Route::get('sua-san-pham/{id}','Backend\ProductController@edit')->name('editProduct');
 Route::get('xoa-san-pham/{id}','Backend\ProductController@delete')->name('deleteProduct');
+Route::post('cap-nhat-san-pham/{id}','Backend\ProductController@update')->name('updateProduct');
 
 
 //LogoController

@@ -68,7 +68,16 @@
             </div>
         </div>
     </li>
-    <!-- Divider
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Feedback </span>
+        </a>
+    </li>
+
+
+    <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
