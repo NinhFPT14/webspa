@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public function product(){
-        $data = DB::table('products')->where('status', 0)->get();
+    public function product($id){
+        if($id === "all"){
+            $data = DB::table('products')->where('status', 0)->get();
+        }else{
+            $data = DB::table('products')->where('status', 0)->where('category_id', $id)->get();
+        }
         return view('frontend.product',compact('data'));
     }
     public function detailProduct($slug,$id){
