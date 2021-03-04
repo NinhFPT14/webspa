@@ -52,22 +52,37 @@ Liên hệ
                         <div class="col-lg-6 col-md-12">
                            <div class="contact_message form">
                                 <h3>Thông tin liên Hệ</h3>   
-                                <form id="contact-form" method="POST"  action="https://demo.hasthemes.com/alista-preview/alista/assets/mail.php">
-                                    <p>  
+                                <form  method="POST"  action="{{route('saveFeedback')}}">
+                                    @csrf
+                                    <div class="form-group">  
                                        <label>Tên</label>
                                         <input name="name" placeholder="Name *" type="text"> 
-                                    </p>
-                                    <p>       
-                                       <label>   Email</label>
+                                    </div>
+                                    @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-group">       
+                                       <label>Email</label>
                                         <input name="email" placeholder="Email *" type="email">
-                                    </p>
-                                        
-                                    <div class="contact_textarea">
-                                        <label> Lời Nhắn</label>
-                                        <textarea placeholder="Message *" name="message"  class="form-control2" ></textarea>     
+                                    </div>
+                                    @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-group">       
+                                        <label>Số điện thoại</label>
+                                         <input name="phone_number" placeholder="phone_number *" type="text">
+                                    </div>
+                                    @error('phone_number')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror 
+                                    <div class="form-group">
+                                        <label>Nội dung</label>
+                                        <textarea placeholder="Content *" name="content"  class="form-control2" ></textarea>     
                                     </div>   
+                                    @error('content')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <button type="submit"> Gửi</button>  
-                                    <p class="form-messege"></p>
                                 </form> 
 
                             </div> 
