@@ -17,7 +17,7 @@ Tạo sản phẩm
    
    
 
-    <form method="POST"  action="{{route('storeProduct')}}" enctype="multipart/form-data">
+    <form method="POST"  action="{{route('updateProduct',['id'=>$data->id])}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <!-- Content Column -->

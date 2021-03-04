@@ -8,6 +8,7 @@ use App\Model\Product;
 use App\Model\Category;
 use App\Model\ProductImage;
 use App\Http\Requests\AddProductRequest;
+use App\Http\Requests\EditProductRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use File;
@@ -67,5 +68,38 @@ class ProductController extends Controller
         $category = Category::where('type',0)->get();
         $data = Product::find($id);
         return view('backend.products.edit',compact('data','category'));
+    }
+
+    public function update(EditProductRequest $request ,$id){
+        $data = $request->all();
+        unset($data['_token'],$data['image']);
+        $product = Product::find($id);
+        if($request->hasFile('avatar')){
+            File::delete($product->avatar);
+            $extension = $request->avatar->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $request->avatar->storeAs(
+              'product_image', $filename, 'public'
+            );
+            $data['avatar'] = "storage/".$path;  
+           }
+           Product::where('id',$id)->update($data);
+           Product::where('id',$product->id)->update(['slug'=> Str::slug($data['name'].$product->id.'-')]);
+           if($request->hasFile('image')){
+            $deleteImg =ProductImage::where('product_id',$product->id)->get();
+            foreach($deleteImg as $item){
+                File::delete($item->image);
+            }
+            ProductImage::where('product_id',$product->id)->delete();
+            foreach($request->image as $key =>$value){
+            $extension = $value->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $value->storeAs( 
+              'product_image', $filename, 'public'
+            );
+            ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
+            }
+           }
+           return redirect()->route('listProduct');
     }
 }
