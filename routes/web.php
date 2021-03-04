@@ -76,7 +76,9 @@ Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('u
 Route::get('tao-san-pham','Backend\ProductController@add')->name('addProduct');
 Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduct');
 Route::get('danh-sach-san-pham','Backend\ProductController@list')->name('listProduct');
+Route::get('sua-san-pham/{id}','Backend\ProductController@edit')->name('editProduct');
 Route::get('xoa-san-pham/{id}','Backend\ProductController@delete')->name('deleteProduct');
+Route::post('cap-nhat-san-pham/{id}','Backend\ProductController@update')->name('updateProduct');
 
 
 //LogoController

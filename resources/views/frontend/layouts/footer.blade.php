@@ -92,23 +92,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-      
-    </footer>
-
-    <div class="fix_tel">
-        <div class="ring-alo-phone ring-alo-green ring-alo-show" id="ring-alo-phoneIcon"
-            style="right: -7px; bottom: -12px;">
-            <div class="ring-alo-ph-circle"></div>
-            <div class="ring-alo-ph-circle-fill"></div>
-            <div class="ring-alo-ph-img-circle">
-                <a href="tel:0946673322"><img class="lazy" src="https://khomaythegioi.com/icon/goi.png" alt="G"></a>
-            </div>
-        </div>
-        <div class="tel">
-        </div>
-    </div>
-=======
         <div class="footer_bottom" style="background-image:url('frontEnd/img/bg/bg-breadcrumb.jpg')">      
             <div class="container">
                <div class="row">
@@ -128,4 +111,3 @@
             </div>
         </div>    
     </footer>
->>>>>>> 19c348dbcc7ad16c59137074a7f0f418e5f129f2

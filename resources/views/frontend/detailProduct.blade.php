@@ -113,7 +113,7 @@ Chi tiết sản phẩm
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="info" role="tabpanel" >
                                         <div class="product_info_content">
-                                            <p>{{$data->detail}}</p>
+                                            <p>{!! $data->detail !!}</p>
                                         </div>    
                                     </div>
                                     <div class="tab-pane fade" id="sheet" role="tabpanel" >

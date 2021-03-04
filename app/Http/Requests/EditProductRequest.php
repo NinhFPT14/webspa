@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class EditProductRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class EditProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,47 @@ class EditProductRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+         'name' =>
+                    [
+                        'required','max:255',
+                        Rule::unique('products')->ignore($this->id,'id'),
+                        
+                    ],
+         'category_id' =>'required',
+         'description' =>'required|max:255',
+         'detail' =>'required|max:65535',
+         'price' =>'required|digits_between:4,11',
+         'discount' =>'required|digits_between:4,11',
+         'quality' =>'required|digits_between:1,11',
+         'image' =>'size:4',
+         'image.*' =>'image|max:10000',
+         'avatar' =>'image|max:10000',
+        ];
+    }
+
+    public function messages(){
+        return [
+            'required'=>':attribute không được để trống',
+            'max'=>':attribute không được vượt quá :max',
+            'unique'=>':attribute đã được sử dụng',
+            'digits_between'=>':attribute phải là số và từ 4 đến 11 số',
+            'max' => ':attribute kích thước không được vượt quá 10000kb',
+            'image' => ':attribute phải là ảnh',
+            'size' => ':attribute phải là 4 ảnh',
+        ];
+    }
+
+    public function attributes(){
+        return [
+            'category_id' => 'Danh mục',
+            'name' =>'Tên sản phẩm',
+            'description' =>'Mô tả',
+            'detail' =>'Chi tiết',
+            'price' =>'Giá cũ',
+            'discount' =>'Giá giảm',
+            'quality' =>'Số lượng',
+            'image' =>'Ảnh phụ',
+            'avatar' => 'Ảnh chính',
         ];
     }
 }
