@@ -5,8 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 // HomeController
 Route::get('/','Frontend\HomeController@home')->name('home');
-Route::get('/lien-he','Frontend\HomeController@contact')->name('contact');
 Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
+
+//FeedbackController
+Route::get('/lien-he','Frontend\HomeController@contact')->name('contact');
+Route::post('luu-feedback','Frontend\FeedbackController@save')->name('saveFeedback');
+Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listFeedback');
 
 //ProductController
 Route::get('/san-pham','Frontend\ProductController@product')->name('product');
@@ -82,3 +86,5 @@ Route::get('xoa-logo/{id}','Backend\LogoController@delete')->name('deleteLogo');
 Route::get('/sua-logo/{id}', 'Backend\LogoController@edit')->name('editLogo');
 Route::post('/cap-nhat-logo/{id}', 'Backend\LogoController@update')->name('updateLogo');
 Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->name('statusLogo');
+  
+
