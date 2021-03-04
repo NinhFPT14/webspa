@@ -1,4 +1,20 @@
-<footer class="footer_widgets footer_three" style="backgrounp-color:red">
+
+
+   
+     
+    <div class="fix_tel">
+        <div class="ring-alo-phone ring-alo-green ring-alo-show" id="ring-alo-phoneIcon"
+            style="right: -7px; bottom: -12px;">
+            <div class="ring-alo-ph-circle"></div>
+            <div class="ring-alo-ph-circle-fill"></div>
+            <div class="ring-alo-ph-img-circle">
+                <a href="tel:0946673322"><img class="lazy" src="https://khomaythegioi.com/icon/goi.png" alt="G"></a>
+            </div>
+        </div>
+        <div class="tel">
+        </div>
+    </div>
+    <footer class="footer_widgets footer_three">
         <div class="container">
             <div class="footer_top">
                 <div class="row">
@@ -76,6 +92,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
       
     </footer>
 
@@ -91,3 +108,24 @@
         <div class="tel">
         </div>
     </div>
+=======
+        <div class="footer_bottom" style="background-image:url('frontEnd/img/bg/bg-breadcrumb.jpg')">      
+            <div class="container">
+               <div class="row">
+                    <div class="col-lg-6 col-md-7">
+                        <div class="copyright_area">
+                            <h1 style="font-size: 28px;font-family:time new roman;"><span style="color:#ae307c;">QUEEN SPA</span> ĐẸP HƠN ĐỂ LÀM CHỦ CUỘC ĐỜI</h1>
+                            <p style="font-family:time new roman;margin-left:30px;font-size:20px;margin-top:10px;">HOTLINE :0315589426 - WEBSITE: QUEENSPA.COM</p>
+                            <P style="font-family:time new roman;margin-left:80px;font-size:20px;margin-top:10px;">EMAIL : QUEENSPA@GMAIL.COM</P>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-5">
+                        <div class="footer_payment text-right">
+                            <a><img style="height:130px;float:right;" src="frontEnd/img/logo/logodatlich.png" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </footer>
+>>>>>>> 19c348dbcc7ad16c59137074a7f0f418e5f129f2
