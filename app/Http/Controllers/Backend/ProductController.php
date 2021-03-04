@@ -62,4 +62,10 @@ class ProductController extends Controller
         $data->delete();
         return redirect()->route('listProduct');
     }
+
+    public function edit($id){
+        $category = Category::where('type',0)->get();
+        $data = Product::find($id);
+        return view('backend.products.edit',compact('data','category'));
+    }
 }
