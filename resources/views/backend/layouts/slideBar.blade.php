@@ -72,7 +72,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
             <i class="fas fa-fw fa-table"></i>
-            <span>Feedback</span>
+            <span>Feedback </span>
         </a>
     </li>
 
