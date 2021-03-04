@@ -78,6 +78,7 @@ Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduc
 Route::get('danh-sach-san-pham','Backend\ProductController@list')->name('listProduct');
 Route::get('sua-san-pham/{id}','Backend\ProductController@edit')->name('editProduct');
 Route::get('xoa-san-pham/{id}','Backend\ProductController@delete')->name('deleteProduct');
+Route::post('cap-nhat-san-pham/{id}','Backend\ProductController@update')->name('updateProduct');
 
 
 //LogoController
