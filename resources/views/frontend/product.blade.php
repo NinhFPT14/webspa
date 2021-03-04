@@ -10,8 +10,8 @@ Sản phẩm
                     <div class="breadcrumb_content">
                         <h3>Shop</h3>
                         <ul>
-                            <li><a href="index.html">Trang chủ</a></li>
-                            <li><a href="shop.html">Sản Phẩm</a></li>
+                            <li><a href="{{route('home')}}">Trang chủ</a></li>
+                            <li><a href="{{route('product')}}">Sản Phẩm</a></li>
                         </ul>
                     </div>
                 </div>
@@ -102,12 +102,12 @@ Sản phẩm
                         </div>
                     </div>
                     <!--shop toolbar end-->
-                    @foreach($data as $value)
                     <div class="row shop_wrapper">
+                    @foreach($data as $value)
                         <div class="col-lg-4 col-md-4 col-12 ">
                             <div class="single_product">
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{route('detailProduct',['id'=>$value->id])}}"><img
+                                    <a class="primary_img" href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"><img
                                             src="{{$value->avatar}}" alt=""></a>
                                     <div class="label_product">
                                         <span class="label_sale">new</span>
@@ -116,7 +116,7 @@ Sản phẩm
                                         <ul>
                                             <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
                                                         class="ion-bag"></i></a></li>
-                                            <li class="quick_view"><a href="{{route('detailProduct',['id'=>$value->id])}}" title="xem chi tiết"><i
+                                            <li class="quick_view"><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}" title="xem chi tiết"><i
                                                             class="ion-eye"></i></a></li>
                                          
                                         </ul>
@@ -124,7 +124,7 @@ Sản phẩm
                                 </div>
                                 <div class="product_content grid_content">
                                     <div class="product_name">
-                                        <h4><a href="{{route('detailProduct',['id'=>$value->id])}}">{{$value->name}}</a></h4>
+                                        <h4><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}">{{$value->name}}</a></h4>
                                     </div>
                                     <div class="price-container">
                                         <div class="price_box">
@@ -139,8 +139,8 @@ Sản phẩm
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
 
                     <div class="shop_toolbar t_bottom">
                         <div class="pagination">

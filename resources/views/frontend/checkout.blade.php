@@ -10,8 +10,8 @@ Thanh Toán
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="index-5.html">Trang Chủ</a></li>
-                        <li><a href="checkout.html">Thanh Toán</a></li>
+                        <li><a href="">Trang Chủ</a></li>
+                        <li><a href="{{route('checkout')}}">Thanh Toán</a></li>
                     </ul>
                 </div>
             </div>
@@ -134,7 +134,7 @@ Thanh Toán
                                     </div>
                                 </div>
                             </div>
-                            <div class="order_button">
+                            <div class="order_button" style="float: right;">
                                 <button  type="submit">Thanh Toán</button> 
                             </div>    
                         </div> 

@@ -63,11 +63,14 @@
         </a>
         <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="login.html">Danh sách</a>
-                <a class="collapse-item" href="404.html">Đơn đặt lịch</a>
+                <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
+                <a class="collapse-item" href="{{ route('addService') }}">Thêm mới dịch vụ</a>
             </div>
         </div>
     </li>
+<<<<<<< HEAD
+    <!-- Divider
+=======
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
@@ -78,6 +81,7 @@
 
 
     <!-- Divider -->
+>>>>>>> 3f08f1d437908eb22191251cfc001c4f5a89fc4a
     <hr class="sidebar-divider">
 
     <!-- Heading -->

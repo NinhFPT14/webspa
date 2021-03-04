@@ -12,7 +12,8 @@ class ProductController extends Controller
         $data = DB::table('products')->where('status', 0)->get();
         return view('frontend.product',compact('data'));
     }
-    public function detailProduct($id){
+    public function detailProduct($slug,$id){
+        // dd($id);
         $data = DB::table('products')->find($id);
         return view('frontend.detailProduct',compact('data'));
     }

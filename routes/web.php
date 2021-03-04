@@ -14,7 +14,7 @@ Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listF
 
 //ProductController
 Route::get('/san-pham','Frontend\ProductController@product')->name('product');
-Route::get('/chi-tiet-san-pham/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
+Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
 //ServiceController
 Route::get('/dich-vu','Frontend\ServiceController@service')->name('service');
@@ -76,6 +76,7 @@ Route::post('/cap-nhat-footer/{id}', 'Backend\FooterController@update')->name('u
 Route::get('tao-san-pham','Backend\ProductController@add')->name('addProduct');
 Route::post('luu-san-pham','Backend\ProductController@store')->name('storeProduct');
 Route::get('danh-sach-san-pham','Backend\ProductController@list')->name('listProduct');
+Route::get('xoa-san-pham/{id}','Backend\ProductController@delete')->name('deleteProduct');
 
 
 //LogoController
@@ -86,5 +87,17 @@ Route::get('xoa-logo/{id}','Backend\LogoController@delete')->name('deleteLogo');
 Route::get('/sua-logo/{id}', 'Backend\LogoController@edit')->name('editLogo');
 Route::post('/cap-nhat-logo/{id}', 'Backend\LogoController@update')->name('updateLogo');
 Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->name('statusLogo');
+<<<<<<< HEAD
+
+//Dich-Vu-Controller
+Route::get('/tao-dich-vu','Backend\ServiceController@add')->name('addService');
+Route::post('luu-dich-vu','Backend\ServiceController@store')->name('saveService');
+Route::get('/danh-sach-dich-vu','Backend\ServiceController@list')->name('listService');
+Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status')->name('statusService');
+Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
+Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
+Route::post('cap-nhat-dich-vu/{id}','Backend\ServiceController@update')->name('updateService');
+=======
   
 
+>>>>>>> 3f08f1d437908eb22191251cfc001c4f5a89fc4a

@@ -13,8 +13,8 @@ Bài viết
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index-5.html">Trang Chủ</a></li>
-                            <li><a href="blog.html">Bài Viết</a></li>
+                            <li><a href="">Trang Chủ</a></li>
+                            <li><a href="{{route('blog')}}">Bài Viết</a></li>
                         </ul>
                     </div>
                 </div>
@@ -60,8 +60,8 @@ Bài viết
                                                     <h3>Chia sẻ với</h3>
                                                     <ul>
                                                         <li><a href="#" title="Facebook"><i class="ion-social-facebook"></i></a></li>
-                                                        <li><a href="#" title="Facebook"><i class="ion-social-youtube"></i></a></li>
-                                                        <li><a href="#" title="Facebook"><i class="ion-social-instagram"></i></i></a></li>
+                                                        <li><a href="#" title="youtube"><i class="ion-social-youtube"></i></a></li>
+                                                        <li><a href="#" title="intagram"><i class="ion-social-instagram"></i></i></a></li>
                                                        
                                                     </ul>
                                                 </div>

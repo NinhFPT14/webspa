@@ -10,8 +10,8 @@
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index.html">home</a></li>
-                            <li><a href="login.html">login</a></li>
+                            <li><a href="">Trang Chủ</a></li>
+                            <li><a href="{{route('register')}}">Đăng Ký</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,13 +62,13 @@
                          -->
                          <div class="rounded-3xl bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
                              <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
-                                <i class="fab fa-facebook"></i>
-                                 Đăng nhập bằng Facebook
+                                <i class="ion-social-facebook fa-1x"></i> 
+                                Đăng nhập bằng Facebook
                              </a>
                          </div>
                          <div class="rounded-3xl mt-30 bg-red-400 w-80 h-12 flex items-center bg-red-500 hover:bg-red-700">
                             <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
-                                <i class="fab fa-google"></i>
+                                <i class="ion-social-google fa-1x"></i>
                                 Đăng nhập bằng Google
                             </a>
                         </div>

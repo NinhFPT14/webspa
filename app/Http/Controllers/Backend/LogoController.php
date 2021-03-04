@@ -14,9 +14,9 @@ class LogoController extends Controller
     public function add(){
         return view('backend.logos.add');
     }
+
     public function store(AddLogoRequest $request){
         $flight = new Logo;
-        
         if($request->hasFile('image')){
             $extension = $request->image->extension();
             $filename =  uniqid(). "." . $extension;
@@ -39,7 +39,7 @@ class LogoController extends Controller
         $data = Logo::get();
         return view('backend.logos.list',compact('data'));
      }
-//new code
+
     public function delete($id){
       $data = Logo::find($id);
       File::delete($data->image);
@@ -75,7 +75,6 @@ class LogoController extends Controller
         }else{
           Logo::where('id',$id)->update(['status' => 0]);
           $data = Logo::where('id','!=',$id)->get();
-          // dd($data);
           foreach($data as $value){
             Logo::where('id',$value->id)->update(['status' => 1]);
           }
