@@ -34,9 +34,9 @@ Tạo dịch vụ
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
-                            <input type="number" name="time" class="form-control" id="formGroupExampleInput"
+                            <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
                                 placeholder="Chọn thời gian" value="{{ old('timestart')}}">
-                            @error('time')
+                            @error('time_working')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -50,7 +50,7 @@ Tạo dịch vụ
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Tiêu đề</label>
-                            <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="1"></textarea>
+                            <textarea class="form-control" name="description" id="description" rows="1" >{{ old('description')}}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -58,7 +58,7 @@ Tạo dịch vụ
                             
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Chi tiết</label>
-                            <textarea class="form-control" name="detail" id="exampleFormControlTextarea1" rows="4"></textarea>
+                            <textarea class="form-control" name="detail" id="detail" rows="4">{{ old('detail')}}</textarea>
                             @error('detail')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -79,4 +79,12 @@ Tạo dịch vụ
         </div>
     </div>
 </div>
+@endsection
+@section('ckeditor')
+<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
+<script>    
+    ClassicEditor.create(document.getElementById ('description' ));
+    ClassicEditor.create(document.getElementById ('detail' ));
+
+    </script>
 @endsection

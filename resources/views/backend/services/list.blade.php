@@ -46,12 +46,21 @@ Danh sách dịch vụ
 
                         <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteService',['id'=>$value->id])}}"
                             class="btn btn-danger">Xóa</a>
-                                <a href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
+                                <a onclick="return confirm('Bạn có chắc chắn muốn sửa')" href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
                         </td>
                         </tr>
                         @endforeach
                     </tbody>
+                    
                 </table>
+                    <div class="d-flex justify-content-center">                
+                        <ul class="pagination pagination-sm m-t-none m-b-none">
+                            {!!$data->links()!!}
+                        </ul>
+                    </div>
+                
+                
+
             </div>
         </div>
     </div>

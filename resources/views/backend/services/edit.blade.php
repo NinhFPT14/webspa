@@ -20,8 +20,49 @@ Sửa dịch vụ
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên danh mục</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập tên danh mục" value="{{$data->name}}">
+                                placeholder="Nhập tên dịch vụ" value="{{ $data->name }}"> 
                             @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
+                            <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
+                                placeholder="Chọn thời gian" value="{{ $data->time_working }}">
+                            @error('time_working')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Giá tiền</label>
+                            <input type="number" name="price" class="form-control" id="formGroupExampleInput"
+                                placeholder="Nhập giá tiền" value="{{ $data->price }}">
+                            @error('price')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Tiêu đề</label>
+                            <textarea class="form-control" name="description" id="description">
+                            {{ $data->description }}</textarea>
+                            @error('description')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Chi tiết</label>
+                            <textarea class="form-control" name="detail" id="detail" >{{ $data->detail }}</textarea>
+                            @error('detail')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Giảm giá</label>
+                            <input type="number" name="discount" class="form-control" id="formGroupExampleInput"
+                                placeholder="Nhập % giảm giá của dịch vụ" value="{{ $data->discount }}">
+                            @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -32,4 +73,12 @@ Sửa dịch vụ
         </div>
     </div>
 </div>
+@endsection
+@section('ckeditor')
+<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
+<script>    
+    ClassicEditor.create(document.getElementById ('description' ));
+    ClassicEditor.create(document.getElementById ('detail' ));
+
+    </script>
 @endsection

@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class AddServiceRequest extends FormRequest
+class EditServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +25,17 @@ class AddServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:services',
+            'name' => [
+                'required','max:255',
+                Rule::unique('services')->ignore($this->id,'id'),
+            ],
             'time_working' => 'required|max:255',
-            'price' => 'required|digits_between:4,11',
+            'price' => 'required|max:10000',
             'description' => 'required|max:255',
             'detail' => 'required|max:255',
             'discount' => 'required|max:255',
-            
         ];
     }
-
     public function messages(){
         return [
             'required'=>':attribute không được để trống',
@@ -43,6 +45,7 @@ class AddServiceRequest extends FormRequest
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute có độ dài lớn hơn 10 ký tự',
             'time_working' => ':attribute không được vượt quá :max',
+            'price' => ''
 
         ];
     }

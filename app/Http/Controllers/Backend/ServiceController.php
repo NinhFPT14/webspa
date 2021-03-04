@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Service;
 use App\Http\Requests\AddServiceRequest;
+use App\Http\Requests\EditServiceRequest;
 use Illuminate\Support\Str;
 
 class ServiceController extends Controller
@@ -18,17 +19,18 @@ class ServiceController extends Controller
         // dd($data);
         unset($data['_token']);
         $data['status'] = 0;
-        $data['time_working'] = 0;
         $data['total_time'] = 0;
         $data['time_distance'] = 0;
         $data['category_id'] = 1;
         $data['slug'] = Str::slug($request->name.$request->id.'-');
+        // dd($data);
         $Service = Service::create($data);
+
         return redirect()->route('listService');
     }
 
     public function list(){
-        $data = Service::all();
+        $data = Service::paginate(10);
         // dd($data);
         return view('backend.services.list',compact('data'));
     }
@@ -49,6 +51,7 @@ class ServiceController extends Controller
 
     public function edit($id){
         $data = Service::find($id);
+        // dd($data);
         return view('backend.services.edit',compact('data'));
     }
 
@@ -56,6 +59,8 @@ class ServiceController extends Controller
         $data = $request->all();
         unset($data['_token']);
         $flight = Service::where('id',$id)->update($data);
+        // dd($flight);
+
         return redirect()->route('listService');
     }
 }
