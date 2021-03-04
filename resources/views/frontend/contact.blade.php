@@ -55,29 +55,29 @@ Liên hệ
                                 <form  method="POST"  action="{{route('saveFeedback')}}">
                                     @csrf
                                     <div class="form-group">  
-                                       <label>Tên</label>
-                                        <input name="name" placeholder="Name *" type="text"> 
+                                       <label>Tên *</label>
+                                        <input name="name" placeholder="Vui lòng nhập tên khách hàng" type="text"> 
                                     </div>
                                     @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <div class="form-group">       
-                                       <label>Email</label>
-                                        <input name="email" placeholder="Email *" type="email">
+                                       <label>Email *</label>
+                                        <input name="email" placeholder="Vui lòng nhập Email" type="email">
                                     </div>
                                     @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                     <div class="form-group">       
-                                        <label>Số điện thoại</label>
-                                         <input name="phone_number" placeholder="phone_number *" type="text">
+                                        <label>Số điện thoại *</label>
+                                         <input name="phone_number" placeholder="Vui lòng nhập số điện thoại" type="text">
                                     </div>
                                     @error('phone_number')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror 
                                     <div class="form-group">
-                                        <label>Nội dung</label>
-                                        <textarea placeholder="Content *" name="content"  class="form-control2" ></textarea>     
+                                        <label>Nội dung *</label>
+                                        <textarea placeholder="Vui lòng nhập nội dung" name="content"  class="form-control2" ></textarea>     
                                     </div>   
                                     @error('content')
                                     <div class="alert alert-danger">{{ $message }}</div>
