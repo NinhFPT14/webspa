@@ -11,7 +11,7 @@ Sản phẩm
                         <h3>Shop</h3>
                         <ul>
                             <li><a href="{{route('home')}}">Trang chủ</a></li>
-                            <li><a href="{{route('product')}}">Sản Phẩm</a></li>
+                            <li><a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a></li>
                         </ul>
                     </div>
                 </div>
@@ -39,16 +39,17 @@ Sản phẩm
                         <div class="widget_list">
                             <h2>Danh Mục Sản Phẩm</h2>
                             <ul>
+                            <?php
+                             $category = DB::table('categories')->where('type',0)->where('status',0)->get();
+                            ?>
+                            @foreach($category as $item)
+                            <?php
+                             $product = DB::table('products')->where('category_id',$item->id)->get();
+                            ?>
                                 <li>
-                                    <a href="#">Danh Mục 1 <span>(6)</span></a>
+                                    <a href="{{route('product',['id'=> $item->id])}}">{{$item->name}} <span>({{count($product)}})</span></a>
                                 </li>
-                                <li>
-                                    <a href="#">Danh Mục 1 <span>(6)</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">Danh Mục 1 <span>(6)</span></a>
-                                </li>
-
+                            @endforeach
                             </ul>
                         </div>
                        

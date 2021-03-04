@@ -60,7 +60,7 @@ Chi tiết sản phẩm
 
                                     </div>
                                     <div class="product_desc">
-                                        <p>{{$data->description}}</p>
+                                        <p>{!! $data->description !!}</p>
                                     </div>
                                   
                                     <div class="product_variant quantity">

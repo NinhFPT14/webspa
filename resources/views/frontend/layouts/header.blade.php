@@ -20,11 +20,14 @@
                                     <li class="active"><a href="{{route('home')}}"> Trang Chủ</a>
 
                                     </li>
-                                    <li class="sub_menu pages"><a href="{{route('product')}}"> Sản Phẩm</a>
+                                    <li class="sub_menu pages"><a href="{{route('product',['id'=>'all'])}}"> Sản Phẩm</a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="#">danh mục 1</a></li>
-                                            <li><a href="#">Danh mục 2</a></li>
-
+                                        <?php
+                                         $category = DB::table('categories')->where('type',0)->where('status',0)->get();
+                                        ?>
+                                        @foreach($category as $value)
+                                            <li><a href="{{route('product',['id'=> $value->id])}}">{{$value->name}}</a></li>
+                                        @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="{{route('service')}}"> Dịch Vụ</a>
@@ -192,7 +195,7 @@
                                   
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{{route('product')}}">Sản Phẩm</a>
+                                    <a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a>
                                    
                                 </li>
                                 <li class="menu-item-has-children">

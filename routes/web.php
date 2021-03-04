@@ -13,7 +13,7 @@ Route::post('luu-feedback','Frontend\FeedbackController@save')->name('saveFeedba
 Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listFeedback');
 
 //ProductController
-Route::get('/san-pham','Frontend\ProductController@product')->name('product');
+Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
 Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
 //ServiceController
