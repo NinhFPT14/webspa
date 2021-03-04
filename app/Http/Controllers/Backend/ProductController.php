@@ -37,7 +37,7 @@ class ProductController extends Controller
            }
         $product = Product::create($data);
         Product::where('id',$product->id)->update(['slug'=> Str::slug($product->name.$product->id.'-')]);
-        if($request->hasFile('image')){
+        if($request->hasFile('image')){ 
             $data = [];
             foreach($request->image as $key =>$value){
             $extension = $value->extension();

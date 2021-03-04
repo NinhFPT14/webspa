@@ -87,7 +87,7 @@ Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->n
 //Dich-Vu-Controller
 Route::get('/tao-dich-vu','Backend\ServiceController@add')->name('addService');
 Route::post('luu-dich-vu','Backend\ServiceController@store')->name('saveService');
-Route::get('/danh-sach-dich-vu','Backend\ServiceController@list')->name('listService');
+Route::get('danh-sach-dich-vu','Backend\ServiceController@list')->name('listService');
 Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status')->name('statusService');
 Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
 Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
