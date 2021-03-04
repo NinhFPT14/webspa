@@ -77,7 +77,7 @@ Tạo sản phẩm
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">detail
+                        <div class="form-group">
                             <label for="formGroupExampleInput">Giá giảm</label>
                             <input type="text" name="discount" class="form-control" id="formGroupExampleInput" value="{{$data->discount}}">
                             @error('discount')

@@ -16,7 +16,7 @@ use File;
 class ProductController extends Controller
 {
     public function list(){
-        $data = Product::where('status',0)->get();
+        $data = Product::where('status',0)->paginate(9);
         return view('backend.products.list',compact('data'));
     }
     public function add(){

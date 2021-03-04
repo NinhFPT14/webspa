@@ -58,9 +58,6 @@ Danh sách dịch vụ
                             {!!$data->links()!!}
                         </ul>
                     </div>
-                
-                
-
             </div>
         </div>
     </div>

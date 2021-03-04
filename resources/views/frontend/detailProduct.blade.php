@@ -55,8 +55,8 @@ Chi tiết sản phẩm
                                     <h1>{{$data->name}}</h1>
                                    
                                     <div class="price_box">
-                                        <span class="current_price">{{number_format($data->discount)}}VNĐ</span>
-                                        <span class="old_price">{{number_format($data->price)}}VNĐ</span>
+                                        <span class="current_price text-danger" ><strong>{{number_format($data->discount)}}đ</strong></span>
+                                        <span class="old_price">{{number_format($data->price)}}đ</span>
 
                                     </div>
                                     <div class="product_desc">
@@ -157,19 +157,19 @@ Chi tiết sản phẩm
                         </div>
                         <div class="row product_slick_row4">
                         <?php
-                          $related_products = DB::table('products')->where('category_id',$data->category_id)->where('id','!=',$data->id)->get();
+                          $related_products = DB::table('products')->where('category_id',$data->category_id)->where('id','!=',$data->id)->where('status',0)->get();
 
                         ?>
                         @foreach($related_products as $value)
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('detailProduct',['id'=>$value->id])}}"><img src="{{$value->avatar}}" alt=""></a>
+                                        <a class="primary_img" href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"><img src="{{$value->avatar}}" alt=""></a>
                                       
                                         <div class="action_links">
                                             <ul>
                                                 <li class="add_to_cart"><a href="cart.html" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="{{route('detailProduct',['id'=>$value->id])}}" title="Chi Tiết"><i class="ion-eye"></i></a></li>
+                                                <li class="quick_view"><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}" title="Chi Tiết"><i class="ion-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
