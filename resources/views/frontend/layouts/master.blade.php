@@ -16,6 +16,9 @@
 
     {{-- <!-- CSS 
         {{-- scc --}}
+<link rel="stylesheet" href="frontEnd/css/plugins.css">
+<link rel="stylesheet" href="frontEnd/css/style.css">
+<link rel="stylesheet" href="frontEnd/css/all.min.css">
 <link rel="stylesheet" href="frontEnd/css/bootstrap.css">
 <link rel="stylesheet" href="frontEnd/css/bootstrap.css.map">
 <link rel="stylesheet" href="frontEnd/css/bootstrap.min.css">
@@ -60,6 +63,7 @@
 
 </body>
 <script src="frontEnd/js/plugins.js"></script>
+<script src="frontEnd/js/main.js"></script>
 
 <!-- Main JS -->
 <script src="frontEnd/js/main.js"></script>

@@ -18,8 +18,8 @@
 </div>
 <div class="container  pt-4">
     <div class="pt-24">
-        <img src="frontEnd/img/logo/logo11.png" style="margin:auto;margin-top:-50px;"  alt="">
-        <h1 class="text-center " style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;">ĐẶT LỊCH HẸN</h1>
+        <img src="frontEnd/img/logo/logodatlich.png" style="margin:auto;margin-top:-50px;"  alt="">
+        <h1 class="text-center " style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;margin-top:40px;">ĐẶT LỊCH HẸN</h1>
         <p class="text-center pt-6" >KHUYẾN KHÍCH ĐẶT LỊCH HẸN TRƯỚC. XIN VUI LÒNG LIÊN HỆ VỚI CHÚNG TÔI NẾU QUÝ KHÁCH CÓ
             BẤT KỲ THẮC MẮC NÀO
             LIÊN QUAN ĐẾN <br> CÁC GÓI DỊCH VỤ </p>
@@ -27,7 +27,7 @@
     </div>
     
     <form action="">
-        <div class="grid grid-cols-2 gap-4 ">         
+        <div class="pt-24 ">         
             <div action="" class="p-4">
                 <div class="col-md-13 pl-4 " >
                     <label>Chọn Dịch Vụ*</label>
@@ -98,15 +98,7 @@
                     <button class="btn  form-control" style="background-color:#ae307c; color:white"  type="submit">Đặt lịch</button>
                 </div>
             </div>
-            <div class="pt-4  m mt-10 border-l">
-                <div class="ml-10">
-                    <i class="ion-ios-location fa-2x"><span class="ml-4">Thái Nguyên</span></i> <br> <br>
-                    <i class="ion-ios-telephone fa-2x"><span class="ml-4">0373551630</span></i> <br> <br>
-                <i class="ion-android-mail fa-2x"><span class="ml-4">dinhthi1091@gmail.com</span></i>
-                <div class="mt-40">
-                <img src="frontEnd/img/service/address.jpg" alt="">
-                </div>
-            </div>
+         
             </div>
             
             

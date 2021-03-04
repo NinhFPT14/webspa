@@ -1,3 +1,5 @@
+
+
 <header class="header_area">
         <!--header container start-->
         <div class="header_container header_container_two sticky-header">
@@ -112,7 +114,129 @@
         <!--header container end-->
         </div>
     </header>
+   
+    <div class="Offcanvas_menu Offcanvas_menu_two">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="canvas_open">
+                        <span>MENU</span>
+                        <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                    </div>
+                    <div class="Offcanvas_menu_wrapper">
+                        <div class="canvas_close">
+                              <a href="javascript:void(0)"><i class="ion-android-close"></i></a>  
+                        </div>
+                        <div class="header_block_right block_right_two">
+                            <ul>
+                                <li class="search_bar"><a href="javascript:void(0)"><i class="ion-ios-search-strong"></i></a>
+                                    <div class="dropdown_search">
+                                        <div class="search_close_btn">
+                                            <i class="ion-android-close btn-close"></i>
+                                        </div>
+                                        <div class="search_container">
+                                            <form action="#">
+                                                <input placeholder="I’m shopping for..." type="text">
+                                                <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="mini_cart_wrapper"><a href="javascript:void(0)"><i class="ion-bag"></i> <span>2</span></a>
+                                    
+                                    <!--mini cart-->
+                                    <div class="mini_cart">
+                                        <div class="cart_item">
+                                            <div class="cart_img">
+                                                <a href=""><img src="frontEnd/img/s-product/product.jpg" alt=""></a>
+                                            </div>
+                                            <div class="cart_info">
+                                                <a href="#">Tên Sản Phẩm</a>
 
+                                                <span class="quantity">Số lượng: 1</span>
+                                                <span class="price_cart">Giá :60.00</span>
+
+                                            </div>
+                                            <div class="cart_remove">
+                                                <a href="#"><i class="ion-android-close"></i></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="mini_cart_table">
+                                            <div class="cart_total">
+                                                <span>Tổng Tiền:</span>
+                                                <span class="price">138.00 VNĐ</span>
+                                            </div>
+                                        </div>
+                                        <div class="mini_cart_footer">
+                                            <div class="cart_button">
+                                                <a href="{{route('cart')}}">Giỏ Hàng</a>
+                                                <a href="{{route('checkout')}}">Thanh Toán</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--mini cart end-->
+                                </li>
+                               
+                            </ul>
+                        </div>
+                        <div id="menu" class="text-left ">
+                            <ul class="offcanvas_main_menu">
+                                <li class="menu-item-has-children active">
+                                    <a href="">Trang Chủ</a>
+                                  
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('product')}}">Sản Phẩm</a>
+                                   
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('service')}}"> Dịch Vụ</a>
+                                   
+                                    
+                                    
+
+
+                                   
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('appointment')}}">Đặt Lịch</a>
+                                  
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('blog')}}">Tin Tức </a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('about')}}">Giới Thiệu</a>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('contact')}}">Liên Hệ</a>
+                                </li>
+                                <li class="menu-item-has-children active">
+                                    <a href="{{route('myAccount')}}">Tài Khoản</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="{{route('login')}}">Đăng Nhập</a></li>
+                                        <li><a href="{{route('register')}}">Đăng Ký</a></li>
+                                        
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="Offcanvas_footer">
+                            <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
+                            <ul>
+                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <!--Header sidebar End-->
 
