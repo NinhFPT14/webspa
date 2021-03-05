@@ -25,7 +25,7 @@ Tạo dịch vụ
                     <form method="POST" action="{{route('saveService')}}">
                         @csrf
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Tên danh mục</label>
+                            <label for="formGroupExampleInput">Tên dịch vụ</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập tên dịch vụ" value="{{ old('name')}}"> 
                             @error('name')
@@ -35,7 +35,7 @@ Tạo dịch vụ
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
                             <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
-                                placeholder="Chọn thời gian" value="{{ old('timestart')}}">
+                                placeholder="Chọn thời gian" value="{{ old('time_working')}}">
                             @error('time_working')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -43,7 +43,7 @@ Tạo dịch vụ
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Giá tiền</label>
                             <input type="number" name="price" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập giá tiền" value="{{ old('timestart')}}">
+                                placeholder="Nhập giá tiền" value="{{ old('price')}}">
                             @error('price')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -58,7 +58,7 @@ Tạo dịch vụ
                             
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Chi tiết</label>
-                            <textarea class="form-control" name="detail" id="detail" rows="4">{{ old('detail')}}</textarea>
+                            <textarea class="form-control" name="detail" id="detail" rows="4">{{ old('detail') }}</textarea>
                             @error('detail')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -67,7 +67,7 @@ Tạo dịch vụ
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Giảm giá</label>
                             <input type="number" name="discount" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập % giảm giá của dịch vụ" value="{{ old('timestart')}}">
+                                placeholder="Nhập % giảm giá của dịch vụ" value="{{ old('discount')}}">
                             @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
