@@ -113,14 +113,13 @@ Tạo sản phẩm
     </form>
 </div>
 @section('ckeditor')
-<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
+<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
 <script>    
-    ClassicEditor.create(document.getElementById ('descs' ));
-    ClassicEditor.create(document.getElementById ('details' ));
+      CKEDITOR.replace('descs');
+      CKEDITOR.replace('details');
 
     </script>
 @endsection
-    
    
 
 @endsection

@@ -3,6 +3,7 @@
 Tạo danh mục
 @endsection
 @section('content')
+
 <div class="container-fluid">
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
@@ -26,7 +27,7 @@ Tạo danh mục
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên danh mục</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập tên danh mục" value="{{ old('name')}}"> 
+                                placeholder="Nhập tên danh mục" value="{{ old('name')}}">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

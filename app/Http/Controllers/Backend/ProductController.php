@@ -100,6 +100,6 @@ class ProductController extends Controller
             ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
             }
            }
-           return redirect()->route('listProduct');
+           return redirect()->route('editProduct',['id'=>$product->id]);
     }
 }

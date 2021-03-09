@@ -29,6 +29,7 @@ class SlideController extends Controller
         $flight->link = $request->link;
         $flight->status = $request->status;
         $flight->save();
+        alert()->success('Tạo thành công logo'); 
       return redirect()->route('listSlide');
     }
 

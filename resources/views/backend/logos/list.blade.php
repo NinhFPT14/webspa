@@ -33,14 +33,14 @@
                           <th><img src="{{$item->image}}" style="width: 100px"></th>
                           <td>
                             @if($item->status == 0)
-                            <a onclick="return confirm('Bạn có chắc chắn muốn tắt')" href="{{route('statusLogo',['id'=>$item->id,'status'=>$item->status])}}"
+                            <a href="{{route('statusLogo',['id'=>$item->id,'status'=>$item->status])}}"
                                 class="btn btn-success">ON</a>
                             @else
-                            <a onclick="return confirm('Bạn có chắc chắn muốn bật')" href="{{route('statusLogo',['id'=>$item->id ,'status'=>$item->status])}}"
+                            <a href="{{route('statusLogo',['id'=>$item->id ,'status'=>$item->status])}}"
                                 class="btn btn-danger">OFF</a>
                             @endif
                         </td>
-                          <th><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteLogo',['id'=>$item->id])}}" class="btn btn-danger">Xóa</a>
+                          <th><a href="{{route('deleteLogo',['id'=>$item->id])}}" class="btn btn-danger">Xóa</a>
                           <a href="{{route('editLogo',['id'=>$item->id])}}"  role="button" class="btn btn-warning">Sửa</a></th>
                         </tr>
                         @endforeach

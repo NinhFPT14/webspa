@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 // HomeController
 Route::get('/','Frontend\HomeController@home')->name('home');
+Route::get('hi',function(){
+    alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
+return view('frontend.contact');
+});
+
 Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
 //FeedbackController
