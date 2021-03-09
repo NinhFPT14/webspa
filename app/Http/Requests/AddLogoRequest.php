@@ -24,7 +24,8 @@ class AddLogoRequest extends FormRequest
     public function rules()
     {
         return [
-        'image' => 'required|image|max:10000'
+        'image' => 'required|image|max:10000',
+        'status' => 'required'
         ];
     }
         public function messages(){
@@ -38,6 +39,7 @@ class AddLogoRequest extends FormRequest
         public function attributes(){
             return [
                 'image' =>'Ảnh',
+                'status' =>'Trạng thái',
             ];
         }
 }

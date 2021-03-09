@@ -10,14 +10,14 @@ Tạo sản phẩm
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+            <li class="breadcrumb-item"><a href="{{route('listProduct')}}">Sản phẩm</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tạo sản phẩm</li>
         </ol>
     </nav>
-   
-   
 
-    <form method="POST"  action="{{route('updateProduct',['id'=>$data->id])}}" enctype="multipart/form-data">
+
+
+    <form method="POST" action="{{route('updateProduct',['id'=>$data->id])}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <!-- Content Column -->
@@ -30,7 +30,8 @@ Tạo sản phẩm
                     <div class="card-body">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên sản phẩm</label>
-                            <input type="text" name="name" class="form-control" id="formGroupExampleInput" value="{{$data->name}}">
+                            <input type="text" name="name" class="form-control" id="formGroupExampleInput"
+                                value="{{$data->name}}">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -48,14 +49,16 @@ Tạo sản phẩm
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Mô tả</label>
-                            <textarea class="form-control" name="description" id="descs" cols="30" rows="4">{{$data->description}}</textarea>
+                            <textarea class="form-control" name="description" id="descs" cols="30"
+                                rows="4">{{$data->description}}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Chi tiết</label>
-                            <textarea class="form-control" name="detail" id="details" cols="30" rows="10">{{$data->detail}}</textarea>
+                            <textarea class="form-control" name="detail" id="details" cols="30"
+                                rows="10">{{$data->detail}}</textarea>
                             @error('detail')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -72,35 +75,38 @@ Tạo sản phẩm
                     <div class="card-body">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Giá cũ</label>
-                            <input type="text" name="price" class="form-control" id="formGroupExampleInput" value="{{$data->price}}">
+                            <input type="text" name="price" class="form-control" id="formGroupExampleInput"
+                                value="{{$data->price}}">
                             @error('price')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Giá giảm</label>
-                            <input type="text" name="discount" class="form-control" id="formGroupExampleInput" value="{{$data->discount}}">
+                            <input type="text" name="discount" class="form-control" id="formGroupExampleInput"
+                                value="{{$data->discount}}">
                             @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Số lượng</label>
-                            <input type="text" name="quality" class="form-control" id="formGroupExampleInput" value="{{$data->quality}}">
+                            <input type="text" name="quality" class="form-control" id="formGroupExampleInput"
+                                value="{{$data->quality}}">
                             @error('quality')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh chính</label>
-                            <input type="file"  name="avatar">
+                            <input type="file" name="avatar">
                             @error('avatar')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ảnh phụ</label>
-                            <input type="file"  name="image[]" multiple="multiple">
+                            <input type="file" name="image[]" multiple="multiple">
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -113,14 +119,28 @@ Tạo sản phẩm
     </form>
 </div>
 @section('ckeditor')
-<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
-<script>    
-    ClassicEditor.create(document.getElementById ('descs' ));
-    ClassicEditor.create(document.getElementById ('details' ));
+<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
+<script>
+CKEDITOR.replace('ckeditor');
+CKEDITOR.replace('descs', {
+    filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
+    filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
+    filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+});
 
-    </script>
+CKEDITOR.replace('details', {
+    filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
+    filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
+    filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+});
+</script>
 @endsection
-    
-   
+
 
 @endsection
