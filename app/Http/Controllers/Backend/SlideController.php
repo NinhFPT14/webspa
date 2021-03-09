@@ -29,7 +29,7 @@ class SlideController extends Controller
         $flight->link = $request->link;
         $flight->status = $request->status;
         $flight->save();
-        alert()->success('Tạo thành công logo'); 
+        alert()->success('Tạo thành công slide'); 
       return redirect()->route('listSlide');
     }
 
@@ -41,6 +41,11 @@ class SlideController extends Controller
      public function status($id ,$status){
       $flight = Slide::find($id);
       $flight->status = $status;
+      if($status ==0){
+        alert()->error('Tắt slide'); 
+      }else{
+        alert()->success('Bật slide'); 
+      }
       $flight->save();
       return redirect()->route('listSlide',['type'=>$flight->type]);
     }
@@ -49,6 +54,7 @@ class SlideController extends Controller
     $data = Slide::find($id);
     File::delete($data->image);
     $data->delete();
+    alert()->error('Xóa thành công'); 
     return redirect()->route('listSlide');
     }
 
@@ -59,10 +65,10 @@ class SlideController extends Controller
 
     public function update(EditSlideRequest $request ,$id){
       $flight = Slide::find($id);
-      File::delete($flight->image);
       $flight->title = $request->title;
       $flight->content = $request->content;
       if($request->hasFile('image')){
+      File::delete($flight->image);
           $extension = $request->image->extension();
           $filename =  uniqid(). "." . $extension;
           $path = $request->image->storeAs(
@@ -73,6 +79,7 @@ class SlideController extends Controller
         $flight->link = $request->link;
         $flight->status = $request->status;
       $flight->save();
+      alert()->success('Sửa thành công slide'); 
       return redirect()->route('listSlide');
 
     }  
