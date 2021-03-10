@@ -111,6 +111,16 @@ Tạo sản phẩm
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Trạng Thái</label>
+                            <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                <option value="0"  {{$data->status == 0 ? 'selected':''}}>Dùng luôn</option>
+                                <option value="1"  {{$data->status == 0 ? 'selected':''}}>Chờ sau</option>
+                            </select>
+                            @error('status')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-warning float-right ">Sửa</button>
                     </div>
                 </div>
@@ -120,25 +130,18 @@ Tạo sản phẩm
 </div>
 @section('ckeditor')
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
+
 <script>
-CKEDITOR.replace('ckeditor');
-CKEDITOR.replace('descs', {
-    filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
-    filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
-    filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-    filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+
+CKEDITOR.replace( 'descs', {
+    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+});
+CKEDITOR.replace( 'details', {
+    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
 });
 
-CKEDITOR.replace('details', {
-    filebrowserBrowseUrl: 'ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: 'ckfinder/ckfinder.html?type=Images',
-    filebrowserFlashBrowseUrl: 'ckfinder/ckfinder.html?type=Flash',
-    filebrowserUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-    filebrowserFlashUploadUrl: 'ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
-});
 </script>
 @endsection
 
