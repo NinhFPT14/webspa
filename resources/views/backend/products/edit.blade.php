@@ -130,20 +130,20 @@ Tạo sản phẩm
 </div>
 @section('ckeditor')
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
-
 <script>
 
 CKEDITOR.replace( 'descs', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+    filebrowserWindowWidth : '1000',
+    filebrowserWindowHeight : '700'
 });
 CKEDITOR.replace( 'details', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+    filebrowserWindowWidth : '1000',
+    filebrowserWindowHeight : '700'
 });
-
 </script>
 @endsection
-
-
 @endsection
