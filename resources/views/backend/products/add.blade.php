@@ -10,7 +10,7 @@ Tạo sản phẩm
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Sản phẩm</a></li>
+            <li class="breadcrumb-item"><a href="{{route('listProduct')}}">Sản phẩm</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tạo sản phẩm</li>
         </ol>
     </nav>
@@ -77,7 +77,7 @@ Tạo sản phẩm
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">detail
+                        <div class="form-group">
                             <label for="formGroupExampleInput">Giá giảm</label>
                             <input type="text" name="discount" class="form-control" id="formGroupExampleInput" value="{{ old('discount')}}">
                             @error('discount')
@@ -113,14 +113,13 @@ Tạo sản phẩm
     </form>
 </div>
 @section('ckeditor')
-<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
+<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
 <script>    
-    ClassicEditor.create(document.getElementById ('descs' ));
-    ClassicEditor.create(document.getElementById ('details' ));
+      CKEDITOR.replace('descs');
+      CKEDITOR.replace('details');
 
     </script>
 @endsection
-    
    
 
 @endsection

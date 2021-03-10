@@ -1,4 +1,4 @@
-@extends('backEnd.layouts.master')
+@extends('backend.layouts.master')
 @section('title')
 Tạo dịch vụ
 @endsection
@@ -22,10 +22,10 @@ Tạo dịch vụ
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form method="POST" action="{{route('storeCategory')}}">
+                    <form method="POST" action="{{route('saveService')}}">
                         @csrf
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Tên danh mục</label>
+                            <label for="formGroupExampleInput">Tên dịch vụ</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập tên dịch vụ" value="{{ old('name')}}"> 
                             @error('name')
@@ -33,10 +33,42 @@ Tạo dịch vụ
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Thời gian</label>
-                            <input type="number" name="name" class="form-control" id="formGroupExampleInput"
-                                placeholder="Chọn thời gian" value="{{ old('timestart')}}">
-                            @error('type')
+                            <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
+                            <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
+                                placeholder="Chọn thời gian" value="{{ old('time_working')}}">
+                            @error('time_working')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Giá tiền</label>
+                            <input type="number" name="price" class="form-control" id="formGroupExampleInput"
+                                placeholder="Nhập giá tiền" value="{{ old('price')}}">
+                            @error('price')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Tiêu đề</label>
+                            <textarea class="form-control" name="description" id="description" rows="1" >{{ old('description')}}</textarea>
+                            @error('description')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Chi tiết</label>
+                            <textarea class="form-control" name="detail" id="detail" rows="4">{{ old('detail') }}</textarea>
+                            @error('detail')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Giảm giá</label>
+                            <input type="number" name="discount" class="form-control" id="formGroupExampleInput"
+                                placeholder="Nhập % giảm giá của dịch vụ" value="{{ old('discount')}}">
+                            @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -47,4 +79,12 @@ Tạo dịch vụ
         </div>
     </div>
 </div>
+@endsection
+@section('ckeditor')
+<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
+<script>    
+    ClassicEditor.create(document.getElementById ('description' ));
+    ClassicEditor.create(document.getElementById ('detail' ));
+
+    </script>
 @endsection
