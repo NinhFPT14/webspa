@@ -132,18 +132,18 @@ Tạo sản phẩm
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
 <script>
 CKEDITOR.replace( 'descs', {
-    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    filebrowserBrowseUrl: 'http://202.92.4.117/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: 'http://202.92.4.117/ckfinder/ckfinder.html?Type=Images',
+    filebrowserUploadUrl: 'http://202.92.4.117/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: 'http://202.92.4.117/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 });
 CKEDITOR.replace( 'details', {
-    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+    filebrowserBrowseUrl: 'http://202.92.4.117/ckfinder/ckfinder.html',
+    filebrowserImageBrowseUrl: 'http://202.92.4.117/ckfinder/ckfinder.html?Type=Images',
+    filebrowserUploadUrl: 'http://202.92.4.117/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: 'http://202.92.4.117/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 });
