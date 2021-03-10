@@ -106,3 +106,4 @@ Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status'
 Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
 Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
 Route::post('cap-nhat-dich-vu/{id}','Backend\ServiceController@update')->name('updateService');
+

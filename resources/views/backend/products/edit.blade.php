@@ -114,8 +114,8 @@ Tạo sản phẩm
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Trạng Thái</label>
                             <select class="form-control" name="status" id="exampleFormControlSelect1">
-                                <option value="0"  {{$data->status == 0 ? 'selected':''}}>Dùng luôn</option>
-                                <option value="1"  {{$data->status == 0 ? 'selected':''}}>Chờ sau</option>
+                                <option value="0" {{$data->status == 0 ? 'selected':''}}>Dùng luôn</option>
+                                <option value="1" {{$data->status == 0 ? 'selected':''}}>Chờ sau</option>
                             </select>
                             @error('status')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -131,16 +131,19 @@ Tạo sản phẩm
 @section('ckeditor')
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
 <script>
-
 CKEDITOR.replace( 'descs', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 });
 CKEDITOR.replace( 'details', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
+    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 });
