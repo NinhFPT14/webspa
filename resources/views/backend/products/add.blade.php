@@ -105,6 +105,16 @@ Tạo sản phẩm
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Trạng Thái</label>
+                            <select class="form-control" name="status" id="exampleFormControlSelect1">
+                                <option value="0" >Dùng luôn</option>
+                                <option value="1" >Chờ sau</option>
+                            </select>
+                            @error('status')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <button type="submit" class="btn btn-primary float-right ">Tạo</button>
                     </div>
                 </div>

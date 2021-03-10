@@ -26,6 +26,7 @@ Danh sách sản phẩm
                             <th scope="col">Giá cũ</th>
                             <th scope="col">Giá giảm</th>
                             <th scope="col">Chi tiết</th>
+                            <th scope="col">Trạng thái</th>
                             <th scope="col">Hành động</th>
                         </tr>
                     </thead>
@@ -42,8 +43,17 @@ Danh sách sản phẩm
                             <td>{{number_format($value->price)}} VNĐ</td>
                             <td>{{number_format($value->discount)}} VNĐ</td>
                             <td>
-                                <a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}" 
+                                <a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"
                                     class="btn btn-primary" target="_blank">Xem</a>
+                            </td>
+                            <td>
+                                @if($value->status == 0)
+                                <a href="{{route('statusProduct',['id'=>$value->id,'status'=>1])}}"
+                                    class="btn btn-success">ON</a>
+                                @else
+                                <a href="{{route('statusProduct',['id'=>$value->id ,'status'=>0])}}"
+                                    class="btn btn-danger">OFF</a>
+                                @endif
                             </td>
                             <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')"
                                     href="{{route('deleteProduct',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
@@ -53,11 +63,11 @@ Danh sách sản phẩm
                         @endforeach
                     </tbody>
                 </table>
-                <div class="d-flex justify-content-center">                
-                        <ul class="pagination pagination-sm m-t-none m-b-none">
-                            {!!$data->links()!!}
-                        </ul>
-                    </div>
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                        {!!$data->links()!!}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
