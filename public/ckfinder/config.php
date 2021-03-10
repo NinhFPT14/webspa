@@ -60,6 +60,9 @@ $config['images'] = array(
     )
 );
 
+
+
+
 /*=================================== Backends ========================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_backends
 
