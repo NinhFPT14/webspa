@@ -115,7 +115,7 @@ Tạo sản phẩm
                             <label for="exampleFormControlSelect1">Trạng Thái</label>
                             <select class="form-control" name="status" id="exampleFormControlSelect1">
                                 <option value="0" {{$data->status == 0 ? 'selected':''}}>Dùng luôn</option>
-                                <option value="1" {{$data->status == 0 ? 'selected':''}}>Chờ sau</option>
+                                <option value="1" {{$data->status == 1 ? 'selected':''}}>Chờ sau</option>
                             </select>
                             @error('status')
                             <div class="alert alert-danger">{{ $message }}</div>
