@@ -130,6 +130,3 @@ Tạo sản phẩm
 
     </script>
 @endsection
-   
-
-@endsection

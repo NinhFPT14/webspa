@@ -130,29 +130,20 @@ Tạo sản phẩm
 </div>
 @section('ckeditor')
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
-<scsipt src="https://ckeditor.com/apps/ckfinder/3.5.1/ckfinder.js"></script>
-
 <script>
 
 CKEDITOR.replace( 'descs', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 });
 CKEDITOR.replace( 'details', {
     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
     filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
     filebrowserWindowWidth : '1000',
     filebrowserWindowHeight : '700'
 });
-
 </script>
 @endsection
-
-
 @endsection
