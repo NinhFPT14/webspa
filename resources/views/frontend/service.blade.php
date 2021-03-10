@@ -171,15 +171,13 @@ Dịch Vụ
                                     </div>
                                     <div class="action_links">
                                         <ul>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart">Add to
-                                                    Cart</a></li>
-                                            <li class="compare"><a href="#" title="Add to Compare"><i
-                                                        class="ion-ios-shuffle-strong"></i></a></li>
+                                            <li class="add_to_cart"><a href="{{route('cart')}}" title="add to cart">Thêm Vào Giỏ</a></li>
+                                           
                                             <li class="quick_view"><a href="#" data-toggle="modal"
-                                                    data-target="#modal_box" title="Quick View"><i
+                                                    data-target="#modal_box" title="Xem Chi tiết"><i
                                                         class="ion-eye"></i></a></li>
-                                            <li><a href="wishlist.html" title="wishlist"><i
-                                                        class="ion-android-favorite-outline"></i></a></li>
+                                                        <li class="add_to_cart"><a href="{{route('appointment')}}" title="đặt lịch">Đặt Lịch</a></li>
+                                                        
                                         </ul>
                                     </div>
                                 </div>
