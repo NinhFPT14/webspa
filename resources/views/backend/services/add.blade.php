@@ -32,6 +32,19 @@ Tạo dịch vụ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Danh mục</label>
+                            <select name="category_id" id="category_id">
+                            @foreach($cate as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                            </select>
+                            @error('category_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
                             <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
@@ -48,6 +61,7 @@ Tạo dịch vụ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Tiêu đề</label>
                             <textarea class="form-control" name="description" id="description" rows="1" >{{ old('description')}}</textarea>
@@ -81,10 +95,44 @@ Tạo dịch vụ
 </div>
 @endsection
 @section('ckeditor')
-<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
+<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
 <script>    
-    ClassicEditor.create(document.getElementById ('description' ));
-    ClassicEditor.create(document.getElementById ('detail' ));
-
+      CKEDITOR.replace('detail');
     </script>
+    <script>
+    CKEDITOR.replace('description', {
+      // Define the toolbar groups as it is a more accessible solution.
+      toolbarGroups: [{
+          "name": "basicstyles",
+          "groups": ["basicstyles"]
+        },
+        {
+          "name": "links",
+          "groups": ["links"]
+        },
+        {
+          "name": "paragraph",
+          "groups": ["list", "blocks"]
+        },
+        {
+          "name": "document",
+          "groups": ["mode"]
+        },
+        {
+          "name": "insert",
+          "groups": ["insert"]
+        },
+        {
+          "name": "styles",
+          "groups": ["styles"]
+        },
+        {
+          "name": "about",
+          "groups": ["about"]
+        }
+      ],
+      // Remove the redundant buttons from toolbar groups defined above.
+      removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+    });
+  </script>
 @endsection

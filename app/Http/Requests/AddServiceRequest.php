@@ -24,12 +24,13 @@ class AddServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:services',
+            'name' =>'required|max:255|unique:services',
             'time_working' => 'required|max:255',
             'price' => 'required|digits_between:4,11',
-            'description' => 'required|max:1000',
-            'detail' => 'required|max:20000',
+            'description' => 'required|max:65535',
+            'detail' => 'required|max:65535',
             'discount' => 'required|max:255',
+            'category_id' => 'required'
             
         ];
     }
@@ -56,6 +57,7 @@ class AddServiceRequest extends FormRequest
             'price' =>'Giá cũ',
             'discount' =>'Giá giảm',
             'time_working' => 'Thời gian làm',
+            'category_id' => 'Loại danh mục'
         ];
     }
 }
