@@ -81,10 +81,9 @@ Tạo dịch vụ
 </div>
 @endsection
 @section('ckeditor')
-<script src="{{asset('backEnd/ckeditor.js')}}"> </script>
-<script>    
+<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
+    <script>    
     ClassicEditor.create(document.getElementById ('description' ));
     ClassicEditor.create(document.getElementById ('detail' ));
-
     </script>
 @endsection
