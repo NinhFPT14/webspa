@@ -8,9 +8,7 @@ use DB;
 class AppointmentController extends Controller
 {
    public function appointment(){
-      $data = DB::table('services')->get();
-      // dd($data);
-    return view('frontend.appointment', [ 'data' => $data ]);
+    return view('frontend.appointment');
    }
 
    public function setup(Request $request) {

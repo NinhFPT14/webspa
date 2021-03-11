@@ -31,10 +31,19 @@
             <div action="" class="p-4">
                 <div class="col-md-13 pl-4 " >
                     <label>Chọn Dịch Vụ*</label>
-                    <select class="mul-select form-control" name="services[]"  multiple>
-                        @foreach($data as $value)
-                        <option value="{{ $value->id }}">{{ $value->name }}</option>
-                        @endforeach               
+                    <select class="mul-select form-control"  multiple>
+                    <?php
+                        $category = DB::table('categories')->where('type',1)->where('status',0)->get();
+                    ?>
+                    @foreach($category as $value)
+                        <optgroup label="{{$value->name}}"></optgroup>
+                        <?php
+                            $service = DB::table('services')->where('status',0)->where('category_id', $value->id)->get();
+                        ?>  
+                        @foreach($service as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach                 
+                    @endforeach
                     </select>
 
                 </div>

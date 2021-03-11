@@ -27,24 +27,22 @@ Tạo dịch vụ
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên dịch vụ</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập tên dịch vụ" value="{{ old('name')}}"> 
+                                placeholder="Nhập tên dịch vụ" value="{{ old('name')}}">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Danh mục</label>
-                            <select name="category_id" id="category_id">
-                            @foreach($cate as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                            @endforeach
+                            <label for="exampleFormControlSelect1">Danh mục</label>
+                            <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+                                @foreach($cate as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                @endforeach
                             </select>
                             @error('category_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
                             <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
@@ -54,35 +52,35 @@ Tạo dịch vụ
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Giá tiền</label>
+                            <label for="exampleFormControlSelect1">Giá cũ</label>
                             <input type="number" name="price" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập giá tiền" value="{{ old('price')}}">
                             @error('price')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Giảm mới</label>
+                            <input type="number" name="discount" class="form-control" id="formGroupExampleInput"
+                                placeholder="Nhập % giảm giá của dịch vụ" value="{{ old('discount')}}">
+                            @error('discount')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Tiêu đề</label>
-                            <textarea class="form-control" name="description" id="description" rows="1" >{{ old('description')}}</textarea>
+                            <textarea class="form-control" name="description" id="description"
+                                rows="1">{{ old('description')}}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                            
+
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Chi tiết</label>
-                            <textarea class="form-control" name="detail" id="detail" rows="4">{{ old('detail') }}</textarea>
+                            <textarea class="form-control" name="detail" id="detail"
+                                rows="4">{{ old('detail') }}</textarea>
                             @error('detail')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                            
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Giảm giá</label>
-                            <input type="number" name="discount" class="form-control" id="formGroupExampleInput"
-                                placeholder="Nhập % giảm giá của dịch vụ" value="{{ old('discount')}}">
-                            @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -96,43 +94,43 @@ Tạo dịch vụ
 @endsection
 @section('ckeditor')
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
-<script>    
-      CKEDITOR.replace('detail');
-    </script>
-    <script>
-    CKEDITOR.replace('description', {
-      // Define the toolbar groups as it is a more accessible solution.
-      toolbarGroups: [{
-          "name": "basicstyles",
-          "groups": ["basicstyles"]
+<script>
+CKEDITOR.replace('detail');
+</script>
+<script>
+CKEDITOR.replace('description', {
+    // Define the toolbar groups as it is a more accessible solution.
+    toolbarGroups: [{
+            "name": "basicstyles",
+            "groups": ["basicstyles"]
         },
         {
-          "name": "links",
-          "groups": ["links"]
+            "name": "links",
+            "groups": ["links"]
         },
         {
-          "name": "paragraph",
-          "groups": ["list", "blocks"]
+            "name": "paragraph",
+            "groups": ["list", "blocks"]
         },
         {
-          "name": "document",
-          "groups": ["mode"]
+            "name": "document",
+            "groups": ["mode"]
         },
         {
-          "name": "insert",
-          "groups": ["insert"]
+            "name": "insert",
+            "groups": ["insert"]
         },
         {
-          "name": "styles",
-          "groups": ["styles"]
+            "name": "styles",
+            "groups": ["styles"]
         },
         {
-          "name": "about",
-          "groups": ["about"]
+            "name": "about",
+            "groups": ["about"]
         }
-      ],
-      // Remove the redundant buttons from toolbar groups defined above.
-      removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-    });
-  </script>
+    ],
+    // Remove the redundant buttons from toolbar groups defined above.
+    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
+});
+</script>
 @endsection

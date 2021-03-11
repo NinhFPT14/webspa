@@ -40,7 +40,7 @@ Tạo sản phẩm
                             <label for="exampleFormControlSelect1">Danh mục</label>
                             <select name="category_id" class="form-control" id="exampleFormControlSelect1">
                                 @foreach($category as $value)
-                                <option value="{{$value->id}}">{{$value->name}}</option>
+                                <option value="{{$value->id}}" {{$data->category_id == $value->id ? 'selected':''}}>{{$value->name}}</option>
                                 @endforeach
                             </select>
                             @error('category_id')
