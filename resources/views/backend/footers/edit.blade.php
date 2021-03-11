@@ -5,7 +5,12 @@
 @section('content')
 <div class="container-fluid">
     <!-- Content Row -->
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('listFooter')}}">Danh sách</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sửa Footer</li>
+        </ol>
+    </nav>
     <div class="row">
 
         <!-- Area Chart -->
@@ -14,7 +19,7 @@
                 <!-- Card Header - Dropdown -->
                 <div
                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h4 class="m-0 font-weight-bold text-primary">Tạo Footer</h4>
+                    <h4 class="m-0 font-weight-bold text-primary">Sửa Footer</h4>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
@@ -51,7 +56,7 @@
                               </div>
                               
                              
-                              <button type="submit" class="btn btn-primary float-right ">Tạo</button>
+                              <button type="submit" class="btn btn-warning float-right ">Sửa</button>
                           </form>
                 </div>
             </div>

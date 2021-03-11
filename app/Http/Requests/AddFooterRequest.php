@@ -27,7 +27,7 @@ class AddFooterRequest extends FormRequest
                 'address' => 'required|max:255|min:5',
                 'phone_number' => 'required|max:255|min:5',
                 'email' => 'required|max:255|min:5|',
-                'link_fanpage' => 'required|max:255|min:5|'
+                'link_fanpage' => 'required|max:65535|min:5|'
         ];
     }
     public function messages(){

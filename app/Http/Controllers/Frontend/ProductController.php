@@ -17,7 +17,12 @@ class ProductController extends Controller
         return view('frontend.product',compact('data'));
     }
     public function detailProduct($slug,$id){
-        $data = DB::table('products')->find($id);
-        return view('frontend.detailProduct',compact('data'));
+        $data = DB::table('products')->where('status','==',0)->find($id);
+        if($data == null){
+            return redirect()->route('home');
+        }
+        else{
+            return view('frontend.detailProduct',compact('data'));
+        }
     }
 }
