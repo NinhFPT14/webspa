@@ -25,19 +25,16 @@
             LIÊN QUAN ĐẾN <br> CÁC GÓI DỊCH VỤ </p>
 
     </div>
-    
-    <form action="">
+    <form method="post" action="{{ route('saveAppointment') }}">
+        @csrf
         <div class="pt-24 ">         
             <div action="" class="p-4">
                 <div class="col-md-13 pl-4 " >
                     <label>Chọn Dịch Vụ*</label>
-                    <select class="mul-select form-control"  multiple>
-                        <optgroup label="Chọn dịch vụ/"></optgroup>                 
-                        <option value="Cambodia">tu dep trai</option>
-                        <option value="Khmer">thi xinh gai</option>
-                        <option value="Thiland">vinh lon</option>
-                        <option value="Koren">cong nhieu tien</option>
-                        <option value="China">ninh hot boy</option>
+                    <select class="mul-select form-control" name="services[]"  multiple>
+                        @foreach($data as $value)
+                        <option value="{{ $value->id }}">{{ $value->name }}</option>
+                        @endforeach               
                     </select>
 
                 </div>
@@ -46,7 +43,7 @@
                     <div class=" row pl-4">
                         <div class="col-md-6 ">
                             <label>Chọn Thời Gian*</label>
-                            <select class="form-control" id="validationCustom04" required>
+                            <select class="form-control" name="time_fix" id="validationCustom04" required>
                                 <option selected disabled value="">Chọn thời gian</option>
                                 <option>Sáng</option>
                                 <option>Chiều</option>
@@ -55,7 +52,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>Ngày Hẹn<span>*</span></label>
-                            <input type="date" class="form-control pr-4" placeholder="Ngày*" aria-label="">
+                            <input type="date" class="form-control pr-4" name="date"  placeholder="Ngày*" aria-label="">
                         </div>
 
                     </div>
@@ -63,16 +60,16 @@
                 <div class="row pl-4 pt-4">
                     <div class="col">
                         <label>Họ Tên<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Mời nhập họ tên..." aria-label="First name">
+                        <input type="text" class="form-control" placeholder="Mời nhập họ tên..." name="name" aria-label="First name">
                     </div>
                     <div class="col">
                         <label>Số Điện Thoại<span>*</span></label>
-                        <input type="text" class="form-control" placeholder="Mời nhập số điện thoại..." aria-label="">
+                        <input type="text" class="form-control" placeholder="Mời nhập số điện thoại..." name="phone" aria-label="">
                     </div>
                 </div>
                 <div class="  row pl-10 pt-4 pr-3 "  >
                     <label>Lời Nhắn<span>*</span></label>
-                   <textarea name=""class="form-control" placeholder="Mời Nhập Nội Dung Lời Nhắn..." cols="30" rows="10"></textarea>
+                   <textarea name="message"class="form-control" placeholder="Mời Nhập Nội Dung Lời Nhắn..." cols="30" rows="10"></textarea>
                 </div>
                 <div class="payment_method ml-6 mt-4">
                     <label>Phương thức thanh toán<span>*</span></label>

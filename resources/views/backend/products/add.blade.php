@@ -122,11 +122,11 @@ Tạo sản phẩm
         </div>
     </form>
 </div>
+@endsection
 @section('ckeditor')
 <script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
 <script>    
       CKEDITOR.replace('descs');
       CKEDITOR.replace('details');
-
     </script>
 @endsection
