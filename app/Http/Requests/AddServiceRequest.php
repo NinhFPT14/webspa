@@ -30,6 +30,7 @@ class AddServiceRequest extends FormRequest
             'description' => 'required|max:65535',
             'detail' => 'required|max:65535',
             'discount' => 'required|max:255',
+            'category_id' => 'required'
             
         ];
     }
@@ -56,6 +57,7 @@ class AddServiceRequest extends FormRequest
             'price' =>'Giá cũ',
             'discount' =>'Giá giảm',
             'time_working' => 'Thời gian làm',
+            'category_id' => 'Loại danh mục'
         ];
     }
 }

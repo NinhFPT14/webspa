@@ -7,11 +7,14 @@ use App\Model\Service;
 use App\Http\Requests\AddServiceRequest;
 use App\Http\Requests\EditServiceRequest;
 use Illuminate\Support\Str;
+use DB;
 
 class ServiceController extends Controller
 {
     public function add(){
-        return view('backend.services.add');
+        $cate = DB::table('categories')->where('type',1)->get();
+        // dd($cate);
+        return view('backend.services.add', ['cate' => $cate]);
     }
 
     public function store(AddServiceRequest $request){
@@ -21,7 +24,6 @@ class ServiceController extends Controller
         $data['status'] = 0;
         $data['total_time'] = 0;
         $data['time_distance'] = 0;
-        $data['category_id'] = 1;
         $data['slug'] = Str::slug($request->name.$request->id.'-');
         // dd($data);
         $Service = Service::create($data);

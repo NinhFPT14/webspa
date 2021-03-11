@@ -32,6 +32,19 @@ Tạo dịch vụ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Danh mục</label>
+                            <select name="category_id" id="category_id">
+                            @foreach($cate as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                            @endforeach
+                            </select>
+                            @error('category_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Thời gian thực hiện (phút)</label>
                             <input type="number" name="time_working" class="form-control" id="formGroupExampleInput"
@@ -48,6 +61,7 @@ Tạo dịch vụ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Tiêu đề</label>
                             <textarea class="form-control" name="description" id="description" rows="1" >{{ old('description')}}</textarea>
