@@ -11,7 +11,6 @@ Route::get('hi',function(){
     alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
 return view('frontend.contact');
 });
-
 Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
 //FeedbackController
@@ -46,6 +45,7 @@ Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout')
 
 //appointmentcontroller
 Route::get('/appointment','Frontend\AppointmentController@appointment')->name('appointment');
+Route::post('/gui-lich-dat','Frontend\AppointmentController@setup')->name('saveAppointment');
 
 Route::get('dashboard',function(){
     return view('backend.dashboard');
