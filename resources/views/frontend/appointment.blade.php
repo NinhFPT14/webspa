@@ -32,12 +32,18 @@
                 <div class="col-md-13 pl-4 " >
                     <label>Chọn Dịch Vụ*</label>
                     <select class="mul-select form-control"  multiple>
-                        <optgroup label="Chọn dịch vụ/"></optgroup>                 
-                        <option value="Cambodia">tu dep trai</option>
-                        <option value="Khmer">thi xinh gai</option>
-                        <option value="Thiland">vinh lon</option>
-                        <option value="Koren">cong nhieu tien</option>
-                        <option value="China">ninh hot boy</option>
+                    <?php
+                        $category = DB::table('categories')->where('type',1)->where('status',0)->get();
+                    ?>
+                    @foreach($category as $value)
+                        <optgroup label="{{$value->name}}"></optgroup>
+                        <?php
+                            $service = DB::table('services')->where('status',0)->where('category_id', $value->id)->get();
+                        ?>  
+                        @foreach($service as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endforeach                 
+                    @endforeach
                     </select>
 
                 </div>
