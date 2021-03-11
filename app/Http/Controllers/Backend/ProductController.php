@@ -68,9 +68,9 @@ class ProductController extends Controller
     public function status($id,$status){
         Product::where('id',$id)->update(['status'=>$status]);
         if($status == 0){
-            alert()->error('Đã tắt sản phẩm'); 
+            alert()->success('Đã bật sản phẩm');
         }else{
-            alert()->success('Đã bật sản phẩm'); 
+            alert()->error('Đã tắt sản phẩm'); 
         }
         return redirect()->route('listProduct');
     }

@@ -20,6 +20,7 @@ class FooterController extends Controller
               $flight->email = $request->email;
               $flight->link_fanpage = $request->link_fanpage;
               $flight->save();
+              alert()->success('Tạo thành công footer'); 
             return redirect()->route('listFooter');
           }
           public function list (){
@@ -28,6 +29,7 @@ class FooterController extends Controller
          }
          public function delete($id){
             Footer::where('id', $id)->delete();
+            alert()->error('Xóa thành công');
             return redirect()->route('listFooter');
         }
         public function edit($id){
@@ -41,6 +43,7 @@ class FooterController extends Controller
               $flight->email = $request->email;
               $flight->link_fanpage = $request->link_fanpage;
               $flight->save();
+              alert()->success('Sửa thành công footer'); 
            return redirect()->route('listFooter');
         
         }  
