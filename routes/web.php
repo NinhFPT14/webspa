@@ -43,9 +43,8 @@ Route::get('/cart','Frontend\CartController@cart')->name('cart');
 //checkoutcontroller
 Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout');
 
-//appointmentcontroller
+//frontend / appointmentcontroller 
 Route::get('/appointment','Frontend\AppointmentController@appointment')->name('appointment');
-Route::post('/gui-lich-dat','Frontend\AppointmentController@setup')->name('saveAppointment');
 
 Route::get('dashboard',function(){
     return view('backend.dashboard');
@@ -106,4 +105,8 @@ Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status'
 Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
 Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
 Route::post('cap-nhat-dich-vu/{id}','Backend\ServiceController@update')->name('updateService');
+
+
+// Đặt lịch AppointmentController
+Route::post('/gui-lich-dat','Backend\AppointmentController@save')->name('saveAppointment');
 
