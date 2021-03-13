@@ -11,8 +11,6 @@ class AppointmentController extends Controller
     return view('frontend.appointment');
    }
 
-   public function setup(Request $request) {
-      dd($request->all());
-   }
+  
 
 }
