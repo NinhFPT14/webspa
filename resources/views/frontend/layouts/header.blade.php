@@ -86,7 +86,6 @@
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
                                                 <a href="{{route('cart')}}">Giỏ Hàng</a>
-                                                <a href="{{route('checkout')}}">Thanh Toán</a>
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +178,6 @@
                                         <div class="mini_cart_footer">
                                             <div class="cart_button">
                                                 <a href="{{route('cart')}}">Giỏ Hàng</a>
-                                                <a href="{{route('checkout')}}">Thanh Toán</a>
                                             </div>
                                         </div>
                                     </div>
