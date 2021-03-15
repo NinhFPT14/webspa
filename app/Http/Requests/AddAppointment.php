@@ -25,13 +25,13 @@ class AddAppointment extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'phone' => 'required|digits_between:10,11',
-            'note' => 'required|max:65535',
+            'phone' => 'required|numeric|digits_between:10,11',
+            'note' => 'max:65535',
             'time_ficked' => 'required|max:255',
             'time_start' => 'required|date|after_or_equal:today',
             'service_id' => 'required',
             'service_id.*' => 'required|numeric',
-            'check_method' => 'required|numeric',
+            'check_method' => 'required',
             
         ];
     }
