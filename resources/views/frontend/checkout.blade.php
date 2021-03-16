@@ -86,7 +86,6 @@
                     </div>
 
                 </div>
-
                 <div class="bg-gray-50 pt-20">
                     <div class="row pl-4 pt-9 w-96">
                         <h5 class="pl-4" style="margin-left: -11px;">Thanh toán</h5>
@@ -136,9 +135,15 @@
                             <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
                             <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
                         </div>
-
+                        <div class="grid grid-cols-2">
+                        <div class="pt-10">
+                            <a class="btn btn-warning text-white">Cập nhật</a>
+                        </div>
+                    </div>
                     </div>
                 </div>
+
+
                 <div class=" bg-gray-100 h-screen  border ">
                     <h5 class="pt-3 pl-2" style="font-size: 17px;">Đơn đặt lịch ({{count($service)}}) <span
                             class="pl-9">Mã
