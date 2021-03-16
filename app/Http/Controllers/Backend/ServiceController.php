@@ -7,6 +7,7 @@ use App\Model\Service;
 use App\Http\Requests\AddServiceRequest;
 use App\Http\Requests\EditServiceRequest;
 use Illuminate\Support\Str;
+use App\Model\Appointment;
 use DB;
 
 class ServiceController extends Controller
@@ -67,6 +68,11 @@ class ServiceController extends Controller
         $flight = Service::where('id',$id)->update($data);
         alert()->success('Sửa thành công dịch vụ');
         return redirect()->route('listService');
+    }
+
+    public function listAppointment(){
+        $data = Appointment::paginate(10);
+        return view('backend.services.listAppointment',compact('data'));
     }
 }
 
