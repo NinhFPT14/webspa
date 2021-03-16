@@ -130,3 +130,21 @@ Route::get('xoa-voucher-san-pham/{id}','Backend\ProductVoucherController@delete'
 Route::get('/sua-voucher-san-pham/{id}', 'Backend\ProductVoucherController@edit')->name('editVoucherProduct');
 Route::post('/cap-nhat-voucher-san-pham/{id}', 'Backend\ProductVoucherController@update')->name('updateVoucherProduct');
 Route::get('trang-thai-voucher-san-pham/{id}/{status}','Backend\ProductVoucherController@status')->name('statusVoucherProduct');
+
+// Ghế làm locationCOntroller
+Route::get('/tao-ghe','Backend\LocationController@add')->name('addLocation');
+Route::post('/luu-ghe','Backend\LocationController@save')->name('saveLocation');
+Route::get('/danh-sach-ghe','Backend\LocationController@list')->name('listLocation');
+Route::get('/trang-thai-ghe/{id}/{status}','Backend\LocationController@status')->name('statusLocation');
+Route::get('/xoa-ghe/{id}','Backend\LocationController@delete')->name('deleteLocation');
+Route::get('/sua-ghe/{id}','Backend\LocationController@edit')->name('editLocation');
+Route::post('/cap-nhat-ghe/{id}','Backend\LocationController@update')->name('updateLocation');
+
+// Nhân viên Staffcontroller
+Route::get('/them-nhan-vien','Backend\StaffController@add')->name('addStaff');
+Route::post('/luu-nhan-vien','Backend\StaffController@save')->name('saveStaff');
+Route::get('/danh-sach-nhan-vien','Backend\StaffController@list')->name('listStaff');
+Route::get('/trang-thai-nhan-vien/{id}/{status}','Backend\StaffController@status')->name('statusStaff');
+Route::get('/xoa-nhan-vien/{id}','Backend\StaffController@delete')->name('deleteStaff');
+Route::get('/sua-nhan-vien/{id}','Backend\StaffController@edit')->name('editStaff');
+Route::post('/cap-nhat-nhan-vien/{id}','Backend\StaffController@update')->name('updateStaff');
