@@ -18,6 +18,7 @@ class FeedbackController extends Controller
         return redirect()->route('contact');
       }
       public function list (){
+        
         $data = Feedback::get();
         return view('backend.feedbacks.list',compact('data'));
      }

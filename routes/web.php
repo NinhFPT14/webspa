@@ -11,7 +11,6 @@ Route::get('hi',function(){
     alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
 return view('frontend.contact');
 });
-
 Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
 //FeedbackController
@@ -42,9 +41,10 @@ Route::get('/cart','Frontend\CartController@cart')->name('cart');
 
 
 //checkoutcontroller
-Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout');
+Route::get('/checkout/{id}','Frontend\CheckoutController@checkout')->name('checkout');
+Route::post('/checkout-voucher/{id}','Frontend\CheckoutController@voucher')->name('voucher');
 
-//appointmentcontroller
+//frontend / appointmentcontroller 
 Route::get('/appointment','Frontend\AppointmentController@appointment')->name('appointment');
 
 Route::get('dashboard',function(){
@@ -86,6 +86,7 @@ Route::get('danh-sach-san-pham','Backend\ProductController@list')->name('listPro
 Route::get('sua-san-pham/{id}','Backend\ProductController@edit')->name('editProduct');
 Route::get('xoa-san-pham/{id}','Backend\ProductController@delete')->name('deleteProduct');
 Route::post('cap-nhat-san-pham/{id}','Backend\ProductController@update')->name('updateProduct');
+Route::get('trang-thai-san-pham/{id}/{status}','Backend\ProductController@status')->name('statusProduct');
 
 
 //LogoController
@@ -105,3 +106,26 @@ Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status'
 Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
 Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
 Route::post('cap-nhat-dich-vu/{id}','Backend\ServiceController@update')->name('updateService');
+
+
+// Đặt lịch AppointmentController
+Route::post('/gui-lich-dat','Backend\AppointmentController@save')->name('saveAppointment');
+
+
+// vouchers service
+Route::get('/tao-voucher-dich-vu','Backend\VoucherController@add')->name('addVoucherService');
+Route::post('luu-voucher-dich-vu','Backend\VoucherController@store')->name('saveVoucherService');
+Route::get('danh-sach-voucher-dich-vu','Backend\VoucherController@list')->name('listVoucherService');
+Route::get('xoa-voucher/{id}','Backend\VoucherController@delete')->name('deleteVoucherService');
+Route::get('/sua-voucher/{id}', 'Backend\VoucherController@edit')->name('editVoucherService');
+Route::post('/cap-nhat-voucher/{id}', 'Backend\VoucherController@update')->name('updateVoucherService');
+Route::get('trang-thai-voucher-dich-vu/{id}/{status}','Backend\VoucherController@status')->name('statusVoucherService');
+
+// vouchers product
+Route::get('/tao-voucher-san-pham','Backend\ProductVoucherController@add')->name('addVoucherProduct');
+Route::post('luu-voucher-san-pham','Backend\ProductVoucherController@store')->name('saveVoucherProduct');
+Route::get('danh-sach-voucher-san-pham','Backend\ProductVoucherController@list')->name('listVoucherProduct');
+Route::get('xoa-voucher-san-pham/{id}','Backend\ProductVoucherController@delete')->name('deleteVoucherProduct');
+Route::get('/sua-voucher-san-pham/{id}', 'Backend\ProductVoucherController@edit')->name('editVoucherProduct');
+Route::post('/cap-nhat-voucher-san-pham/{id}', 'Backend\ProductVoucherController@update')->name('updateVoucherProduct');
+Route::get('trang-thai-voucher-san-pham/{id}/{status}','Backend\ProductVoucherController@status')->name('statusVoucherProduct');

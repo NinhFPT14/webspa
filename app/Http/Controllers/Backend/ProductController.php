@@ -16,7 +16,7 @@ use File;
 class ProductController extends Controller
 {
     public function list(){
-        $data = Product::where('status',0)->paginate(9);
+        $data = Product::paginate(9);
         return view('backend.products.list',compact('data'));
     }
     public function add(){
@@ -27,7 +27,6 @@ class ProductController extends Controller
         $data = $request->all();
         unset($data['_token'],$data['image']);
         $data['slug'] = 1;
-        $data['status'] = 0;
         if($request->hasFile('avatar')){
             $extension = $request->avatar->extension();
             $filename =  uniqid(). "." . $extension;
@@ -50,6 +49,7 @@ class ProductController extends Controller
             alert()->success('Tạo thành công sản phẩm'); 
             }
            }
+           alert()->success('Tạo thành công sản phẩm');
         return redirect()->route('addProduct');
     }
 
@@ -62,18 +62,30 @@ class ProductController extends Controller
         }
         ProductImage::where('product_id',$data->id)->delete();
         $data->delete();
-        alert()->error('Xóa thành công');
+        alert()->error('Đã xóa sản phẩm'); 
+        return redirect()->route('listProduct');
+    }
+
+    public function status($id,$status){
+        Product::where('id',$id)->update(['status'=>$status]);
+        if($status == 0){
+            alert()->success('Đã bật sản phẩm');
+        }else{
+            alert()->error('Đã tắt sản phẩm'); 
+        }
         return redirect()->route('listProduct');
     }
 
     public function edit($id){
         $category = Category::where('type',0)->get();
         $data = Product::find($id);
+        // dd($data);
         return view('backend.products.edit',compact('data','category'));
     }
 
     public function update(EditProductRequest $request ,$id){
         $data = $request->all();
+        // dd($data);
         unset($data['_token'],$data['image']);
         $product = Product::find($id);
         if($request->hasFile('avatar')){
@@ -102,6 +114,7 @@ class ProductController extends Controller
             ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
             }
            }
+           alert()->success('Sửa thành công sản phẩm');
            return redirect()->route('editProduct',['id'=>$product->id]);
     }
 }
