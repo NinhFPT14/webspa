@@ -130,3 +130,4 @@ Tạo sản phẩm
       CKEDITOR.replace('details');
     </script>
 @endsection
+
