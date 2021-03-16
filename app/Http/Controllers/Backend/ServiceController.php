@@ -18,8 +18,16 @@ class ServiceController extends Controller
 
     public function store(AddServiceRequest $request){
         $data = $request->all();
-        // dd($data);
         unset($data['_token']);
+        $data['slug'] = 1;
+        if($request->hasFile('image')){
+            $extension = $request->image->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $request->image->storeAs(
+              'image', $filename, 'public'
+            );
+            $data['avatar'] = "storage/".$path;  
+           }
         $data['status'] = 0;
         $data['total_time'] = 0;
         $data['time_distance'] = 0;
@@ -64,6 +72,17 @@ class ServiceController extends Controller
     public function update(EditServiceRequest $request ,$id){
         $data = $request->all();
         unset($data['_token']);
+        if($request->hasFile('image')){
+            $extension = $request->image->extension();
+            $filename =  uniqid(). "." . $extension;
+            $path = $request->image->storeAs(
+              'image', $filename, 'public'
+            );
+            $data['image'] = "storage/".$path;  
+           }
+        // dd($data);
+
+           Service::where('id',$id)->update($data);
         $flight = Service::where('id',$id)->update($data);
         alert()->success('Sửa thành công dịch vụ');
         return redirect()->route('listService');

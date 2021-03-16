@@ -25,6 +25,7 @@ class AddServiceRequest extends FormRequest
     {
         return [
             'name' =>'required|max:255|unique:services',
+            'image' => 'required',
             'time_working' => 'required|max:255',
             'price' => 'required|digits_between:4,11',
             'description' => 'required|max:65535',
@@ -52,6 +53,7 @@ class AddServiceRequest extends FormRequest
     public function attributes(){
         return [
             'name' =>'Tên dịch vụ',
+            'image' => 'Hình ảnh sản phẩm',
             'description' =>'Mô tả',
             'detail' =>'Chi tiết',
             'price' =>'Giá cũ',
