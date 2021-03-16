@@ -48,33 +48,31 @@
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Họ Tên<span class="text-danger">
                                     *</span></label>
-                            <input type="text" class="form-control" aria-label="First name" value="{{$data->name}}">
+                            <input type="text" readonly="readonly" class="form-control" aria-label="First name"
+                                value="{{$data->name}}">
                         </div>
                     </div>
                     <div class="row pl-4 pt-2">
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Số điện thoại<span class="text-danger">
                                     *</span></label>
-                            <input type="number" class="form-control" aria-label="" value="0{{$data->phone}}">
+                            <input type="number" readonly="readonly" class="form-control" aria-label=""
+                                value="0{{$data->phone}}">
                         </div>
                     </div>
                     <div class="row pl-4 pt-2">
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Giờ Làm<span class="text-danger">
                                     *</span></label>
-                            <select class="form-control" name="" id="">
-                                <option selected disabled value="">Chọn thời gian</option>
-                                <option {{$data->time_ficked == 'Sáng' ? 'selected':''}}>Sáng</option>
-                                <option {{$data->time_ficked == 'Chiều' ? 'selected':''}}>Chiều</option>
-                                <option {{$data->time_ficked == 'Tối' ? 'selected':''}}>Tối</option>
-                            </select>
+                            <input type="text" readonly="readonly" class="form-control" aria-label=""
+                                value="{{$data->time_ficked}}">
                         </div>
                     </div>
                     <div class="row pl-4 pt-2">
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Ngày hẹn<span class="text-danger">
                                     *</span></label>
-                            <input type="date" class="form-control" aria-label=""
+                            <input type="date" readonly="readonly" class="form-control" aria-label=""
                                 value="{{date('Y-m-d', strtotime($data->time_start))}}">
                         </div>
                     </div>
@@ -83,7 +81,7 @@
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Ghi Chú<span class="text-danger">
                                     *</span></label>
-                            <textarea name="" id="" class="form-control">{{$data->note}}</textarea>
+                            <textarea name="" id="" class="form-control" readonly="readonly">{{$data->note}}</textarea>
                         </div>
                     </div>
 
@@ -97,25 +95,26 @@
                         <div class="col h-10 w-64 h-12 pt-2 "
                             style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;margin-top: 4px;">
                             <label class="pl-1 " style="font-size: 14px;"><input type="radio" name="colorRadio"
-                                    value="red" {{$check_method == 1 ? 'checked':''}}> Chuyển khoản qua ngân hàng </label>
+                                    value="red" {{$check_method == 1 ? 'checked':''}}> Chuyển khoản qua ngân hàng
+                            </label>
                             <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
                                 style="color: rgb(0 149 255); padding-left: 7px; margin-top: 7px;"></ion-icon>
                         </div>
                         <div class="red box bg-gray-200">
-                            <p></p> Các bạn vui lòng chuyển khoản tới các số TK của Hoàng Kiên:</p>
+                            <p></p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
 
                             <p> Vietcombank:</p>
 
                             <p> Số TK: 0081000830127</p>
 
-                            <p> Nguyễn Hữu Thái Hoàng</p>
+                            <p> DƯƠNG THỊ QUYÊN</p>
 
 
                             <p> Vietinbank:</p>
 
                             <p> Số TK: 100000335060</p>
 
-                            <p> Nguyễn Hữu Thái Hoàng</p>
+                            <p> DƯƠNG THỊ QUYÊN</p>
 
 
                             <p> Sau khi CK các bạn vui lòng gửi mã đơn hàng và nội dung thanh toán.</p>
@@ -126,21 +125,16 @@
                         <div class="col h-10 w-64 h-12 pt-2 "
                             style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
                             <label class="pl-1" style="font-size: 14px;"><input type="radio" name="colorRadio"
-                                    value="green" {{$check_method == 0 ? 'checked':''}}> Thanh toán khi đến cửa hàng </label>
+                                    value="green" {{$check_method == 0 ? 'checked':''}}> Thanh toán khi đến cửa hàng
+                            </label>
                             <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
                                 style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
                         </div>
                         <div class="green box bg-gray-200 ">
-                            <p> Đối với các bạn ở xa Hà Nội, muốn sử dụng hình thức COD (thanh toán khi nhận
-                                hàng), các bạn vui lòng liên hệ với Hoàng Kiên để được hướng dẫn.</p>
+                            <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi được tư vấn và lên lịch làm.</p>
 
-                            <p> Hotline: 086.888.3663 hoặc chat tại Fanpage facebook.com/hoangkien.co</p>
-
-                            <p> - Các bạn sẽ thanh toán trực tiếp cho bên chuyển phát sau khi đã nhận được hàng.
-                            </p>
-
-                            <p> - Hoàng Kiên sẽ gửi hàng đi ngay trong ngày sau khi nhận được thanh toán tạm
-                                ứng. Khi nhận hàng các bạn thanh toán nốt số tiền còn lại. </p>
+                            <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
+                            <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
                         </div>
 
                     </div>
@@ -167,7 +161,7 @@
                             @csrf
                             <div class="pl-2 w-72">
                                 <input type="text" class="form-control" placeholder="Mời nhập mã giảm giá..."
-                                    name="voucher" >
+                                    name="voucher">
                             </div>
                             <div class="pl-28">
                                 <button type="submit" class="btn text-white"
