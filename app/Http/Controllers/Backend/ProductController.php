@@ -47,6 +47,7 @@ class ProductController extends Controller
               'product_image', $filename, 'public'
             );
             ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
+            alert()->success('Tạo thành công sản phẩm'); 
             }
            }
         return redirect()->route('addProduct');
@@ -61,6 +62,7 @@ class ProductController extends Controller
         }
         ProductImage::where('product_id',$data->id)->delete();
         $data->delete();
+        alert()->error('Xóa thành công');
         return redirect()->route('listProduct');
     }
 
