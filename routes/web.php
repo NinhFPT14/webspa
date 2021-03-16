@@ -42,7 +42,8 @@ Route::get('/cart','Frontend\CartController@cart')->name('cart');
 
 
 //checkoutcontroller
-Route::get('/checkout','Frontend\CheckoutController@checkout')->name('checkout');
+Route::get('/checkout/{id}','Frontend\CheckoutController@checkout')->name('checkout');
+Route::post('/checkout-voucher/{id}','Frontend\CheckoutController@voucher')->name('voucher');
 
 //frontend / appointmentcontroller 
 Route::get('/appointment','Frontend\AppointmentController@appointment')->name('appointment');
