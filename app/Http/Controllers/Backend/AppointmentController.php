@@ -20,7 +20,7 @@ class AppointmentController extends Controller
         foreach($request->service_id as $value){
             NumberService::create(['appointment_id'=>$appointment->id ,'service_id'=>$value]);
         };
-        DB::table('bill_services')->insert(['appointment_id'=>$appointment->id,'payment_methods'=>$request->check_method]);
+        BillService::create(['appointment_id'=>$appointment->id,'payment_methods'=>$request->check_method]);
         return redirect()->route('checkout',['id'=>$appointment->id]);
      }
 }
