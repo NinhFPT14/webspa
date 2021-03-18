@@ -30,16 +30,17 @@
                                         @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="{{route('service')}}"> Dịch Vụ</a>
+                                    <li class="sub_menu pages"><a href="{{route('service',['id'=>'all'])}}"> Dịch Vụ</a>
                                         <ul class="sub_menu pages">
                                         <?php
-                                           $service = DB::table('services')->where('status',0)->get();
+                                         $category = DB::table('categories')->where('type',1)->where('status',0)->get();
                                         ?>
-                                        @foreach($service as $key)
-                                        <li><a href="#">{{ $key->name }}</a></li>
+                                        @foreach($category as $value)
+                                            <li><a href="{{route('service',['id'=> $value->id])}}">{{$value->name}}</a></li>
                                         @endforeach
                                         </ul>
                                     </li>
+                                    
                                     <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
                                     <li><a href="{{route('blog')}}">Tin Tức </a>
                                         <ul class="sub_menu pages">
@@ -200,7 +201,7 @@
                                    
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="{{route('service')}}"> Dịch Vụ</a>
+                                    <a href=""> Dịch Vụ</a>
                                    
                                     
                                     
