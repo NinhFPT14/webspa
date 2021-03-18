@@ -19,32 +19,9 @@ Dịch Vụ
                                 </li>
                             @endforeach
                                 
-                                
 
                             </ul>
                         </div>
-                                             
-                        <!-- <div class="widget_list widget_categories">
-                            <h2>categories</h2>
-                            <ul>
-                                <li>
-                                    <a href="#">Categories1 <span>(6)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">Categories2 <span>(10)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">Categories3 <span>(4)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">Categories4 <span>(10)</span></a> 
-                                </li>
-                                <li>
-                                    <a href="#">Categories5 <span>(8)</span></a> 
-                                </li>
-
-                            </ul>
-                        </div>     -->
 
 
                         <div class="shop_sidebar_banner">
@@ -53,6 +30,7 @@ Dịch Vụ
                     </aside>
                     <!--List dịch vụ end-->
                 </div>
+                
                 <div class="col-lg-9 col-md-12">
                     <!--shop wrapper start-->
                     <!--shop toolbar start-->
@@ -66,10 +44,6 @@ Dịch Vụ
                     
                     <div class="shop_toolbar_wrapper">
                         <div class="shop_toolbar_btn">
-
-                            <button data-role="grid_3" type="button" class=" btn-grid-3" data-toggle="tooltip" title="3"></button>
-
-                            <button data-role="grid_4" type="button" class=" btn-grid-4" data-toggle="tooltip" title="4"></button>
 
                             <button data-role="grid_list" type="button" class="active btn-list" data-toggle="tooltip" title="List"></button>
                         </div>
@@ -85,10 +59,11 @@ Dịch Vụ
                                     <option value="5">Sort by price: high to low</option>
                                     <option value="6">Product Name: Z</option>
                                 </select>
-                            </form><div class="nice-select select_option" tabindex="0"><span class="current">Sort by average rating</span><ul class="list"><li data-value="1" class="option selected">Sort by average rating</li><li data-value="2" class="option">Sort by popularity</li><li data-value="3" class="option">Sort by newness</li><li data-value="4" class="option">Sort by price: low to high</li><li data-value="5" class="option">Sort by price: high to low</li><li data-value="6" class="option">Product Name: Z</li></ul></div>
+                            </form>
 
 
-                        </div><div class="nice-select niceselect_option" tabindex="0"><span class="current">Sort by average rating</span><ul class="list"><li data-value="1" class="option selected">Sort by average rating</li><li data-value="2" class="option">Sort by popularity</li><li data-value="3" class="option">Sort by newness</li><li data-value="4" class="option">Sort by price: low to high</li><li data-value="5" class="option">Sort by price: high to low</li><li data-value="6" class="option">Product Name: Z</li></ul></div>
+                        </div>
+
                         <div class="page_amount">
                             <p>Showing 1–9 of 21 results</p>
                         </div>

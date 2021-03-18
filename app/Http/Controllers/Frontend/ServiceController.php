@@ -14,7 +14,7 @@ class ServiceController extends Controller
         ->join('categories','categories.id','=','services.category_id')
         ->select('services.*','categories.id')
         ->get();
-        // dd($listByCate);
+        // dd($service);
         return view('frontend.service',['service' => $service]);
 
     }
