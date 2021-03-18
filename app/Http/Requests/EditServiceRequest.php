@@ -31,6 +31,7 @@ class EditServiceRequest extends FormRequest
                 Rule::unique('services')->ignore($this->id,'id'),
                 
             ],
+            'image' => 'required',
             'time_working' => 'required|max:255',
             'price' => 'required|max:10000',
             'description' => 'required|max:65535',
@@ -54,6 +55,7 @@ class EditServiceRequest extends FormRequest
     public function attributes(){
         return [
             'name' =>'Tên dịch vụ',
+            'image' => 'Hình ảnh',
             'description' =>'Mô tả',
             'detail' =>'Chi tiết',
             'price' =>'Giá cũ',

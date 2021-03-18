@@ -32,9 +32,12 @@
                                     </li>
                                     <li><a href="{{route('service')}}"> Dịch Vụ</a>
                                         <ul class="sub_menu pages">
-                                            <li><a href="#">dịch vụ 1</a></li>
-                                            <li><a href="#"></a>dịch vụ 2</a></li>
-
+                                        <?php
+                                           $service = DB::table('services')->where('status',0)->get();
+                                        ?>
+                                        @foreach($service as $key)
+                                        <li><a href="#">{{ $key->name }}</a></li>
+                                        @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>

@@ -15,13 +15,24 @@ Sửa dịch vụ
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form method="POST" action="{{route('updateService',['id'=>$data->id])}}">
+                    <form method="POST" action="{{route('updateService',['id'=>$data->id])}}" enctype="multipart/form-data"> 
                         @csrf
                         <div class="form-group">
                             <label for="formGroupExampleInput">Tên danh mục</label>
                             <input type="text" name="name" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập tên dịch vụ" value="{{ $data->name }}">
                             @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Hình ảnh cũ</label>
+                            <img src="{{ $data->image }}" alt="{{ $data->slug }}" >
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Hình ảnh</label>
+                            <input type="file"  name="image">
+                            @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

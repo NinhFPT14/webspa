@@ -39,7 +39,7 @@ Danh sách dịch vụ
                             <td scope="col">{{ number_format($value->discount) }}đ</td>
                             <td scope="col">{{ $value->time_working }} phút</td>
                             <td>
-                                <a href=""
+                                <a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"
                                     class="btn btn-primary" target="_blank">Xem</a>
                             </td>
                             <td>

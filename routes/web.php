@@ -23,8 +23,9 @@ Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product
 Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
 //ServiceController
-Route::get('/dich-vu','Frontend\ServiceController@service')->name('service');
-Route::get('/chi-tiet-dich-vu','Frontend\ServiceController@detailService')->name('detailService');
+Route::get('dich-vu','Frontend\ServiceController@service')->name('service');
+Route::get('chi-tiet-dich-vu/{slug}/{id}','Frontend\ServiceController@detailService')->name('detailService');
+
 
 //BlogController
 Route::get('/bai-viet','Frontend\BlogController@blog')->name('blog');

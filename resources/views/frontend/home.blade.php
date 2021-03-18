@@ -115,9 +115,9 @@ Trang chủ
                             <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('detailService')}}"><img
+                                        <a class="primary_img" href=""><img
                                                 src="frontEnd/img/product/product25.jpg" alt=""></a>
-                                        <a class="secondary_img" href="{{route('detailService')}}"><img
+                                        <a class="secondary_img" href=""><img
                                                 src="frontEnd/img/product/product27.jpg" alt=""></a>
                                         <div class="label_product">
 
@@ -136,7 +136,7 @@ Trang chủ
 
                                     <div class="product_content">
                                         <div class="product_name" style="text-align: center;">
-                                            <h4><a href="{{route('detailService')}}">Demo</a></h4>
+                                            <h4><a href="">Demo</a></h4>
                                         </div>
 
                                         <div class="text">

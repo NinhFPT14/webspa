@@ -33,6 +33,13 @@ Tạo dịch vụ
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="formGroupExampleInput">Hình ảnh</label>
+                            <input type="file"  name="image">
+                            @error('image')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="exampleFormControlSelect1">Danh mục</label>
                             <select name="category_id" class="form-control" id="exampleFormControlSelect1">
                                 @foreach($cate as $value)
