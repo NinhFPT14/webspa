@@ -1,6 +1,6 @@
 @extends("backend.layouts.master")
 @section("title")
-Danh sách dịch vụ
+Danh sách đơn đặt lịch
 @endsection
 @section('content')
 <div class="container-fluid">

@@ -20,7 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="backEnd/css/sb-admin-2.min.css" rel="stylesheet">
-
+    @yield('link')
 </head>
 
 <body id="page-top">
@@ -98,6 +98,7 @@
     <script src="backEnd/js/demo/chart-area-demo.js"></script>
     <script src="backEnd/js/demo/chart-pie-demo.js"></script>
     @yield('ckeditor')
+    @yield('js')
 </body>
 
 </html>

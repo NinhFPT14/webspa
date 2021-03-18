@@ -136,9 +136,6 @@
                             <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
                         </div>
                         <div class="grid grid-cols-2">
-                        <div class="pt-10">
-                            <a class="btn btn-warning text-white">Cập nhật</a>
-                        </div>
                     </div>
                     </div>
                 </div>
