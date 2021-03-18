@@ -141,8 +141,8 @@ Dịch Vụ
                                         <h4><a href="product-details.html">{{ $value->name }}</a></h4>
                                     </div>
                                      <div class="price_box">
-                                        <span class="current_price">$65.00</span>
-                                        <span class="old_price">$70.00</span>   
+                                        <span class="current_price">{{ $value->discount}} VNĐ</span>
+                                        <span class="old_price">{{ $value->price}} VNĐ</span>   
                                     </div>
                                     <div class="product_desc">
                                         {!! $value->description !!}

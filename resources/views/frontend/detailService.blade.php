@@ -3,20 +3,23 @@
 Chi tiết dịch vụ
 @endsection
 @section('content')
+
 <div class="breadcrumbs_area">
+
         <div class="container">   
             <div class="row">
+
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="index-5.html">Trang Chủ</a></li>
-                            <li><a href="product-details.html">Chi Tiết</a></li>
+                            <li><a href="">Dịch vụ</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>         
-    </div>
+</div>
     <!--breadcrumbs area end-->
     
     <div class="product_container">
@@ -25,7 +28,8 @@ Chi tiết dịch vụ
                 <!--product details start-->
                 <div class="product_details mb-60">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6">
+
+                        <div class="col-lg-12 col-md-6">
                            <div class="product-details-tab">
                                 <div id="img-1" class="zoomWrapper single-zoom">
                                     <a href="#">
@@ -62,7 +66,8 @@ Chi tiết dịch vụ
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6">
+
+                        <div class="col-lg-12 col-md-6">
                             <div class="product_d_right">
                                <form action="#">
 
@@ -107,7 +112,7 @@ Chi tiết dịch vụ
                                     </a>
                                 </div>
                                 <div class="rounded-3xl mt-30 bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('cart')}}">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
                                         <i class="fas fa-cart-plus"></i>
                                       Thêm vào giỏ hàng
                                     </a>
@@ -234,62 +239,6 @@ Chi tiết dịch vụ
                 </div>  
                 <!--product info end-->
             </div>
-            <!--product area start-->
-            <div class="product_wrapper special_products mb-60">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section_title title_style4">
-                                <h3>Dịch Vụ</h3>
-                        </div>
-                        <div class="row product_slick_row4">
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('detailService')}}"><img src="frontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="{{route('detailService')}}"><img src="frontEnd/img/product/product2.jpg" alt=""></a>
-                                      
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="{{route('detailService')}}" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="{{route('detailService')}}">Pendant, Made of White Pl...</a></h4>
-                                        </div>
-                                        <div class="product_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="price-container">
-                                             <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>   
-                                            </div>
-                                            <div class="wishlist_btn">
-                                                <a href="wishlist.html" title="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                          
-                           
-                        </div>
-                    </div>
-                </div>       
-            </div>
-            <!--product area end-->
 
            
         </div>

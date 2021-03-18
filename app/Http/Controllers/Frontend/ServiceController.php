@@ -20,9 +20,9 @@ class ServiceController extends Controller
     }
 
 
-    public function detailService($slug,$id){
+    public function detailService( $slug,$id ){
         $service = DB::table('services')->where('status',0)->find($id);
-        dd($service);
+        // dd($service);
         return view('frontend.detailService',['service' => $service]);
     }
 }
