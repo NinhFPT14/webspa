@@ -74,5 +74,9 @@ class ServiceController extends Controller
         $data = Appointment::paginate(10);
         return view('backend.services.listAppointment',compact('data'));
     }
+
+    public function sortAppointment(){
+        return view('backend.services.sortAppointment');
+    }
 }
 

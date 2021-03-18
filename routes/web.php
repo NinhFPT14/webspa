@@ -107,6 +107,7 @@ Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteS
 Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');
 Route::post('cap-nhat-dich-vu/{id}','Backend\ServiceController@update')->name('updateService');
 Route::get('don-dat-lich','Backend\ServiceController@listAppointment')->name('listAppointment');
+Route::get('bang-xep-lich','Backend\ServiceController@sortAppointment')->name('sortAppointment');
 
 
 // Đặt lịch AppointmentController
@@ -148,3 +149,11 @@ Route::get('/trang-thai-nhan-vien/{id}/{status}','Backend\StaffController@status
 Route::get('/xoa-nhan-vien/{id}','Backend\StaffController@delete')->name('deleteStaff');
 Route::get('/sua-nhan-vien/{id}','Backend\StaffController@edit')->name('editStaff');
 Route::post('/cap-nhat-nhan-vien/{id}','Backend\StaffController@update')->name('updateStaff');
+
+// maps
+Route::get('tao-ban-do','Backend\MapController@add')->name('addMap');
+Route::post('luu-ban-do','Backend\MapController@store')->name('storeMap');
+Route::get('danh-sach-ban-do','Backend\MapController@list')->name('listMap');
+Route::get('xoa-ban-do/{id}','Backend\MapController@delete')->name('deleteMap');
+Route::get('/sua-ban-do/{id}', 'Backend\MapController@edit')->name('editMap');
+Route::post('/cap-nhat-ban-do/{id}', 'Backend\MapController@update')->name('updateMap');
