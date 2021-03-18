@@ -130,13 +130,14 @@
                                 style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
                         </div>
                         <div class="green box bg-gray-200 ">
-                            <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi được tư vấn và lên lịch làm.</p>
+                            <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi
+                                được tư vấn và lên lịch làm.</p>
 
                             <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
                             <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
                         </div>
                         <div class="grid grid-cols-2">
-                    </div>
+                        </div>
                     </div>
                 </div>
 
@@ -147,13 +148,49 @@
                             đơn #{{$data->id}}</span> </h5>
                     <hr>
                     <div class=" grid grid-cols-3 h-29 bg-gray-200" style="overflow: scroll;">
-                        @foreach($service as $value)
-                        <div> <img src="storage/product_image/6049ea398890f.jpg" class="h-20 w-24 pl-4 pt-4" alt="">
+                        <?php
+                    $len = count($service);
+                    ?>
+                        @foreach($service as $key => $value)
+                        <div>
+                            <a href="{{route('deleteAppointment',['appointment_id'=> $data->id ,'service_id'=>$value->id])}}"
+                                class="text-danger">
+                                <ion-icon class="pt-10 pl-1" name="trash-outline"></ion-icon>
+                            </a>
+                            <img src="{{$value->image}}" class="h-20 w-20 " style="margin-top: -50px;margin-left: 30px;"
+                                alt="">
                         </div>
                         <div class="pt-10">
-                            <p style="font-size: 15px; font-weight: 500;">{{($value->name)}}</p>
+                            <p style="font-size: 15px; font-weight: 500;">{{($value->name)}} </p>
                         </div>
-                        <div class="pt-10">{{number_format($value->discount)}}đ</div>
+                        <div class="pt-10">{{number_format($value->discount)}}đ
+                        </div>
+                        @if( $key == $len -1)
+                        <?php
+                        $array = [];
+                        foreach($service as $key => $value){
+                            $array[] = $value->id;
+                        }
+                        $addService = DB::table('services')->whereNotIn('id',$array)->get();
+                        ?>
+                        <div class="pt-10">
+                            <form method="POST" action="{{route('addServiceAppointment',['id'=>$data->id])}}">
+                            @csrf
+                                <div class="pl-2 w-72">
+                                    <select name="service_id" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected disabled value="">Chọn thêm dịch vụ ...</option>
+                                        @foreach($addService as $value)
+                                        <option value="{{$value->id}}">{{$value->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="pl-28">
+                                    <button type="submit" class="btn text-white"
+                                        style="background-color: #357ebd; font-size: 13px;margin-top: -66px;margin-left: 177px;width: 78px;">Thêm</button>
+                                </div>
+                            </form>
+                        </div>
+                        @endif
                         @endforeach
                     </div>
 

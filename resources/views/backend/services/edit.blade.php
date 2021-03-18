@@ -26,12 +26,10 @@ Sửa dịch vụ
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Hình ảnh cũ</label>
-                            <img src="{{ $data->image }}" alt="{{ $data->slug }}" >
-                        </div>
-                        <div class="form-group">
                             <label for="formGroupExampleInput">Hình ảnh</label>
                             <input type="file"  name="image">
+                            <img src="{{ $data->image }}" alt="{{ $data->slug }}" style="width:200px" >
+
                             @error('image')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
