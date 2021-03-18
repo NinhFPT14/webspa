@@ -35,12 +35,14 @@ class CategoryController extends Controller
         $flight = Category::find($id);
         $flight->status = $status;
         $flight->save();
+        alert()->success('Tạo thành công danh mục'); 
         return redirect()->route('listCategory',['type'=>$flight->type]);
     }
 
     public function delete($id){
         $flight = Category::find($id);
         $flight->delete();
+        alert()->error('Xóa thành công');
         return redirect()->route('listCategory',['type'=>$flight->type]);
     }
 

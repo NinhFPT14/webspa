@@ -46,6 +46,7 @@ class ProductController extends Controller
               'product_image', $filename, 'public'
             );
             ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
+            alert()->success('Tạo thành công sản phẩm'); 
             }
            }
            alert()->success('Tạo thành công sản phẩm');
