@@ -21,19 +21,10 @@ class CheckoutController extends Controller
     }
 
     public function voucher(Request $request ,$id){
-<<<<<<< HEAD
-        $time_now =Carbon::now()->toDateTimeString(); 
-        dd($time_now);
-        $service = DB::table('number_services')->where('appointment_id',$id)->get();
-        $voucher = DB::table('service_vouchers')->where('code',$request->voucher)
-        ->orWhere('status',0)->orWhere('time_start', '<=',$time_now)->orWhere('time_end', '=>',$time_now)->get();
-        // dd($voucher);
-=======
         $time_now =Carbon::now()->toDateTimeString();
         $service = DB::table('number_services')->where('appointment_id',$id)->get();
         $voucher = DB::table('service_vouchers')->get();
         $voucher = DB::table('service_vouchers')->where('code',$request->voucher)->get();
->>>>>>> 31fb9bd39aac4e490292769d7a8936e79d0b4369
         if(count($voucher) == 1){
             foreach($voucher as $a){
                 if($time_now >= $a->time_start && $time_now <= $a->time_end  && $a->status == 0){
