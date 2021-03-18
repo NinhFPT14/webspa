@@ -10,6 +10,11 @@ class ServiceController extends Controller
 {
     public function service(){
         $service = DB::table('services')->where('status',0)->paginate(4);
+        $listByCate = DB::table('services')
+        ->join('categories','categories.id','=','services.category_id')
+        ->select('services.*','categories.id')
+        ->get();
+        // dd($listByCate);
         return view('frontend.service',['service' => $service]);
 
     }
