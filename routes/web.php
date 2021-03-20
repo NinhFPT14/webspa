@@ -42,11 +42,11 @@ Route::get('/cart','Frontend\CartController@cart')->name('cart');
 
 
 //checkoutcontroller
-Route::get('/checkout/{id}','Frontend\CheckoutController@checkout')->name('checkout');
-Route::post('/checkout-voucher/{id}','Frontend\CheckoutController@voucher')->name('voucher');
+Route::get('/xac-nhan-don-dat-lich/{id}','Frontend\CheckoutController@checkout')->name('checkout');
+Route::post('/ma-giam-gia-dat-lich/{id}','Frontend\CheckoutController@voucher')->name('voucher');
 
 //frontend / appointmentcontroller 
-Route::get('/appointment','Frontend\AppointmentController@appointment')->name('appointment');
+Route::get('/dat-lich','Frontend\AppointmentController@appointment')->name('appointment');
 
 Route::get('dashboard',function(){
     return view('backend.dashboard');
@@ -113,7 +113,8 @@ Route::get('bang-xep-lich','Backend\ServiceController@sortAppointment')->name('s
 
 // Đặt lịch AppointmentController
 Route::post('/gui-lich-dat','Backend\AppointmentController@save')->name('saveAppointment');
-
+Route::get('/xoa-dich-vu-lich-dat/{appointment_id}/{service_id}','Backend\AppointmentController@delete')->name('deleteAppointment');
+Route::post('/them-dich-vu-lich-dat/{id}','Backend\AppointmentController@addService')->name('addServiceAppointment');
 
 // vouchers service
 Route::get('/tao-voucher-dich-vu','Backend\VoucherController@add')->name('addVoucherService');

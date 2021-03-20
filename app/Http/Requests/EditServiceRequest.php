@@ -31,7 +31,7 @@ class EditServiceRequest extends FormRequest
                 Rule::unique('services')->ignore($this->id,'id'),
                 
             ],
-            'image' => 'required',
+            'image' => 'image|max:10000',
             'time_working' => 'required|max:255',
             'price' => 'required|max:10000',
             'description' => 'required|max:65535',

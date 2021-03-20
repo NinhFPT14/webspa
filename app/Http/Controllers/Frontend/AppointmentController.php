@@ -11,6 +11,4 @@ class AppointmentController extends Controller
     return view('frontend.appointment');
    }
 
-  
-
 }
