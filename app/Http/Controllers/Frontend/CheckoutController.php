@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Appointment;
+use App\Model\BillService;
 use DB;
 use Carbon\Carbon;
+use App\Http\Requests\editAppointment;
 class CheckoutController extends Controller
 {
     public function checkout($id){
@@ -48,6 +50,14 @@ class CheckoutController extends Controller
             }
         }
         alert()->error('Mã giảm giá không đúng');
+        return redirect()->route('checkout',['id'=>$id]);
+    }
+
+    public function save(editAppointment $request ,$id){
+        $data = $request->all();
+        unset($data['_token'],$data['check_method']);
+        Appointment::where('id',$id)->update($data);
+        BillService::where('appointment_id',$id)->update(['payment_methods'=>$request->check_method]);
         return redirect()->route('checkout',['id'=>$id]);
     }
    
