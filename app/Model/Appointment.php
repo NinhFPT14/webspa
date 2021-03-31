@@ -10,4 +10,9 @@ class Appointment extends Model
     public $timestamps = true;
     protected  $fillable =['name','phone','note','user_id','voucher_id','time_ficked','time_start','status'];
 
+    public function services()
+    {
+        return $this->belongsToMany(Service::class, 'number_services');
+    }
+
 }

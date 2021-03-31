@@ -24,4 +24,13 @@ class AppointmentController extends Controller
         BillService::create(['appointment_id'=>$appointment->id,'payment_methods'=>$request->check_method]);
         return redirect()->route('checkout',['id'=>$appointment->id]);
      }
+
+     public function apiGetDataById(Request $request){
+         if($request->has('id')){
+             $appointment = Appointment::find($request->id);
+             $appointment->load('services');
+             return response()->json(['status' => true, 'data' => $appointment]);
+         }
+         return response()->json(['status' => false, 'message' => 'Không có tham số id']);
+     }
 }

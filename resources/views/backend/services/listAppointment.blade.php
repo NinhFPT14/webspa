@@ -48,8 +48,7 @@ Danh sách đơn đặt lịch
                             <td>
                                 <a href="" class="btn btn-primary" target="_blank">Xem</a>
                             </td>
-                            <td><a type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Xếp lịch</a>
+                            <td><button type="button" class="btn btn-success btn-xep-lich" data-orderid="{{$value->id}}" >Xếp lịch</button>
                                 <a href="{{route('deleteService',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>
@@ -66,7 +65,7 @@ Danh sách đơn đặt lịch
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-green-500 ">
@@ -79,7 +78,7 @@ Danh sách đơn đặt lịch
                         <div class="row pl-4 pt-2">
                             <div class="col">
                                 <label>Họ Tên<span class="text-danger"> *</span></label>
-                                <input type="text" class="form-control" aria-label="First name">
+                                <input type="text" class="form-control" id="modal_name" aria-label="First name">
                             </div>
                         </div>
                         <div class="row pl-4 pt-2">
@@ -90,13 +89,11 @@ Danh sách đơn đặt lịch
                         </div>
                         <div class="col-md-32 pl-4">
                             <label>Dịch Vụ<span class="text-danger"> *</span></label> <br>
-                            <select class="mul-select form-control" style="width: 532px;" multiple>
+                            <select class="mul-select form-control" id="modal_service" style="width: 532px;" multiple>
                                 <optgroup label="Chọn dịch vụ/"></optgroup>
-                                <option value="Cambodia">tu dep trai</option>
-                                <option value="Khmer">thi xinh gai</option>
-                                <option value="Thiland">vinh lon</option>
-                                <option value="Koren">cong nhieu tien</option>
-                                <option value="China">ninh hot boy</option>
+                                @foreach($services as $sv)
+                                <option value="{{$sv->id}}">{{$sv->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="row pl-4 pt-2">
@@ -212,14 +209,13 @@ Danh sách đơn đặt lịch
     </div>
 </div>
 
+
+@endsection
 @section("js")
 <script>
 $(document).ready(function() {
-    $(".mul-select").select2();
-})
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
+    // $(".mul-select").select2();
+
     var html =
         '<tr> <td><input class="form-control" type="text" name="service" required></td><td><textarea name="service" class="form-control" id="" ></textarea></td><td><input type="button" class="btn btn-danger" name="remove" id="remove" value="Hủy" required></td></tr>';
     var x = 1;
@@ -230,16 +226,39 @@ $(document).ready(function() {
         $(this).closest('tr').remove();
     })
 
+    $('.btn-xep-lich').on('click', function(){
+        let appointmentId = $(this).data('orderid');
+        let apiGetAppointmentById = '{{route("appointment.getDataById")}}';
+        $.ajax({
+            url: apiGetAppointmentById,
+            method: "POST",
+            data: {
+                id: appointmentId,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(response){
+                let appointmentData = response.data;
+                console.log(appointmentData);
+                $('#modal_name').val(appointmentData.name);
+                let modalOption = $('#modal_service').find('option');
+                // console.log(modalOption)
+                for(let i = 0; i < modalOption.length; i++){
+                    let index = appointmentData.services.findIndex(el => el.id == $(modalOption[i]).val());
+                    if(index != -1){
+                        $(modalOption[i]).prop('selected', true);
+                    }else{
+                        $(modalOption[i]).prop('selected', false);
+                    }
+                }
+
+                $('#appointmentModal').modal('show');
+                $(".mul-select").select2();
+            }
+        })
+    })
 });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
-    integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous">
-</script>
-@endsection
+
+
 @endsection
