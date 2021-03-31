@@ -82,7 +82,7 @@ Dịch Vụ
                            <ul>
                               <li class="add_to_cart"><a href="cart.html" title="" data-original-title="add to cart"><i class="ion-bag"></i></a></li>
                               <li class="compare"><a href="#" title="" data-original-title="Add to Compare"><i class="ion-ios-shuffle-strong"></i></a></li>
-                              <li class="quick_view"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="Quick View"><i class="ion-eye"></i></a></li>
+                              <li class="quick_view"><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}" data-toggle="modal" data-target="#modal_box" title="" data-original-title="Quick View"><i class="ion-eye"></i></a></li>
                            </ul>
                         </div>
                      </div>
@@ -125,8 +125,8 @@ Dịch Vụ
                         </div>
                         <div class="action_links">
                            <ul>
-                              <li class="add_to_cart"><a href="" title="" data-original-title="Đặt lịch ngay">Đặt Lịch</a></li>
-                              <li class="quick_view"><a href="#" data-toggle="modal" data-target="#modal_box" title="" data-original-title="Chi tiết dịch vụ"><i class="ion-eye"></i></a></li>
+                              <li class="add_to_cart"><a href="{{ route('appointment', ['id' => $value->id] ) }}" title="" data-original-title="Đặt lịch ngay">Đặt Lịch</a></li>
+                              <li class="quick_view"><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}" data-toggle="modal" data-target="#modal_box" title="" data-original-title="Chi tiết dịch vụ"><i class="ion-eye"></i></a></li>
                            </ul>
                         </div>
                      </div>

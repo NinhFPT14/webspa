@@ -8,6 +8,7 @@ use DB;
 class AppointmentController extends Controller
 {
    public function appointment(){
+   // dd($id);
     return view('frontend.appointment');
    }
 

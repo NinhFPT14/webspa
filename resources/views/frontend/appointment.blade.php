@@ -100,8 +100,6 @@
                     <input id="payment" name="check_method" type="radio" data-target="createp_account" value="0" />
                     <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh Toán
                         Tiền Mặt</label>
-
-
                 </div>
                 <div class="panel-default">
                     <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" value="1" />
