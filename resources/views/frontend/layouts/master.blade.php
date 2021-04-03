@@ -16,7 +16,6 @@
 
     {{-- <!-- CSS 
         {{-- scc --}}
-<link rel="stylesheet" href="frontEnd/css/plugins.css">
 <link rel="stylesheet" href="frontEnd/css/style.css">
 <link rel="stylesheet" href="frontEnd/css/all.min.css">
 <link rel="stylesheet" href="frontEnd/css/bootstrap.css">

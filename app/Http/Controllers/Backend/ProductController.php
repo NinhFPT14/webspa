@@ -16,7 +16,7 @@ use File;
 class ProductController extends Controller
 {
     public function list(){
-        $data = Product::where('status',0)->get();
+        $data = Product::where('status',0)->paginate(9);
         return view('backend.products.list',compact('data'));
     }
     public function add(){
@@ -38,7 +38,7 @@ class ProductController extends Controller
            }
         $product = Product::create($data);
         Product::where('id',$product->id)->update(['slug'=> Str::slug($product->name.$product->id.'-')]);
-        if($request->hasFile('image')){
+        if($request->hasFile('image')){ 
             $data = [];
             foreach($request->image as $key =>$value){
             $extension = $value->extension();
@@ -100,6 +100,6 @@ class ProductController extends Controller
             ProductImage::create(['product_id'=> $product->id , 'image' => "storage/".$path ]);
             }
            }
-           return redirect()->route('listProduct');
+           return redirect()->route('editProduct',['id'=>$product->id]);
     }
 }

@@ -1,4 +1,4 @@
-@extends("backEnd.layouts.master")
+@extends("backend.layouts.master")
 @section("title")
 Danh sách dịch vụ
 @endsection
@@ -22,7 +22,6 @@ Danh sách dịch vụ
                             <th scope="col">Giảm giá</th>
                             <th scope="col">Thời gian thực hiện</th>
                             <th scope="col">Trạng thái</th>
-                            <th scope="col">Thuộc danh mục</th>
                             <th scope="col">Hành động</th>
                         </tr>
                     </thead>
@@ -33,8 +32,9 @@ Danh sách dịch vụ
                         <td scope="col">{{ $value->name }}</td>    
                         <td scope="col">{{ $value->description }}</td>    
                         <td scope="col">{{ $value->price }}</td>
-                        <td scope="col">{{ $value->discount }}</td>
+                        <td scope="col">{{ $value->discount }} %</td>
                         <td scope="col">{{ $value->time_working }} phút</td>
+                        
                         <td>
                                 @if($value->status == 0)
                                 <a class="btn btn-success" href="{{route('statusService',['id'=>$value->id,'status'=>1])}}" onclick="return confirm('Bạn có chắc chắn muốn tắt')">ON</a>
@@ -42,16 +42,22 @@ Danh sách dịch vụ
                                 <a class="btn btn-danger" href="{{route('statusService',['id'=>$value->id,'status'=>0])}}" onclick="return confirm('Bạn có chắc chắn muốn bật')">OFF</a>
                                 @endif
                         </td>
-                        <td>{{ $value->category_id }}</td>
+                        
 
                         <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteService',['id'=>$value->id])}}"
                             class="btn btn-danger">Xóa</a>
-                                <a href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
+                                <a onclick="return confirm('Bạn có chắc chắn muốn sửa')" href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
                         </td>
                         </tr>
                         @endforeach
                     </tbody>
+                    
                 </table>
+                    <div class="d-flex justify-content-center">                
+                        <ul class="pagination pagination-sm m-t-none m-b-none">
+                            {!!$data->links()!!}
+                        </ul>
+                    </div>
             </div>
         </div>
     </div>

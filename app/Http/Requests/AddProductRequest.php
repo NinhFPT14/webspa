@@ -26,7 +26,7 @@ class AddProductRequest extends FormRequest
         return [
          'name' =>'required|max:255|unique:products',
          'category_id' =>'required',
-         'description' =>'required|max:255',
+         'description' =>'required|max:65535',
          'detail' =>'required|max:65535',
          'price' =>'required|digits_between:4,11',
          'discount' =>'required|digits_between:4,11',
@@ -43,7 +43,7 @@ class AddProductRequest extends FormRequest
             'max'=>':attribute không được vượt quá :max',
             'unique'=>':attribute đã được sử dụng',
             'digits_between'=>':attribute phải là số và từ 4 đến 11 số',
-            'max' => ':attribute kích thước không được vượt quá 10000kb',
+            'max' => ':attribute kích thước không được vượt quá :max',
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute phải là 4 ảnh',
         ];

@@ -79,6 +79,7 @@
             </div>
         </div>
     </div>
+    @include('sweetalert::alert')
 
     <!-- Bootstrap core JavaScript-->
     <script src="backEnd/vendor/jquery/jquery.min.js"></script>

@@ -25,13 +25,15 @@ class LogoController extends Controller
             );
             $flight->image = "storage/".$path;  
            }
-           $status = Logo::where('status',0)->get();
-           if(count($status) == 0){
-            $flight->status = 0;
-           }else{
-            $flight->status = 1;
-           }
+        $status = Logo::where('status',0)->get();
+        if($request->status == 0 and count($status) >= 1){
+          foreach($status as $value){
+            Logo::where('id',$value->id)->update(['status' => 1]);
+          }
+        }
+        $flight->status =$request->status; 
         $flight->save();
+        alert()->success('Tạo thành công logo'); 
       return redirect()->route('listLogo');
     }
 
@@ -44,6 +46,7 @@ class LogoController extends Controller
       $data = Logo::find($id);
       File::delete($data->image);
       Logo::destroy($id);
+      alert()->error('Xóa thành công');
       return redirect()->route('listLogo');
       }
 
@@ -53,31 +56,40 @@ class LogoController extends Controller
       }
 
       public function update(EditLogoRequest $request ,$id){
-        $flight = Logo::find($id);
-        File::delete($flight->image);
-        if($request->hasFile('image')){
-            $extension = $request->image->extension();
-            $filename =  uniqid(). "." . $extension;
-            $path = $request->image->storeAs(
-              'image_logo', $filename, 'public'
-            );
-          $flight->image = "storage/".$path;  
-          } 
-        $flight->save();
+          $flight = Logo::find($id);
+          if($request->hasFile('image')){
+          File::delete($flight->image);
+              $extension = $request->image->extension();
+              $filename =  uniqid(). "." . $extension;
+              $path = $request->image->storeAs(
+                'image_logo', $filename, 'public'
+              );
+            $flight->image = "storage/".$path;  
+            } 
+            $status = Logo::where('status',0)->where('id','!=',$id)->get();
+            if($request->status == 0 and count($status) >= 1){
+             foreach($status as $value){
+              Logo::where('id',$value->id)->update(['status' => 1]);
+            }
+            }
+            $flight->status = $request->status;  
+          $flight->save();
+        alert()->success('Sửa thành công logo');
         return redirect()->route('listLogo');
-
       }  
 
       public function status($id , $status){
         $data = Logo::find($id);
         if($data->status == 0){
           Logo::where('id',$id)->update(['status' => 1]);
+          alert()->error('Đã tắt logo'); 
         }else{
           Logo::where('id',$id)->update(['status' => 0]);
           $data = Logo::where('id','!=',$id)->get();
           foreach($data as $value){
             Logo::where('id',$value->id)->update(['status' => 1]);
           }
+          alert()->success('Đã bật logo'); 
         }
         return redirect()->route('listLogo');
       }

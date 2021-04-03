@@ -1,10 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 // HomeController
 Route::get('/','Frontend\HomeController@home')->name('home');
+Route::get('hi',function(){
+    alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
+return view('frontend.contact');
+});
+
 Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
 //FeedbackController
@@ -13,7 +20,7 @@ Route::post('luu-feedback','Frontend\FeedbackController@save')->name('saveFeedba
 Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listFeedback');
 
 //ProductController
-Route::get('/san-pham','Frontend\ProductController@product')->name('product');
+Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
 Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
 //ServiceController
@@ -93,7 +100,7 @@ Route::get('/trang-thai-logo/{id}/{status}', 'Backend\LogoController@status')->n
 //Dich-Vu-Controller
 Route::get('/tao-dich-vu','Backend\ServiceController@add')->name('addService');
 Route::post('luu-dich-vu','Backend\ServiceController@store')->name('saveService');
-Route::get('/danh-sach-dich-vu','Backend\ServiceController@list')->name('listService');
+Route::get('danh-sach-dich-vu','Backend\ServiceController@list')->name('listService');
 Route::get('trang-thai-dich-vu/{id}/{status}','Backend\ServiceController@status')->name('statusService');
 Route::get('xoa-dich-vu/{id}','Backend\ServiceController@delete')->name('deleteService');
 Route::get('sua-dich-vu/{id}','Backend\ServiceController@edit')->name('editService');

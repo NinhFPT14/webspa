@@ -171,6 +171,11 @@ Dịch Vụ
                                     </div>
                                     <div class="action_links">
                                         <ul>
+<<<<<<< HEAD
+=======
+                                        <div class="action_links">
+                                        <ul>
+>>>>>>> 4448bfe99f457adb815da62acd66e4f99425ba88
                                             <li class="add_to_cart"><a href="{{route('cart')}}" title="add to cart">Thêm Vào Giỏ</a></li>
                                            
                                             <li class="quick_view"><a href="#" data-toggle="modal"
@@ -178,6 +183,11 @@ Dịch Vụ
                                                         class="ion-eye"></i></a></li>
                                                         <li class="add_to_cart"><a href="{{route('appointment')}}" title="đặt lịch">Đặt Lịch</a></li>
                                                         
+<<<<<<< HEAD
+=======
+                                        </ul>
+                                    </div>
+>>>>>>> 4448bfe99f457adb815da62acd66e4f99425ba88
                                         </ul>
                                     </div>
                                 </div>

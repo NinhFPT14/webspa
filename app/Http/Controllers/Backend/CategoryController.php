@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Category;
+use App\Model\Product;
 use App\Http\Requests\AddCategoryRequest;
 use App\Http\Requests\EditCategoryRequest;
+use RealRashid\SweetAlert\Facades\Aler;
+
 
 class CategoryController extends Controller
 {
@@ -19,6 +22,7 @@ class CategoryController extends Controller
         unset($data['_token']);
         $data['status'] =0;
         $category = Category::create($data);
+        alert()->success('Thành công', "Tạo thành công danh mục $request->name"); 
         return redirect()->route('addCategory');
     }
 
@@ -49,6 +53,7 @@ class CategoryController extends Controller
         $data = $request->all();
         unset($data['_token']);
         $flight = Category::where('id',$id)->update($data);
+        alert()->success('Sửa thành công', "Sửa thành công danh mục $request->name"); 
         return redirect()->route('listCategory',['type'=>$data['type']]);
     }
 }

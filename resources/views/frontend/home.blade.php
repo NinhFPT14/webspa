@@ -3,6 +3,7 @@
 Trang chủ
 @endsection
 @section('content')
+
 <!--slider area start-->
 <section class="slider_section slider_section_three">
     <div class="slider_area owl-carousel">
