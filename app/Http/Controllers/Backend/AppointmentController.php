@@ -14,15 +14,22 @@ use App\Http\Requests\AddAppointment;
 class AppointmentController extends Controller
 {
     public function save(AddAppointment $request) {
-        $data = $request->all();
-        $data['status'] = 0;
-        unset($data['_token'],$data['check_method']);
-        $appointment = Appointment::create($data);
-        foreach($request->service_id as $value){
-            NumberService::create(['appointment_id'=>$appointment->id ,'service_id'=>$value]);
-        };
-        BillService::create(['appointment_id'=>$appointment->id,'payment_methods'=>$request->check_method]);
-        return redirect()->route('checkout',['id'=>$appointment->id]);
+        // dd($request->all());
+        try {
+            $data = $request->all();
+            $data['status'] = 0;
+            unset($data['_token'],$data['check_method']);
+            $appointment = Appointment::create($data);
+            foreach($request->service_id as $value){
+                NumberService::create(['appointment_id'=>$appointment->id ,'service_id'=>$value]);
+            };
+            BillService::create(['appointment_id'=>$appointment->id,'payment_methods'=>$request->check_method]);
+            return redirect()->route('checkout',['id'=>$appointment->id]);
+        } catch (Exception $e) {
+            return redirect()->route('appointment');
+        }
+        
+        
      }
 
      public function apiGetDataById(Request $request){
@@ -33,4 +40,6 @@ class AppointmentController extends Controller
          }
          return response()->json(['status' => false, 'message' => 'Không có tham số id']);
      }
+
+     
 }
