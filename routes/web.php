@@ -52,6 +52,7 @@ Route::group(['middleware' => ['CheckUser']], function () {
         Route::get('/xac-nhan/{id}','Frontend\CheckoutController@checkout')->name('checkout');
         Route::post('/ma-giam-gia/{id}','Frontend\CheckoutController@voucher')->name('voucher');
         Route::post('/luu-xac-nhan/{id}','Frontend\CheckoutController@save')->name('saveCheckout');
+        
     });
 
 
@@ -129,6 +130,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}','Backend\ServiceController@update')->name('updateService');
         Route::get('/don-dat-lich','Backend\ServiceController@listAppointment')->name('listAppointment');
         Route::get('/bang-xep-lich','Backend\ServiceController@sortAppointment')->name('sortAppointment');
+        Route::post('get-data-by-id', 'Backend\AppointmentController@apiGetDataById')->name('appointment.getDataById');
     });
 
     // vouchers service
@@ -184,6 +186,8 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/trang-sua/{id}', 'Backend\MapController@edit')->name('editMap');
         Route::post('/cap-nhat/{id}', 'Backend\MapController@update')->name('updateMap');
     });
+
+    
 
 });
 <<<<<<< HEAD
