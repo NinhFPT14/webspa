@@ -539,4 +539,5 @@ Trang chủ
 </div>
 
     <!-- Call -->
+    @include('sweetalert::alert')
     @endsection

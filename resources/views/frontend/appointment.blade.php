@@ -25,7 +25,7 @@
     <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
         @csrf
         <div class="pt-24 ">
-            <div action="" class="p-4">
+            <div class="p-4">
                 <div class="row pl-10 pt-4 pr-3 ">
                     <strong>Chọn dịch vụ<span class="text-danger">*</span></strong>
                     <select class="mul-select form-control " name="service_id[]" multiple>
@@ -117,11 +117,6 @@
 <script>
 $(document).ready(function() {
     $(".mul-select").select2();
-    // $("#mul-select").select2({
-    //     placeholder: "chọn dịch vụ", //placeholder
-    //     tags: true,
-    //     tokenSeparators: ['/', ',', ';', " "]
-    // });
 })
 </script>
 @endsection

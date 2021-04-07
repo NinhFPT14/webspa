@@ -16,15 +16,19 @@ class AppointmentController extends Controller
     public function save(AddAppointment $request) {
         // dd($request->all());
         try {
-            $data = $request->all();
-            $data['status'] = 0;
-            unset($data['_token'],$data['check_method']);
-            $appointment = Appointment::create($data);
+            $flight = new Appointment;
+            $flight->name = $request->name;
+            $flight->phone = $request->phone;
+            $flight->note = $request->note;
+            $flight->time_ficked = $request->time_ficked;
+            $flight->time_start = $request->time_start;
+            $flight->token = $request->_token;
+            $flight->status = 0;
+            $flight->save();
             foreach($request->service_id as $value){
-                NumberService::create(['appointment_id'=>$appointment->id ,'service_id'=>$value]);
+                NumberService::create(['appointment_id'=>$flight->id ,'service_id'=>$value]);
             };
-            BillService::create(['appointment_id'=>$appointment->id,'payment_methods'=>$request->check_method]);
-            return redirect()->route('checkout',['id'=>$appointment->id]);
+            return redirect()->route('checkout',['token'=>$flight->token,'id'=>$flight->id]);
         } catch (Exception $e) {
             return redirect()->route('appointment');
         }
