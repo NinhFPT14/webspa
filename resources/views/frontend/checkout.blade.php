@@ -48,7 +48,7 @@
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Họ Tên<span class="text-danger">
                                     *</span></label>
-                            <input type="text" readonly="readonly" class="form-control" aria-label="First name"
+                            <input type="text" class="form-control" aria-label="First name" name="name"
                                 value="{{$data->name}}">
                         </div>
                     </div>
@@ -56,23 +56,27 @@
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Số điện thoại<span class="text-danger">
                                     *</span></label>
-                            <input type="number" readonly="readonly" class="form-control" aria-label=""
-                                value="0{{$data->phone}}">
+                            <input type="text" class="form-control" aria-label="" name="phone" value="0{{$data->phone}}"
+                                maxlength="10">
                         </div>
                     </div>
                     <div class="row pl-4 pt-2">
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Giờ Làm<span class="text-danger">
                                     *</span></label>
-                            <input type="text" readonly="readonly" class="form-control" aria-label=""
-                                value="{{$data->time_ficked}}">
+                            <select class="form-control" name="time_ficked">
+                                <option selected disabled value="">Chọn thời gian</option>
+                                <option {{$data->time_ficked === 'Sáng' ? 'selected': ''}}>Sáng</option>
+                                <option {{$data->time_ficked === 'Chiều' ? 'selected': ''}}>Chiều</option>
+                                <option {{$data->time_ficked === 'Tối' ? 'selected': ''}}>Tối</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row pl-4 pt-2">
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Ngày hẹn<span class="text-danger">
                                     *</span></label>
-                            <input type="date" readonly="readonly" class="form-control" aria-label=""
+                            <input type="date" name="time_start" class="form-control" aria-label=""
                                 value="{{date('Y-m-d', strtotime($data->time_start))}}">
                         </div>
                     </div>
@@ -81,7 +85,7 @@
                         <div class="col">
                             <label style="font-style: italic;font-size: 13px;">Ghi Chú<span class="text-danger">
                                     *</span></label>
-                            <textarea name="" id="" class="form-control" readonly="readonly">{{$data->note}}</textarea>
+                            <textarea name="note" id="" class="form-control">{{$data->note}}</textarea>
                         </div>
                     </div>
 
@@ -93,13 +97,13 @@
                             thanh toán<span class="text-danger"> *</span></label>
                         <div class="col h-10 w-64 h-12 pt-2 "
                             style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;margin-top: 4px;">
-                            <label class="pl-1 " style="font-size: 14px;"><input type="radio" name="colorRadio"
-                                    value="red" {{$check_method == 1 ? 'checked':''}}> Chuyển khoản qua ngân hàng
+                            <label class="pl-1 " style="font-size: 14px;"><input type="radio" name="check_method"
+                                    value="1" {{$check_method == 1 ? 'checked':''}}> Chuyển khoản qua ngân hàng
                             </label>
                             <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
                                 style="color: rgb(0 149 255); padding-left: 7px; margin-top: 7px;"></ion-icon>
                         </div>
-                        <div class="red box bg-gray-200">
+                        <div class="1 box bg-gray-200">
                             <p></p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
 
                             <p> Vietcombank:</p>
@@ -123,13 +127,13 @@
                     <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
                         <div class="col h-10 w-64 h-12 pt-2 "
                             style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
-                            <label class="pl-1" style="font-size: 14px;"><input type="radio" name="colorRadio"
-                                    value="green" {{$check_method == 0 ? 'checked':''}}> Thanh toán khi đến cửa hàng
+                            <label class="pl-1" style="font-size: 14px;"><input type="radio" name="check_method"
+                                    value="0" {{$check_method == 0 ? 'checked':''}}> Thanh toán khi đến cửa hàng
                             </label>
                             <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
                                 style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
                         </div>
-                        <div class="green box bg-gray-200 ">
+                        <div class="0 box bg-gray-200 ">
                             <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi
                                 được tư vấn và lên lịch làm.</p>
 
@@ -141,56 +145,21 @@
                     </div>
                 </div>
 
-
                 <div class=" bg-gray-100 h-screen  border ">
                     <h5 class="pt-3 pl-2" style="font-size: 17px;">Đơn đặt lịch ({{count($service)}}) <span
                             class="pl-9">Mã
                             đơn #{{$data->id}}</span> </h5>
                     <hr>
                     <div class=" grid grid-cols-3 h-29 bg-gray-200" style="overflow: scroll;">
-                        <?php
-                    $len = count($service);
-                    ?>
                         @foreach($service as $key => $value)
                         <div>
-                            <a href="{{route('deleteAppointment',['appointment_id'=> $data->id ,'service_id'=>$value->id])}}"
-                                class="text-danger">
-                                <ion-icon class="pt-10 pl-1" name="trash-outline"></ion-icon>
-                            </a>
-                            <img src="{{$value->image}}" class="h-20 w-20 " style="margin-top: -50px;margin-left: 30px;"
-                                alt="">
+                            <img src="{{$value->image}}" class="h-20 w-24 pt-3 pl-4" alt="">
                         </div>
                         <div class="pt-10">
                             <p style="font-size: 15px; font-weight: 500;">{{($value->name)}} </p>
                         </div>
                         <div class="pt-10">{{number_format($value->discount)}}đ
                         </div>
-                        @if( $key == $len -1)
-                        <?php
-                        $array = [];
-                        foreach($service as $key => $value){
-                            $array[] = $value->id;
-                        }
-                        $addService = DB::table('services')->whereNotIn('id',$array)->get();
-                        ?>
-                        <div class="pt-10">
-                            <form method="POST" action="{{route('addServiceAppointment',['id'=>$data->id])}}">
-                            @csrf
-                                <div class="pl-2 w-72">
-                                    <select name="service_id" class="form-control" id="exampleFormControlSelect1">
-                                        <option selected disabled value="">Chọn thêm dịch vụ ...</option>
-                                        @foreach($addService as $value)
-                                        <option value="{{$value->id}}">{{$value->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="pl-28">
-                                    <button type="submit" class="btn text-white"
-                                        style="background-color: #357ebd; font-size: 13px;margin-top: -66px;margin-left: 177px;width: 78px;">Thêm</button>
-                                </div>
-                            </form>
-                        </div>
-                        @endif
                         @endforeach
                     </div>
 
@@ -255,8 +224,9 @@
                                 </a></h5>
                         </div>
                         <div class="pt-10 pl-10">
-                            <a class="btn text-white" style="background-color:#357ebd;width: 91px;">Xác
-                                nhận</a>
+                            <button type="submit" form="myform" class="btn text-white"
+                                style="background-color:#357ebd;width: 91px;">Xác
+                                nhận</button>
                         </div>
                     </div>
                 </div>

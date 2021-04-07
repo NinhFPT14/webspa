@@ -145,7 +145,7 @@ Sản phẩm
 
                                 </div>
                                 <div class="text" style="margin-top: 10px;">
-                                    <a href="{{route('appointment')}}">Đặt Lịch</a>
+                                    <a href="{{route('appointment')}}">Đặt hàng</a>
                                 </div>
                             </div>
                             <div class="product_content list_content">

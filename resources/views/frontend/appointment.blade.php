@@ -21,6 +21,8 @@
     </div>
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
+
+    @if(Illuminate\Support\Facades\Auth::check())
     <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
         @csrf
         <div class="pt-24 ">
@@ -102,7 +104,8 @@
                         Tiền Mặt</label>
                 </div>
                 <div class="panel-default">
-                    <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" value="1" />
+                    <input id="payment_defult" name="check_method" type="radio" data-target="createp_account"
+                        value="1" />
                     <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"
                         aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="frontEnd/img/icon/papyel.png"
                             alt=""></label>
@@ -122,15 +125,14 @@
                     lịch</button>
             </div>
         </div>
-
+    </form>
+    @else
+    <div class="alert alert-success">Đăng nhập để đặt lịch</div>
+    @endif
+    
 </div>
-
-
 </div>
 </div>
-</form>
-
-
 </div>
 
 
