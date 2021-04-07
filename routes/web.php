@@ -49,10 +49,11 @@ Route::group(['middleware' => ['CheckUser']], function () {
     Route::group(['prefix' => 'dat-lich'], function() {
         Route::get('/','Frontend\AppointmentController@appointment')->name('appointment');
         Route::post('/tao-moi','Backend\AppointmentController@save')->name('saveAppointment');
-        Route::get('/xac-nhan/{id}','Frontend\CheckoutController@checkout')->name('checkout');
+        Route::get('/xac-nhan/{token}/{id}','Frontend\CheckoutController@checkout')->name('checkout');
         Route::post('/ma-giam-gia/{id}','Frontend\CheckoutController@voucher')->name('voucher');
         Route::post('/luu-xac-nhan/{id}','Frontend\CheckoutController@save')->name('saveCheckout');
-        
+        Route::get('/trang-nhap-otp/{token}/{id}','Frontend\CheckoutController@otp')->name('appointment.otp');
+        Route::post('/kiem-tra-otp/{id}','Frontend\CheckoutController@checkOtp')->name('appointment.checkOtp');
     });
 
 
