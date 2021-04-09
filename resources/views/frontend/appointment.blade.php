@@ -22,11 +22,10 @@
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
 
-    @if(Illuminate\Support\Facades\Auth::check())
     <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
         @csrf
         <div class="pt-24 ">
-            <div action="" class="p-4">
+            <div class="p-4">
                 <div class="row pl-10 pt-4 pr-3 ">
                     <strong>Chọn dịch vụ<span class="text-danger">*</span></strong>
                     <select class="mul-select form-control " name="service_id[]" multiple>
@@ -96,6 +95,7 @@
                     @enderror
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="payment_method ml-6 mt-4 pl-4">
                 <label>Phương thức thanh toán<span>*</span></label>
                 <div class="panel-default">
@@ -117,6 +117,8 @@
                 </div>
 
             </div>
+=======
+>>>>>>> 1627a06de744a412a3c963871aa753f9d684df32
             @error('check_method')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -126,9 +128,6 @@
             </div>
         </div>
     </form>
-    @else
-    <div class="alert alert-success">Đăng nhập để đặt lịch</div>
-    @endif
     
 </div>
 </div>
@@ -142,11 +141,6 @@
 <script>
 $(document).ready(function() {
     $(".mul-select").select2();
-    // $("#mul-select").select2({
-    //     placeholder: "chọn dịch vụ", //placeholder
-    //     tags: true,
-    //     tokenSeparators: ['/', ',', ';', " "]
-    // });
 })
 </script>
 @endsection

@@ -11,8 +11,8 @@ Xác thực tài khoản
                 <div class="breadcrumb_content">
                     <ul>
                         <li><a >Trang Chủ</a></li>
-                        <li><a >Đăng nhập</a></li>
-                        <li><a >Xác minh tài khoản</a></li>
+                        <li><a >Đặt lịch</a></li>
+                        <li><a >Xác nhận otp </a></li>
                     </ul>
                 </div>
             </div>
@@ -29,12 +29,11 @@ Xác thực tài khoản
             <!--login area start-->
             <div class="col-lg-6 col-md-6">
                 <div class="account_form">
-                    <h2>XÁC MINH TÀI KHOẢN</h2>
-                    <form action="{{route('saveOtp')}}" method = "POST">
+                    <form action="{{route('appointment.checkOtp',['id'=>$id])}}" method = "POST">
                      @csrf
                         <p>
                             <label>Nhập mã otp <span>*</span></label>
-                            <input type="number" name="phone_code">
+                            <input type="number" name="code">
                         </p>
                         <div class="login_submit">
                             <button type="submit">GỬI</button>

@@ -31,7 +31,6 @@ class AddAppointment extends FormRequest
             'time_start' => 'required|date|after_or_equal:today',
             'service_id' => 'required',
             'service_id.*' => 'required|numeric',
-            'check_method' => 'required',
             
         ];
     }
@@ -57,7 +56,6 @@ class AddAppointment extends FormRequest
             'time_ficked' => 'Thời gian',
             'time_start' => 'Ngày hẹn',
             'service_id' => 'Dịch vụ',
-            'check_method' => 'Phương thức thanh toán',
         ];
     }
 }
