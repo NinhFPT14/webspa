@@ -108,8 +108,8 @@
                                         <li><a href="{{route('myAccount')}}">Thông tin tài khoản</a></li>
                                         <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                         @else
+                                        <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
                                         <li><a href="{{route('login')}}">Đăng Nhập</a></li>
-                                        <li><a href="{{route('register')}}">Đăng Ký</a></li>
                                         @endif
 
                                     </ul>
