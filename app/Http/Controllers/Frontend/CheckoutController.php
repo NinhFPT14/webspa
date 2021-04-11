@@ -9,9 +9,13 @@ use App\Model\BillService;
 use DB;
 use Carbon\Carbon;
 use App\Http\Requests\editAppointment;
+use App\Http\Requests\checkOtpRequest;
+use App\Model\NumberService;
+use App\Http\Sms\SpeedSMSAPI;
+
 class CheckoutController extends Controller
 {
-    public function checkout($id){
+    public function checkout($token,$id){
         $data = Appointment::find($id);
         $number_services = DB::table('number_services')->where('appointment_id',$data->id)->get();
         $service_id =[];
@@ -24,6 +28,7 @@ class CheckoutController extends Controller
 
     public function voucher(Request $request ,$id){
         $time_now =Carbon::now()->toDateTimeString();
+        $appointment = Appointment::find($id);
         $service = DB::table('number_services')->where('appointment_id',$id)->get();
         $voucher = DB::table('service_vouchers')->get();
         $voucher = DB::table('service_vouchers')->where('code',$request->voucher)->get();
@@ -44,21 +49,59 @@ class CheckoutController extends Controller
                         $data->voucher_id =$voucher_id;
                         $data->save();
                         alert()->success("Bạn được giảm $voucher_discount đ"); 
-                        return redirect()->route('checkout',['id'=>$id]);
+                        return redirect()->route('checkout',['token'=>$appointment->token,'id'=>$id]);
                     }
                 }
             }
         }
         alert()->error('Mã giảm giá không đúng');
-        return redirect()->route('checkout',['id'=>$id]);
+        return redirect()->route('checkout',['token'=>$appointment->token,'id'=>$id]);
     }
 
     public function save(editAppointment $request ,$id){
-        $data = $request->all();
-        unset($data['_token'],$data['check_method']);
-        Appointment::where('id',$id)->update($data);
-        BillService::where('appointment_id',$id)->update(['payment_methods'=>$request->check_method]);
-        return redirect()->route('checkout',['id'=>$id]);
+        $otp = rand(0001,9999);
+        $flight = Appointment::find($id);
+        $flight->otp = $otp;
+        $flight->name = $request->name;
+        $flight->phone = $request->phone;
+        $flight->time_ficked = $request->time_ficked;
+        $flight->time_start = $request->time_start;
+        $flight->note = $request->note;
+        $flight->payment_methods = $request->check_method;
+        $flight->save();
+        // Gửi otp 
+        $phones =[ $request->phone];
+        $content ="Mã otp xác thực đặt lịch của bạn là  ".$otp;
+        $type = 2;
+        $sender = "981c320db4992b97";
+        $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+        $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+        return redirect()->route('appointment.otp',['token'=>$flight->token,'id'=>$id]);
+    }
+
+    public function otp($token,$id){
+        $flight = Appointment::find($id);
+        $id = $id;
+        if($flight){
+            return view('frontend.otpUser',compact('id'));
+        }else {
+            return redirect()->route('home');
+        }
+       
+    }
+
+    public function checkOtp(checkOtpRequest $request,$id){
+        // dd($request->all());
+        $flight = Appointment::find($id);
+        if($flight->otp == $request->code){
+            $flight->status = 2;
+            $flight->save();
+            alert()->success("Đặt lịch thành công"); 
+            return redirect()->route('home');
+        }else {
+            alert()->error('Mã xác thực otp không dúng');
+            return back();
+        }
     }
    
 }

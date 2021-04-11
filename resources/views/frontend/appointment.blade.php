@@ -22,11 +22,10 @@
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
 
-    @if(Illuminate\Support\Facades\Auth::check())
     <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
         @csrf
         <div class="pt-24 ">
-            <div action="" class="p-4">
+            <div class="p-4">
                 <div class="row pl-10 pt-4 pr-3 ">
                     <strong>Chọn dịch vụ<span class="text-danger">*</span></strong>
                     <select class="mul-select form-control " name="service_id[]" multiple>
@@ -96,29 +95,6 @@
                     @enderror
                 </div>
             </div>
-            <div class="payment_method ml-6 mt-4 pl-4">
-                <label>Phương thức thanh toán<span>*</span></label>
-                <div class="panel-default">
-                    <input id="payment" name="check_method" type="radio" data-target="createp_account" value="0" />
-                    <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh Toán
-                        Tiền Mặt</label>
-
-
-                </div>
-                <div class="panel-default">
-                    <input id="payment_defult" name="check_method" type="radio" data-target="createp_account"
-                        value="1" />
-                    <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"
-                        aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="frontEnd/img/icon/papyel.png"
-                            alt=""></label>
-                    <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                        <div class="card-body1">
-                            <p>Thanh Toán Bằng ATM, các Ứng dụng tiết kiệm tiền online.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             @error('check_method')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
@@ -128,9 +104,6 @@
             </div>
         </div>
     </form>
-    @else
-    <div class="alert alert-success">Đăng nhập để đặt lịch</div>
-    @endif
     
 </div>
 </div>
@@ -144,11 +117,6 @@
 <script>
 $(document).ready(function() {
     $(".mul-select").select2();
-    // $("#mul-select").select2({
-    //     placeholder: "chọn dịch vụ", //placeholder
-    //     tags: true,
-    //     tokenSeparators: ['/', ',', ';', " "]
-    // });
 })
 </script>
 @endsection
