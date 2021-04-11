@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\Slide;
 use App\Model\Footer;
 use DB;
-
+use Session;
 class HomeController extends Controller
 {
     public function home(){
