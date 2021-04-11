@@ -89,16 +89,6 @@ class ServiceController extends Controller
         return redirect()->route('listService');
     }
 
-    public function listAppointment(){
-        $data = Appointment::paginate(10);
-        $services = Service::all();
-        return view('backend.services.listAppointment',compact('data', 'services'));
-    }
-
-    public function sortAppointment(){
-        $appointment = Appointment::paginate(10);
-        $services = Service::all();
-        return view('backend.services.sortAppointment',compact('appointment','services'));
-    }
+    
 }
 
