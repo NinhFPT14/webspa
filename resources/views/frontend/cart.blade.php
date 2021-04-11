@@ -59,7 +59,7 @@ Giỏ Hàng
                         </div>  
                         <div class="cart_submit">
                             <button type="submit">Cập Nhập</button>
-                            <a href="{{route('checkout')}}" class="btn btn-success">  Thanh Toán</a>
+                            <a href="" class="btn btn-success">  Thanh Toán</a>
 
                         </div>      
                     </div>
