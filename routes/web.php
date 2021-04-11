@@ -190,8 +190,4 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
 
     
 
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> vinh
