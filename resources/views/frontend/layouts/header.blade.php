@@ -26,24 +26,16 @@
                                         @foreach($category as $value)
                                         <li><a href="{{route('product',['id'=> $value->id])}}">{{$value->name}}</a></li>
                                         @endforeach
-<<<<<<< HEAD
                                         </ul>
                                     </li>
                                     <li class="sub_menu pages"><a href="{{route('service',['id'=>'all'])}}"> Dịch Vụ</a>
                                         <ul class="sub_menu pages">
-=======
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('service')}}"> Dịch Vụ</a>
-                                    <ul class="sub_menu pages">
->>>>>>> aba8121ed5794168b8ca633cab339fc013454855
                                         <?php
                                          $category = DB::table('categories')->where('type',1)->where('status',0)->get();
                                         ?>
                                         @foreach($category as $value)
                                             <li><a href="{{route('service',['id'=> $value->id])}}">{{$value->name}}</a></li>
                                         @endforeach
-<<<<<<< HEAD
                                         </ul>
                                     </li>
                                     
@@ -52,15 +44,6 @@
                                         <ul class="sub_menu pages">
                                             <li><a href="#">Tin Tức 1</a></li>
                                             <li><a href="#">Tin Tức 2</a></li>
-=======
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
-                                <li><a href="{{route('blog')}}">Tin Tức </a>
-                                    <ul class="sub_menu pages">
-                                        <li><a href="#">Tin Tức 1</a></li>
-                                        <li><a href="#">Tin Tức 2</a></li>
->>>>>>> aba8121ed5794168b8ca633cab339fc013454855
 
                                     </ul>
                                 </li>
