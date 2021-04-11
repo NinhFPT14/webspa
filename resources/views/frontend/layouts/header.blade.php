@@ -189,7 +189,6 @@
                                             <a href="{{route('cart')}}">Giỏ Hàng</a>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                     <!--mini cart end-->
                                 </li>
                                
@@ -210,11 +209,6 @@
                                    
                                     
                                     
-=======
-                                </div>
-                                <!--mini cart end-->
-                            </li>
->>>>>>> aba8121ed5794168b8ca633cab339fc013454855
 
                         </ul>
                     </div>
