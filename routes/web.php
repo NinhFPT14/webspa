@@ -201,6 +201,4 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}', 'Backend\MapController@update')->name('updateMap');
     });
 
-    
-
 });
