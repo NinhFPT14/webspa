@@ -32,10 +32,10 @@
     <div class="center">
         <div class="bg-gray-50">
             <div class="grid md:grid-cols-3 gap-4 pl-4 ">
-              
-                    <div class=" bg-gray-50">
-                    <form id="myform" method="POST" action="{{route('saveCheckout',['id'=>$data->id])}}" >
-                    @csrf
+
+                <div class=" bg-gray-50">
+                    <form id="myform" method="POST" action="{{route('appointment.saveConfirm',['id'=>$data->id])}}">
+                        @csrf
                         <?php 
                         $logo = DB::table('logos')->where('status',0)->get();
                         $bill_services = DB::table('bill_services')->where('appointment_id',$data->id)->get();
@@ -54,6 +54,9 @@
                                         *</span></label>
                                 <input type="text" class="form-control" aria-label="First name" name="name"
                                     value="{{$data->name}}">
+                                @error('name')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row pl-4 pt-2">
@@ -63,6 +66,9 @@
                                         *</span></label>
                                 <input type="text" class="form-control" aria-label="" name="phone"
                                     value="{{$data->phone}}" maxlength="10">
+                                @error('phone')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row pl-4 pt-2">
@@ -75,6 +81,9 @@
                                     <option {{$data->time_ficked === 'Chiều' ? 'selected': ''}}>Chiều</option>
                                     <option {{$data->time_ficked === 'Tối' ? 'selected': ''}}>Tối</option>
                                 </select>
+                                @error('time_ficked')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row pl-4 pt-2">
@@ -83,6 +92,9 @@
                                         *</span></label>
                                 <input type="date" name="time_start" class="form-control" aria-label=""
                                     value="{{date('Y-m-d', strtotime($data->time_start))}}">
+                                @error('time_start')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
@@ -91,72 +103,79 @@
                                 <label style="font-style: italic;font-size: 13px;">Ghi Chú<span class="text-danger">
                                         *</span></label>
                                 <textarea name="note" id="" class="form-control">{{$data->note}}</textarea>
+                                @error('note')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
+                        </div>
+
+                </div>
+                <div class="bg-gray-50 pt-20">
+                    <div class="row pl-4 pt-9 w-96">
+                        <h5 class="pl-4" style="margin-left: -11px;">Thanh toán</h5>
+                        <label style="margin-left: -11px;font-style: italic;font-size: 13px;">Chọn phương thức
+                            thanh toán<span class="text-danger"> *</span></label>
+                        <div class="col h-10 w-64 h-12 pt-2 "
+                            style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;margin-top: 4px;">
+                            <label class="pl-1 " style="font-size: 14px;"><input type="radio" name="check_method"
+                                    value="1" {{$data->payment_methods == 1 ? 'checked':''}}> Chuyển khoản qua ngân hàng
+                            </label>
+                            <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
+                                style="color: rgb(0 149 255); padding-left: 7px; margin-top: 7px;"></ion-icon>
+                        </div>
+                        <div class="1 box bg-gray-200">
+                            <p></p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
+
+                            <p> Vietcombank:</p>
+
+                            <p> Số TK: 0081000830127</p>
+
+                            <p> DƯƠNG THỊ QUYÊN</p>
+
+
+                            <p> Vietinbank:</p>
+
+                            <p> Số TK: 100000335060</p>
+
+                            <p> DƯƠNG THỊ QUYÊN</p>
+
+
+                            <p> khi CK các bạn vui lòng nhập nội dung chuyển khoản là :</p>
+                            <p class="flex"><input type="text" class="form-control"
+                                    value="{{$data->phone}} - Mã đơn : {{$data->id}}" id="myInput">
+                                <button onclick="myFunction()" class="btn text-primary">
+                                    <ion-icon name="copy-outline"></ion-icon>
+                                </button>
+                            </p>
+
                         </div>
 
                     </div>
-                    <div class="bg-gray-50 pt-20">
-                        <div class="row pl-4 pt-9 w-96">
-                            <h5 class="pl-4" style="margin-left: -11px;">Thanh toán</h5>
-                            <label style="margin-left: -11px;font-style: italic;font-size: 13px;">Chọn phương thức
-                                thanh toán<span class="text-danger"> *</span></label>
-                            <div class="col h-10 w-64 h-12 pt-2 "
-                                style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;margin-top: 4px;">
-                                <label class="pl-1 " style="font-size: 14px;"><input type="radio" name="check_method"
-                                        value="1"> Chuyển khoản qua ngân hàng
-                                </label>
-                                <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
-                                    style="color: rgb(0 149 255); padding-left: 7px; margin-top: 7px;"></ion-icon>
-                            </div>
-                            <div class="1 box bg-gray-200">
-                                <p></p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
-
-                                <p> Vietcombank:</p>
-
-                                <p> Số TK: 0081000830127</p>
-
-                                <p> DƯƠNG THỊ QUYÊN</p>
-
-
-                                <p> Vietinbank:</p>
-
-                                <p> Số TK: 100000335060</p>
-
-                                <p> DƯƠNG THỊ QUYÊN</p>
-
-
-                                <p> khi CK các bạn vui lòng nhập nội dung chuyển khoản là :</p>
-                                <p class="flex"><input type="text" class="form-control"
-                                        value="{{$data->phone}} - Mã đơn : {{$data->id}}" id="myInput">
-                                    <button onclick="myFunction()" class="btn text-primary">
-                                        <ion-icon name="copy-outline"></ion-icon>
-                                    </button>
-                                </p>
-
-                            </div>
-
+                    <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
+                        <div class="col h-10 w-64 h-12 pt-2 "
+                            style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
+                            <label class="pl-1" style="font-size: 14px;"><input type="radio" name="check_method"
+                                    value="0" {{$data->payment_methods == 0 ? 'checked':''}}> Thanh toán khi đến cửa
+                                hàng
+                            </label>
+                            <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
+                                style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
                         </div>
-                        <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
-                            <div class="col h-10 w-64 h-12 pt-2 "
-                                style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
-                                <label class="pl-1" style="font-size: 14px;"><input type="radio" name="check_method"
-                                        value="0" checked> Thanh toán khi đến cửa hàng
-                                </label>
-                                <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
-                                    style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
-                            </div>
-                            <div class="0 box bg-gray-200 ">
-                                <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi
-                                    được tư vấn và lên lịch làm.</p>
+                        <div class="0 box bg-gray-200 ">
+                            <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi
+                                được tư vấn và lên lịch làm.</p>
 
-                                <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
-                                <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
-                            </div>
-                            <div class="grid grid-cols-2">
-                            </div>
+                            <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
+                            <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
+                        </div>
+                        <div class="grid grid-cols-2">
                         </div>
                     </div>
-                    </form>
+                    @error('check_method')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                </form>
                 <div class=" bg-gray-100 h-screen  border ">
                     <h5 class="pt-3 pl-2" style="font-size: 17px;">Đơn đặt lịch ({{count($service)}}) <span
                             class="pl-9">Mã
@@ -181,11 +200,11 @@
                         @endforeach
                     </div>
                     <hr>
-                    <form method="POST" action="{{route('voucher',['id'=>$data->id])}}">
-                            @csrf
-                    <div class="grid grid-cols-2  bg-gray-100 ">
-                       
-                             <div class="ml-2 w-80">
+                    <form method="POST" action="{{route('appointment.voucher',['id'=>$data->id])}}">
+                        @csrf
+                        <div class="grid grid-cols-2  bg-gray-100 ">
+
+                            <div class="ml-2 w-80">
                                 <input type="text" class="form-control" placeholder="Nhập mã giảm giá..."
                                     name="voucher">
                             </div>
@@ -194,8 +213,8 @@
                                     style="background-color: #357ebd; font-size: 13px;">Áp
                                     Dụng</button>
                             </div>
-                      
-                    </div>
+
+                        </div>
                     </form>
                     <hr>
                     <div class="grid grid-cols-2">
@@ -252,7 +271,7 @@
 
             </div>
         </div>
-      
+
         @include('sweetalert::alert')
 </body>
 <script>
