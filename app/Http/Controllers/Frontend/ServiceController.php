@@ -8,14 +8,14 @@ use DB;
 
 class ServiceController extends Controller
 {
-    public function service(){
-        $service = DB::table('services')->where('status',0)->paginate(4);
-        $listByCate = DB::table('services')
-        ->join('categories','categories.id','=','services.category_id')
-        ->select('services.*','categories.id')
-        ->get();
-        // dd($listByCate);
-        return view('frontend.service',['service' => $service]);
+    public function service($id){
+        $category = DB::table('categories')->where('status',0)->where('type',1)->get();
+        if($id === "all"){
+            $data = DB::table('services')->where('status', 0)->paginate(4);
+        }else{
+            $data = DB::table('services')->where('status', 0)->where('category_id', $id)->paginate(4);
+        }
+        return view('frontend.service',compact('data','category'));
 
     }
 
