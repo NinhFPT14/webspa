@@ -69,4 +69,9 @@ class StaffController extends Controller
         alert()->success('Sửa thành công'); 
         return view('backend.staffs.list',compact('data'));   
     }
+    public function search(Request $request){
+        $data = Staff::where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        return view('backend.staffs.list',compact('data'));     
+    }
+    
 }

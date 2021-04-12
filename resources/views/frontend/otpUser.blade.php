@@ -29,7 +29,11 @@ Xác thực tài khoản
             <!--login area start-->
             <div class="col-lg-6 col-md-6">
                 <div class="account_form">
+<<<<<<< HEAD
+                    <form action="{{route('appointment.checkOtp',['id'=>$id])}}" method = "POST">
+=======
                     <form action="{{route('appointment.confirmOtp',['id'=>$id])}}" method = "POST">
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
                      @csrf
                         <p>
                             <label>Nhập mã otp <span>*</span></label>

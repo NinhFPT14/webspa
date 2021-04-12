@@ -56,5 +56,9 @@ class LocationController extends Controller
         $data = Location::paginate(10);
         return view('backend.locations.list' ,compact('data'));  
     }
+    public function search(Request $request){
+        $data = Location::where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        return view('backend.locations.list' ,compact('data'));   
+    }
     
 }

@@ -25,6 +25,7 @@ class CategoryController extends Controller
         alert()->success('Thành công', "Tạo thành công danh mục $request->name"); 
         return redirect()->route('addCategory');
     }
+    
 
     public function list($type){
         $data = Category::where('type',$type)->paginate(10);
@@ -57,5 +58,10 @@ class CategoryController extends Controller
         $flight = Category::where('id',$id)->update($data);
         alert()->success('Sửa thành công', "Sửa thành công danh mục $request->name"); 
         return redirect()->route('listCategory',['type'=>$data['type']]);
+    }
+    public function search(Request $request ,$type){
+    //   dd($request->name);
+      $data = Category::where('type',$type)->where('name', 'like', '%' . $request->name . '%')->get();
+      return view('backend.categories.list',compact('data','type'));
     }
 }
