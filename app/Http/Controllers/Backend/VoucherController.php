@@ -29,6 +29,11 @@ class VoucherController extends Controller
 
      public function status ($id,$status){
         $data = ServiceVoucher::where('id',$id)->update(['status'=>$status]);
+        if($status ==0){
+            alert()->success('Bật Voucher'); 
+          }else{
+            alert()->error('Tắt Voucher'); 
+          }
         return redirect()->route('listVoucherService');
      }
      public function delete($id){
@@ -51,5 +56,10 @@ class VoucherController extends Controller
         alert()->success('Sửa thành công voucher'); 
         return redirect()->route('listVoucherService');
     }  
-
+    
+  
+  public function search(Request $request){
+    $data = ServiceVoucher::where('code', 'like', '%' . $request->name . '%')->paginate(9);
+    return view('backend.voucher_service.list',compact('data'));
+}
 }

@@ -100,5 +100,9 @@ class ServiceController extends Controller
         $services = Service::all();
         return view('backend.services.sortAppointment',compact('appointment','services'));
     }
+    public function search(Request $request){
+        $data = Service::where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        return view('backend.services.list',compact('data'));
+    }
 }
 

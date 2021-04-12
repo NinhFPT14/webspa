@@ -75,6 +75,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\CategoryController@delete')->name('deleteCategory');
         Route::get('/trang-sua/{id}','Backend\CategoryController@edit')->name('editCategory');
         Route::post('/cap-nhat/{id}','Backend\CategoryController@update')->name('updateCategory');
+        Route::post('/tim-kiem/{type}','Backend\CategoryController@search')->name('category.search');
     });
 
     //SlideController
@@ -107,6 +108,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\ProductController@delete')->name('deleteProduct');
         Route::post('/cap-nhat/{id}','Backend\ProductController@update')->name('updateProduct');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductController@status')->name('statusProduct');
+        Route::post('/tim-kiem','Backend\ProductController@search')->name('product.search');
     });
 
     //LogoController
@@ -132,6 +134,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/don-dat-lich','Backend\ServiceController@listAppointment')->name('listAppointment');
         Route::get('/bang-xep-lich','Backend\ServiceController@sortAppointment')->name('sortAppointment');
         Route::post('get-data-by-id', 'Backend\AppointmentController@apiGetDataById')->name('appointment.getDataById');
+        Route::post('/tim-kiem','Backend\ServiceController@search')->name('service.search');
     });
 
     // vouchers service
@@ -143,6 +146,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/trang-sua/{id}', 'Backend\VoucherController@edit')->name('editVoucherService');
         Route::post('/cap-nhat/{id}', 'Backend\VoucherController@update')->name('updateVoucherService');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\VoucherController@status')->name('statusVoucherService');
+        Route::post('/tim-kiem','Backend\VoucherController@search')->name('voucherservice.search');
     });
 
     // vouchers product
@@ -154,6 +158,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/trang-sua/{id}', 'Backend\ProductVoucherController@edit')->name('editVoucherProduct');
         Route::post('/cap-nhat/{id}', 'Backend\ProductVoucherController@update')->name('updateVoucherProduct');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductVoucherController@status')->name('statusVoucherProduct');
+        Route::post('/tim-kiem','Backend\ProductVoucherController@search')->name('voucherproduct.search');
     });
 
     // Ghế làm locationCOntroller
@@ -165,6 +170,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\LocationController@delete')->name('deleteLocation');
         Route::get('/trang-sua/{id}','Backend\LocationController@edit')->name('editLocation');
         Route::post('/cap-nhat/{id}','Backend\LocationController@update')->name('updateLocation');
+        Route::post('/tim-kiem','Backend\LocationController@search')->name('location.search');
     });
 
     // Nhân viên Staffcontroller
@@ -176,6 +182,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\StaffController@delete')->name('deleteStaff');
         Route::get('/trang-sua/{id}','Backend\StaffController@edit')->name('editStaff');
         Route::post('/cap-nhat/{id}','Backend\StaffController@update')->name('updateStaff');
+        Route::post('/tim-kiem','Backend\StaffController@search')->name('staff.search');
     });
 
     // maps
