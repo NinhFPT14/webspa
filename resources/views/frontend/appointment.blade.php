@@ -22,11 +22,7 @@
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
 
-<<<<<<< HEAD
-    <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
-=======
     <form method="post" action="{{ route('appointment.save') }}" style=" margin-top:-90px">
->>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
         @csrf
         <div class="pt-24 ">
             <div class="p-4">
