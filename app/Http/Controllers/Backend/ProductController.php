@@ -117,4 +117,9 @@ class ProductController extends Controller
            alert()->success('Sửa thành công sản phẩm');
            return redirect()->route('editProduct',['id'=>$product->id]);
     }
+
+    public function search(Request $request){
+        $data = Product::where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        return view('backend.products.list',compact('data'));
+    }
 }
