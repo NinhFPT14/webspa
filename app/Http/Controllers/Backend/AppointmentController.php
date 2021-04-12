@@ -14,6 +14,30 @@ use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
+<<<<<<< HEAD
+    public function save(AddAppointment $request) {
+        // dd($request->all());
+        try {
+            $flight = new Appointment;
+            $flight->name = $request->name;
+            $flight->phone = $request->phone;
+            $flight->note = $request->note;
+            $flight->time_ficked = $request->time_ficked;
+            $flight->time_start = $request->time_start;
+            $flight->token = $request->_token;
+            $flight->status = 0;
+            $flight->save();
+            foreach($request->service_id as $value){
+                NumberService::create(['appointment_id'=>$flight->id ,'service_id'=>$value]);
+            };
+            return redirect()->route('checkout',['token'=>$flight->token,'id'=>$flight->id]);
+        } catch (Exception $e) {
+            return redirect()->route('appointment');
+        }
+        
+        
+     }
+=======
     
     public function sortAppointment(){
         $mytime = Carbon::now();
@@ -22,6 +46,7 @@ class AppointmentController extends Controller
         $services = Service::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services','time'));
     }
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
 
      public function apiGetDataById(Request $request){
          if($request->has('id')){
@@ -32,6 +57,8 @@ class AppointmentController extends Controller
          return response()->json(['status' => false, 'message' => 'Không có tham số id']);
      }
 
+<<<<<<< HEAD
+=======
      public function searchTimeAppointment(Request $request){
         //  dd($request->time);
         $services = Service::where('status',0)->get();
@@ -69,5 +96,6 @@ class AppointmentController extends Controller
     }
 
 
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
      
 }

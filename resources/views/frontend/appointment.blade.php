@@ -22,7 +22,11 @@
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
 
+<<<<<<< HEAD
+    <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
+=======
     <form method="post" action="{{ route('appointment.save') }}" style=" margin-top:-90px">
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
         @csrf
         <div class="pt-24 ">
             <div class="p-4">
@@ -96,6 +100,8 @@
                 </div>
             </div>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
             <div class="payment_method ml-6 mt-4 pl-4">
                 <label>Phương thức thanh toán<span>*</span></label>
                 <div class="panel-default">
@@ -119,6 +125,7 @@
             </div>
 =======
 >>>>>>> 1627a06de744a412a3c963871aa753f9d684df32
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
             @error('check_method')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
