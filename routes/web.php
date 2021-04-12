@@ -18,9 +18,8 @@ Route::group(['middleware' => ['CheckUser']], function () {
     Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
     //FeedbackController
-    Route::get('/lien-he','Frontend\HomeController@contact')->name('contact');
-    Route::post('luu-feedback','Frontend\FeedbackController@save')->name('saveFeedback');
-    Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listFeedback');
+    Route::get('/phan-hoi','Frontend\FeedbackController@contact')->name('contact');
+    Route::post('luu-phan-hoi','Frontend\FeedbackController@save')->name('saveFeedback');
 
     //ProductController
     Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
@@ -77,6 +76,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     Route::get('/',function(){
         return view('backend.dashboard');
     })->name('dashboard');
+    Route::get('danh-sach-phan-hoi','Backend\FeedbackController@list')->name('listFeedback');
 
     //CategoryController
     Route::group(['prefix' => 'danh-muc'], function() {
