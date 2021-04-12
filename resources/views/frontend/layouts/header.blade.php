@@ -26,16 +26,33 @@
                                         @foreach($category as $value)
                                         <li><a href="{{route('product',['id'=> $value->id])}}">{{$value->name}}</a></li>
                                         @endforeach
+<<<<<<< HEAD
+                                        </ul>
+                                    </li>
+                                    <li class="sub_menu pages"><a href="{{route('service',['id'=>'all'])}}"> Dịch Vụ</a>
+                                        <ul class="sub_menu pages">
+=======
                                     </ul>
                                 </li>
                                 <li><a href="{{route('service')}}"> Dịch Vụ</a>
                                     <ul class="sub_menu pages">
+>>>>>>> aba8121ed5794168b8ca633cab339fc013454855
                                         <?php
-                                           $service = DB::table('services')->where('status',0)->get();
+                                         $category = DB::table('categories')->where('type',1)->where('status',0)->get();
                                         ?>
-                                        @foreach($service as $key)
-                                        <li><a href="#">{{ $key->name }}</a></li>
+                                        @foreach($category as $value)
+                                            <li><a href="{{route('service',['id'=> $value->id])}}">{{$value->name}}</a></li>
                                         @endforeach
+<<<<<<< HEAD
+                                        </ul>
+                                    </li>
+                                    
+                                    <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
+                                    <li><a href="{{route('blog')}}">Tin Tức </a>
+                                        <ul class="sub_menu pages">
+                                            <li><a href="#">Tin Tức 1</a></li>
+                                            <li><a href="#">Tin Tức 2</a></li>
+=======
                                     </ul>
                                 </li>
                                 <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
@@ -43,6 +60,7 @@
                                     <ul class="sub_menu pages">
                                         <li><a href="#">Tin Tức 1</a></li>
                                         <li><a href="#">Tin Tức 2</a></li>
+>>>>>>> aba8121ed5794168b8ca633cab339fc013454855
 
                                     </ul>
                                 </li>
@@ -108,8 +126,8 @@
                                         <li><a href="{{route('myAccount')}}">Thông tin tài khoản</a></li>
                                         <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                         @else
+                                        <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
                                         <li><a href="{{route('login')}}">Đăng Nhập</a></li>
-                                        <li><a href="{{route('register')}}">Đăng Ký</a></li>
                                         @endif
 
                                     </ul>
@@ -188,9 +206,32 @@
                                             <a href="{{route('cart')}}">Giỏ Hàng</a>
                                         </div>
                                     </div>
+<<<<<<< HEAD
+                                    <!--mini cart end-->
+                                </li>
+                               
+                            </ul>
+                        </div>
+                        <div id="menu" class="text-left ">
+                            <ul class="offcanvas_main_menu">
+                                <li class="menu-item-has-children active">
+                                    <a href="">Trang Chủ</a>
+                                  
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a>
+                                   
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href=""> Dịch Vụ</a>
+                                   
+                                    
+                                    
+=======
                                 </div>
                                 <!--mini cart end-->
                             </li>
+>>>>>>> aba8121ed5794168b8ca633cab339fc013454855
 
                         </ul>
                     </div>

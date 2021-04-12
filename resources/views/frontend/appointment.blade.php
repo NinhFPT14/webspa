@@ -22,7 +22,11 @@
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
 
+<<<<<<< HEAD
     <form method="post" action="{{ route('saveAppointment') }}" style=" margin-top:-90px">
+=======
+    <form method="post" action="{{ route('appointment.save') }}" style=" margin-top:-90px">
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
         @csrf
         <div class="pt-24 ">
             <div class="p-4">
@@ -95,6 +99,33 @@
                     @enderror
                 </div>
             </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            <div class="payment_method ml-6 mt-4 pl-4">
+                <label>Phương thức thanh toán<span>*</span></label>
+                <div class="panel-default">
+                    <input id="payment" name="check_method" type="radio" data-target="createp_account" value="0" />
+                    <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh Toán
+                        Tiền Mặt</label>
+                </div>
+                <div class="panel-default">
+                    <input id="payment_defult" name="check_method" type="radio" data-target="createp_account"
+                        value="1" />
+                    <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"
+                        aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="frontEnd/img/icon/papyel.png"
+                            alt=""></label>
+                    <div id="collapsedefult" class="collapse one" data-parent="#accordion">
+                        <div class="card-body1">
+                            <p>Thanh Toán Bằng ATM, các Ứng dụng tiết kiệm tiền online.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+=======
+>>>>>>> 1627a06de744a412a3c963871aa753f9d684df32
+>>>>>>> 83d7db279a5cfeecda5331e4c9f0a136abdaec02
             @error('check_method')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror

@@ -60,6 +60,11 @@ Danh Sách Voucher
                         @endforeach
                     </tbody>
                 </table>
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                        {!!$data->links()!!}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

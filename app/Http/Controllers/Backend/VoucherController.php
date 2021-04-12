@@ -23,7 +23,7 @@ class VoucherController extends Controller
     }
 
     public function list (){
-        $data = ServiceVoucher::get();
+        $data = ServiceVoucher::paginate(10);
         return view('backend.voucher_service.list',compact('data'));
      }
 

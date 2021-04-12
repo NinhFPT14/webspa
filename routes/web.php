@@ -6,10 +6,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
     Route::get('/form-dang-nhap','Frontend\LoginController@login')->name('login');
     Route::post('/dang-nhap','Frontend\LoginController@getLogin')->name('getLogin');
-    Route::get('/xac-thuc-tai-khoan/{token}/{id}','Frontend\LoginController@otp')->name('otpUser');
-    Route::post('/luu-ma-otp','Frontend\LoginController@saveOtp')->name('saveOtp');
-    Route::get('/form-dang-ky','Frontend\LoginController@register')->name('register');
-    Route::post('/dang-ky','Frontend\LoginController@save')->name('saveAccountUser');
     Route::get('/dang-xuat','Frontend\LoginController@logout')->name('logout');
 
 Route::group(['middleware' => ['CheckUser']], function () {
@@ -22,9 +18,8 @@ Route::group(['middleware' => ['CheckUser']], function () {
     Route::get('/gioi-thieu','Frontend\HomeController@about')->name('about');
 
     //FeedbackController
-    Route::get('/lien-he','Frontend\HomeController@contact')->name('contact');
-    Route::post('luu-feedback','Frontend\FeedbackController@save')->name('saveFeedback');
-    Route::get('danh-sach-feedback','Frontend\FeedbackController@list')->name('listFeedback');
+    Route::get('/phan-hoi','Frontend\FeedbackController@contact')->name('contact');
+    Route::post('luu-phan-hoi','Frontend\FeedbackController@save')->name('saveFeedback');
 
     //ProductController
     Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
@@ -48,23 +43,40 @@ Route::group(['middleware' => ['CheckUser']], function () {
     //Đặt lịch
     Route::group(['prefix' => 'dat-lich'], function() {
         Route::get('/','Frontend\AppointmentController@appointment')->name('appointment');
-        Route::post('/tao-moi','Backend\AppointmentController@save')->name('saveAppointment');
-        Route::get('/xac-nhan/{token}/{id}','Frontend\CheckoutController@checkout')->name('checkout');
-        Route::post('/ma-giam-gia/{id}','Frontend\CheckoutController@voucher')->name('voucher');
-        Route::post('/luu-xac-nhan/{id}','Frontend\CheckoutController@save')->name('saveCheckout');
-        Route::get('/trang-nhap-otp/{token}/{id}','Frontend\CheckoutController@otp')->name('appointment.otp');
-        Route::post('/kiem-tra-otp/{id}','Frontend\CheckoutController@checkOtp')->name('appointment.checkOtp');
+        Route::post('/tao-moi','Frontend\AppointmentController@save')->name('appointment.save');
+        Route::get('/xac-nhan/{token}/{id}','Frontend\AppointmentController@confirm')->name('appointment.confirm');
+        Route::post('/luu-xac-nhan/{id}','Frontend\AppointmentController@saveConfirm')->name('appointment.saveConfirm');
+        Route::post('/ma-giam-gia/{id}','Frontend\AppointmentController@voucher')->name('appointment.voucher');
+        Route::get('/trang-nhap-otp/{token}/{id}','Frontend\AppointmentController@otp')->name('appointment.otp');
+        Route::post('/kiem-tra-otp/{id}','Frontend\AppointmentController@confirmOtp')->name('appointment.confirmOtp');
+        Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
     });
 
 
 });
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+Route::view('/demo-validate', 'demo-form');
+Route::post('/demo-validate', function(Request $request){
+    $validate = Validator::make($request->all(), [
+        'name'=> 'required|min:4'  
+      ]);
+    if($validate->fails()){
+        return json_encode([
+            'status' => false,
+            'messages' => $validate->errors()
+        ]);
+    }
+    return 'done';
+});
 
 
 Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     Route::get('/',function(){
         return view('backend.dashboard');
     })->name('dashboard');
+    Route::get('danh-sach-phan-hoi','Backend\FeedbackController@list')->name('listFeedback');
 
     //CategoryController
     Route::group(['prefix' => 'danh-muc'], function() {
@@ -121,7 +133,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}', 'Backend\LogoController@update')->name('updateLogo');
         Route::get('/thay-doi-trang-thai/{id}/{status}', 'Backend\LogoController@status')->name('statusLogo');
     });
-
+    
     //Dich-Vu-Controller
     Route::group(['prefix' => 'dich-vu'], function() {
         Route::get('/trang-tao','Backend\ServiceController@add')->name('addService');
@@ -131,8 +143,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\ServiceController@delete')->name('deleteService');
         Route::get('/trang-sua/{id}','Backend\ServiceController@edit')->name('editService');
         Route::post('/cap-nhat/{id}','Backend\ServiceController@update')->name('updateService');
-        Route::get('/don-dat-lich','Backend\ServiceController@listAppointment')->name('listAppointment');
-        Route::get('/bang-xep-lich','Backend\ServiceController@sortAppointment')->name('sortAppointment');
         Route::post('get-data-by-id', 'Backend\AppointmentController@apiGetDataById')->name('appointment.getDataById');
         Route::post('/tim-kiem','Backend\ServiceController@search')->name('service.search');
     });
@@ -195,6 +205,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}', 'Backend\MapController@update')->name('updateMap');
     });
 
-    
-
 });
+
+
