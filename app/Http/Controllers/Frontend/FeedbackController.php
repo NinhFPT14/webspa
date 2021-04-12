@@ -14,12 +14,12 @@ class FeedbackController extends Controller
           $flight->email = $request->email;
           $flight->phone_number = $request->phone_number;
           $flight->content = $request->content;
+          $flight->status = 0;
           $flight->save();
         return redirect()->route('contact');
       }
-      public function list (){
-        
-        $data = Feedback::get();
-        return view('backend.feedbacks.list',compact('data'));
-     }
+
+      public function contact(){
+        return view('frontend.contact');
+    }
 }

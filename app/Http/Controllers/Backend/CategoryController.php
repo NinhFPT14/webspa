@@ -27,7 +27,7 @@ class CategoryController extends Controller
     }
 
     public function list($type){
-        $data = Category::where('type',$type)->get();
+        $data = Category::where('type',$type)->paginate(10);
         return view('backend.categories.list',compact('data','type'));
     }
 

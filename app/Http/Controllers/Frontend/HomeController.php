@@ -17,10 +17,6 @@ class HomeController extends Controller
         return view('frontend.home',compact('slide'),['service' => $service]);
     }
 
-    public function contact(){
-        return view('frontend.contact');
-    }
-
     public function about(){
         return view('frontend.about');
     }
