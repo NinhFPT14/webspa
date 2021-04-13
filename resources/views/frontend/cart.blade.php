@@ -24,7 +24,6 @@ Giỏ Hàng
 <!--shopping cart area start -->
 <div class="shopping_cart_area">
     <div class="container">  
-        <form action="#"> 
             <div class="row">
                 <div class="col-12">
                     <div class="table_desc">
@@ -34,55 +33,49 @@ Giỏ Hàng
                             <tr>
                                 <th class="product_remove"></th>
                                 <th class="product_thumb">Ảnh</th>
-                                <th class="product_name">Sản Phẩm</th>
+                                <th class="product_name">Tên sản phẩm</th>
                                 <th class="product-price">Giá</th>
                                 <th class="product_quantity">Số Lượng</th>
                                 <th class="product_total">tổng tiền</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                              $cart = Session::get('productId');
+                              $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                            ?>
+                            @foreach ($product as $value)
                             <tr>
-                               <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="frontEnd/img/s-product/product.jpg" alt=""></a></td>
-                                <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                <td class="product-price">£65.00</td>
-                                <td class="product_quantity"><label>Quantity</label> <input min="0" max="100" value="1" type="number"></td>
-                                <td class="product_total">£130.00</td>
-
-
-                            </tr>
-
-                           
-
+                                <td class="product_remove"><a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="fa fa-trash-o"></i></a></td>
+                                 <td class="product_thumb"><a href="#"><img src="{{$value->avatar}}" alt="" class="w-20"></a></td>
+                                 <td class="product_name"><a href="#">{{$value->name}}</a></td>
+                                 <td class="product-price">{{number_format($value->discount)}} VNĐ</td>
+                                 <?php 
+                                   $number_product = 0;
+                                   foreach ($cart as $key => $item) {
+                                     if($cart[$key] == $value->id){
+                                        $number_product++;
+                                     }
+                                   }
+                                 ?>
+                                 <form action="{{route('cart.update',['id'=>$value->id])}}" method="POST">
+                                    @csrf
+                                 <td class="product_quantity"><label>Số lượng</label> <input name="number" min="0" max="100" value="{{$number_product}}" type="number">
+                                    <button type="submit" class="btn btn-secondary">Cập Nhập</button>
+                                </td>
+                               </form>
+                                 <td class="product_total">{{number_format($value->discount * $number_product)}} VNĐ</td>
+                             </tr>
+                            @endforeach
                         </tbody>
                     </table>   
                         </div>  
                         <div class="cart_submit">
-                            <button type="submit">Cập Nhập</button>
-                            <a href="" class="btn btn-success">  Thanh Toán</a>
-
+                            <a href="" class="btn btn-success">Đặt hàng</a>
                         </div>      
                     </div>
                  </div>
              </div>
-             <!--coupon code area start-->
-            <div class="coupon_area">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6">
-                        <div class="coupon_code left">
-                            <h3>Giảm Giá</h3>
-                            <div class="coupon_inner">   
-                                <p>Mời Nhập Mã Giảm Giá.</p>                                
-                                <input placeholder="..." type="text">
-                                <button type="submit">Áp Dụng</button>
-                            </div>    
-                        </div>
-                    </div>
-                  
-                </div>
-            </div>
-            <!--coupon code area end-->
-        </form> 
     </div>     
 </div>
 <!--shopping cart area end -->

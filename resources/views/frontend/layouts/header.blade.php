@@ -59,32 +59,37 @@
                             <li class="search_bar"><a href="javascript:void(0)"><i
                                         class="ion-ios-search-strong"></i></a>
                             </li>
+                            <?php 
+                             $cart = Session::get('productId');
+                             $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                            ?>
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
-                                    <span>1</span></a>
+                                    <span>{{count($product)}}</span></a>
                                 <!--mini cart-->
                                 <div class="mini_cart">
+                                    @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href=""><img src="frontEnd/img/s-product/product.jpg" alt=""></a>
+                                            <a href=""><img src="{{$value->avatar}}" alt=""></a>
                                         </div>
                                         <div class="cart_info">
-                                            <a href="#">Tên Sản Phẩm</a>
-
-                                            <span class="quantity">Số lượng: 1</span>
-                                            <span class="price_cart">Giá :60.00</span>
-
+                                            <a href="#">{{$value->name}}</a>
+                                            <?php 
+                                            $number_product = 0;
+                                            foreach ($cart as $key => $item) {
+                                              if($cart[$key] == $value->id){
+                                                 $number_product++;
+                                              }
+                                            }
+                                          ?>
+                                            <span class="quantity">Số lượng: {{$number_product}}</span>
+                                            <span class="price_cart">Giá giảm :{{number_format($value->discount)}}VNĐ</span>
                                         </div>
                                         <div class="cart_remove">
-                                            <a href="#"><i class="ion-android-close"></i></a>
+                                            <a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
-
-                                    <div class="mini_cart_table">
-                                        <div class="cart_total">
-                                            <span>Tổng Tiền:</span>
-                                            <span class="price">138.00 VNĐ</span>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
                                             <a href="{{route('cart')}}">Giỏ Hàng</a>

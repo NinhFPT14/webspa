@@ -7,8 +7,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/form-dang-nhap','Frontend\LoginController@login')->name('login');
     Route::post('/dang-nhap','Frontend\LoginController@getLogin')->name('getLogin');
     Route::get('/dang-xuat','Frontend\LoginController@logout')->name('logout');
-
-Route::group(['middleware' => ['CheckUser']], function () {
+    
     // HomeController
     Route::get('/','Frontend\HomeController@home')->name('home');
     Route::get('hi',function(){
@@ -38,7 +37,10 @@ Route::group(['middleware' => ['CheckUser']], function () {
     Route::get('/tai-khoan-cua-toi','Frontend\LoginController@myAccount')->name('myAccount');
 
     //cartController
-    Route::get('/cart','Frontend\CartController@cart')->name('cart');
+    Route::get('/gio-hang','Frontend\CartController@cart')->name('cart');
+    Route::get('/them-vao-gio-hang/{id}','Frontend\CartController@add')->name('cart.add');
+    Route::get('/xoa-gio-hang/{id}','Frontend\CartController@dalete')->name('cart.delete');
+    Route::post('/cap-nhat-gio-hang/{id}','Frontend\CartController@update')->name('cart.update');
 
     //Đặt lịch
     Route::group(['prefix' => 'dat-lich'], function() {
@@ -51,9 +53,6 @@ Route::group(['middleware' => ['CheckUser']], function () {
         Route::post('/kiem-tra-otp/{id}','Frontend\AppointmentController@confirmOtp')->name('appointment.confirmOtp');
     Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
     });
-
-
-});
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
