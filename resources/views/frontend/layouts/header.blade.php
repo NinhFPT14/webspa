@@ -1,3 +1,4 @@
+
 <header class="header_area">
     <!--header container start-->
     <div class="header_container header_container_two sticky-header">
@@ -61,12 +62,20 @@
                             </li>
                             <?php 
                              $cart = Session::get('productId');
-                             $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                             if(Session::has('productId')){
+                                $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                             }
                             ?>
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
-                                    <span>{{count($product)}}</span></a>
+                                @if(Session::has('productId'))
+                                  <span>{{count($product)}}</span></a>
+                                @else
+                                <span>0</span></a>
+                                @endif
+                                  
                                 <!--mini cart-->
                                 <div class="mini_cart">
+                                    @if(Session::has('productId'))
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
@@ -83,13 +92,14 @@
                                             }
                                           ?>
                                             <span class="quantity">Số lượng: {{$number_product}}</span>
-                                            <span class="price_cart">Giá giảm :{{number_format($value->discount)}}VNĐ</span>
+                                            <span class="price_cart">Giá :{{number_format($value->discount)}}VNĐ</span>
                                         </div>
                                         <div class="cart_remove">
                                             <a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
                                     @endforeach
+                                    @endif
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
                                             <a href="{{route('cart')}}">Giỏ Hàng</a>

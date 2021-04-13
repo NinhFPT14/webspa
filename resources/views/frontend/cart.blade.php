@@ -40,6 +40,7 @@ Giỏ Hàng
                             </tr>
                         </thead>
                         <tbody>
+                            @if(Session::has('productId'))
                             <?php 
                               $cart = Session::get('productId');
                               $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
@@ -67,6 +68,7 @@ Giỏ Hàng
                                  <td class="product_total">{{number_format($value->discount * $number_product)}} VNĐ</td>
                              </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>   
                         </div>  
