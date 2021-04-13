@@ -60,8 +60,7 @@ class CategoryController extends Controller
         return redirect()->route('listCategory',['type'=>$data['type']]);
     }
     public function search(Request $request ,$type){
-    //   dd($request->name);
-      $data = Category::where('type',$type)->where('name', 'like', '%' . $request->name . '%')->get();
+      $data = Category::where('type',$type)->where('name', 'like', '%' . $request->name . '%')->paginate(10);
       return view('backend.categories.list',compact('data','type'));
     }
 }

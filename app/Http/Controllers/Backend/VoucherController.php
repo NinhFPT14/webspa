@@ -59,7 +59,7 @@ class VoucherController extends Controller
     
   
   public function search(Request $request){
-    $data = ServiceVoucher::where('code', 'like', '%' . $request->name . '%')->paginate(9);
+    $data = ServiceVoucher::where('code', 'like', '%' . $request->name . '%')->paginate(10);
     return view('backend.voucher_service.list',compact('data'));
 }
 }

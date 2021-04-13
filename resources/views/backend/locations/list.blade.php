@@ -7,6 +7,7 @@ Danh sách ghế
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('listLocation')}}">Ghế làm</a></li>
             <li class="breadcrumb-item active" aria-current="page">Danh sách ghế làm</li>
         </ol>
     </nav>

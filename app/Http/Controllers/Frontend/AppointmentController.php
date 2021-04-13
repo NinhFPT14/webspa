@@ -101,7 +101,7 @@ class AppointmentController extends Controller
       $flight->payment_methods = $request->check_method;
       $flight->save();
       // Gửi otp 
-      $phones =[ $request->phone];
+      $phones =[$request->phone];
       $content ="Mã otp xác thực đặt lịch của bạn là  ".$otp;
       $type = 2;
       $sender = "981c320db4992b97";

@@ -145,28 +145,10 @@
                                         <ion-icon name="copy-outline"></ion-icon>
                                     </button>
                                 </p>
-
-                            <p> khi CK các bạn vui lòng nhập nội dung chuyển khoản là :</p>
-                            <p class="flex"><input type="text" class="form-control"
-                                    value="{{$data->phone}} - Mã đơn : {{$data->id}}" id="myInput">
-                                <button onclick="myFunction()" class="btn text-primary">
-                                    <ion-icon name="copy-outline"></ion-icon>
-                                </button>
-                            </p>
-
                         </div>
 
                     </div>
                     <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
-                        <div class="col h-10 w-64 h-12 pt-2 "
-                            style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
-                            <label class="pl-1" style="font-size: 14px;"><input type="radio" name="check_method"
-                                    value="0" {{$data->payment_methods == 0 ? 'checked':''}}> Thanh toán khi đến cửa
-                                hàng
-                            </label>
-                            <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
-                                style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
-                        </div>
                         <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
                             <div class="col h-10 w-64 h-12 pt-2 "
                                 style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">

@@ -7,8 +7,8 @@ Tạo Voucher
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('listVoucherService')}}">Danh sách voucher dịch vụ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Tạo voucher</li>
+            <li class="breadcrumb-item"><a href="{{route('listVoucherService')}}">Danh sách mã giảm giá dịch vụ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Tạo mới</li>
         </ol>
     </nav>
     <div class="row">

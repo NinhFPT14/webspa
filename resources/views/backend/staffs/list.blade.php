@@ -7,6 +7,7 @@ Danh sách nhân viên
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('listStaff')}}">Nhân viên</a></li>
             <li class="breadcrumb-item active" aria-current="page">Danh sách nhân viên</li>
         </ol>
     </nav>

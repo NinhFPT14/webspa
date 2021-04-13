@@ -5,10 +5,17 @@ Danh Sách Voucher
 @section('content')
 <div class="container-fluid">
     <!-- DataTales Example -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('listVoucherService')}}">Mã giảm giá dịch vụ</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Danh sách</li>
+        </ol>
+    </nav>
+    
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="{{route('addVoucherService')}}" class="btn btn-primary" role="button">Tạo Mới</a>
-            <form action="{{route('voucherservice.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            <form action="{{route('VoucherService.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
                     <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."

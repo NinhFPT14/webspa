@@ -252,7 +252,10 @@ Trang chủ
                                         <div class="action_links">
                                             <ul>
                                                 <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}" data-toggle="modal" data-target="#modal_box" title="Quick View"><i class="ion-eye"></i></a></li>
+                                                <li class="quick_view"><a
+                                                    href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"
+                                                    title="xem chi tiết"><i class="ion-eye"></i></a></li>
+    
                                             </ul>
                                         </div>
                                     </div>

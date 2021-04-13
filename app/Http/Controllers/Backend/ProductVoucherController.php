@@ -23,7 +23,7 @@ class ProductVoucherController extends Controller
     }
 
     public function list (){
-        $data = VoucherProduct::get();
+        $data = VoucherProduct::paginate(10);
         return view('backend.voucher_product.list',compact('data'));
      }
 

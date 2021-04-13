@@ -49,7 +49,7 @@ Route::group(['middleware' => ['CheckUser']], function () {
         Route::post('/ma-giam-gia/{id}','Frontend\AppointmentController@voucher')->name('appointment.voucher');
         Route::get('/trang-nhap-otp/{token}/{id}','Frontend\AppointmentController@otp')->name('appointment.otp');
         Route::post('/kiem-tra-otp/{id}','Frontend\AppointmentController@confirmOtp')->name('appointment.confirmOtp');
-        Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
+    Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
     });
 
 
@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         return view('backend.dashboard');
     })->name('dashboard');
     Route::get('danh-sach-phan-hoi','Backend\FeedbackController@list')->name('listFeedback');
+    Route::post('chi-tiet-phan-hoi','Backend\FeedbackController@detail')->name('feedback.detail');
+
 
     //CategoryController
     Route::group(['prefix' => 'danh-muc'], function() {
@@ -87,6 +89,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\CategoryController@delete')->name('deleteCategory');
         Route::get('/trang-sua/{id}','Backend\CategoryController@edit')->name('editCategory');
         Route::post('/cap-nhat/{id}','Backend\CategoryController@update')->name('updateCategory');
+        Route::post('/tim-kiem-danh-muc/{type}','Backend\CategoryController@search')->name('category.search');
     });
 
     //SlideController
@@ -119,6 +122,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\ProductController@delete')->name('deleteProduct');
         Route::post('/cap-nhat/{id}','Backend\ProductController@update')->name('updateProduct');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductController@status')->name('statusProduct');
+        Route::post('/tim-kiem-san-pham','Backend\ProductController@search')->name('product.search');
     });
 
     //LogoController
@@ -145,6 +149,8 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/bang-xep-lich','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
         Route::post('/tim-kiem-don-theo-thoi-gian','Backend\AppointmentController@searchTimeAppointment')->name('searchTimeAppointment');
         Route::post('/xac-nhan-don','Backend\AppointmentController@confirm')->name('confirmAppointment');
+        Route::post('/tim-kiem-dich-vu','Backend\ServiceController@search')->name('service.search');
+        
     });
 
     // vouchers service
@@ -156,6 +162,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/trang-sua/{id}', 'Backend\VoucherController@edit')->name('editVoucherService');
         Route::post('/cap-nhat/{id}', 'Backend\VoucherController@update')->name('updateVoucherService');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\VoucherController@status')->name('statusVoucherService');
+        Route::post('/tim-kiem','Backend\VoucherController@search')->name('VoucherService.search');
     });
 
     // vouchers product
@@ -167,6 +174,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/trang-sua/{id}', 'Backend\ProductVoucherController@edit')->name('editVoucherProduct');
         Route::post('/cap-nhat/{id}', 'Backend\ProductVoucherController@update')->name('updateVoucherProduct');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductVoucherController@status')->name('statusVoucherProduct');
+        Route::post('/tim-kiem','Backend\ProductVoucherController@search')->name('VoucherProduct.search');
     });
 
     // Ghế làm locationCOntroller
@@ -178,6 +186,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\LocationController@delete')->name('deleteLocation');
         Route::get('/trang-sua/{id}','Backend\LocationController@edit')->name('editLocation');
         Route::post('/cap-nhat/{id}','Backend\LocationController@update')->name('updateLocation');
+        Route::post('/tim-kiem','Backend\LocationController@search')->name('location.search');
     });
 
     // Nhân viên Staffcontroller
@@ -189,6 +198,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\StaffController@delete')->name('deleteStaff');
         Route::get('/trang-sua/{id}','Backend\StaffController@edit')->name('editStaff');
         Route::post('/cap-nhat/{id}','Backend\StaffController@update')->name('updateStaff');
+        Route::post('/tim-kiem','Backend\StaffController@search')->name('staff.search');
     });
 
     // maps
