@@ -126,49 +126,47 @@
                         <div class="1 box bg-gray-200">
                             <p></p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
 
-                            <p> Vietcombank:</p>
+                                <p> Số TK: 0081000830127</p>
 
-                            <p> Số TK: 0081000830127</p>
-
-                            <p> DƯƠNG THỊ QUYÊN</p>
+                                <p> DƯƠNG THỊ QUYÊN</p>
 
 
-                            <p> Vietinbank:</p>
+                                <p> Vietinbank:</p>
 
-                            <p> Số TK: 100000335060</p>
+                                <p> Số TK: 100000335060</p>
 
-                            <p> DƯƠNG THỊ QUYÊN</p>
+                                <p> DƯƠNG THỊ QUYÊN</p>
 
 
-                            <p> khi CK các bạn vui lòng nhập nội dung chuyển khoản là :</p>
-                            <p class="flex"><input type="text" class="form-control"
-                                    value="{{$data->phone}} - Mã đơn : {{$data->id}}" id="myInput">
-                                <button onclick="myFunction()" class="btn text-primary">
-                                    <ion-icon name="copy-outline"></ion-icon>
-                                </button>
-                            </p>
-
+                                <p> khi CK các bạn vui lòng nhập nội dung chuyển khoản là :</p>
+                                <p class="flex"><input type="text" class="form-control"
+                                        value="{{$data->phone}} - Mã đơn : {{$data->id}}" id="myInput">
+                                    <button onclick="myFunction()" class="btn text-primary">
+                                        <ion-icon name="copy-outline"></ion-icon>
+                                    </button>
+                                </p>
                         </div>
 
                     </div>
                     <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
-                        <div class="col h-10 w-64 h-12 pt-2 "
-                            style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
-                            <label class="pl-1" style="font-size: 14px;"><input type="radio" name="check_method"
-                                    value="0" {{$data->payment_methods == 0 ? 'checked':''}}> Thanh toán khi đến cửa
-                                hàng
-                            </label>
-                            <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
-                                style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
-                        </div>
-                        <div class="0 box bg-gray-200 ">
-                            <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi
-                                được tư vấn và lên lịch làm.</p>
+                        <div class="row pl-4 pt-2 w-96 rounded-sm pt-2  ">
+                            <div class="col h-10 w-64 h-12 pt-2 "
+                                style="border: 1px solid #cecdcd;border-radius: 4px 4px 4px 4px;">
+                                <label class="pl-1" style="font-size: 14px;"><input type="radio" name="check_method"
+                                        value="0" checked> Thanh toán khi đến cửa hàng
+                                </label>
+                                <ion-icon name="cash-outline" class="w-5 h-6 pl-4 pt-0.5 "
+                                    style="color: rgb(0 149 255); padding-left: 10px; margin-top: 7px;"></ion-icon>
+                            </div>
+                            <div class="0 box bg-gray-200 ">
+                                <p> Đối với các bạn thanh toán tại cửa hàng , Vui lòng đến đúng thời gian đã hẹn sau khi
+                                    được tư vấn và lên lịch làm.</p>
 
-                            <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
-                            <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
-                        </div>
-                        <div class="grid grid-cols-2">
+                                <p> Hotline: 096.418.8532 hoặc chat tại Fanpage facebook.com/mongdepthainguyen/</p>
+                                <p> - QueenSpa xin cảm ơn các bạn đã tin tưởng và ủng hộ . </p>
+                            </div>
+                            <div class="grid grid-cols-2">
+                            </div>
                         </div>
                     </div>
                     @error('check_method')
@@ -271,7 +269,6 @@
 
             </div>
         </div>
-
         @include('sweetalert::alert')
 </body>
 <script>

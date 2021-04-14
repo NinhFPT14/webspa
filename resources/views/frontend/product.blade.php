@@ -118,7 +118,7 @@ Sản phẩm
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
+                                        <li class="add_to_cart"><a href="{{route('cart.add',['id'=>$value->id])}}" title="Thêm vào giỏ hàng"><i
                                                     class="ion-bag"></i></a></li>
                                         <li class="quick_view"><a
                                                 href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"

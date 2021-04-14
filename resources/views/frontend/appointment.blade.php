@@ -95,30 +95,6 @@
                     @enderror
                 </div>
             </div>
-<<<<<<< HEAD
-            <div class="payment_method ml-6 mt-4 pl-4">
-                <label>Phương thức thanh toán<span>*</span></label>
-                <div class="panel-default">
-                    <input id="payment" name="check_method" type="radio" data-target="createp_account" value="0" />
-                    <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh Toán
-                        Tiền Mặt</label>
-                </div>
-                <div class="panel-default">
-                    <input id="payment_defult" name="check_method" type="radio" data-target="createp_account"
-                        value="1" />
-                    <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"
-                        aria-controls="collapsedefult">Thanh Toán Bằng Ngân Hàng <img src="frontEnd/img/icon/papyel.png"
-                            alt=""></label>
-                    <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                        <div class="card-body1">
-                            <p>Thanh Toán Bằng ATM, các Ứng dụng tiết kiệm tiền online.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-=======
->>>>>>> 1627a06de744a412a3c963871aa753f9d684df32
             @error('check_method')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror

@@ -23,12 +23,17 @@ class ProductVoucherController extends Controller
     }
 
     public function list (){
-        $data = VoucherProduct::get();
+        $data = VoucherProduct::paginate(10);
         return view('backend.voucher_product.list',compact('data'));
      }
 
      public function status ($id,$status){
         $data = VoucherProduct::where('id',$id)->update(['status'=>$status]);
+        if($status ==0){
+            alert()->success('Bật Voucher'); 
+          }else{
+            alert()->error('Tắt Voucher'); 
+          }
         return redirect()->route('listVoucherProduct');
      }
      public function delete($id){
@@ -51,5 +56,9 @@ class ProductVoucherController extends Controller
         alert()->success('Sửa thành công voucher'); 
         return redirect()->route('listVoucherProduct');
     }  
+    public function search(Request $request){
+      $data = VoucherProduct::where('code', 'like', '%' . $request->name . '%')->paginate(9);
+      return view('backend.voucher_product.list',compact('data'));
+  }
 
 }

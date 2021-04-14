@@ -62,22 +62,13 @@
                         <div class="widgets_container widget_newsletter">
                             <h3>Đăng Ký</h3>
                             <div class="newsletter_desc">
-                                <p>Join <strong>69.000+ đã đăng ký</strong> & để lấy thông tin và giảm giá.
-                                </p>
+                                <p>Nhập số điện thoại để nhận thông tin ưu đãi sắp tới</p>
                             </div>
                             <div class="newsletter_form">
                                 <form action="#">
-                                    <input placeholder="Địa Chỉ Email" type="text">
+                                    <input placeholder="Nhập số điện thoại" type="text">
                                     <button type="submit"><i class="ion-android-mail"></i></button>
                                 </form>
-                            </div>
-                            <div class="footer_social">
-                                <ul>
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                </ul>
                             </div>
                         </div>
                     </div>

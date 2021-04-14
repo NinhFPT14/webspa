@@ -69,13 +69,6 @@ Liên hệ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group">
-                                <label>Email *</label>
-                                <input name="email" placeholder="Vui lòng nhập Email" type="email">
-                            </div>
-                            @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                            <div class="form-group">
                                 <label>Số điện thoại *</label>
                                 <input name="phone_number" placeholder="Vui lòng nhập số điện thoại" type="text">
                             </div>
@@ -100,4 +93,5 @@ Liên hệ
         <!--contact area end-->
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection

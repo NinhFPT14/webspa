@@ -11,15 +11,15 @@ class FeedbackController extends Controller
     public function save(AddFeedbackRequest $request){
           $flight = new Feedback;
           $flight->name = $request->name;
-          $flight->email = $request->email;
           $flight->phone_number = $request->phone_number;
           $flight->content = $request->content;
+          $flight->status = 0;
           $flight->save();
+        alert()->success('Thành công', "Gửi thành công phản hồi"); 
         return redirect()->route('contact');
       }
-      public function list (){
-        
-        $data = Feedback::get();
-        return view('backend.feedbacks.list',compact('data'));
-     }
+
+      public function contact(){
+        return view('frontend.contact');
+    }
 }
