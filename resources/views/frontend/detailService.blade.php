@@ -3,73 +3,287 @@
 Chi tiết dịch vụ
 @endsection
 @section('content')
-
+<!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
-
-        <div class="container">   
-            <div class="row">
-
-                <div class="col-12">
-                    <div class="breadcrumb_content">
+    <div class="container">   
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="{{route('home')}}">Trang chủ</a></li>
+                        <li><a href="{{route('service',['id'=>'all'])}}">Dịch vụ</a></li>
+                        <li><a>Chi tiết dịch vụ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>         
+</div>
+{{-- chi tiết dịch vụ  --}}
+<div class="main_blog_area blog_details">
+    <div class="container">
+        <div class="row">  
+            <div class="col-lg-9 col-md-12">
+                <!--blog grid area start-->
+                <div class="blog_details_wrapper">
+                    <div class="single_blog">
+                        <div class="blog_title">
+                            <h2><a href="#">Chi tiết dịch vụ</a></h2>
+                            <div class="blog_post flex">
+                                <ul>
+                                    <li class="post_author">Loại danh mục</li>
+                                    <?php 
+                                    $name_category = DB::table('categories')->find($data->category_id);
+                                    ?>
+                                    <li class="post_date">{{$name_category->name}}</li>
+                                </ul>
+                                <a class="button data_service" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
+                            </div>
+                        </div>
+                        <div class="blog_thumb">
+                           <a href="#"><img src="{{$data->image}}" alt=""></a>
+                       </div>
+                        <div class="blog_content">
+                            <div class="post_content">
+                                <blockquote>
+                                    <p>{!! $data->description !!}</p>
+                                </blockquote>
+                                <p>{!! $data->detail !!}</p>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <!--blog grid area start-->
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="blog_sidebar_widget">
+                    <div class="widget_list widget_categories">
+                        <h2>Danh mục</h2>
+                        <?php 
+                        $category = DB::table('categories')->where('type',1)->where('status',0)->get();
+                        ?>
                         <ul>
-                            <li><a href="index-5.html">Trang Chủ</a></li>
-                            <li><a href="">Dịch vụ</a></li>
+                            @foreach ($category as $value)
+                            <?php
+                             $service = DB::table('services')->where('category_id',$value->id)->get();
+                            ?>
+                            @if(count( $service) >=1)
+                            <li>
+                                <a href="{{route('service',['id'=> $value->id])}}">{{$value->name}} <span>({{count($service)}})</span></a> 
+                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>         
-</div>
-    <!--kết thúc link bar-->
-    
-    <!-- chi tiết dịch vụ -->
-    <div class="main_blog_area blog_fullwidth">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="blog_left_area">
-                        <div class="single_blog">   
-                            <div class="blog_title">
-                                <h2><a href="#">{{ $service->name }}</a></h2>
-                            </div>
-                            <div class="blog_container">
-                                <div class="blog_thumb">
-                                    <a href="blog-details.html"><img src="{{ $service->image }}" alt=""></a>
-                                </div>
-                                <div class="blog_content">
-                                <p></p>
-                                    {!! $service->description !!}
-                                    {!! $service->detail !!}
-                                    <div class="blog_footer">
-                                        <div class="blog_social">
-                                            <h3>Share this post</h3>
-                                            <ul>
-                                                <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#" title="Facebook"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#" title="Facebook"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#" title="Facebook"><i class="fa fa-google-plus"></i></a></li>
-                                                <li><a href="#" title="Facebook"><i class="fa fa-linkedin"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <!--blog pagination area start-->
-                    <div class="blog_pagination">
-                        <div class="pagination">
-                            <ul>
-                                
-                            </ul>
-                        </div>
-                    </div>
-                    <!--blog pagination area end-->
-                </div>
-            </div>
-        </div>
     </div>
-    <!-- chi tiết dịch vụ -->
+</div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title " id="exampleModalLabel">ĐẶT LỊCH</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Dịch vụ <span>*</span></label>
+                  <select class="form-control mul-select" name="service_id[]" id="modal_service" multiple style="width:320px">
+                    @foreach ($serviceAll as $value)
+                      <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Họ tên <span>*</span></label>
+                  <input type="text" class="form-control" name="full_name" id="modal_full_name" placeholder="Nhập họ tên">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Số điện thoại<span>*</span></label>
+                    <input type="text" class="form-control" phone="phone_number" maxlength="10" id="modal_phone_number" placeholder="Nhập số điện thoại">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
+                    <select class="form-control" name="time_ficked" id="modal_time_ficked">
+                        <option selected disabled value="">Chọn thời gian</option>
+                        <option>Sáng</option>
+                        <option>Chiều</option>
+                        <option>Tối</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ngày làm <span>*</span></label>
+                    <input type="date" class="form-control" name="time_start" id="modal_time_start">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Lời nhắn</label>
+                    <textarea class="form-control"  name="note" id="modal_note" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                   <p id="thong_bao_name" class="text-danger"></p>
+                   <p id="thong_bao_phone" class="text-danger"></p>
+                   <p id="thong_bao_service" class="text-danger"></p>
+                   <p id="thong_bao_time_ficked" class="text-danger"></p>
+                   <p id="thong_bao_time_start" class="text-danger"></p>
+                   <p id="thong_bao_note" class="text-danger"></p>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">HỦY</button>
+          <button type="button" class="btn btn-success modal-dat-lich">ĐẶT LỊCH</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  {{-- Modal otp --}}
+  <div class="modal fade" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title modal_ma_don " id="exampleModalLabel">Xác nhận OTP</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nhập mã otp <span>*</span></label>
+                  <input type="number" class="form-control" name="code" id="modal_code_otp">
+                </div>
+
+                <div class="form-group">
+                    <p id="thong_bao_id" class="text-danger"></p>
+                    <p id="thong_bao_code" class="text-danger"></p>
+                    <p id="thong_bao_fail" class="text-danger"></p>
+                 </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal-xac-nhan-otp" name="">Gửi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+
+@section('page-script')
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+$(document).ready(function() {
+    $(".mul-select").select2();
+    $('.data_service').on('click', function() {
+        let service_id = $(this).data('orderid');
+        let modalOption = $('#modal_service').find('option');
+                for (let i = 0; i < modalOption.length; i++) {
+                    let index = $(modalOption[i]).val();
+                    if (index == service_id) {
+                        $(modalOption[i]).prop('selected', true);
+                    } else {
+                        $(modalOption[i]).prop('selected', false);
+                    }
+                    $(".mul-select").select2();
+                }
+    })
+
+    $('.modal-dat-lich').on('click', function() {
+       
+        let service_id = $("#modal_service").val();
+        let name = $("#modal_full_name").val();
+        let phone = $("#modal_phone_number").val();
+        let time_ficked = $("#modal_time_ficked").val();
+        let time_start = $("#modal_time_start").val();
+        let note = $("#modal_note").val();
+        let apiApopointmentSave = '{{route("appointment.apiSave")}}';
+        $.ajax({
+            url: apiApopointmentSave,
+            method: "POST",
+            data: {
+                name: name,
+                service_id: service_id,
+                phone: phone,
+                time_ficked: time_ficked,
+                time_start: time_start,
+                note: note,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.data){
+                    $('#exampleModal').modal('hide');
+                    $('#modal_otp').modal('show');
+                    $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
+                    $('.modal-xac-nhan-otp').attr('name',response.data);
+                }else{
+                    if(response.messages.name){
+                        $("p#thong_bao_name" ).html('- ' + response.messages.name);
+                    }
+                    if(response.messages.phone){
+                        $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
+                    }
+                    if(response.messages.service_id){
+                        $("p#thong_bao_service" ).html('- ' + response.messages.service_id);
+                    }
+                    if(response.messages.time_ficked){
+                        $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
+                    }
+                    if(response.messages.time_start){
+                        $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
+                    }  
+                    if(response.messages.note){
+                        $("p#thong_bao_note" ).html('- ' + response.messages.note);
+                    }
+                }
+                
+            }
+            
+        })
+    })
+
+    $('.modal-xac-nhan-otp').on('click', function() {
+       let appointment_id =  $('.modal-xac-nhan-otp').attr('name');
+       let code = $("#modal_code_otp").val();
+       let apiconfirmOtp = '{{route("appointment.apiconfirmOtp")}}';
+       $.ajax({
+           url: apiconfirmOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               code: code,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.success == 'ok'){
+                    $('#modal_otp').modal('hide');
+                    swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                }else if(response.fail){
+                    $("p#thong_bao_fail" ).html('- ' + response.fail);
+                }else{
+                    if(response.messages.id){
+                    $("p#thong_bao_id" ).html('- ' + response.messages.id);
+                    }
+                    if(response.messages.code){
+                        $("p#thong_bao_code" ).html('- ' + response.messages.code);
+                    }
+                }
+           }
+           
+       })
+   })
+
+})
+</script>
 @endsection

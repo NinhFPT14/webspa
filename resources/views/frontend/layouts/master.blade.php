@@ -18,7 +18,8 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="frontEnd/css/style.css">
     <link href="frontEnd/css/tailwind.min.css" rel="stylesheet">
-
+    <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+    
 </head>
 
 <body class="home-five_wrapper">
@@ -36,6 +37,9 @@
    
 
 </body>
+
+<script src="backEnd/vendor/jquery/jquery.min.js"></script>
+<script src="backEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="frontEnd/js/plugins.js"></script>
 <script src="frontEnd/js/main.js"></script>
 

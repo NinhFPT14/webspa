@@ -25,7 +25,8 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
 
     //ServiceController
-    Route::get('dich-vu','Frontend\ServiceController@service')->name('service');
+    Route::get('dich-vu/{id}','Frontend\ServiceController@service')->name('service');
+    Route::post('tim-kiem-dich-vu','Frontend\ServiceController@search')->name('service.search.user');
     Route::get('chi-tiet-dich-vu/{slug}/{id}','Frontend\ServiceController@detailService')->name('detailService');
 
     //BlogController
@@ -51,6 +52,8 @@ use RealRashid\SweetAlert\Facades\Alert;
         Route::post('/ma-giam-gia/{id}','Frontend\AppointmentController@voucher')->name('appointment.voucher');
         Route::get('/trang-nhap-otp/{token}/{id}','Frontend\AppointmentController@otp')->name('appointment.otp');
         Route::post('/kiem-tra-otp/{id}','Frontend\AppointmentController@confirmOtp')->name('appointment.confirmOtp');
+        Route::post('/tao-don-dat-lich','Frontend\AppointmentController@apiSave')->name('appointment.apiSave');
+        Route::post('/xac-nhan-otp','Frontend\AppointmentController@apiconfirmOtp')->name('appointment.apiconfirmOtp');
     Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
     });
 
