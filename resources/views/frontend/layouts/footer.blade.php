@@ -29,16 +29,18 @@
                             <a href="{{route('home')}}"><img src="{{ $value->image}}" alt=""></a>
                             @endforeach
                             <div class="footer_contact">
+                                <ul>
                                 <?php
                                 $data = App\Model\Footer::get();
                                 ?>
                                 @foreach ($data as $item)
-                                <ul>
+                                
                                     <li><i class="ion-ios-location"></i><span>Địa Chỉ:</span>{{$item->address}}</li>
                                     <li><i class="ion-ios-telephone"></i><span>Liên Hệ:</span> {{$item->phone_number}}</li>
                                     <li><i class="ion-android-mail"></i><span>Email:</span> {{$item->email}}</li>
-                                </ul>
+                                
                                 @endforeach
+                            </ul>
                             </div>
                         </div>
                     </div>
