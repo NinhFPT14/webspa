@@ -34,8 +34,6 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/chi-tiet-bai-viet','Frontend\BlogController@detailBlog')->name('detailBlog');
 
     //LoginController
-    
-    Route::get('/tai-khoan-cua-toi','Frontend\LoginController@myAccount')->name('myAccount');
 
     //cartController
     Route::get('/gio-hang','Frontend\CartController@cart')->name('cart');
@@ -46,15 +44,9 @@ use RealRashid\SweetAlert\Facades\Alert;
     //Đặt lịch
     Route::group(['prefix' => 'dat-lich'], function() {
         Route::get('/','Frontend\AppointmentController@appointment')->name('appointment');
-        Route::post('/tao-moi','Frontend\AppointmentController@save')->name('appointment.save');
-        Route::get('/xac-nhan/{token}/{id}','Frontend\AppointmentController@confirm')->name('appointment.confirm');
-        Route::post('/luu-xac-nhan/{id}','Frontend\AppointmentController@saveConfirm')->name('appointment.saveConfirm');
-        Route::post('/ma-giam-gia/{id}','Frontend\AppointmentController@voucher')->name('appointment.voucher');
-        Route::get('/trang-nhap-otp/{token}/{id}','Frontend\AppointmentController@otp')->name('appointment.otp');
-        Route::post('/kiem-tra-otp/{id}','Frontend\AppointmentController@confirmOtp')->name('appointment.confirmOtp');
         Route::post('/tao-don-dat-lich','Frontend\AppointmentController@apiSave')->name('appointment.apiSave');
         Route::post('/xac-nhan-otp','Frontend\AppointmentController@apiconfirmOtp')->name('appointment.apiconfirmOtp');
-    Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
+        Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
     });
 
 use Illuminate\Http\Request;

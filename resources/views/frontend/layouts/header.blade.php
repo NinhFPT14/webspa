@@ -117,7 +117,7 @@
                         <nav>
                             <ul>
 
-                                <li class="sub_menu pages"><a href="{{route('myAccount')}}"><svg
+                                <li class="sub_menu pages"><a><svg
                                             xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                                             fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                             <path
@@ -234,7 +234,7 @@
                                 <a href="{{route('contact')}}">Liên Hệ</a>
                             </li>
                             <li class="menu-item-has-children active">
-                                <a href="{{route('myAccount')}}">Tài Khoản</a>
+                                <a>Tài Khoản</a>
                                 <ul class="sub-menu">
                                     @if(Illuminate\Support\Facades\Auth::check())
                                     <li><a href="{{route('logout')}}">Đăng xuất</a></li>

@@ -13,10 +13,6 @@ class LoginController extends Controller
     public function login(){
         return view('frontend.login');
     }
-   
-    public function myAccount(){
-        return view('frontend.myAccount');
-    }
 
     public function getLogin(Request $request){
         if (Auth::attempt(['phone_number' => $request->phone, 'password' => $request->password]) && Auth::user()->role == 0) {

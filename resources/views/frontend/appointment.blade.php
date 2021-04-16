@@ -21,52 +21,47 @@
     </div>
 </div>
 <div class="container  pt-4" style="background-color:#f9f9f9;">
-
-    <form method="post" action="{{ route('appointment.save') }}" style=" margin-top:-90px">
+    <form style=" margin-top:-90px">
         @csrf
         <div class="pt-24 ">
             <div class="p-4">
                 <div class="row pl-10 pt-4 pr-3 ">
                     <strong>Chọn dịch vụ<span class="text-danger">*</span></strong>
-                    <select class="mul-select form-control " name="service_id[]" multiple>
+                    <select class="mul-select form-control " id="modal_service" name="service_id[]" multiple>
                         <?php
                         $category = DB::table('categories')->where('type',1)->where('status',0)->get();
-                    ?>
+                        ?>
                         @foreach($category as $value)
-                        <optgroup label="{{$value->name}}"></optgroup>
                         <?php
                             $service = DB::table('services')->where('status',0)->where('category_id', $value->id)->get();
                         ?>
+                         @if(count( $service) >=1)
+                           <optgroup label="{{$value->name}}"></optgroup>
+                         @endif
                         @foreach($service as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                         @endforeach
                     </select>
-                    @error('service_id')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <p id="thong_bao_service" class="text-danger"></p><br>
                 </div>
 
                 <div class="pt-4 ">
                     <div class=" row pl-4">
                         <div class="col-md-6 ">
                             <label><strong>Chọn thời gian<span class="text-danger">*</span></strong></label>
-                            <select class="form-control" name="time_ficked">
+                            <select class="form-control" id="modal_time_ficked" name="time_ficked">
                                 <option selected disabled value="">Chọn thời gian</option>
                                 <option>Sáng</option>
                                 <option>Chiều</option>
                                 <option>Tối</option>
                             </select>
-                            @error('time_ficked')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            <p id="thong_bao_time_ficked" class="text-danger"></p><br>
                         </div>
                         <div class="col-md-6">
                             <label><strong> Ngày Hẹn<span class="text-danger"> *</span></strong></label>
-                            <input type="date" class="form-control pr-4" name="time_start">
-                            @error('time_start')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            <input type="date" id="modal_time_start"  class="form-control pr-4" name="time_start">
+                            <p id="thong_bao_time_start" class="text-danger"></p><br>
                         </div>
 
                     </div>
@@ -74,33 +69,24 @@
                 <div class="row pl-4 pt-4">
                     <div class="col">
                         <label><strong>Họ tên<span class="text-danger">*</span></strong></label>
-                        <input type="text" class="form-control" name="name">
-                        @error('name')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <input type="text" id="modal_full_name" class="form-control" name="name">
+                        <p id="thong_bao_name" class="text-danger"></p><br>
                     </div>
                     <div class="col">
                         <label><strong>Số Điện Thoại<span class="text-danger">*</span></strong></label>
-                        <input type="text" class="form-control" name="phone" maxlength="10">
-                        @error('phone')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <input type="text" id="modal_phone_number" class="form-control" name="phone" maxlength="10">
+                        <p id="thong_bao_phone" class="text-danger"></p><br>
                     </div>
                 </div>
-                <div class="  row pl-10 pt-4 pr-3 ">
+                <div class="row pl-10 pt-4 pr-3 ">
                     <label><strong>Lời nhắn</strong></label>
-                    <textarea name="note" class="form-control" cols="30" rows="10">{{ old('note') }}</textarea>
-                    @error('note')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                    @enderror
+                    <textarea name="note" id="modal_note" class="form-control" cols="30" rows="10">{{ old('note') }}</textarea>
+                    <p id="thong_bao_note" class="text-danger"></p>
                 </div>
+                   
             </div>
-            @error('check_method')
-            <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
             <div class="col-12 w-64 h-20 pt-4 pl-6 pr-1 " style="width:100%">
-                <button class="btn  form-control" style="background-color:#ae307c; color:white" type="submit">Đặt
-                    lịch</button>
+                <button class="btn  form-control modal-dat-lich" style="background-color:#ae307c; color:white" type="button">Đặt lịch</button>
             </div>
         </div>
     </form>
@@ -112,11 +98,125 @@
 
 
 
+  {{-- Modal otp --}}
+  <div class="modal fade" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title modal_ma_don " id="exampleModalLabel">Xác nhận OTP</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nhập mã otp <span>*</span></label>
+                  <input type="number" class="form-control" name="code" id="modal_code_otp">
+                </div>
+
+                <div class="form-group">
+                    <p id="thong_bao_id" class="text-danger"></p>
+                    <p id="thong_bao_code" class="text-danger"></p>
+                    <p id="thong_bao_fail" class="text-danger"></p>
+                 </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal-xac-nhan-otp" name="">Gửi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 @endsection
 @section('page-script')
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <script>
 $(document).ready(function() {
     $(".mul-select").select2();
+    $('.modal-dat-lich').on('click', function() {
+       let service_id = $("#modal_service").val();
+       let name = $("#modal_full_name").val();
+       let phone = $("#modal_phone_number").val();
+       let time_ficked = $("#modal_time_ficked").val();
+       let time_start = $("#modal_time_start").val();
+       let note = $("#modal_note").val();
+       let apiApopointmentSave = '{{route("appointment.apiSave")}}';
+       $.ajax({
+           url: apiApopointmentSave,
+           method: "POST",
+           data: {
+               name: name,
+               service_id: service_id,
+               phone: phone,
+               time_ficked: time_ficked,
+               time_start: time_start,
+               note: note,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+               console.log(response.messages);
+               if(response.data){
+                   $('#modal_otp').modal('show');
+                   $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
+                   $('.modal-xac-nhan-otp').attr('name',response.data);
+               }else{
+                    if(response.messages.name){
+                        $("p#thong_bao_name" ).html('- ' + response.messages.name);
+                        }
+                    if(response.messages.phone){
+                        $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
+                            }
+                    if(response.messages.service_id){
+                        $("p#thong_bao_service" ).html('- ' + response.messages.service_id);
+                        }
+                    if(response.messages.time_ficked){
+                        $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
+                        }
+                    if(response.messages.time_start){
+                        $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
+                        }
+                    if(response.messages.note){
+                        $("p#thong_bao_note" ).html('- ' + response.messages.note);
+                        }
+               }
+           }
+       })
+   })
+
+   $('.modal-xac-nhan-otp').on('click', function() {
+       let appointment_id =  $('.modal-xac-nhan-otp').attr('name');
+       let code = $("#modal_code_otp").val();
+       let apiconfirmOtp = '{{route("appointment.apiconfirmOtp")}}';
+       $.ajax({
+           url: apiconfirmOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               code: code,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.success == 'ok'){
+                    $('#modal_otp').modal('hide');
+                    swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                }else if(response.fail){
+                    $("p#thong_bao_fail" ).html('- ' + response.fail);
+                }else if(response.messages.id){
+                    $("p#thong_bao_id" ).html('- ' + response.messages.id);
+                }else{
+                    $("p#thong_bao_code" ).html('- ' + response.messages.code);
+                }
+           }
+           
+       })
+   })
 })
 </script>
 @endsection
+
+
