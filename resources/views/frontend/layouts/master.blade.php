@@ -11,7 +11,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="frontEnd/img/favicon.ico">
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="{{asset('frontEnd/vendor/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="frontEnd/vendor/select2/css/select2.min.css">
     <link rel="stylesheet" href="frontEnd/css/plugins.css">
 
     <!-- Main Style CSS -->
@@ -37,13 +37,14 @@
 
 </body>
 
-<script src="backEnd/vendor/jquery/jquery.min.js"></script>
-<script src="backEnd/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="frontEnd/js/plugins.js"></script>
-<script src="frontEnd/js/main.js"></script>
 
+<script src="{{asset('frontEnd/js/plugins.js')}}"></script>
+<script src="{{asset('frontEnd/js/main.js')}}"></script>
+
+<script src="{{asset('backEnd/vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('backEnd/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 <!-- Main JS -->
-<script src="frontEnd/js/main.js"></script>
+
 <script src="{{asset('frontEnd/vendor/select2/js/select2.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.bundle.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.bundle.js.map')}}"></script>
