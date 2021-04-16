@@ -3,295 +3,321 @@
 Chi tiết dịch vụ
 @endsection
 @section('content')
+<!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
-        <div class="container">   
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
+    <div class="container">   
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="{{route('home')}}">Trang chủ</a></li>
+                        <li><a href="{{route('service',['id'=>'all'])}}">Dịch vụ</a></li>
+                        <li><a>Chi tiết dịch vụ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>         
+</div>
+{{-- chi tiết dịch vụ  --}}
+<div class="main_blog_area blog_details">
+    <div class="container">
+        <div class="row">  
+            <div class="col-lg-9 col-md-12">
+                <!--blog grid area start-->
+                <div class="blog_details_wrapper">
+                    <div class="single_blog">
+                        <div class="blog_title">
+                            <div class="blog_post flex">
+                                <ul>
+                                    <?php 
+                                    $name_category = DB::table('categories')->find($data->category_id);
+                                    ?>
+                                    <p>Loại danh mục : {{$name_category->name}} </p>
+                                    <li class="post_author">{{number_format($data->discount)}} vnđ</li>
+                                    <li class="post_date" style="text-decoration-line:line-through">{{number_format($data->price)}} vnđ</li>
+                                </ul>
+                                <a class="button data_service" style="margin-left:50px" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
+                            </div>
+                        </div>
+                        <div class="blog_content">
+                            <div class="post_content">
+                                <strong>{!! $data->name !!}</strong>
+                                <blockquote>
+                                    <p>{!! $data->description !!}</p>
+                                </blockquote>
+                                <p>{!! $data->detail !!}</p>
+                            </div>
+                       </div>
+                    </div>
+                </div>
+                <!--blog grid area start-->
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="blog_sidebar_widget">
+                    <div class="widget_list widget_categories">
+                        <h2>Danh mục</h2>
+                        <?php 
+                        $category = DB::table('categories')->where('type',1)->where('status',0)->get();
+                        ?>
                         <ul>
-                            <li><a href="index-5.html">Trang Chủ</a></li>
-                            <li><a href="product-details.html">Chi Tiết</a></li>
+                            @foreach ($category as $value)
+                            <?php
+                             $service = DB::table('services')->where('category_id',$value->id)->get();
+                            ?>
+                            @if(count( $service) >=1)
+                            <li>
+                                <a href="{{route('service',['id'=> $value->id])}}">{{$value->name}} <span>({{count($service)}})</span></a> 
+                            </li>
+                            @endif
+                            @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>         
     </div>
-    <!--breadcrumbs area end-->
-    
-    <div class="product_container">
-        <div class="container">
-            <div class="product_container_inner mb-60">
-                <!--product details start-->
-                <div class="product_details mb-60">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6">
-                           <div class="product-details-tab">
-                                <div id="img-1" class="zoomWrapper single-zoom">
-                                    <a href="#">
-                                        <img id="zoom1" src="frontEnd/img/product/productbig1.jpg" data-zoom-image="frontEnd/img/product/productbig1.jpg" alt="big-1">
-                                    </a>
-                                </div>
-                                <div class="single-zoom-thumb">
-                                    <ul class="s-tab-zoom owl-carousel single-product-active" id="gallery_01">
-                                        <li>
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig2.jpg" data-zoom-image="frontEnd/img/product/productbig2.jpg">
-                                                <img src="frontEnd/img/product/productbig2.jpg" alt="zo-th-1"/>
-                                            </a>
+</div>
 
-                                        </li>
-                                        <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig3.jpg" data-zoom-image="frontEnd/img/product/productbig3.jpg">
-                                                <img src="frontEnd/img/product/productbig3.jpg" alt="zo-th-1"/>
-                                            </a>
-
-                                        </li>
-                                        <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig4.jpg" data-zoom-image="frontEnd/img/product/productbig4.jpg">
-                                                <img src="frontEnd/img/product/productbig4.jpg" alt="zo-th-1"/>
-                                            </a>
-
-                                        </li>
-                                        <li >
-                                            <a href="#" class="elevatezoom-gallery active" data-update="" data-image="frontEnd/img/product/productbig5.jpg" data-zoom-image="frontEnd/img/product/productbig5.jpg">
-                                                <img src="frontEnd/img/product/productbig5.jpg" alt="zo-th-1"/>
-                                            </a>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="product_d_right">
-                               <form action="#">
-
-                                    <h1>JWDA Penant Lamp Brshed Steel</h1>
-                                   
-                                    <div class="product_rating">
-                                        <ul>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="price_box">
-                                        <span class="current_price">$70.00</span>
-                                        <span class="old_price">$80.00</span>
-
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl</p>
-                                    </div>
-                                  
-                                   
-                                     <div class="action_links">
-                                        <ul>
-                                            <li class="add_to_cart"><a href="cart.html" title="add to cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
-                                           <li class="wishlist"><a href="wishlist.html" title="Add to Wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
-                                            <li class="compare"><a href="#" title="compare"><i class="zmdi zmdi-swap"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product_meta">
-                                        <span>Danh Mục: <a href="#">Clothing</a></span>
-                                    </div>
-
-                                </form>
-                               
-                                <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('appointment')}}">
-                                        <i class="ion-ios-alarm fa-2x"></i>    
-                                      Đặt Lịch Ngay
-                                    </a>
-                                </div>
-                                <div class="rounded-3xl mt-30 bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('cart')}}">
-                                        <i class="fas fa-cart-plus"></i>
-                                      Thêm vào giỏ hàng
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </div>
-                <!--product details end-->
-
-                <!--product info start-->
-                <div class="product_d_info">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="product_d_inner">   
-                                <div class="product_info_button">    
-                                    <ul class="nav" role="tablist">
-                                        <li >
-                                            <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Chi Tiết</a>
-                                        </li>
-                                       
-                                        <li>
-                                           <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Đánh Giá </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="info" role="tabpanel" >
-                                        <div class="product_info_content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id nulla.</p>
-                                            <p>Pellentesque aliquet, sem eget laoreet ultrices, ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tempor, lorem et placerat vestibulum, metus nisi posuere nisl, in accumsan elit odio quis mi. Cras neque metus, consequat et blandit et, luctus a nunc. Etiam gravida vehicula tellus, in imperdiet ligula euismod eget.</p>
-                                        </div>    
-                                    </div>
-                                    <div class="tab-pane fade" id="sheet" role="tabpanel" >
-                                        <div class="product_d_table">
-                                           <form action="#">
-                                                <table>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="first_child">Compositions</td>
-                                                            <td>Polyester</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="first_child">Styles</td>
-                                                            <td>Girly</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="first_child">Properties</td>
-                                                            <td>Short Dress</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </form>
-                                        </div>
-                                        <div class="product_info_content">
-                                            <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
-                                        </div>    
-                                    </div>
-
-                                    <div class="tab-pane fade" id="reviews" role="tabpanel" >
-                                        <div class="reviews_wrapper">
-                                            <h2></h2>
-                                            <div class="reviews_comment_box">
-                                                <div class="comment_thmb">
-                                                    <img src="frontEnd/img/blog/comment2.jpg" alt="">
-                                                </div>
-                                                <div class="comment_text">
-                                                    <div class="reviews_meta">
-                                                        <div class="star_rating">
-                                                            <ul>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-star"></i></a></li>
-                                                            </ul>   
-                                                        </div>
-                                                        <p><strong>admin </strong>- September 12, 2018</p>
-                                                        <span>roadthemes</span>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="comment_title">
-                                                <h2>Bình Luận mới </h2>
-                                                <p>Your email address will not be published.  Required fields are marked </p>
-                                            </div>
-                                            <div class="product_ratting mb-10">
-                                               <h3>Đánh Giá</h3>
-                                                <ul>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                    <li><a href="#"><i class="fa fa-star"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="product_review_form">
-                                                <form action="#">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <label for="review_comment">đánh giá của bạn </label>
-                                                            <textarea name="comment" id="review_comment" ></textarea>
-                                                        </div> 
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <label for="author">Tên</label>
-                                                            <input id="author"  type="text">
-
-                                                        </div> 
-                                                        <div class="col-lg-6 col-md-6">
-                                                            <label for="email">Email </label>
-                                                            <input id="email"  type="text">
-                                                        </div>  
-                                                    </div>
-                                                    <button type="submit">Đánh Giá</button>
-                                                 </form>   
-                                            </div> 
-                                        </div>     
-                                    </div>
-                                </div>
-                            </div>     
-                        </div>
-                    </div>  
-                </div>  
-                <!--product info end-->
+<div class="product_wrapper special_products mb-60">
+    <div class="row">
+        <div class="col-12">
+            <div class="section_title title_style4">
+                    <h3>Dịch Vụ Liên Quan</h3>
             </div>
-            <!--product area start-->
-            <div class="product_wrapper special_products mb-60">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section_title title_style4">
-                                <h3>Dịch Vụ</h3>
+            <div class="row product_slick_row4">
+            <?php
+              $related_service = DB::table('services')->where('category_id',$data->category_id)->where('id','!=',$data->id)->where('status',0)->get();
+
+            ?>
+            @foreach($related_service as $value)
+                <div class="col-lg-3">
+                    <div class="single_product">
+                        <div class="product_thumb">
+                            <a class="primary_img" href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"><img src="{{$value->image}}" alt=""></a>
                         </div>
-                        <div class="row product_slick_row4">
-                            <div class="col-lg-3">
-                                <div class="single_product">
-                                    <div class="product_thumb">
-                                        <a class="primary_img" href="{{route('detailService')}}"><img src="frontEnd/img/product/product1.jpg" alt=""></a>
-                                        <a class="secondary_img" href="{{route('detailService')}}"><img src="frontEnd/img/product/product2.jpg" alt=""></a>
-                                      
-                                        <div class="action_links">
-                                            <ul>
-                                                <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
-                                                <li class="quick_view"><a href="{{route('detailService')}}" data-toggle="modal" data-target="#modal_box" title="Chi Tiết"><i class="ion-eye"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="product_name">
-                                            <h4><a href="{{route('detailService')}}">Pendant, Made of White Pl...</a></h4>
-                                        </div>
-                                        <div class="product_rating">
-                                            <ul>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="price-container">
-                                             <div class="price_box">
-                                                <span class="current_price">$65.00</span>
-                                                <span class="old_price">$70.00</span>   
-                                            </div>
-                                            <div class="wishlist_btn">
-                                                <a href="wishlist.html" title="wishlist"><i class="ion-android-favorite-outline"></i></a>
-                                            </div>
-                                        </div>
-
-
-
-                                    </div>
+                        <div class="product_content">
+                            <div class="product_name">
+                                <h4><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}">{{$value->name}}</a></h4>
+                                <p>{!! $value->description !!}</p>
+                            </div>
+                            <div class="price-container">
+                                 <div class="price_box">
+                                    <span class="current_price">{{number_format($value->discount)}}VNĐ</span>
+                                    <span class="old_price">{{number_format($value->price)}}VNĐ</span>   
                                 </div>
                             </div>
-                          
-                           
                         </div>
                     </div>
-                </div>       
+                </div>
+            @endforeach
             </div>
-            <!--product area end-->
-
-           
         </div>
+    </div>       
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title" id="exampleModalLabel">ĐẶT LỊCH</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Dịch vụ <span>*</span></label>
+                  <select class="form-control mul-select" name="service_id[]" id="modal_service" multiple style="width:320px">
+                    @foreach ($serviceAll as $value)
+                      <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Họ tên <span>*</span></label>
+                  <input type="text" class="form-control" name="full_name" id="modal_full_name" placeholder="Nhập họ tên">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Số điện thoại<span>*</span></label>
+                    <input type="text" class="form-control" phone="phone_number" maxlength="10" id="modal_phone_number" placeholder="Nhập số điện thoại">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
+                    <select class="form-control" name="time_ficked" id="modal_time_ficked">
+                        <option selected disabled value="">Chọn thời gian</option>
+                        <option>Sáng</option>
+                        <option>Chiều</option>
+                        <option>Tối</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ngày làm <span>*</span></label>
+                    <input type="date" class="form-control" name="time_start" id="modal_time_start">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Lời nhắn</label>
+                    <textarea class="form-control"  name="note" id="modal_note" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                   <p id="thong_bao_name" class="text-danger"></p>
+                   <p id="thong_bao_phone" class="text-danger"></p>
+                   <p id="thong_bao_service" class="text-danger"></p>
+                   <p id="thong_bao_time_ficked" class="text-danger"></p>
+                   <p id="thong_bao_time_start" class="text-danger"></p>
+                   <p id="thong_bao_note" class="text-danger"></p>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">HỦY</button>
+          <button type="button" class="btn btn-success modal-dat-lich">ĐẶT LỊCH</button>
+        </div>
+      </div>
     </div>
+  </div>
+
+
+
+  {{-- Modal otp --}}
+  <div class="modal fade" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title modal_ma_don " id="exampleModalLabel">Xác nhận OTP</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nhập mã otp <span>*</span></label>
+                  <input type="number" class="form-control" name="code" id="modal_code_otp">
+                </div>
+
+                <div class="form-group">
+                    <p id="thong_bao_id" class="text-danger"></p>
+                    <p id="thong_bao_code" class="text-danger"></p>
+                    <p id="thong_bao_fail" class="text-danger"></p>
+                 </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal-xac-nhan-otp" name="">Gửi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+
+@section('page-script')
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+$(document).ready(function() {
+    $(".mul-select").select2();
+    $('.data_service').on('click', function() {
+        let service_id = $(this).data('orderid');
+        let modalOption = $('#modal_service').find('option');
+                for (let i = 0; i < modalOption.length; i++) {
+                    let index = $(modalOption[i]).val();
+                    if (index == service_id) {
+                        $(modalOption[i]).prop('selected', true);
+                    } else {
+                        $(modalOption[i]).prop('selected', false);
+                    }
+                    $(".mul-select").select2();
+                }
+    })
+
+    $('.modal-dat-lich').on('click', function() {
+       
+        let service_id = $("#modal_service").val();
+        let name = $("#modal_full_name").val();
+        let phone = $("#modal_phone_number").val();
+        let time_ficked = $("#modal_time_ficked").val();
+        let time_start = $("#modal_time_start").val();
+        let note = $("#modal_note").val();
+        let apiApopointmentSave = '{{route("appointment.apiSave")}}';
+        $.ajax({
+            url: apiApopointmentSave,
+            method: "POST",
+            data: {
+                name: name,
+                service_id: service_id,
+                phone: phone,
+                time_ficked: time_ficked,
+                time_start: time_start,
+                note: note,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.data){
+                    $('#exampleModal').modal('hide');
+                    $('#modal_otp').modal('show');
+                    $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
+                    $('.modal-xac-nhan-otp').attr('name',response.data);
+                }else{
+                    if(response.messages.name){
+                        $("p#thong_bao_name" ).html('- ' + response.messages.name);
+                    }
+                    if(response.messages.phone){
+                        $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
+                    }
+                    if(response.messages.service_id){
+                        $("p#thong_bao_service" ).html('- ' + response.messages.service_id);
+                    }
+                    if(response.messages.time_ficked){
+                        $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
+                    }
+                    if(response.messages.time_start){
+                        $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
+                    }  
+                    if(response.messages.note){
+                        $("p#thong_bao_note" ).html('- ' + response.messages.note);
+                    }
+                }
+                
+            }
+            
+        })
+    })
+
+    $('.modal-xac-nhan-otp').on('click', function() {
+       let appointment_id =  $('.modal-xac-nhan-otp').attr('name');
+       let code = $("#modal_code_otp").val();
+       let apiconfirmOtp = '{{route("appointment.apiconfirmOtp")}}';
+       $.ajax({
+           url: apiconfirmOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               code: code,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.success == 'ok'){
+                    $('#modal_otp').modal('hide');
+                    swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                }else if(response.fail){
+                    $("p#thong_bao_fail" ).html('- ' + response.fail);
+                }else{
+                    if(response.messages.id){
+                    $("p#thong_bao_id" ).html('- ' + response.messages.id);
+                    }
+                    if(response.messages.code){
+                        $("p#thong_bao_code" ).html('- ' + response.messages.code);
+                    }
+                }
+           }
+           
+       })
+   })
+
+})
+</script>
 @endsection

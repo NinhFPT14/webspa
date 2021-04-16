@@ -25,7 +25,6 @@ class AddFeedbackRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
             'phone_number' => 'required|digits_between:10,11',
             'content' => 'required|max:65535',
         ];
@@ -35,7 +34,6 @@ class AddFeedbackRequest extends FormRequest
         return [
             'required' =>':attribute không được để trống',
             'max' =>':attribute không được vượt quá 255 ký tự',
-            'email' =>':attribute không phải là email',
             'digits_between'=>':attribute phải là số và từ 10 đến 11 số',
         ];
     }
@@ -43,7 +41,6 @@ class AddFeedbackRequest extends FormRequest
     {
         return [
             'name' => 'Tên',
-            'email' => 'Email',
             'phone_number' => 'Số điện thoại',
             'content' => 'Nội dung',
         ];

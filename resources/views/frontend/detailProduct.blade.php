@@ -81,13 +81,13 @@ Chi tiết sản phẩm
                                 </form>
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('checkout')}}">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
                                         <i class="ion-ios-cart fa-2x"></i>
                                      <span>Mua Ngay</span>
                                     </a>
                                 </div>
                                 <div class="rounded-3xl mt-30 bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="{{route('cart')}}">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
                                         <i class="ion-ios-cart fa-2x"></i>
                                       <span>Thêm Vào Giỏ Hàng</span>
                                     </a>
@@ -168,14 +168,14 @@ Chi tiết sản phẩm
                                       
                                         <div class="action_links">
                                             <ul>
-                                                <li class="add_to_cart"><a href="cart.html" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
+                                                <li class="add_to_cart"><a href="{{route('cart.add',['id'=>$value->id])}}" title="Thêm Vào giỏ"><i class="ion-bag"></i></a></li>
                                                 <li class="quick_view"><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}" title="Chi Tiết"><i class="ion-eye"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product_content">
                                         <div class="product_name">
-                                            <h4><a href="product-details.html">{{$value->name}}</a></h4>
+                                            <h4><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}">{{$value->name}}</a></h4>
                                         </div>
                                         <div class="price-container">
                                              <div class="price_box">

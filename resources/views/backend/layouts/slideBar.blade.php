@@ -25,11 +25,17 @@
     <div class="sidebar-heading">
         Quản lý
     </div>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Tài khoản </span>
+        </a>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true"
             aria-controls="category">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="fas fa-fw fa-th-list"></i>
             <span>Danh mục</span>
         </a>
         <div id="category" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -64,17 +70,40 @@
         <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
-                <a class="collapse-item" href="{{ route('addService') }}">Thêm mới dịch vụ</a>
+                <a class="collapse-item" href="{{ route('sortAppointment')}}">Bảng xếp lịch</a>
+                <a class="collapse-item" href="{{ route('listLocation')}}">Ghế làm</a>
+                <a class="collapse-item" href="{{ route('listStaff')}}">Nhân viên</a>
             </div>
         </div>
     </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-file"></i>
+            <span>Bài viết </span>
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#voucher_service" aria-expanded="true"
+            aria-controls="voucher_service">
+            <i class="fas fa-fw fa-qrcode"></i>
+            <span>Voucher</span>
+        </a>
+        <div id="voucher_service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('listVoucherService') }}">Dịch vụ</a>
+                <a class="collapse-item" href="{{ route('listVoucherProduct') }}">Sản phẩm</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
+            <i class="fas fa-fw fa-envelope"></i>
             <span>Feedback </span>
         </a>
     </li>
+    
 
 
     <!-- Divider -->
@@ -98,6 +127,7 @@
                 <a class="collapse-item"  href="{{route('listFooter')}}">Footer</a>
                 <a class="collapse-item"  href="{{route('listSlide')}}">Slide</a>
                 <a class="collapse-item"  href="{{route('listLogo')}}">Logo</a>
+                <a class="collapse-item"  href="{{route('listMap')}}">Bản đồ</a>
             </div>
         </div>
     </li>

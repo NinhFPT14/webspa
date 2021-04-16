@@ -25,15 +25,19 @@ class EditServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'name' =>
+            [
                 'required','max:255',
                 Rule::unique('services')->ignore($this->id,'id'),
+                
             ],
+            'image' => 'image|max:10000',
             'time_working' => 'required|max:255',
             'price' => 'required|max:10000',
-            'description' => 'required|max:255',
-            'detail' => 'required|max:255',
+            'description' => 'required|max:65535',
+            'detail' => 'required|max:65535',
             'discount' => 'required|max:255',
+            'category_id' => 'required'
         ];
     }
     public function messages(){
@@ -44,20 +48,20 @@ class EditServiceRequest extends FormRequest
             'max' => ':attribute kích thước không được 255 ký tự',
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute có độ dài lớn hơn 10 ký tự',
-            'time_working' => ':attribute không được vượt quá :max',
-            'price' => ''
-
+            'time_working' => ':attribute không được vượt quá :max'
         ];
     }
 
     public function attributes(){
         return [
             'name' =>'Tên dịch vụ',
+            'image' => 'Hình ảnh',
             'description' =>'Mô tả',
             'detail' =>'Chi tiết',
             'price' =>'Giá cũ',
             'discount' =>'Giá giảm',
-            'time_working' => 'Thời gian làm'
+            'time_working' => 'Thời gian làm',
+            'category_id' => 'Danh mục'
         ];
     }
 }

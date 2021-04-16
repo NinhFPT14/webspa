@@ -3,6 +3,7 @@
 Sản phẩm
 @endsection
 @section('content')
+
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -117,7 +118,7 @@ Sản phẩm
                                 </div>
                                 <div class="action_links">
                                     <ul>
-                                        <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
+                                        <li class="add_to_cart"><a href="{{route('cart.add',['id'=>$value->id])}}" title="Thêm vào giỏ hàng"><i
                                                     class="ion-bag"></i></a></li>
                                         <li class="quick_view"><a
                                                 href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"
@@ -144,7 +145,7 @@ Sản phẩm
 
                                 </div>
                                 <div class="text" style="margin-top: 10px;">
-                                    <a href="{{route('appointment')}}">Đặt Lịch</a>
+                                    <a href="{{route('appointment')}}">Đặt hàng</a>
                                 </div>
                             </div>
                             <div class="product_content list_content">

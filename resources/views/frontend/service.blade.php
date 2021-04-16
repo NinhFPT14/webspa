@@ -3,238 +3,296 @@
 Dịch Vụ
 @endsection
 @section('content')
+<!--breadcrumbs area start-->
 <div class="breadcrumbs_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadcrumb_content">
-                        <h3>Shop</h3>
-                        <ul>
-                            <li><a href="">Trang chủ</a></li>
-                            <li><a href="{{route('service')}}">Dịch Vụ</a></li>
-                        </ul>
-                    </div>
+    <div class="container">   
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="{{route('home')}}">Trang chủ</a></li>
+                        <li><a href="{{route('service',['id'=>'all'])}}">Dịch vụ</a></li>
+                        <li><a>Danh sách dịch vụ</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-    <!--breadcrumbs area end-->
+    </div>         
+</div>
+<!--breadcrumbs area end-->
 
-    <!--shop  area start-->
-     <div class="shop_area shop_reverse">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-12">
-                    <!--sidebar widget start-->
-                    <aside class="sidebar_widget">
-                        <div class="widget_list widget_filter">
-                            <h2>Lọc Dịch Vụ</h2>
-                            <form action="#">
-                                <div id="slider-range"></div>
-                                <button type="submit">Lọc</button>
-                                <input type="text" name="text" id="amount" />
-
-                            </form>
-                        </div>
-                       <div class="widget_list widget_search mb-30">
-                            <h2>Tìm Kiếm</h2>
-                            <form action="#">
-                                <input placeholder="Tìm Kiếm.." type="text">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                       
-                      
-                        <div class="shop_sidebar_banner">
-                            <a href="#"><img src="frontEnd/img/slider/slider11.jpg" alt=""></a>
-                        </div>
-                    </aside>
-                    <!--sidebar widget end-->
-                </div>
-                <div class="col-lg-9 col-md-12">
-                    <!--shop wrapper start-->
-                    <!--shop toolbar start-->
-                    <div class="shop_title">
-                       
-                    </div>
-                    <div class="shop_banner">
-                        <img src="frontEnd/img/slider/slider9.jpg" alt="">
-                    </div>
-
-                    <div class="shop_toolbar_wrapper">
-                        <div class="shop_toolbar_btn">
-
-                            <button data-role="grid_3" type="button" class="active btn-grid-3" data-toggle="tooltip"
-                                title="3"></button>
-
-                            <button data-role="grid_4" type="button" class=" btn-grid-4" data-toggle="tooltip"
-                                title="4"></button>
-
-                            <button data-role="grid_list" type="button" class="btn-list" data-toggle="tooltip"
-                                title="List"></button>
-                        </div>
-                        <div class=" niceselect_option">
-
-                            <form class="select_option" action="#">
-                                <select name="orderby" id="short">
-
-                                    <option selected value="1">Lọc Dịch Vụ</option>
-                                    <option value="2">Sort by popularity</option>
-                                    <option value="3">Sort by newness</option>
-                                    <option value="4">Sort by price: low to high</option>
-                                    <option value="5">Sort by price: high to low</option>
-                                    <option value="6">Product Name: Z</option>
-                                </select>
-                            </form>
-
-
-                        </div>
-                        <div class="page_amount">
-                            <p>Showing 1–9 of 21 results</p>
-                        </div>
-                    </div>
-                    <!--shop toolbar end-->
-
-                    <div class="row shop_wrapper">
-                        <div class="col-lg-4 col-md-4 col-12 ">
-                            <div class="single_product">
-                                <div class="product_thumb">
-                                    <a class="primary_img" href="{{route('detailService')}}"><img
-                                            src="frontEnd/img/product/product1.jpg" alt=""></a>
-                                    <a class="secondary_img" href="{{route('detailService')}}"><img
-                                            src="frontEnd/img/product/product2.jpg" alt=""></a>
-                                    <div class="label_product">
-                                        <span class="label_sale">new</span>
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-                                            <li class="add_to_cart"><a href="{{route('cart')}}" title="Thêm vào giỏ hàng"><i
-                                                        class="ion-bag"></i></a></li>
-                                           
-                                          
-                                        </ul>
+<!--blog area start-->
+<div class="main_blog_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-12">
+                <div class="blog_wrapper">
+                    <div class="single_blog">   
+                        @foreach ($data as $value)
+                        <div class="blog_container">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-5">
+                                    <div class="blog_thumb">
+                                        <a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"><img  src="{{$value->image}}" style="width:300px" alt="" ></a>
                                     </div>
                                 </div>
-                                <div class="product_content grid_content">
-                                    <div class="product_name">
-                                        <h4><a href="{{route('detailService')}}">Pendant, Made of White Pl...</a></h4>
-                                    </div>
-                                    <div class="product_rating">
-                                        <ul>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="price-container">
-                                        <div class="price_box">
-                                            <span class="current_price">$65.00</span>
-                                            <span class="old_price">$70.00</span>
+                                
+                                <div class="col-lg-8 col-md-7">
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h2><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}">{{$value->name}}</a></h2>
                                         </div>
-                                        <div class="wishlist_btn">
-                                            <a href="wishlist.html" title="wishlist"><i
-                                                    class="ion-android-favorite-outline"></i></a>
-                                        </div>
-                                      
-                                    </div>
-                                    <div class="text" style="margin-top: 10px;">
-                                        <a href="{{route('appointment')}}">Đặt Lịch</a>
-                                    </div>
-                                </div>
-                                <div class="product_content list_content">
-                                    <div class="product_name">
-                                        <h4><a href="product-details.html">Hpoly and Bark Eames...</a></h4>
-                                    </div>
-                                    <div class="product_rating">
-                                        <ul>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-star-outline"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="price_box">
-                                        <span class="current_price">$65.00</span>
-                                        <span class="old_price">$70.00</span>
-                                    </div>
-                                    <div class="product_desc">
-                                        <p>Engineered with pro-level features and performance, the
-                                            12.3-effective-megapixel D300 combines brand new technologies with advanced
-                                            features inherited from Nikon's newly announced D3 professional digital SLR
-                                            camera to offer serious photographers remarkable performance combined with
-                                            agility... </p>
-
-
-                                    </div>
-                                    <div class="action_links">
-                                        <ul>
-<<<<<<< HEAD
-=======
-                                        <div class="action_links">
-                                        <ul>
->>>>>>> 4448bfe99f457adb815da62acd66e4f99425ba88
-                                            <li class="add_to_cart"><a href="{{route('cart')}}" title="add to cart">Thêm Vào Giỏ</a></li>
-                                           
-                                            <li class="quick_view"><a href="#" data-toggle="modal"
-                                                    data-target="#modal_box" title="Xem Chi tiết"><i
-                                                        class="ion-eye"></i></a></li>
-                                                        <li class="add_to_cart"><a href="{{route('appointment')}}" title="đặt lịch">Đặt Lịch</a></li>
-                                                        
-<<<<<<< HEAD
-=======
-                                        </ul>
-                                    </div>
->>>>>>> 4448bfe99f457adb815da62acd66e4f99425ba88
-                                        </ul>
+                                        <p class="blog_desc">{!! $value->description !!}</p>
+                                        <div class="blog_post">
+                                            <ul>
+                                                <li class="post_author">{{number_format($value->discount)}} vnđ</li>
+                                                <li class="post_date" style="text-decoration-line:line-through">{{number_format($value->price)}} vnđ</li>
+                                            </ul>
+                                        </div><br>
+                                        <a class="data_service" data-orderid="{{$value->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-
-                    <div class="shop_toolbar t_bottom">
-                        <div class="pagination">
-                            <ul>
-                                <li class="current">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                               
-                                <li><a href="#">>></a></li>
-                            </ul>
+                        </div><br><br>
+                        @endforeach
+                        <div class="shop_toolbar t_bottom">
+                            <div class="pagination">
+                                <ul>
+                                    <li class="current">{!!$data->links()!!}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <!--shop toolbar end-->
-                    <!--shop wrapper end-->
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-12">
+                <div class="blog_sidebar_widget">
+                    <div class="widget_list widget_categories">
+                        <h2>Danh mục</h2>
+                        <?php 
+                        $category = DB::table('categories')->where('type',1)->where('status',0)->get();
+                        ?>
+                        <ul>
+                            @foreach ($category as $value)
+                            <?php
+                             $service = DB::table('services')->where('category_id',$value->id)->get();
+                            ?>
+                            @if(count( $service) >=1)
+                            <li>
+                                <a href="{{route('service',['id'=> $value->id])}}">{{$value->name}} <span>({{count($service)}})</span></a> 
+                            </li>
+                            @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="widget_list widget_search mb-30">
+                       <h2>Tìm kiếm</h2>
+                       <form action="{{route('service.search.user')}}" method="POST">
+                        @csrf
+                           <input placeholder="Nhập từ khóa tìm kiếm ..." type="text" name="name">
+                           <button type="submit"><i class="fa fa-search"></i></button>
+                       </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-  
+</div>
 
 
-   
-
-    <!-- Call -->
-
-    
-
-    <!-- Call -->
-
-    <div class="fix_tel">
-        <div class="ring-alo-phone ring-alo-green ring-alo-show" id="ring-alo-phoneIcon"
-            style="right: -7px; bottom: -12px;">
-            <div class="ring-alo-ph-circle"></div>
-            <div class="ring-alo-ph-circle-fill"></div>
-            <div class="ring-alo-ph-img-circle">
-                <a href="tel:0946673322"><img class="lazy" src="https://khomaythegioi.com/icon/goi.png" alt="G"></a>
-            </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title " id="exampleModalLabel">ĐẶT LỊCH</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="tel">
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Dịch vụ <span>*</span></label>
+                  <select class="form-control mul-select" name="service_id[]" id="modal_service" multiple style="width:320px">
+                    @foreach ($serviceAll as $value)
+                      <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Họ tên <span>*</span></label>
+                  <input type="text" class="form-control" name="full_name" id="modal_full_name" placeholder="Nhập họ tên">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Số điện thoại<span>*</span></label>
+                    <input type="text" class="form-control" phone="phone_number" maxlength="10" id="modal_phone_number" placeholder="Nhập số điện thoại">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
+                    <select class="form-control" name="time_ficked" id="modal_time_ficked">
+                        <option selected disabled value="">Chọn thời gian</option>
+                        <option>Sáng</option>
+                        <option>Chiều</option>
+                        <option>Tối</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ngày làm <span>*</span></label>
+                    <input type="date" class="form-control" name="time_start" id="modal_time_start">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Lời nhắn</label>
+                    <textarea class="form-control"  name="note" id="modal_note" rows="5"></textarea>
+                </div>
 
+                <div class="form-group">
+                   <p id="thong_bao_name" class="text-danger"></p>
+                   <p id="thong_bao_phone" class="text-danger"></p>
+                   <p id="thong_bao_service" class="text-danger"></p>
+                   <p id="thong_bao_time_ficked" class="text-danger"></p>
+                   <p id="thong_bao_time_start" class="text-danger"></p>
+                   <p id="thong_bao_note" class="text-danger"></p>
+                </div>
+              </form>
         </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">HỦY</button>
+          <button type="button" class="btn btn-success modal-dat-lich">ĐẶT LỊCH</button>
+        </div>
+      </div>
     </div>
+  </div>
+
+
+
+  {{-- Modal otp --}}
+  <div class="modal fade" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title modal_ma_don " id="exampleModalLabel">Xác nhận OTP</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nhập mã otp <span>*</span></label>
+                  <input type="number" class="form-control" name="code" id="modal_code_otp">
+                </div>
+
+                <div class="form-group">
+                    <p id="thong_bao_id" class="text-danger"></p>
+                    <p id="thong_bao_code" class="text-danger"></p>
+                    <p id="thong_bao_fail" class="text-danger"></p>
+                 </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal-xac-nhan-otp" name="">Gửi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+
+
+@section('page-script')
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+$(document).ready(function() {
+    $(".mul-select").select2();
+    $('.data_service').on('click', function() {
+        let service_id = $(this).data('orderid');
+        let modalOption = $('#modal_service').find('option');
+                for (let i = 0; i < modalOption.length; i++) {
+                    let index = $(modalOption[i]).val();
+                    if (index == service_id) {
+                        $(modalOption[i]).prop('selected', true);
+                    } else {
+                        $(modalOption[i]).prop('selected', false);
+                    }
+                    $(".mul-select").select2();
+                }
+    })
+
+    $('.modal-dat-lich').on('click', function() {
+       
+        let service_id = $("#modal_service").val();
+        let name = $("#modal_full_name").val();
+        let phone = $("#modal_phone_number").val();
+        let time_ficked = $("#modal_time_ficked").val();
+        let time_start = $("#modal_time_start").val();
+        let note = $("#modal_note").val();
+        let apiApopointmentSave = '{{route("appointment.apiSave")}}';
+        $.ajax({
+            url: apiApopointmentSave,
+            method: "POST",
+            data: {
+                name: name,
+                service_id: service_id,
+                phone: phone,
+                time_ficked: time_ficked,
+                time_start: time_start,
+                note: note,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.data){
+                    $('#exampleModal').modal('hide');
+                    $('#modal_otp').modal('show');
+                    $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
+                    $('.modal-xac-nhan-otp').attr('name',response.data);
+                }else if(response.messages.name){
+                    $("p#thong_bao_name" ).html('- ' + response.messages.name);
+                }else if(response.messages.phone){
+                    $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
+                }else if(response.messages.service_id){
+                    $("p#thong_bao_service" ).html('- ' + response.messages.service_id);
+                }else if(response.messages.time_ficked){
+                    $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
+                }else if(response.messages.time_start){
+                    $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
+                }else{
+                    $("p#thong_bao_note" ).html('- ' + response.messages.note);
+                }
+            }
+            
+        })
+    })
+
+    $('.modal-xac-nhan-otp').on('click', function() {
+       let appointment_id =  $('.modal-xac-nhan-otp').attr('name');
+       let code = $("#modal_code_otp").val();
+       let apiconfirmOtp = '{{route("appointment.apiconfirmOtp")}}';
+       $.ajax({
+           url: apiconfirmOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               code: code,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.success == 'ok'){
+                    $('#modal_otp').modal('hide');
+                    swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                }else if(response.fail){
+                    $("p#thong_bao_fail" ).html('- ' + response.fail);
+                }else if(response.messages.id){
+                    $("p#thong_bao_id" ).html('- ' + response.messages.id);
+                }else{
+                    $("p#thong_bao_code" ).html('- ' + response.messages.code);
+                }
+           }
+           
+       })
+   })
+
+})
+</script>
 @endsection

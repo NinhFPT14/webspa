@@ -5,10 +5,22 @@ Danh sách dịch vụ
 @section('content')
 <div class="container-fluid">
     <!-- DataTales Example -->
-    
+
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="{{route('addService')}}" class="btn btn-primary" role="button">Tạo Mới</a>
+            <form action="{{route('service.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+                @csrf
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."
+                        aria-label="Search" aria-describedby="basic-addon2" name="name">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fas fa-search fa-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -17,10 +29,11 @@ Danh sách dịch vụ
                         <tr>
                             <th scope="col">#ID</th>
                             <th scope="col">Tên</th>
-                            <th scope="col">Mô Tả</th>
-                            <th scope="col">Giá tiền</th>
-                            <th scope="col">Giảm giá</th>
+                            <th scope="col">Danh mục</th>
+                            <th scope="col">Giá cũ</th>
+                            <th scope="col">Giá mới</th>
                             <th scope="col">Thời gian thực hiện</th>
+                            <th scope="col">Chi tiết</th>
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Hành động</th>
                         </tr>
@@ -28,36 +41,43 @@ Danh sách dịch vụ
                     <tbody>
                         @foreach ($data as $value)
                         <tr>
-                        <td scope="col">{{ $value->id }}</td>    
-                        <td scope="col">{{ $value->name }}</td>    
-                        <td scope="col">{{ $value->description }}</td>    
-                        <td scope="col">{{ $value->price }}</td>
-                        <td scope="col">{{ $value->discount }} %</td>
-                        <td scope="col">{{ $value->time_working }} phút</td>
-                        
-                        <td>
+                            <td scope="col">{{ $value->id }}</td>
+                            <td>{{$value->name}}</td>
+                            <?php 
+                            $category = DB::table('categories')->find($value->category_id) ;
+                            ?>
+                            <td>{{$category->name}}</td>
+                            <td scope="col">{{ number_format($value->price) }}đ</td>
+                            <td scope="col">{{ number_format($value->discount) }}đ</td>
+                            <td scope="col">{{ $value->time_working }} phút</td>
+                            <td>
+                                <a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"
+                                    class="btn btn-primary" target="_blank">Xem</a>
+                            </td>
+                            <td>
                                 @if($value->status == 0)
-                                <a class="btn btn-success" href="{{route('statusService',['id'=>$value->id,'status'=>1])}}" onclick="return confirm('Bạn có chắc chắn muốn tắt')">ON</a>
+                                <a class="btn btn-success"
+                                    href="{{route('statusService',['id'=>$value->id,'status'=>1])}}">ON</a>
                                 @else
-                                <a class="btn btn-danger" href="{{route('statusService',['id'=>$value->id,'status'=>0])}}" onclick="return confirm('Bạn có chắc chắn muốn bật')">OFF</a>
+                                <a class="btn btn-danger"
+                                    href="{{route('statusService',['id'=>$value->id,'status'=>0])}}">OFF</a>
                                 @endif
-                        </td>
-                        
+                            </td>
 
-                        <td><a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteService',['id'=>$value->id])}}"
-                            class="btn btn-danger">Xóa</a>
-                                <a onclick="return confirm('Bạn có chắc chắn muốn sửa')" href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
-                        </td>
+
+                            <td><a href="{{route('deleteService',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
+                                <a href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
-                    
+
                 </table>
-                    <div class="d-flex justify-content-center">                
-                        <ul class="pagination pagination-sm m-t-none m-b-none">
-                            {!!$data->links()!!}
-                        </ul>
-                    </div>
+                <div class="d-flex justify-content-center">
+                    <ul class="pagination pagination-sm m-t-none m-b-none">
+                        {!!$data->links()!!}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
