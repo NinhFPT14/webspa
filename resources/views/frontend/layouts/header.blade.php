@@ -125,7 +125,6 @@
                                         </svg></a>
                                     <ul class="sub_menu pages">
                                         @if(Illuminate\Support\Facades\Auth::check())
-                                        <li><a href="{{route('myAccount')}}">Thông tin tài khoản</a></li>
                                         <li><a href="{{route('logout')}}">Đăng xuất</a></li>
                                         @else
                                         <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
@@ -162,33 +161,42 @@
                     </div>
                     <div class="header_block_right block_right_two">
                         <ul>
+                        
                             <li class="mini_cart_wrapper"><a href="javascript:void(0)"><i class="ion-bag"></i>
-                                    <span>2</span></a>
-
+                                @if(Session::has('productId'))
+                                <span>{{count($product)}}</span></a>
+                                    @else
+                                    <span>0</span></a>
+                                    @endif
                                 <!--mini cart-->
                                 <div class="mini_cart">
+
+                                    @if(Session::has('productId'))
+                                    @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href=""><img src="frontEnd/img/s-product/product.jpg" alt=""></a>
+                                            <a href=""><img src="{{$value->avatar}}" alt=""></a>
                                         </div>
                                         <div class="cart_info">
-                                            <a href="#">Tên Sản Phẩm</a>
-
-                                            <span class="quantity">Số lượng: 1</span>
-                                            <span class="price_cart">Giá :60.00</span>
-
+                                            <a href="{{route('cart')}}">{{$value->name}}</a>
+                                            <?php 
+                                            $number_product = 0;
+                                            foreach ($cart as $key => $item) {
+                                              if($cart[$key] == $value->id){
+                                                 $number_product++;
+                                              }
+                                            }
+                                          ?>
+                                            <span class="quantity">Số lượng: {{$number_product}}</span>
+                                            <span class="price_cart">Giá :{{number_format($value->discount)}}VNĐ</span>
                                         </div>
                                         <div class="cart_remove">
-                                            <a href="#"><i class="ion-android-close"></i></a>
+                                            <a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
-
-                                    <div class="mini_cart_table">
-                                        <div class="cart_total">
-                                            <span>Tổng Tiền:</span>
-                                            <span class="price">138.00 VNĐ</span>
-                                        </div>
-                                    </div>
+                                    @endforeach
+                                    @endif
+                                   
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
                                             <a href="{{route('cart')}}">Giỏ Hàng</a>
@@ -228,7 +236,12 @@
                             <li class="menu-item-has-children active">
                                 <a href="{{route('myAccount')}}">Tài Khoản</a>
                                 <ul class="sub-menu">
+                                    @if(Illuminate\Support\Facades\Auth::check())
+                                    <li><a href="{{route('logout')}}">Đăng xuất</a></li>
+                                    @else
+                                    <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
                                     <li><a href="{{route('login')}}">Đăng Nhập</a></li>
+                                    @endif
                                 </ul>
                             </li>
                         </ul>
