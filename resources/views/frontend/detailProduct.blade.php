@@ -175,7 +175,7 @@ Chi tiết sản phẩm
                                     </div>
                                     <div class="product_content">
                                         <div class="product_name">
-                                            <h4><a href="product-details.html">{{$value->name}}</a></h4>
+                                            <h4><a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}">{{$value->name}}</a></h4>
                                         </div>
                                         <div class="price-container">
                                              <div class="price_box">

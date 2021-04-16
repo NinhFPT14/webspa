@@ -64,9 +64,6 @@
                     </div>
                     <div class="header_block_right block_right_two">
                         <ul>
-                            <li class="search_bar"><a href="javascript:void(0)"><i
-                                        class="ion-ios-search-strong"></i></a>
-                            </li>
                             <?php 
                              $cart = Session::get('productId');
                              if(Session::has('productId')){
@@ -165,20 +162,6 @@
                     </div>
                     <div class="header_block_right block_right_two">
                         <ul>
-                            <li class="search_bar"><a href="javascript:void(0)"><i
-                                        class="ion-ios-search-strong"></i></a>
-                                <div class="dropdown_search">
-                                    <div class="search_close_btn">
-                                        <i class="ion-android-close btn-close"></i>
-                                    </div>
-                                    <div class="search_container">
-                                        <form action="#">
-                                            <input placeholder="I’m shopping for..." type="text">
-                                            <button type="submit"><i class="ion-ios-search-strong"></i></button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </li>
                             <li class="mini_cart_wrapper"><a href="javascript:void(0)"><i class="ion-bag"></i>
                                     <span>2</span></a>
 
@@ -248,17 +231,6 @@
                                     <li><a href="{{route('login')}}">Đăng Nhập</a></li>
                                 </ul>
                             </li>
-                        </ul>
-                    </div>
-
-                    <div class="Offcanvas_footer">
-                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@yourdomain.com</a></span>
-                        <ul>
-                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>

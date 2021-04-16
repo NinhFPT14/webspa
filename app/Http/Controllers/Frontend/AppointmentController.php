@@ -190,7 +190,7 @@ class AppointmentController extends Controller
         };
 
         $booking = Session::get('appointmentId');
-        $booking[] = $id;
+        $booking[] = $flight->id;
         Session::put('appointmentId',$booking);
 
         //  Gửi otp 

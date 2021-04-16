@@ -28,23 +28,21 @@ Chi tiết dịch vụ
                 <div class="blog_details_wrapper">
                     <div class="single_blog">
                         <div class="blog_title">
-                            <h2><a href="#">Chi tiết dịch vụ</a></h2>
                             <div class="blog_post flex">
                                 <ul>
-                                    <li class="post_author">Loại danh mục</li>
                                     <?php 
                                     $name_category = DB::table('categories')->find($data->category_id);
                                     ?>
-                                    <li class="post_date">{{$name_category->name}}</li>
+                                    <p>Loại danh mục : {{$name_category->name}} </p>
+                                    <li class="post_author">{{number_format($data->discount)}} vnđ</li>
+                                    <li class="post_date" style="text-decoration-line:line-through">{{number_format($data->price)}} vnđ</li>
                                 </ul>
-                                <a class="button data_service" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
+                                <a class="button data_service" style="margin-left:50px" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
                             </div>
                         </div>
-                        <div class="blog_thumb">
-                           <a href="#"><img src="{{$data->image}}" alt=""></a>
-                       </div>
                         <div class="blog_content">
                             <div class="post_content">
+                                <strong>{!! $data->name !!}</strong>
                                 <blockquote>
                                     <p>{!! $data->description !!}</p>
                                 </blockquote>
@@ -80,12 +78,48 @@ Chi tiết dịch vụ
     </div>
 </div>
 
+<div class="product_wrapper special_products mb-60">
+    <div class="row">
+        <div class="col-12">
+            <div class="section_title title_style4">
+                    <h3>Dịch Vụ Liên Quan</h3>
+            </div>
+            <div class="row product_slick_row4">
+            <?php
+              $related_service = DB::table('services')->where('category_id',$data->category_id)->where('id','!=',$data->id)->where('status',0)->get();
+
+            ?>
+            @foreach($related_service as $value)
+                <div class="col-lg-3">
+                    <div class="single_product">
+                        <div class="product_thumb">
+                            <a class="primary_img" href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"><img src="{{$value->image}}" alt=""></a>
+                        </div>
+                        <div class="product_content">
+                            <div class="product_name">
+                                <h4><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}">{{$value->name}}</a></h4>
+                                <p>{!! $value->description !!}</p>
+                            </div>
+                            <div class="price-container">
+                                 <div class="price_box">
+                                    <span class="current_price">{{number_format($value->discount)}}VNĐ</span>
+                                    <span class="old_price">{{number_format($value->price)}}VNĐ</span>   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        </div>
+    </div>       
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header  btn-success">
-          <h5 class="modal-title " id="exampleModalLabel">ĐẶT LỊCH</h5>
+          <h5 class="modal-title" id="exampleModalLabel">ĐẶT LỊCH</h5>
           <button type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

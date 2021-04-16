@@ -10,8 +10,9 @@ Dịch Vụ
             <div class="col-12">
                 <div class="breadcrumb_content">
                     <ul>
-                        <li><a href="index.html">Trang chủ</a></li>
-                        <li><a href="blog.html">Dịch vụ</a></li>
+                        <li><a href="{{route('home')}}">Trang chủ</a></li>
+                        <li><a href="{{route('service',['id'=>'all'])}}">Dịch vụ</a></li>
+                        <li><a>Danh sách dịch vụ</a></li>
                     </ul>
                 </div>
             </div>
@@ -27,15 +28,6 @@ Dịch Vụ
             <div class="col-lg-9 col-md-12">
                 <div class="blog_wrapper">
                     <div class="single_blog">   
-                        <div class="blog_title">
-                            <h2><a href="#">Danh sách dịch vụ</a></h2>
-                            <div class="blog_post">
-                                <ul>
-                                    <li class="post_author">Số lượng dịch vụ</li>
-                                    <li class="post_date">({{count($data)}})</li>
-                                </ul>
-                            </div>
-                        </div>
                         @foreach ($data as $value)
                         <div class="blog_container">
                             <div class="row">

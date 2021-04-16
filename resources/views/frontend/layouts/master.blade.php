@@ -10,7 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="frontEnd/img/favicon.ico">
-  
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="{{asset('frontEnd/vendor/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="frontEnd/css/plugins.css">
