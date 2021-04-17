@@ -312,6 +312,7 @@ $(document).ready(function() {
                 if(response.success == 'ok'){
                     $('#modal_otp').modal('hide');
                     swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                    window.location.href = '{{route("appointment.listBooking")}}';
                 }else if(response.fail){
                     $("p#thong_bao_fail" ).html('- ' + response.fail);
                 }else{
