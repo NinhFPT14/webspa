@@ -62,7 +62,7 @@ Danh sách đơn đặt lịch
                                     <td class="product_total text-danger">Hủy đơn</td>
                                     @endif
                                     <td class="product_total text-primary"><button >Xem</button></td>
-                                    <td class="product_total text-warning btn_huy_don" name="{{$value->id}}"><a id="">Hủy</a></td>
+                                    <td class="product_total text-danger btn_huy_don" name="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
