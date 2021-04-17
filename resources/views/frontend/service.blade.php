@@ -114,7 +114,7 @@ Dịch Vụ
             <form>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Dịch vụ <span>*</span></label>
-                  <select class="form-control mul-select" name="service_id[]" id="modal_service" multiple style="width:320px">
+                  <select class="form-control mul-select" name="service_id[]" id="modal_service" multiple style="width:363px">
                     @foreach ($serviceAll as $value)
                       <option value="{{$value->id}}">{{$value->name}}</option>
                     @endforeach

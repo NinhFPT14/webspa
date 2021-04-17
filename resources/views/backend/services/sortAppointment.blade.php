@@ -22,1296 +22,14 @@ Bảng xếp lịch
     </div>
     <div class="grid grid-cols-4 gap-4 pt-2 ">
         <div class="col-span-3">
-            <table class="table table-bordered m-0">
-                <thead>
-                    <tr class="text-center bg-blue-300">
-                        <th>Khung giờ</th>
-                        <th>Ghế 2</th>
-                        <th>Ghế 3</th>
-                        <th>Ghế 4</th>
-                        <th>Ghế 5</th>
-                        <th>Ghế 6</th>
-                        <th>Ghế 7</th>
-                        <th>Ghế 8</th>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">8:00-9:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    Ninh
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">9:00-10:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">10:00-11:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">11:00-12:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">12:00-13:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">13:00-14:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">14:00-15:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">15:00-16:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">16:00-17:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">17:00-18:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">18:00-19:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">19:00-20:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">20:00-21:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                    <tr ng-repeat="time in listTime" class="ng-scope">
-                        <th scope="row" class="table-item table-item-header sticky-column-left">
-                            <div class=" d-flex flex-column justify-content-center align-items-center h-100">
-                                <span class="staff-name text-uppercase ng-binding">21:00-22:00</span>
-                            </div>
-                        </th>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-
-                            </div>
-                        </td>
-                        <td ng-repeat="t in scheduleDates" ng-class="getClass(t)"
-                            ng-click="showAddModal($event,t,x.IdStr,time)" title="Click để tạo mới"
-                            class="ng-scope today h-100" role="button" role="button" tabindex="0">
-                            <div class="dropdown spa-dropdown dropright ng-hide"
-                                ng-show="getInfoByTime(t,time.start, time.end,2).length>0" style="font-size:14px;"
-                                aria-hidden="true">
-                                <a type="button" class="w-full" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    .
-                                </a>
-                            </div>
-                        </td>
-                        </td>
-                    </tr>
-                </thead>
-
-            </table>
+            {{-- table --}}
         </div>
 
         <div>
             <form action="{{route('searchTimeAppointment')}}" method="POST">
                 @csrf
                 <div class="flex">
-                    <input type="date" name="time" class="form-control" value="{{$time}}" placeholder=""
+                    <input type="date" name="time" class="form-control" value="" placeholder=""
                         aria-label="First name">
                     <button type="submit" class="form-control btn btn-primary">Tìm kiếm</button>
                 </div>
@@ -1323,6 +41,7 @@ Bảng xếp lịch
                         <th scope="col">Tên</th>
                         <th scope="col">SĐT</th>
                         <th scope="col">Xác nhận</th>
+                        <th scope="col">Xếp lịch</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1331,8 +50,10 @@ Bảng xếp lịch
                         <th scope="row">{{$value->id}}</th>
                         <td>{{$value->name}}</td>
                         <td>{{$value->phone}}</td>
-                        <td><button type="button" class="btn btn-success btn-xep-lich " data-orderid="{{$value->id}}"><i
+                        <td><button type="button" class="btn btn-success btn-xac-nhan " data-orderid="{{$value->id}}"><i
                                     class="fas fa-fw fa-edit"></i></button></td>
+                        <td><button type="button" class="btn btn-success btn-xep-lich " data-orderid="{{$value->id}}"><i
+                                        class="fas fa-calendar"></i></button></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -1341,72 +62,6 @@ Bảng xếp lịch
                 <ul class="pagination pagination-sm m-t-none m-b-none">
                     {!!$appointment->links()!!}
                 </ul>
-            </div>
-        </div>
-
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header bg-green-500 ">
-                    <h4 class="modal-title  text-2xl" id="exampleModalLabel">Xếp lịch</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="">
-                    <div class="grid grid-cols-2 gap-4 pl-4">
-                        <div>
-                            <div class="col-md-32 pl-4">
-                                <label>Chọn khách hàng </label> <br>
-                                <input type="text" class="form-control" name="id" placeholder="Mời nhâp mã đơn...">
-                            </div>
-                            <div class="col-md-32 pl-4">
-                                <label>Chọn Dịch Vụ</label> <br>
-                                <select class=" form-control">
-                                    <optgroup label="Chọn dịch vụ/"></optgroup>
-                                    @foreach($services as $sv)
-                                    <option value="{{$sv->id}}">{{$sv->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            
-                            <div class="row pl-4 pt-2">
-                                <div class="col">
-                                    <label>Thời gian làm</label>
-                                    <input type="number" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row pl-4 pt-2">
-                                <div class="col">
-                                    <label>Thời gian bắt đầu</label>
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row pl-4 pt-2">
-                                <div class="col">
-                                    <label>Thời gian kết thúc</label>
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row pl-4 pt-2">
-                                <div class="col">
-                                    <label>Trạng thái</label>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">đã xác nhận</option>
-                                        <option value="">đang chờ</option>
-                                        <option value="">đã hoàn thành</option>
-                                        <option value="">đang thực hiện</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                    <button type="button" class="btn btn-success">Lưu</button>
-                </div>
             </div>
         </div>
     </div>
@@ -1468,22 +123,15 @@ Bảng xếp lịch
                                 <textarea name="note" id="modal_note" class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="row pl-4 pt-2">
-                            <div class="col">
-                                <label>Phương thức thanh toán<span class="text-danger"> *</span></label>
-                                <select name="payment_methods" id="payment_methods" class="form-control">
-                                    <option value="0">Tiền mặt</option>
-                                    <option value="1">Chuyển khoản ngân hàng</option>
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="row pl-4 pt-2">
                             <div class="col">
                                 <label>Trạng thái đơn<span class="text-danger"> *</span></label>
                                 <select name="status" id="modal_status" class="form-control">
-                                    <option value="1">Đã xác nhận</option>
+                                    <option value="1">Chờ lên lịch</option>
                                     <option value="2">Đã lên lịch</option>
+                                    <option value="3">Làm xong</option>
+                                    <option value="4">Hủy đơn</option>
                                 </select>
                             </div>
                         </div>
@@ -1499,16 +147,7 @@ Bảng xếp lịch
                                 </select>
                             </div>
                         </div>
-                        <div class="row pl-4 pt-2">
-                            <div class="col">
-                                <label>Trạng thái thanh toán <span class="text-danger"> *</span></label>
-                                <select name="payment_status" id="payment_status" class="form-control">
-                                <option value="" selected>Chọn trạng thái</option>
-                                    <option value="0">Chưa thanh toán</option>
-                                    <option value="1">Đã thanh toán</option>
-                                </select>
-                            </div>
-                        </div>
+                        
                         <div class="row pl-4 pt-2">
                             <div class="col">
                                 <label>Ghi chú</label>
@@ -1527,6 +166,56 @@ Bảng xếp lịch
         </div>
     </div>
 </div>
+
+<!-- modal xếp lịch -->
+<!-- Xác nhận đơn  -->
+<div class="modal fade" id="modalXepLich" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header bg-green-500 ">
+                <h4 class="modal-title  text-2xl" id="exampleModalLabel">Xếp lịch</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="">
+                <div class="grid grid-cols-2 gap-4 pl-4">
+                    <div>
+                        <div class="row pl-4 pt-2">
+                            <div class="col">
+                                <?php 
+                                    $location = DB::table('locations')->where('status',0)->get()
+                                ?>
+                                <label>Chọn ghế làm<span class="text-danger"> *</span></label>
+                                <select name="status" id="modal_status" class="form-control">
+                                    <option>Chọn ghế làm</option>
+                                    @foreach ($location as $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col">
+                                <?php 
+                                    $location = DB::table('locations')->where('status',0)->get()
+                                ?>
+                                <label>Chọn dịch vụ<span class="text-danger"> *</span></label>
+                                <select name="status" id="modal_status" class="form-control">
+                                    <option>Chọn dịch vụ</option>
+                                    @foreach ($location as $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-success btn-xac-nhan">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section("js")
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
@@ -1534,6 +223,9 @@ Bảng xếp lịch
 $(document).ready(function() {
     $(".mul-select").select2();
     $('.btn-xep-lich').on('click', function() {
+        $('#modalXepLich').modal('show');
+    })
+    $('.btn-xac-nhan').on('click', function() {
         let appointmentId = $(this).data('orderid');
         let apiGetAppointmentById = '{{route("appointment.getDataById")}}';
         $.ajax({
@@ -1570,15 +262,6 @@ $(document).ready(function() {
                     }
                 }
 
-                let paymentMethods = $('#payment_methods').find('option');
-                for (let i = 0; i < paymentMethods.length; i++) {
-                    if (appointmentData.payment_methods == $(paymentMethods[i]).val()) {
-                        $(paymentMethods[i]).prop('selected', true);
-                    } else {
-                        $(paymentMethods[i]).prop('selected', false);
-                    }
-                }
-
                 let status = $('#modal_status').find('option');
                 for (let i = 0; i < status.length; i++) {
                     if (appointmentData.status == $(status[i]).val()) {
@@ -1597,14 +280,6 @@ $(document).ready(function() {
                     }
                 }
 
-                let payment_status = $('#payment_status').find('option');
-                for (let i = 0; i < status.length; i++) {
-                    if (appointmentData.payment_status == $(payment_status[i]).val()) {
-                        $(payment_status[i]).prop('selected', true);
-                    } else {
-                        $(payment_status[i]).prop('selected', false);
-                    }
-                }
                 
                 $('#note_admin').val(appointmentData.note_admin);
 
@@ -1624,9 +299,7 @@ $(document).ready(function() {
         let time_ficked = $("#time_ficked").val();
         let time_start = $("#modal_time").val();
         let status = $("#modal_status").val();
-        let payment_methods = $("#payment_methods").val();
         let call_confirmation = $("#call_confirmation").val();
-        let payment_status = $("#payment_status").val();
         let note_admin = $("#note_admin").val();
         let apiGetAppointmentById = '{{route("confirmAppointment")}}';
         $.ajax({
@@ -1640,9 +313,7 @@ $(document).ready(function() {
                 time_ficked: time_ficked,
                 time_start: time_start,
                 status: status,
-                payment_methods: payment_methods,
                 call_confirmation: call_confirmation,
-                payment_status: payment_status,
                 note_admin: note_admin,
                 service_id: service_id,
                 _token: '{{csrf_token()}}'

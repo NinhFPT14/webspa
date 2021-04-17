@@ -137,6 +137,20 @@
 $(document).ready(function() {
     $(".mul-select").select2();
     $('.modal-dat-lich').on('click', function() {
+//set lại thông báo validate form đặt lịch
+        $("p#thong_bao_name" ).html(' ');
+        $("p#thong_bao_phone" ).html(' ');
+        $("p#thong_bao_service" ).html(' ');
+        $("p#thong_bao_time_ficked" ).html(' ');
+        $("p#thong_bao_time_start" ).html(' ');
+        $("p#thong_bao_note" ).html(' ');
+// Set lại thông báo validata modal otp
+        $("p#thong_bao_code" ).html(' ');
+        $("p#thong_bao_fail" ).html(' ');
+        $("p#thong_bao_id" ).html(' ');
+        $("#modal_code_otp").val( ' ');
+
+
        let service_id = $("#modal_service").val();
        let name = $("#modal_full_name").val();
        let phone = $("#modal_phone_number").val();
@@ -204,6 +218,7 @@ $(document).ready(function() {
                 if(response.success == 'ok'){
                     $('#modal_otp').modal('hide');
                     swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                    window.location.href = '{{route("appointment.listBooking")}}';
                 }else if(response.fail){
                     $("p#thong_bao_fail" ).html('- ' + response.fail);
                 }else if(response.messages.id){

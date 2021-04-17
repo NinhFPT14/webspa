@@ -17,10 +17,9 @@ class AppointmentController extends Controller
     
     public function sortAppointment(){
         $mytime = Carbon::now();
-        $time = date('Y-m-d');
-        $appointment = Appointment::where('status','>',1)->where('created_at', 'like', '%' .$time . '%')->paginate(10);
+        $appointment = Appointment::where('status',1)->paginate(10);
         $services = Service::where('status',0)->get();
-        return view('backend.services.sortAppointment',compact('appointment','services','time'));
+        return view('backend.services.sortAppointment',compact('appointment','services'));
     }
 
      public function apiGetDataById(Request $request){
@@ -33,15 +32,14 @@ class AppointmentController extends Controller
      }
 
      public function searchTimeAppointment(Request $request){
-        //  dd($request->time);
         $services = Service::where('status',0)->get();
         $time  = $request->time;
          if($request->time == null){
-            $appointment = Appointment::where('status',2)->paginate(10);
+            $appointment = Appointment::where('status',1)->paginate(10);
          }else{
-            $appointment = Appointment::where('status',2)->where('created_at', 'like', '%' . $request->time . '%')->paginate(10);
+            $appointment = Appointment::where('status',1)->where('created_at', 'like', '%' . $request->time . '%')->paginate(6);
          }
-        return view('backend.services.sortAppointment',compact('appointment','services','time'));
+        return view('backend.services.sortAppointment',compact('appointment','services'));
     }
 
     public function confirm(Request $request){
@@ -67,7 +65,5 @@ class AppointmentController extends Controller
         }
         return response()->json(['status' => false, 'message' => 'Không có tham số id']);
     }
-
-
      
 }

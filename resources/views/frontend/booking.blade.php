@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title')
-Giỏ Hàng
+Danh sách đơn đặt lịch
 @endsection
 @section('content')
 
@@ -38,6 +38,7 @@ Giỏ Hàng
                                         <th class="product-price">Ngày</th>
                                         <th class="product_quantity">Lời nhắn</th>
                                         <th class="product_quantity">Trạng thái</th>
+                                        <th class="product_quantity">Chi tiết</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,7 +57,10 @@ Giỏ Hàng
                                     <td class="product_total text-primary">Đã lên lịch</td>
                                     @elseif($value->status == 3)
                                     <td class="product_total text-success">Làm xong</td>
+                                    @elseif($value->status == 4)
+                                    <td class="product_total text-danger">Hủy đơn</td>
                                     @endif
+                                    <td class="product_total text-primary"><button >Xem</button></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -144,7 +144,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/tim-kiem-don-theo-thoi-gian','Backend\AppointmentController@searchTimeAppointment')->name('searchTimeAppointment');
         Route::post('/xac-nhan-don','Backend\AppointmentController@confirm')->name('confirmAppointment');
         Route::post('/tim-kiem-dich-vu','Backend\ServiceController@search')->name('service.search');
-        
     });
 
     // vouchers service

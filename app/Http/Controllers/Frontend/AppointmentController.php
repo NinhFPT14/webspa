@@ -82,12 +82,12 @@ class AppointmentController extends Controller
         Session::put('appointmentId',$booking);
 
         //  Gửi otp 
-        $phones =[$request->phone];
-        $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Mã otp đặt lịch của quý khách là : ".$otp." Mã đơn đặt lịch $flight->id ";
-        $type = 2;
-        $sender = "981c320db4992b97";
-        $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
-        $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+        // $phones =[$request->phone];
+        // $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Mã otp đặt lịch của quý khách là : ".$otp." Mã đơn đặt lịch $flight->id ";
+        // $type = 2;
+        // $sender = "981c320db4992b97";
+        // $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+        // $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
         return response()->json(['status' => true, 'data' => $flight->id ]);
     }
 
