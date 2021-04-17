@@ -113,6 +113,9 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if(response.data){
+                    $("#form_name").val(' ');
+                    $("#form_phone_number").val(' ');
+                    $("#form_content").val(' ');
                     swal("Gửi phản hồi thành công", "QueenSpa cảm ơn bạn đã góp ý kiến cho cửa hàng ngày càng phát triển", "success");
                }else{
                     if(response.messages.name){
