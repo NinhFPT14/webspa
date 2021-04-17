@@ -84,7 +84,7 @@ $(document).ready(function() {
     $('.btn_huy_don').on('click', function() {
         swal({
 		title: "Bạn chắc chắn muốn hủy đơn?",
-		text: "Nếu chắc chắn ấn đồng ý để hủy không ấn Cancel!",
+		text: "Nếu chắc chắn ấn ĐỒNG Ý từ chối ấn CANCEL!",
 		type: "warning",
 		showCancelButton: true,
 		confirmButtonColor: '#DD6B55',
