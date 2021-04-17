@@ -219,7 +219,20 @@ $(document).ready(function() {
     })
 
     $('.modal-dat-lich').on('click', function() {
-       
+//set lại thông báo validate form đặt lịch
+       $("p#thong_bao_name" ).html(' ');
+        $("p#thong_bao_phone" ).html(' ');
+        $("p#thong_bao_service" ).html(' ');
+        $("p#thong_bao_time_ficked" ).html(' ');
+        $("p#thong_bao_time_start" ).html(' ');
+        $("p#thong_bao_note" ).html(' ');
+// Set lại thông báo validata modal otp
+        $("p#thong_bao_code" ).html(' ');
+        $("p#thong_bao_fail" ).html(' ');
+        $("p#thong_bao_id" ).html(' ');
+        $("#modal_code_otp").val( ' ');
+
+
         let service_id = $("#modal_service").val();
         let name = $("#modal_full_name").val();
         let phone = $("#modal_phone_number").val();
@@ -242,23 +255,30 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if(response.data){
-                    $('#exampleModal').modal('hide');
-                    $('#modal_otp').modal('show');
-                    $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
-                    $('.modal-xac-nhan-otp').attr('name',response.data);
-                }else if(response.messages.name){
-                    $("p#thong_bao_name" ).html('- ' + response.messages.name);
-                }else if(response.messages.phone){
-                    $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
-                }else if(response.messages.service_id){
-                    $("p#thong_bao_service" ).html('- ' + response.messages.service_id);
-                }else if(response.messages.time_ficked){
-                    $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
-                }else if(response.messages.time_start){
-                    $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
-                }else{
-                    $("p#thong_bao_note" ).html('- ' + response.messages.note);
-                }
+                   $('#exampleModal').modal('hide');
+                   $('#modal_otp').modal('show');
+                   $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
+                   $('.modal-xac-nhan-otp').attr('name',response.data);
+               }else{
+                    if(response.messages.name){
+                        $("p#thong_bao_name" ).html('- ' + response.messages.name);
+                        }
+                    if(response.messages.phone){
+                        $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
+                            }
+                    if(response.messages.service_id){
+                        $("p#thong_bao_service" ).html('- ' + response.messages.service_id);
+                        }
+                    if(response.messages.time_ficked){
+                        $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
+                        }
+                    if(response.messages.time_start){
+                        $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
+                        }
+                    if(response.messages.note){
+                        $("p#thong_bao_note" ).html('- ' + response.messages.note);
+                        }
+               }
             }
             
         })

@@ -172,7 +172,6 @@ $(document).ready(function() {
            },
            dataType: 'json',
            success: function(response) {
-               console.log(response.messages);
                if(response.data){
                    $('#modal_otp').modal('show');
                    $("h5.modal_ma_don" ).html('XÁC NHẬN OTP - '+' Mã đơn #' + response.data);
