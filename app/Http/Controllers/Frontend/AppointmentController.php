@@ -28,8 +28,19 @@ class AppointmentController extends Controller
         $arrId[]= $value;
        }
     }
-    $data = Appointment::whereIn('id', $arrId)->get();
+    $data = Appointment::where('status','!=',0)->whereIn('id', $arrId)->get();
     return view('frontend.booking',compact('data'));
+  }
+
+  public function apiCancel(Request $request){
+    try {
+        $flight = Appointment::find($request->id);
+        $flight->status = 0;
+        $flight->save();
+        return response()->json(['status' => true, 'data' => 'Thành công' ]);
+    } catch (Exception $e) {
+        return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+    }
   }
 
   public function apiSave(Request $request){

@@ -39,11 +39,12 @@ Danh sách đơn đặt lịch
                                         <th class="product-price">Ngày</th>
                                         <th class="product_quantity">Trạng thái</th>
                                         <th class="product_quantity">Chi tiết</th>
+                                        <th class="product_quantity">Hủy đơn</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                  @foreach($data as $value)
-                                    <tr>
+                                    <tr id="key{{$value->id}}">
                                     <td class="product_total">{{$value->id}}</td>
                                     <td class="product_total">{{$value->name}}</td>
                                      <td class="product_total">{{$value->phone}}</td>
@@ -61,6 +62,7 @@ Danh sách đơn đặt lịch
                                     <td class="product_total text-danger">Hủy đơn</td>
                                     @endif
                                     <td class="product_total text-primary"><button >Xem</button></td>
+                                    <td class="product_total text-warning btn_huy_don" name="{{$value->id}}"><a id="">Hủy</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -72,5 +74,46 @@ Danh sách đơn đặt lịch
         </form>
     </div>
 </div>
+@include('sweetalert::alert')
+@endsection
 
+@section('page-script')
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+$(document).ready(function() {
+    $('.btn_huy_don').on('click', function() {
+        swal({
+		title: "Bạn chắc chắn muốn hủy đơn?",
+		text: "Nếu chắc chắn ấn đồng ý để hủy không ấn Cancel!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#DD6B55',
+		confirmButtonText: 'Đồng ý',
+		closeOnConfirm: false,
+	},
+	function(){
+        let appointment_id =  $('.btn_huy_don').attr('name');
+        let urlHuyDon = '{{route("appointment.apiCancel")}}';
+        $.ajax({
+           url: urlHuyDon,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    swal("Hủy đơn thành công", " ", "success");
+                    $( "#key"+appointment_id ).remove();
+                }else{
+                    swal("Hủy đơn thất bại", "", "warning");
+                }
+           }
+           
+       })
+	});
+    })
+})
+</script>
 @endsection

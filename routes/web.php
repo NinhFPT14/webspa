@@ -47,6 +47,7 @@ use RealRashid\SweetAlert\Facades\Alert;
         Route::post('/tao-don-dat-lich','Frontend\AppointmentController@apiSave')->name('appointment.apiSave');
         Route::post('/xac-nhan-otp','Frontend\AppointmentController@apiconfirmOtp')->name('appointment.apiconfirmOtp');
         Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
+        Route::post('/huy-don-dat-lich','Frontend\AppointmentController@apiCancel')->name('appointment.apiCancel');
     });
 
 use Illuminate\Http\Request;
