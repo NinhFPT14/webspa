@@ -78,7 +78,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
+        <a class="nav-link collapsed" href="{{route('baiviet')}}" aria-controls="service">
             <i class="fas fa-fw fa-file"></i>
             <span>Bài viết </span>
         </a>

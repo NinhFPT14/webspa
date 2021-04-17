@@ -14,7 +14,7 @@ Bài viết
                     <div class="breadcrumb_content">
                         <ul>
                             <li><a href="">Trang Chủ</a></li>
-                            <li><a href="{{route('blog')}}">Bài Viết</a></li>
+                            <li><a href="{{route('listBlog')}}">Bài Viết</a></li>
                         </ul>
                     </div>
                 </div>
@@ -32,13 +32,14 @@ Bài viết
                         <div class="blog_header">
                             <h1>Tin Tức</h1>
                         </div>
+                         <!-- Bắt đầu để tin ra các bài viết từ batabasse -->
+                        @foreach($data as $value)
                         <div class="single_blog">
                             <div class="blog_title">
-                                <h2><a href="{{route('detailBlog')}}">Demo1</a></h2>
                                 <div class="blog_post">
                                     <ul>
-                                        <li class="post_author">Đăng bởi : admin</li>
-                                        <li class="post_date"> Mar102015 </li>
+                                        <li class="post_author"></li>
+                                        <li class="post_date"> {{ $value->created_at }} </li>
                                     </ul>
                                 </div>
                             </div>
@@ -46,15 +47,13 @@ Bài viết
                                 <div class="row">
                                     <div class="col-lg-4 col-md-5">
                                         <div class="blog_thumb">
-                                            <a href="{{route('detailBlog')}}"><img src="frontEnd/img/blog/blog1.jpg" alt=""></a>
+                                            <a href="{{route('detailBlog',['id'=> $value->id])}}"><img src="{{ $value->avatar }}" alt="{{ $value->title }}"></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-8 col-md-7">
                                         <div class="blog_content">
-                                            <p class="blog_desc">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Debitis inventore are id cumque dolore, ex dolor unde iste sunt,
-                                                eos amet maxime sit dolore tortor?</p>
-                                            <a href="{{route('detailBlog')}}">Đọc Thêm</a>
+                                            <p class="blog_desc">{!! $value->description !!}</p>
+                                            <a href="{{route('detailBlog',['id'=> $value->id])}}">Đọc Thêm</a>
                                             <div class="blog_footer">
                                                 <div class="blog_social">
                                                     <h3>Chia sẻ với</h3>
@@ -72,7 +71,7 @@ Bài viết
                                 </div>
                             </div>
                         </div>
-                       
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-12">
@@ -80,14 +79,18 @@ Bài viết
                         <div class="widget_list widget_categories">
                             <h2>Danh Mục Bài Viết</h2>
                             <ul>
-                                <li>
-                                    <a href="#">Creative <span>(6)</span></a>
-                                </li>
-                                <li>
-                                    <a href="#">Fashion <span>(10)</span></a>
-                                </li>
-                               
-
+                            <?php
+                             $category = DB::table('categories')->where('type',2)->where('status',0)->get();
+                            ?>
+                            @foreach($category as $item)
+                            <?php
+                             $post = DB::table('posts')->where('category_id',$item->id)->get();
+                            ?>
+                            <li>
+                                <a href="{{route('danhmucbaiviet',['id'=> $item->id])}}">{{$item->name}}
+                                    <span>({{count($post)}})</span></a>
+                            </li>
+                            @endforeach
                             </ul>
                         </div>
                         <div class="widget_list widget_search mb-30">
@@ -105,11 +108,7 @@ Bài viết
                     <div class="blog_pagination mt-60">
                         <div class="pagination">
                             <ul>
-                                <li class="current">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                              
-                                <li><a href="#">>></a></li>
+                            {!!$data->links()!!}
                             </ul>
                         </div>
                     </div>

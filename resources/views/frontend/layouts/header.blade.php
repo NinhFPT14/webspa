@@ -41,12 +41,11 @@
                                     </li>
                                     
                                     <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
-                                    <li><a href="{{route('blog')}}">Tin Tức </a>
-                                        <ul class="sub_menu pages">
+                                    <li><a href="{{route('listBlog')}}">Tin Tức </a>
+                                        <!-- <ul class="sub_menu pages">
                                             <li><a href="#">Tin Tức 1</a></li>
                                             <li><a href="#">Tin Tức 2</a></li>
-
-                                    </ul>
+                                    </ul> -->
                                 </li>
 
 
@@ -204,7 +203,6 @@
                                             <a href="{{route('cart')}}">Giỏ Hàng</a>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                     <!--mini cart end-->
                                 </li>
                                
@@ -214,7 +212,6 @@
                             <ul class="offcanvas_main_menu">
                                 <li class="menu-item-has-children active">
                                     <a href="">Trang Chủ</a>
-                                  
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a>
@@ -222,15 +219,6 @@
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href=""> Dịch Vụ</a>
-                                   
-                                    
-                                    
-=======
-                                </div>
-                                <!--mini cart end-->
-                            </li>
->>>>>>> 1a10fcb5e43612b945c32334688f6da66f34052d
-
                         </ul>
                     </div>
                     <div id="menu" class="text-left ">
@@ -245,19 +233,13 @@
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{{route('service')}}"> Dịch Vụ</a>
-
-
-
-
-
-
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{{route('appointment')}}">Đặt Lịch</a>
 
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="{{route('blog')}}">Tin Tức </a>
+                                <a href="{{route('baiviet')}}">Tin Tức </a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{{route('about')}}">Giới Thiệu</a>

@@ -11,6 +11,7 @@ use Session;
 class HomeController extends Controller
 {
     public function home(){
+        // dd(bcrypt('123456789'));
         $service = DB::table('services')->where('status',0)->get('name');
         // dd($service);
         $slide = Slide::where('status', 0)->get();

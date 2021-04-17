@@ -49,7 +49,7 @@
                             <div class="footer_menu">
                                 <ul>
                                     <li><a href="{{route('about')}}">Giới Thiệu</a></li>
-                                    <li><a href="{{route('blog')}}">Bài Viết</a></li>
+                                    <li><a href="{{route('baiviet')}}">Bài Viết</a></li>
                                     <li><a href="{{route('contact')}}">Liên Hệ</a></li>
                                   
 
