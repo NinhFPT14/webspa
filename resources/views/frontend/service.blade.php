@@ -119,14 +119,17 @@ Dịch Vụ
                       <option value="{{$value->id}}">{{$value->name}}</option>
                     @endforeach
                 </select>
+                <p id="thong_bao_service" class="text-danger"></p>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Họ tên <span>*</span></label>
                   <input type="text" class="form-control" name="full_name" id="modal_full_name" placeholder="Nhập họ tên">
+                  <p id="thong_bao_name" class="text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Số điện thoại<span>*</span></label>
                     <input type="text" class="form-control" phone="phone_number" maxlength="10" id="modal_phone_number" placeholder="Nhập số điện thoại">
+                    <p id="thong_bao_phone" class="text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
@@ -136,22 +139,16 @@ Dịch Vụ
                         <option>Chiều</option>
                         <option>Tối</option>
                     </select>
+                   <p id="thong_bao_time_ficked" class="text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Ngày làm <span>*</span></label>
                     <input type="date" class="form-control" name="time_start" id="modal_time_start">
+                   <p id="thong_bao_time_start" class="text-danger"></p>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Lời nhắn</label>
                     <textarea class="form-control"  name="note" id="modal_note" rows="5"></textarea>
-                </div>
-
-                <div class="form-group">
-                   <p id="thong_bao_name" class="text-danger"></p>
-                   <p id="thong_bao_phone" class="text-danger"></p>
-                   <p id="thong_bao_service" class="text-danger"></p>
-                   <p id="thong_bao_time_ficked" class="text-danger"></p>
-                   <p id="thong_bao_time_start" class="text-danger"></p>
                    <p id="thong_bao_note" class="text-danger"></p>
                 </div>
               </form>
