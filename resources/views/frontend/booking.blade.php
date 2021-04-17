@@ -34,9 +34,9 @@ Danh sách đơn đặt lịch
                                     <tr>
                                         <th class="product_remove">Mã đơn</th>
                                         <th class="product_thumb">Họ tên</th>
+                                        <th class="product_thumb">Số điện thoại</th>
                                         <th class="product_name">Thời gian</th>
                                         <th class="product-price">Ngày</th>
-                                        <th class="product_quantity">Lời nhắn</th>
                                         <th class="product_quantity">Trạng thái</th>
                                         <th class="product_quantity">Chi tiết</th>
                                     </tr>
@@ -46,9 +46,9 @@ Danh sách đơn đặt lịch
                                     <tr>
                                     <td class="product_total">{{$value->id}}</td>
                                     <td class="product_total">{{$value->name}}</td>
+                                     <td class="product_total">{{$value->phone}}</td>
                                     <td class="product_total">{{$value->time_ficked}}</td>
                                     <td class="product_total">{{$value->time_start}}</td>
-                                    <td class="product_total">{{$value->note}}</td>
                                     @if($value->status == 0)
                                     <td class="product_total text-danger">Chưa xác nhận</td>
                                     @elseif($value->status == 1)

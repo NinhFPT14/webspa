@@ -18,7 +18,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 
     //FeedbackController
     Route::get('/phan-hoi','Frontend\FeedbackController@contact')->name('contact');
-    Route::post('luu-phan-hoi','Frontend\FeedbackController@save')->name('saveFeedback');
+    Route::post('luu-phan-hoi','Frontend\FeedbackController@apiSave')->name('feedback.apiSave');
 
     //ProductController
     Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
