@@ -20,7 +20,7 @@ class AppointmentController extends Controller
 {
    public function appointment(){
     return view('frontend.appointment');
-   }
+   }// Hiển thị trang đặt lịch ở phía Client
    
   public function listBooking(){
     $arrId = [];

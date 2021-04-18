@@ -17,7 +17,7 @@ class AppointmentController extends Controller
     
     public function sortAppointment(){
         $mytime = Carbon::now();
-        $appointment = Appointment::where('status',1)->paginate(10);
+        $appointment = Appointment::where('status',1)->orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services'));
     }
