@@ -24,9 +24,16 @@
                                         <?php
                                          $category = DB::table('categories')->where('type',0)->where('status',0)->get();
                                         ?>
-                                        @foreach($category as $value)
-                                        <li><a href="{{route('product',['id'=> $value->id])}}">{{$value->name}}</a></li>
-                                        @endforeach
+                                                @foreach ($category as $value)
+                                                <?php
+                                                 $product = DB::table('products')->where('category_id',$value->id)->get();
+                                                ?>
+                                                @if(count( $product) >=1)
+                                                <li>
+                                                    <a href="{{route('product',['id'=> $value->id])}}">{{$value->name}} <span>({{count($product)}})</span></a> 
+                                                </li>
+                                                @endif
+                                                @endforeach
                                         </ul>
                                     </li>
                                     <li class="sub_menu pages"><a href="{{route('service',['id'=>'all'])}}"> Dịch Vụ</a>
@@ -46,13 +53,25 @@
                                                 @endforeach
                                         </ul>
                                     </li>
+
                                     
                                     <li><a href="{{route('appointment')}}">Đặt Lịch</a></li>
                                     <li><a href="{{route('listBlog')}}">Tin Tức </a>
-                                        <!-- <ul class="sub_menu pages">
-                                            <li><a href="#">Tin Tức 1</a></li>
-                                            <li><a href="#">Tin Tức 2</a></li>
-                                    </ul> -->
+                                        <ul class="sub_menu pages">
+                                        <?php
+                                         $category = DB::table('categories')->where('type',2)->where('status',0)->get();
+                                        ?>
+                                                @foreach ($category as $value)
+                                                <?php
+                                                 $post = DB::table('posts')->where('category_id',$value->id)->get();
+                                                ?>
+                                                @if(count( $post) >=1)
+                                                <li>
+                                                    <a href="{{route('danhmucbaiviet',['id'=> $value->id])}}">{{$value->name}} <span>({{count($post)}})</span></a> 
+                                                </li>
+                                                @endif
+                                                @endforeach
+                                    </ul>
                                 </li>
 
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class ProductController extends Controller
 {
     public function product($id){
@@ -17,7 +16,10 @@ class ProductController extends Controller
         return view('frontend.product',compact('data'));
     }
     public function detailProduct($slug,$id){
-        $data = DB::table('products')->where('status','==',0)->find($id);
+        $data = DB::table('products')->orderBy('view')->where('status','==',0)->find($id);
+        $view = $data->view + 1;
+        // dd($view);
+        DB::table('products')->where('id',$id)->update(['view' => $view]);
         if($data == null){
             return redirect()->route('home');
         }
