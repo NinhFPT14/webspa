@@ -24,6 +24,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
     Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
     Route::post('/tim-kiem-san-pham','Frontend\ProductController@search')->name('product.search.user');
+    
 
     //ServiceController
     Route::get('dich-vu/{id}','Frontend\ServiceController@service')->name('service');
@@ -56,6 +57,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     //cartController
     Route::get('/gio-hang','Frontend\CartController@cart')->name('cart');
     Route::get('/them-vao-gio-hang/{id}','Frontend\CartController@add')->name('cart.add');
+    Route::post('/them-nhieu-san-pham/{id}','Frontend\CartController@addMuch')->name('cart.addMuch');
     Route::get('/xoa-gio-hang/{id}','Frontend\CartController@dalete')->name('cart.delete');
     Route::post('/cap-nhat-gio-hang/{id}','Frontend\CartController@update')->name('cart.update');
 

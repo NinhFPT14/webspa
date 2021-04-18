@@ -127,14 +127,6 @@ Sản phẩm
                                         <span class="current_price">{{number_format($value->discount)}}VNĐ</span>
                                         <span class="old_price">{{number_format($value->price)}}VNĐ</span>
                                     </div>
-                                    <div class="wishlist_btn">
-                                        <a href="wishlist.html" title="wishlist"><i
-                                                class="ion-android-favorite-outline"></i></a>
-                                    </div>
-
-                                </div>
-                                <div class="text" style="margin-top: 10px;">
-                                    <a href="{{route('appointment')}}">Đặt hàng</a>
                                 </div>
                             </div>
                             <div class="product_content list_content">

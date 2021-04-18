@@ -9,8 +9,9 @@ Chi tiết sản phẩm
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="index-5.html">Trang Chủ</a></li>
-                            <li><a href="product-details.html">Chi Tiết</a></li>
+                            <li><a href="{{route('home')}}">Trang chủ</a></li>
+                            <li><a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a></li>
+                            <li><a>Chi Tiết</a></li>
                         </ul>
                     </div>
                 </div>
@@ -50,10 +51,9 @@ Chi tiết sản phẩm
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="product_d_right">
-                               <form action="#">
-
+                               <form id="myform" action="{{route('cart.addMuch',['id'=>$data->id])}}" method="POST">
+                                   @csrf
                                     <h1>{{$data->name}}</h1>
-                                   
                                     <div class="price_box">
                                         <span class="current_price text-danger" ><strong>{{number_format($data->discount)}}đ</strong></span>
                                         <span class="old_price">{{number_format($data->price)}}đ</span>
@@ -65,7 +65,7 @@ Chi tiết sản phẩm
                                   
                                     <div class="product_variant quantity">
                                         <label>Số Lượng</label>
-                                        <input min="0" max="100" value="1" type="number">
+                                        <input name="number" min="0" max="100" value="1" type="number">
                                     </div>
                                      <div class="action_links">
                                         <ul>
@@ -75,21 +75,18 @@ Chi tiết sản phẩm
                                         </ul>
                                     </div>
                                     <div class="product_meta">
-                                        <span>Danh Mục: <a href="#">Clothing</a></span>
+                                        <?php 
+                                        $category = DB::table('categories')->find($data->category_id);
+                                        ?>
+                                        <span>Danh Mục: <a href="#">{{ $category->name}}</a></span>
                                     </div>
 
                                 </form>
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
+                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;">
                                         <i class="ion-ios-cart fa-2x"></i>
-                                     <span>Mua Ngay</span>
-                                    </a>
-                                </div>
-                                <div class="rounded-3xl mt-30 bg-blue-400 w-80 h-12 flex items-center bg-blue-500 hover:bg-blue-700">
-                                    <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;" href="">
-                                        <i class="ion-ios-cart fa-2x"></i>
-                                      <span>Thêm Vào Giỏ Hàng</span>
+                                        <button type="submit" form="myform">Mua Ngay</button>
                                     </a>
                                 </div>
                             </div>
@@ -181,9 +178,6 @@ Chi tiết sản phẩm
                                              <div class="price_box">
                                                 <span class="current_price">{{number_format($value->discount)}}VNĐ</span>
                                                 <span class="old_price">{{number_format($value->price)}}VNĐ</span>   
-                                            </div>
-                                            <div class="wishlist_btn">
-                                                <a href="wishlist.html" title="wishlist"><i class="ion-android-favorite-outline"></i></a>
                                             </div>
                                         </div>
                                     </div>

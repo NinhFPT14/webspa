@@ -19,6 +19,15 @@ class CartController extends Controller
         return back();
     }
 
+    public function addMuch(Request $request ,$id){
+        $cart = Session::get('productId');
+        for ($x = 0; $x <= $request->number ; $x++) {
+            $cart[] = $id;
+        }
+        Session::put('productId',$cart);
+        return redirect()->route('cart');
+    }
+
     public function dalete($id){
         $cart = Session::get('productId');
         if($cart != null){
