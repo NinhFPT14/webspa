@@ -295,7 +295,7 @@ $(document).ready(function() {
            },
            dataType: 'json',
            success: function(response) {
-                if(response.success == 'ok'){
+                if(response.success){
                     $('#modal_otp').modal('hide');
                     swal("Đặt lịch thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
                     window.location.href = '{{route("appointment.listBooking")}}';
