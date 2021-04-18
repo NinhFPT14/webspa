@@ -80,10 +80,10 @@ Chi tiết bài viết
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single_related">
                                         <div class="related_thumb">
-                                            <a href=""><img src="{{ $key->avatar }}" alt=""></a>
+                                            <a href="{{route('detailBlog',['id'=>$key->id])}}"><img src="{{ $key->avatar }}" alt=""></a>
                                         </div>
                                         <div class="related_content">
-                                           <h4><a href="">{{ $key->title }}</a></h4>
+                                           <h4><a href="{{route('detailBlog',['id'=>$key->id])}}">{{ $key->title }}</a></h4>
                                            <span><i class="fa fa-calendar" aria-hidden="true"></i> {{ $key->updated_at }} </span>
                                         </div>
                                     </div>
@@ -97,8 +97,7 @@ Chi tiết bài viết
                          
                     </div>
                     <!--blog grid area start-->
-                </div>
-                <div class="col-lg-3 col-md-12">
+                    <div class="col-lg-3 col-md-12">
                      <div class="blog_sidebar_widget">
                         <div class="widget_list widget_categories">
                             <h2>Danh Mục Bài Viết</h2>
@@ -118,16 +117,23 @@ Chi tiết bài viết
                             </ul>
                         </div>
                         <div class="widget_list widget_search mb-30">
-                           <h2>Tìm Kiếm</h2>
-                           <form action="#">
-                               <input placeholder="..." type="text">
-                               <button type="submit"><i class="fa fa-search"></i></button>
-                           </form>
+                           <h2>Tìm Kiếm Bài Viết</h2>
+                           <form action="{{route('blog.search')}}" method="GET" >
+                                @csrf
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm...."
+                                    aria-label="Search" aria-describedby="basic-addon2" name="name" >
+                                    <button class="btn btn-primary" type="submit">
+                                    </button>
+                            </div>
+                            </form> 
                         </div>
                        
                    </div>
                 </div>
             </div>
+                
         </div>
     </div>
+</div>
     @endsection

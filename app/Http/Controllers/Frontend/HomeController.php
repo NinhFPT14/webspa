@@ -15,7 +15,9 @@ class HomeController extends Controller
         $service = DB::table('services')->where('status',0)->get('name');
         // dd($service);
         $slide = Slide::where('status', 0)->get();
-        return view('frontend.home',compact('slide'),['service' => $service]);
+        $serviceLike = DB::table('services')->where('status',0)->orderBy('view')->get();
+        $blog = DB::table('posts')->where('status',0)->orderBy('view')->get();
+        return view('frontend.home',compact('slide','serviceLike','blog'),['service' => $service]);
     }
 
     public function about(){
