@@ -56,7 +56,7 @@
 <script src="{{asset('frontEnd/js/bootstrap.min.js.map')}}"></script>
 <script src="{{asset('frontEnd/js/dropzone.min.js')}}"></script>
 <!-- Plugins JS -->
-
+@include('sweetalert::alert')
 @yield('page-script')
 
 </html>

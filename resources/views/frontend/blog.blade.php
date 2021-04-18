@@ -95,9 +95,14 @@ Bài viết
                         </div>
                         <div class="widget_list widget_search mb-30">
                             <h2>Tìm Kiếm</h2>
-                            <form action="#">
-                                <input placeholder="Tìm Kiếm.." type="text">
-                                <button type="submit"><i class="fa fa-search"></i></button>
+                            <form action="{{route('blog.search')}}" method="GET">
+                                @csrf
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm...."
+                                    aria-label="Search" aria-describedby="basic-addon2" name="name" >
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                    </button>
+                            </div>
                             </form>
                         </div>
                       

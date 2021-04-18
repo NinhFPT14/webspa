@@ -31,5 +31,14 @@ class BlogController extends Controller
         DB::table('posts')->where('id',$id)->update(['view' => $view]);
         return view('frontend.detailBlog', compact('detail', 'lienquan'));
     }
+    public function search(Request $request) {
+        unset($request['_token']);
+        $data = Post::where('title', 'like', '%' . $request->name . '%')->paginate(5);
+        // dd($data->all());
+        if($data == []){
+            alert()->error('Từ khóa không có kết quả hoặc không hợp lệ, vui lòng thử từ khóa khác nhé ! Thanks');
+        }
+        return view('frontend.blog',compact('data'));
+    }
     
 }

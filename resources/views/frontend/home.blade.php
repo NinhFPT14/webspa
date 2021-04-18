@@ -111,15 +111,14 @@ Trang chủ
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="Skincare" role="tabpanel">
                         <div class="row product_slick_row4">
-
-
-                            <div class="col-lg-3">
+                        @foreach($serviceLike as $item)
+                        <div class="col-lg-3">
                                 <div class="single_product">
                                     <div class="product_thumb">
                                         <a class="primary_img" href=""><img
-                                                src="frontEnd/img/product/product25.jpg" alt=""></a>
+                                                src="{{ $item->image }}" alt=""></a>
                                         <a class="secondary_img" href=""><img
-                                                src="frontEnd/img/product/product27.jpg" alt=""></a>
+                                                src="{{ $item->image }}" alt=""></a>
                                         <div class="label_product">
 
                                         </div>
@@ -137,7 +136,8 @@ Trang chủ
 
                                     <div class="product_content">
                                         <div class="product_name" style="text-align: center;">
-                                            <h4><a href="">Demo</a></h4>
+                                            <h4><a href="">{{ $item->name }}</a></h4>
+                                            <h4>Giá tiền : {{ $item->discount }}</h4>
                                         </div>
 
                                         <div class="text">
@@ -151,6 +151,9 @@ Trang chủ
 
 
                             </div>
+                        @endforeach
+
+                            
                            
                         </div>
 
@@ -292,77 +295,28 @@ Trang chủ
                 </div>
             </div>
             <div class="blog_gallery blog_column2 owl-carousel">
+                @foreach($blog as $item)
                 <div class="col-lg-12">
                     <div class="single_blog">
                         <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
+                            <a href="{{route('detailBlog',['id'=>$item->id])}}"><img src="{{ $item->avatar }}" alt=""></a>
                             <div class="articles_date">
                                 <span class="date">Hot </span>
                                 <span>new</span>
                             </div>
                         </div>
+                        
                         <div class="blog_content">
-                            <h4><a href="blog-details.html">GIẢM GIÁ 50 % TẤT CẢ DỊCH VỤ LÀM ĐẸP TẠI THANH HÒA SPA -
-                                    NHÂN DỊP 8/3</a></h4>
-                            <span> ngày đăng: 28/01/201</a></span>
-                            <p>"Tháng 3 nồng nàn – Nhận ngàn ưu đãi” cùng Queen Beauty SPA. Từ 1/3 đến 31/3/2018,
-                                giảm 50% tất cả các dịch vụ làm đẹp cho các khách hàng nữ.</p>
-                            <a href="blog-details.html">Đọc Thêm</a>
+                            <h4><a href="{{route('detailBlog',['id'=>$item->id])}}">{!! $item->title !!}</a></h4>
+                            <span> ngày đăng: {{ $item->created_at }}</a></span>
+                            <p>
+                            {!! $item->description !!}
+                            </p>
+                            <a class="btn btn-info" href="{{route('detailBlog',['id'=>$item->id])}}">Đọc Thêm</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                    <div class="single_blog">
-                        <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
-                            <div class="articles_date">
-                                <span class="date">Hot </span>
-                                <span>new</span>
-                            </div>
-                        </div>
-                        <div class="blog_content">
-                            <h4><a href="blog-details.html">GIẢM GIÁ 50 % TẤT CẢ DỊCH VỤ LÀM ĐẸP TẠI THANH HÒA SPA -
-                                    NHÂN DỊP 8/3</a></h4>
-                            <span> ngày đăng: 28/01/201</a></span>
-                            <p>"Tháng 3 nồng nàn – Nhận ngàn ưu đãi” cùng Queen Beauty SPA. Từ 1/3 đến 31/3/2018,
-                                giảm 50% tất cả các dịch vụ làm đẹp cho các khách hàng nữ.</p>
-                            <a href="blog-details.html">Đọc Thêm</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single_blog">
-                        <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
-                            <div class="articles_date">
-                                <span class="date">Hot </span>
-                                <span>new</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="single_blog">
-                        <div class="blog_thumb">
-                            <a href="blog-details.html"><img src="frontEnd/img/blog/blog7.jpg" alt=""></a>
-                            <div class="articles_date">
-                                <span class="date">Hot </span>
-                                <span>new</span>
-                            </div>
-                        </div>
-                        <div class="blog_content">
-                            <h4><a href="blog-details.html">GIẢM GIÁ 50 % TẤT CẢ DỊCH VỤ LÀM ĐẸP TẠI THANH HÒA SPA -
-                                    NHÂN DỊP 8/3</a></h4>
-                            <span> ngày đăng: 28/01/201</a></span>
-                            <p>"Tháng 3 nồng nàn – Nhận ngàn ưu đãi” cùng Queen Beauty SPA. Từ 1/3 đến 31/3/2018,
-                                giảm 50% tất cả các dịch vụ làm đẹp cho các khách hàng nữ.</p>
-                            <a href="blog-details.html">Đọc Thêm</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
+                @endforeach
                 </div>
             </div>
         </div>

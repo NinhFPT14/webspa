@@ -33,6 +33,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/trang-blog','Frontend\BlogController@list')->name('listBlog');
     Route::get('/chi-tiet-bai-viet/{id}','Frontend\BlogController@detailBlog')->name('detailBlog');
     Route::get('danh-muc-bai-viet/{id}','Frontend\BlogController@categoryBlog')->name('danhmucbaiviet');
+    Route::get('/tim-kiem-bai-viet-index','Frontend\BlogController@search')->name('blog.search');
 
 
     //BlogController-Back-End
