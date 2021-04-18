@@ -48,6 +48,8 @@ use RealRashid\SweetAlert\Facades\Alert;
         Route::post('/xac-nhan-otp','Frontend\AppointmentController@apiconfirmOtp')->name('appointment.apiconfirmOtp');
         Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
         Route::post('/huy-don-dat-lich','Frontend\AppointmentController@apiCancel')->name('appointment.apiCancel');
+        Route::post('/doi-lich-lam','Frontend\AppointmentController@apiConvert')->name('appointment.apiConvert');
+        Route::post('/otp-huy-va-chuyen-lich','Frontend\AppointmentController@apiOtp')->name('appointment.apiOtp');
     });
 
 use Illuminate\Http\Request;

@@ -34,12 +34,12 @@ Danh sách đơn đặt lịch
                                     <tr>
                                         <th class="product_remove">Mã đơn</th>
                                         <th class="product_thumb">Họ tên</th>
-                                        <th class="product_thumb">Số điện thoại</th>
                                         <th class="product_name">Thời gian</th>
                                         <th class="product-price">Ngày</th>
                                         <th class="product_quantity">Trạng thái</th>
                                         <th class="product_quantity">Chi tiết</th>
                                         <th class="product_quantity">Hủy đơn</th>
+                                        <th class="product_quantity">Chuyển lịch</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,9 +47,8 @@ Danh sách đơn đặt lịch
                                     <tr id="key{{$value->id}}">
                                     <td class="product_total">{{$value->id}}</td>
                                     <td class="product_total">{{$value->name}}</td>
-                                     <td class="product_total">{{$value->phone}}</td>
-                                    <td class="product_total">{{$value->time_ficked}}</td>
-                                    <td class="product_total">{{$value->time_start}}</td>
+                                    <td class="product_total" id="time_ficked{{$value->id}}">{{$value->time_ficked}}</td>
+                                    <td class="product_total" id="time_start{{$value->id}}">{{$value->time_start}}</td>
                                     @if($value->status == 0)
                                     <td class="product_total text-danger">Chưa xác nhận</td>
                                     @elseif($value->status == 1)
@@ -62,7 +61,18 @@ Danh sách đơn đặt lịch
                                     <td class="product_total text-danger">Hủy đơn</td>
                                     @endif
                                     <td class="product_total text-primary"><button >Xem</button></td>
+
+                                    @if ($value->status == 1)
                                     <td class="product_total text-danger btn_huy_don" name="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
+                                    @else
+                                    <td class="product_total text-primary"></td>
+                                    @endif
+
+                                    @if ($value->status == 1)
+                                      <td class="product_total text-success btn_chuyen_lich" data-orderid="{{$value->id}}" ><i class="fa fa-history"></i></td>
+                                    @else
+                                    <td class="product_total text-primary"></td>
+                                    @endif
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -74,6 +84,72 @@ Danh sách đơn đặt lịch
         </form>
     </div>
 </div>
+
+ {{-- Modal chuyể lịch --}}
+ <div class="modal fade" id="modal_convert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title modal_ma_don " id="exampleModalLabel">CHUYỂN LỊCH LÀM</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
+                <select class="form-control" name="time_ficked" id="modal_time_ficked">
+                    <option selected disabled value="">Chọn thời gian</option>
+                    <option>Sáng</option>
+                    <option>Chiều</option>
+                    <option>Tối</option>
+                </select>
+               <p id="thong_bao_time_ficked" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Ngày làm <span>*</span></label>
+                <input type="date" class="form-control" name="time_start" id="modal_time_start">
+               <p id="thong_bao_time_start" class="text-danger"></p>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal_conver_appointment" name="">Chuyển</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {{-- Modal otp --}}
+  <div class="modal fade" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title modal_ma_don " id="exampleModalLabel">Xác nhận OTP</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Nhập mã otp <span>*</span></label>
+                  <input type="number" class="form-control" name="code" id="modal_code_otp">
+                </div>
+
+                <div class="form-group">
+                    <p id="thong_bao_id" class="text-danger"></p>
+                    <p id="thong_bao_code" class="text-danger"></p>
+                    <p id="thong_bao_fail" class="text-danger"></p>
+                 </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success modal-xac-nhan-otp" name="">Gửi</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @include('sweetalert::alert')
 @endsection
 
@@ -114,6 +190,111 @@ $(document).ready(function() {
        })
 	});
     })
+
+
+    $('.btn_chuyen_lich').on('click', function() {
+        //set lại validate form otp
+        $("p#thong_bao_code" ).html(' ');
+        $("p#thong_bao_fail" ).html(' ');
+        $("p#thong_bao_id" ).html(' ');
+        $("#modal_code_otp").val( ' ');
+        $("p#thong_bao_time_ficked" ).html(' ');
+        $("p#thong_bao_time_start" ).html(' ');
+        $("#modal_time_ficked").val(' ');
+        $("#modal_time_start").val(' ');
+       let appointment_id = $(this).data('orderid');
+       let apiOtp = '{{route("appointment.apiOtp")}}';
+       $.ajax({
+           url: apiOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    $('#modal_otp').modal('show')
+                    $('.modal-xac-nhan-otp').attr('name',response.data);
+                    //set trước name là id apppoinment cho nút chuyển lịch
+                    $('.modal_conver_appointment').attr('name',response.data);
+                }else{
+                    swal("Đơn đặt lịch không tồn tại", "", "warning");
+                }
+           }
+           
+       })
+   })
+
+   $('.modal-xac-nhan-otp').on('click', function() {
+        $("p#thong_bao_code" ).html(' ');
+        $("p#thong_bao_fail" ).html(' ');
+        $("p#thong_bao_id" ).html(' ');
+       let appointment_id =  $('.modal-xac-nhan-otp').attr('name');
+       let code = $("#modal_code_otp").val();
+       let apiconfirmOtp = '{{route("appointment.apiconfirmOtp")}}';
+       $.ajax({
+           url: apiconfirmOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               code: code,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.success == 'ok'){
+                    $('#modal_otp').modal('hide');
+                    $('#modal_convert').modal('show')
+                }else if(response.fail){
+                    $("p#thong_bao_fail" ).html('- ' + response.fail);
+                }else if(response.messages.id){
+                    $("p#thong_bao_id" ).html('- ' + response.messages.id);
+                }else{
+                    $("p#thong_bao_code" ).html('- ' + response.messages.code);
+                }
+           }
+           
+       })
+   })
+
+   $('.modal_conver_appointment').on('click', function() {
+        $("p#thong_bao_time_ficked" ).html(' ');
+        $("p#thong_bao_time_start" ).html(' ');
+       let appointment_id =  $('.modal_conver_appointment').attr('name');
+       let time_ficked = $("#modal_time_ficked").val();
+       let time_start = $("#modal_time_start").val();
+       let apiconfirmOtp = '{{route("appointment.apiConvert")}}';
+       $.ajax({
+           url: apiconfirmOtp,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               time_ficked: time_ficked,
+               time_start: time_start,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    $('#modal_convert').modal('hide')
+                    swal("Chuyển lịch thành công", "", "success");
+                    $( "td#time_ficked"+appointment_id ).html(time_ficked);
+                    $( "td#time_start"+appointment_id ).html(time_start);
+                }else if(response.messages){
+                    if(response.messages.time_ficked){
+                        $("p#thong_bao_time_ficked" ).html('- ' + response.messages.time_ficked);
+                    }
+                    if(response.messages.time_start){
+                        $("p#thong_bao_time_start" ).html('- ' + response.messages.time_start);
+                    }
+                }else{
+                    swal("Chuyển lịch không thành công", "", "warning");
+                }
+           }
+           
+       })
+   })
 })
 </script>
 @endsection

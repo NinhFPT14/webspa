@@ -43,6 +43,56 @@ class AppointmentController extends Controller
     }
   }
 
+  public function apiConvert(Request $request){
+    try {
+
+        $validate = Validator::make($request->all(), 
+        [
+            'time_ficked' => 'required|max:255',
+            'time_start' => 'required|date|after_or_equal:today',
+        ],
+        [
+        'time_ficked.required' => "Thời gian mong muốn không được để trống",
+        'time_ficked.max' => "Thời gian mong muốn không hợp lệ",
+        'time_start.required' => "Ngày làm không được để trống",
+        'time_start.after_or_equal' => "Ngày làm không hợp lệ",
+        ]);
+        if($validate->fails()){
+            return json_encode([
+                'status' => false,
+                'messages' => $validate->errors()
+            ]);
+            return 'done';
+        }
+        $flight = Appointment::find($request->id);
+        $flight->time_ficked = $request->time_ficked;
+        $flight->time_start = $request->time_start;
+        $flight->save();
+        return response()->json(['status' => true, 'data' => 'Thành công' ]);
+    } catch (Exception $e) {
+        return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+    }
+  }
+
+  public function apiOtp(Request $request){
+    try {
+        $otp = rand(10000,90000);
+        $flight = Appointment::find($request->id);
+        $flight->otp = $otp;
+        $flight->save();
+        $phones =[$flight->phone];
+        $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Mã otp chuyển lịch của quý khách là : ".$otp." Mã đơn chuyển lịch $flight->id ";
+        $type = 2;
+        $sender = "981c320db4992b97";
+        $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+        $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+        return response()->json(['status' => true, 'data' => $flight->id ]);
+    } catch (Exception $e) {
+        return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+    }
+  }
+
+  
   public function apiSave(Request $request){
         $validate = Validator::make($request->all(), 
         [
