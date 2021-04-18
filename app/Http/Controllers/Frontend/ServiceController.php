@@ -24,6 +24,9 @@ class ServiceController extends Controller
         $category = DB::table('categories')->where('status',0)->where('type',1)->get();
         $data = DB::table('services')->where('status',0)->find($id);
         $serviceAll = DB::table('services')->where('status', 0)->get();
+        $view = $data->view + 1;
+        // dd($view);
+        DB::table('services')->where('id',$id)->update(['view' => $view]);
         return view('frontend.detailService',compact('data','category','serviceAll'));
     }
 

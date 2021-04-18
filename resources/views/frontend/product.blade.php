@@ -88,21 +88,17 @@ Sản phẩm
 
                         <form class="select_option" action="#">
                             <select name="orderby" id="short">
-
                                 <option selected value="1">Lọc sản phẩm</option>
-                                <option value="2">Sort by popularity</option>
-                                <option value="3">Sort by newness</option>
-                                <option value="4">Sort by price: low to high</option>
-                                <option value="5">Sort by price: high to low</option>
-                                <option value="6">Product Name: Z</option>
+                                <option value="2">Theo thứ tự A-Z</option>
+                                <option value="3">Sản phẩm mới nhất</option>
+                                <option value="4">Giá cao đến thấp</option>
+                                <option value="5">Giá thấp đến cao</option>
                             </select>
                         </form>
 
 
                     </div>
-                    <div class="page_amount">
-                        <p>Showing 1–9 of 21 results</p>
-                    </div>
+                    
                 </div>
                 <!--shop toolbar end-->
                 <div class="row shop_wrapper">
