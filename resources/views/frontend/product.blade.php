@@ -32,7 +32,7 @@ Sản phẩm
                         <h2>Lọc Giá</h2>
                         <form action="#">
                             <div id="slider-range"></div>
-                            <button type="submit">Lọc</button>
+                            <button type="submit">Tìm kiếm</button>
                             <input type="text" name="text" id="amount" />
 
                         </form>
@@ -53,11 +53,6 @@ Sản phẩm
                             </li>
                             @endforeach
                         </ul>
-                    </div>
-
-
-                    <div class="shop_sidebar_banner">
-                        <a href="#"><img src="frontEnd/img/bg/banner31.jpg" alt=""></a>
                     </div>
                 </aside>
                 <!--sidebar widget end-->
