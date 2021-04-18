@@ -61,9 +61,9 @@ use RealRashid\SweetAlert\Facades\Alert;
     //Đặt lịch
     Route::group(['prefix' => 'dat-lich'], function() {
         Route::get('/','Frontend\AppointmentController@appointment')->name('appointment');
-        Route::post('/tao-don-dat-lich','Frontend\AppointmentController@apiSave')->name('appointment.apiSave');
-        Route::post('/xac-nhan-otp','Frontend\AppointmentController@apiconfirmOtp')->name('appointment.apiconfirmOtp');
-        Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');
+        Route::post('/tao-don-dat-lich','Frontend\AppointmentController@apiSave')->name('appointment.apiSave'); // hiển thị bảng đăt lịch
+        Route::post('/xac-nhan-otp','Frontend\AppointmentController@apiconfirmOtp')->name('appointment.apiconfirmOtp'); // nhận & sử lý thông tin từ bảng đặt lịch
+        Route::get('/danh-sach-don','Frontend\AppointmentController@listBooking')->name('appointment.listBooking');// hiển thị đơn hàng vừa đặt từ phía khách hàng
         Route::post('/huy-don-dat-lich','Frontend\AppointmentController@apiCancel')->name('appointment.apiCancel');
         Route::post('/doi-lich-lam','Frontend\AppointmentController@apiConvert')->name('appointment.apiConvert');
         Route::post('/otp-huy-va-chuyen-lich','Frontend\AppointmentController@apiOtp')->name('appointment.apiOtp');

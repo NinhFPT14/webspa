@@ -37,23 +37,35 @@ Bảng xếp lịch
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Tên</th>
+                        <th scope="col">STT-Tên</th>
                         <th scope="col">SĐT</th>
                         <th scope="col">Xác nhận</th>
                         <th scope="col">Xếp lịch</th>
+                        <th scope="col">Trạng thái</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($appointment as $value)
                     <tr>
-                        <th scope="row">{{$value->id}}</th>
-                        <td>{{$value->name}}</td>
+                        <td>{{ $value->id }}<br>{{$value->name}}</td>
                         <td>{{$value->phone}}</td>
                         <td><button type="button" class="btn btn-success btn-xac-nhan " data-orderid="{{$value->id}}"><i
                                     class="fas fa-fw fa-edit"></i></button></td>
                         <td><button type="button" class="btn btn-success btn-xep-lich " data-orderid="{{$value->id}}"><i
                                         class="fas fa-calendar"></i></button></td>
+                        
+                        @if($value->status == 0)
+                            <td><a class="btn btn-danger" href="#">Chưa xác thực OTP</a></td>
+                        @elseif($value->status == 1)
+                            <td><a class="btn btn-warning" href="#">Đã xác thực OTP</a></td>
+                        @elseif($value->status == 2)
+                        <td><a class="btn btn-info" href="#">Đã lên lịch</a></td>
+                        @elseif($value->status == 3)
+                        <td><a class="btn btn-success" href="#">Làm xong</a></td>
+                        @elseif($value->status == 4)
+                        <td><a class="btn btn-dark" href="#">Hủy</a></td>
+                        @endif
+                        
                     </tr>
                     @endforeach
                 </tbody>
