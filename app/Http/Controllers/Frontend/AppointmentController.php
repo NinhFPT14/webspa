@@ -174,7 +174,7 @@ class AppointmentController extends Controller
         if($flight->otp == $request->code){
             $flight->status = 1;
             $flight->save();
-            return response()->json(['status' => true, 'success' => 'ok']);
+            return response()->json(['status' => true, 'success' =>  $flight->id]);
         }else {
             return json_encode([
                 'status' => false,

@@ -63,7 +63,7 @@ Danh sách đơn đặt lịch
                                     <td class="product_total text-primary"><button >Xem</button></td>
 
                                     @if ($value->status == 1)
-                                    <td class="product_total text-danger btn_huy_don" name="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
+                                    <td class="product_total text-danger btn_huy_don" data-orderid="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
                                     @else
                                     <td class="product_total text-primary"></td>
                                     @endif
@@ -145,7 +145,7 @@ Danh sách đơn đặt lịch
               </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success modal-xac-nhan-otp" name="">Gửi</button>
+          <button type="button" class="btn btn-success modal-xac-nhan-otp" id="" name="">Gửi</button>
         </div>
       </div>
     </div>
@@ -158,20 +158,26 @@ Danh sách đơn đặt lịch
 <script>
 $(document).ready(function() {
     $('.btn_huy_don').on('click', function() {
+        //set lại validate form otp
+        $("p#thong_bao_code" ).html(' ');
+        $("p#thong_bao_fail" ).html(' ');
+        $("p#thong_bao_id" ).html(' ');
+        $("#modal_code_otp").val( ' ');
+       let appointment_id = $(this).data('orderid');
         swal({
 		title: "Bạn chắc chắn muốn hủy đơn?",
-		text: "Nếu chắc chắn ấn ĐỒNG Ý từ chối ấn CANCEL!",
+		text: "Nếu chắc chắn ấn ĐỒNG Ý không ấn Từ chối!",
 		type: "warning",
 		showCancelButton: true,
 		confirmButtonColor: '#DD6B55',
+        cancelButtonText: 'Từ chối',
 		confirmButtonText: 'Đồng ý',
-		closeOnConfirm: false,
+		closeOnConfirm: true,
 	},
 	function(){
-        let appointment_id =  $('.btn_huy_don').attr('name');
-        let urlHuyDon = '{{route("appointment.apiCancel")}}';
-        $.ajax({
-           url: urlHuyDon,
+       let apiOtp = '{{route("appointment.apiOtp")}}';
+       $.ajax({
+           url: apiOtp,
            method: "POST",
            data: {
                id: appointment_id,
@@ -180,16 +186,20 @@ $(document).ready(function() {
            dataType: 'json',
            success: function(response) {
                 if(response.data){
-                    swal("Hủy đơn thành công", " ", "success");
-                    $( "#key"+appointment_id ).remove();
+                    $('#modal_otp').modal('show')
+                    $('.modal-xac-nhan-otp').attr('name',response.data);
+                    $('.modal-xac-nhan-otp').attr('id','id_huy_don');
+                    //set trước name là id apppoinment cho nút chuyển lịch
+                    $('.modal_conver_appointment').attr('name',response.data);
                 }else{
-                    swal("Hủy đơn thất bại", "", "warning");
+                    swal("Đơn đặt lịch không tồn tại", "", "warning");
                 }
            }
            
        })
 	});
     })
+
 
 
     $('.btn_chuyen_lich').on('click', function() {
@@ -202,6 +212,7 @@ $(document).ready(function() {
         $("p#thong_bao_time_start" ).html(' ');
         $("#modal_time_ficked").val(' ');
         $("#modal_time_start").val(' ');
+        $('.modal-xac-nhan-otp').attr('id',' ');
        let appointment_id = $(this).data('orderid');
        let apiOtp = '{{route("appointment.apiOtp")}}';
        $.ajax({
@@ -243,9 +254,33 @@ $(document).ready(function() {
            },
            dataType: 'json',
            success: function(response) {
-                if(response.success == 'ok'){
+                if(response.success){
                     $('#modal_otp').modal('hide');
-                    $('#modal_convert').modal('show')
+                    if(  $('.modal-xac-nhan-otp').attr('id') == 'id_huy_don'){
+                        let appointment_id = response.success;
+                        let urlHuyDon = '{{route("appointment.apiCancel")}}';
+                        $.ajax({
+                        url: urlHuyDon,
+                        method: "POST",
+                        data: {
+                            id: appointment_id,
+                            _token: '{{csrf_token()}}'
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                                if(response.data){
+                                    swal("Hủy đơn thành công", " ", "success");
+                                    $( "#key"+appointment_id ).remove();
+                                }else{
+                                    swal("Hủy đơn thất bại", "", "warning");
+                                }
+                        }
+                        
+                    })
+                        swal("Hủy đơn thành công", "", "success");
+                    }else{
+                        $('#modal_convert').modal('show')
+                    }
                 }else if(response.fail){
                     $("p#thong_bao_fail" ).html('- ' + response.fail);
                 }else if(response.messages.id){
