@@ -12,6 +12,7 @@ use App\Http\Requests\editAppointment;
 use App\Http\Requests\AddAppointment;
 use Carbon\Carbon;
 use App\Http\Sms\SpeedSMSAPI;
+use App\Model\Service;
 use App\Http\Requests\checkOtpRequest;
 use Session;
 
@@ -28,8 +29,9 @@ class AppointmentController extends Controller
         $arrId[]= $value;
        }
     }
+    $serviceAll = Service::where('status',0)->get();
     $data = Appointment::where('status','!=',0)->whereIn('id', $arrId)->get();
-    return view('frontend.booking',compact('data'));
+    return view('frontend.booking',compact('data','serviceAll'));
   }
 
   public function apiCancel(Request $request){
@@ -87,6 +89,16 @@ class AppointmentController extends Controller
         $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
         $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
         return response()->json(['status' => true, 'data' => $flight->id ]);
+    } catch (Exception $e) {
+        return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+    }
+  }
+
+  public function apiDetail(Request $request){
+    try {
+        $flight = Appointment::find($request->id);
+        $flight->load('services');
+        return response()->json(['status' => true, 'data' => $flight ]);
     } catch (Exception $e) {
         return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
     }

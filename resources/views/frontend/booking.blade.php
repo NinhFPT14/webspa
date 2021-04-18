@@ -60,7 +60,7 @@ Danh sách đơn đặt lịch
                                     @elseif($value->status == 4)
                                     <td class="product_total text-danger">Hủy đơn</td>
                                     @endif
-                                    <td class="product_total text-primary"><button >Xem</button></td>
+                                    <td class="product_total text-primary btn_chi_tiet" data-orderid="{{$value->id}}"><a>Xem</a></td>
 
                                     @if ($value->status == 1)
                                     <td class="product_total text-danger btn_huy_don" data-orderid="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
@@ -150,6 +150,61 @@ Danh sách đơn đặt lịch
       </div>
     </div>
   </div>
+
+
+ <!-- Modal chi tiết-->
+<div class="modal fade" id="modal_chi_tiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header  btn-success">
+          <h5 class="modal-title " id="exampleModalLabel">CHI TIẾT ĐƠN ĐẶT LỊCH</h5>
+          <button type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Dịch vụ <span>*</span></label>
+                  <select class="form-control mul-select"  name="service_id[]" id="modal_detail_service" multiple style="width:363px">
+                    @foreach ($serviceAll as $value)
+                      <option value="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
+                </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Họ tên <span>*</span></label>
+                  <input type="text" class="form-control" name="full_name" id="modal_detail_full_name" placeholder="Nhập họ tên">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Số điện thoại<span>*</span></label>
+                    <input type="text" class="form-control" phone="phone_number" maxlength="10" id="modal_detail_phone_number" placeholder="Nhập số điện thoại">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
+                    <select class="form-control" name="time_ficked" id="modal_detail_time_ficked">
+                        <option selected disabled value="">Chọn thời gian</option>
+                        <option  value="Sáng">Sáng</option>
+                        <option  value="Chiều">Chiều</option>
+                        <option  value="Tối">Tối</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ngày làm <span>*</span></label>
+                    <input type="text" class="form-control" name="time_start" id="modal_detail_time_start">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Lời nhắn</label>
+                    <textarea class="form-control"  name="note" id="modal_detail_note" rows="5"></textarea>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">TẮT</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @include('sweetalert::alert')
 @endsection
 
@@ -157,6 +212,7 @@ Danh sách đơn đặt lịch
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <script>
 $(document).ready(function() {
+    $(".mul-select").select2();
     $('.btn_huy_don').on('click', function() {
         //set lại validate form otp
         $("p#thong_bao_code" ).html(' ');
@@ -325,6 +381,52 @@ $(document).ready(function() {
                     }
                 }else{
                     swal("Chuyển lịch không thành công", "", "warning");
+                }
+           }
+           
+       })
+   })
+
+   $('.btn_chi_tiet').on('click', function() {
+       let appointment_id = $(this).data('orderid');
+       let apiDetail = '{{route("appointment.apiDetail")}}';
+       $.ajax({
+           url: apiDetail,
+           method: "POST",
+           data: {
+               id: appointment_id,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    $('#modal_chi_tiet').modal('show');
+                    $('#modal_detail_full_name').val(response.data.name);
+                    $('#modal_detail_phone_number').val(response.data.phone)
+                    $('#modal_detail_note').val(response.data.note)
+                    $('#modal_detail_time_start').val(response.data.time_start);
+                    let modalOption = $('#modal_detail_service').find('option');
+                    for (let i = 0; i < modalOption.length; i++) {
+                        let index = response.data.services.findIndex(el => el.id == $(
+                            modalOption[i]).val());
+                        if (index != -1) {
+                            $(modalOption[i]).prop('selected', true);
+                        } else {
+                            $(modalOption[i]).prop('selected', false);
+                        }
+                    }
+
+                    let timeFicked = $('#modal_detail_time_ficked').find('option');
+                    for (let i = 0; i < timeFicked.length; i++) {
+                        if (response.data.time_ficked == $(timeFicked[i]).val()) {
+                            $(timeFicked[i]).prop('selected', true);
+                        } else {
+                            $(timeFicked[i]).prop('selected', false);
+                        }
+                    }
+                $(".mul-select").select2();
+                }else{
+                    swal("Đơn đặt lịch không tồn tại", "", "warning");
                 }
            }
            

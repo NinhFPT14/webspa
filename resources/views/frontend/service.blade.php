@@ -135,9 +135,9 @@ Dịch Vụ
                     <label for="exampleInputPassword1">Thời gian mong muốn <span>*</span></label>
                     <select class="form-control" name="time_ficked" id="modal_time_ficked">
                         <option selected disabled value="">Chọn thời gian</option>
-                        <option>Sáng</option>
-                        <option>Chiều</option>
-                        <option>Tối</option>
+                        <option  value="Sáng">Sáng</option>
+                        <option  value="Chiều">Chiều</option>
+                        <option  value="Tối">Tối</option>
                     </select>
                    <p id="thong_bao_time_ficked" class="text-danger"></p>
                 </div>
