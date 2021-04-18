@@ -82,10 +82,10 @@
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href=""><img src="{{$value->avatar}}" alt=""></a>
+                                            <a href="{{route('cart')}}"><img src="{{$value->avatar}}" alt=""></a>
                                         </div>
                                         <div class="cart_info">
-                                            <a href="#">{{$value->name}}</a>
+                                            <a href="{{route('cart')}}">{{$value->name}}</a>
                                             <?php 
                                             $number_product = 0;
                                             foreach ($cart as $key => $item) {
@@ -161,7 +161,7 @@
                     <div class="header_block_right block_right_two">
                         <ul>
                         
-                            <li class="mini_cart_wrapper"><a href="javascript:void(0)"><i class="ion-bag"></i>
+                            <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
                                 @if(Session::has('productId'))
                                 <span>{{count($product)}}</span></a>
                                     @else
@@ -174,7 +174,7 @@
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href=""><img src="{{$value->avatar}}" alt=""></a>
+                                            <a href="{{route('cart')}}"><img src="{{$value->avatar}}" alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="{{route('cart')}}">{{$value->name}}</a>
@@ -212,13 +212,40 @@
                                 <a href="">Trang Chủ</a>
 
                             </li>
-                            <li class="menu-item-has-children">
+                            <li class="menu-item-has-children active">
                                 <a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a>
+                                <ul class="sub-menu">
+                                    <?php
+                                     $category = DB::table('categories')->where('type',0)->where('status',0)->get();
+                                    ?>
+                                    @foreach($category as $value)
+                                    <?php
+                                        $product = DB::table('products')->where('category_id',$value->id)->get();
+                                    ?>
+                                    @if(count($product) >=1)
+                                        <li><a href="{{route('product',['id'=> $value->id])}}">{{$value->name}} <span>({{count($product)}})</span></a></li>
+                                    @endif
+                                    @endforeach
+                                </ul>
+                            </li>
 
+                            <li class="menu-item-has-children active">
+                                <a href="{{route('service',['id'=>'all'])}}">Dịch Vụ</a>
+                                <ul class="sub-menu">
+                                    <?php 
+                                    $category = DB::table('categories')->where('type',1)->where('status',0)->get();
+                                    ?>
+                                    @foreach($category as $value)
+                                    <?php
+                                            $service = DB::table('services')->where('category_id',$value->id)->get();
+                                    ?>
+                                    @if(count($service) >=1)
+                                        <li><a href="{{route('service',['id'=> $value->id])}}">{{$value->name}} <span>({{count($service)}})</span></a></li>
+                                    @endif
+                                    @endforeach
+                                </ul>
                             </li>
-                            <li class="menu-item-has-children">
-                                <a href="{{route('service',['id'=>"all"])}}"> Dịch Vụ</a>
-                            </li>
+
                             <li class="menu-item-has-children">
                                 <a href="{{route('appointment')}}">Đặt Lịch</a>
 
