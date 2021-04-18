@@ -23,6 +23,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     //ProductController
     Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
     Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
+    Route::post('/tim-kiem-san-pham','Frontend\ProductController@search')->name('product.search.user');
 
     //ServiceController
     Route::get('dich-vu/{id}','Frontend\ServiceController@service')->name('service');

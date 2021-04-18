@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Model\Product;
 class ProductController extends Controller
 {
     public function product($id){
@@ -26,5 +27,10 @@ class ProductController extends Controller
         else{
             return view('frontend.detailProduct',compact('data'));
         }
+    }
+
+    public function search(Request $request){
+        $data = Product::where('status', 0)->where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        return view('frontend.product',compact('data'));
     }
 }

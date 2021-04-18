@@ -9,7 +9,6 @@ Sản phẩm
         <div class="row">
             <div class="col-12">
                 <div class="breadcrumb_content">
-                    <h3>Shop</h3>
                     <ul>
                         <li><a href="{{route('home')}}">Trang chủ</a></li>
                         <li><a href="{{route('product',['id'=>'all'])}}">Sản Phẩm</a></li>
@@ -28,15 +27,14 @@ Sản phẩm
             <div class="col-lg-3 col-md-12">
                 <!--sidebar widget start-->
                 <aside class="sidebar_widget">
-                    <div class="widget_list widget_filter">
-                        <h2>Lọc Giá</h2>
-                        <form action="#">
-                            <div id="slider-range"></div>
-                            <button type="submit">Tìm kiếm</button>
-                            <input type="text" name="text" id="amount" />
-
+                    <div class="widget_list widget_search mb-30">
+                        <h2>Tìm kiếm</h2>
+                        <form action="{{route('product.search.user')}}" method="POST">
+                         @csrf
+                            <input placeholder="Nhập từ khóa tìm kiếm ..." type="text" name="name">
+                            <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
-                    </div>
+                     </div>
                     <div class="widget_list">
                         <h2>Danh Mục Sản Phẩm</h2>
                         <ul>
