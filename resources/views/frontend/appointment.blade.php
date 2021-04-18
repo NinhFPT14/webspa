@@ -52,9 +52,9 @@
                             <label><strong>Chọn thời gian<span class="text-danger">*</span></strong></label>
                             <select class="form-control" id="modal_time_ficked" name="time_ficked">
                                 <option selected disabled value="">Chọn thời gian</option>
-                                <option>Sáng</option>
-                                <option>Chiều</option>
-                                <option>Tối</option>
+                                <option  value="Sáng">Sáng</option>
+                                <option  value="Chiều">Chiều</option>
+                                <option  value="Tối">Tối</option>
                             </select>
                             <p id="thong_bao_time_ficked" class="text-danger"></p><br>
                         </div>
