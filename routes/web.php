@@ -29,9 +29,25 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::post('tim-kiem-dich-vu','Frontend\ServiceController@search')->name('service.search.user');
     Route::get('chi-tiet-dich-vu/{slug}/{id}','Frontend\ServiceController@detailService')->name('detailService');
 
-    //BlogController
-    Route::get('/bai-viet','Frontend\BlogController@blog')->name('blog');
-    Route::get('/chi-tiet-bai-viet','Frontend\BlogController@detailBlog')->name('detailBlog');
+    //BlogController-Font-end
+    Route::get('/trang-blog','Frontend\BlogController@list')->name('listBlog');
+    Route::get('/chi-tiet-bai-viet/{id}','Frontend\BlogController@detailBlog')->name('detailBlog');
+    Route::get('danh-muc-bai-viet/{id}','Frontend\BlogController@categoryBlog')->name('danhmucbaiviet');
+
+
+    //BlogController-Back-End
+    Route::group(['prefix' => 'bai-viet'], function() {
+        Route::get('/','BackEnd\BlogController@index')->name('baiviet');
+        Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\BlogController@status')->name('statusBaiviet');
+        Route::get('/tao-moi','BackEnd\BlogController@create')->name('addBaiviet');
+        Route::post('/luu-tao-moi','Backend\BlogController@store')->name('storeBaiviet');
+        Route::get('/xoa/{id}','Backend\BlogController@destroy')->name('deleteBaiviet');
+        Route::get('/trang-edit/{id}','Backend\BlogController@edit')->name('editBaiviet');
+        Route::post('/cap-nhat/{id}','Backend\BlogController@update')->name('updateBaiviet');
+        Route::post('/tim-kiem-bai-viet','Backend\BlogController@search')->name('baiviet.search');
+
+        
+    });
 
     //LoginController
 

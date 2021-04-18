@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class EditProductRequest extends FormRequest
+class AddBlog extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,20 +24,11 @@ class EditProductRequest extends FormRequest
     public function rules()
     {
         return [
-         'name' =>
-                    [
-                        'required','max:255',
-                        Rule::unique('products')->ignore($this->id,'id'),
-                    ],
-         'category_id' =>'required',
-         'description' =>'required|max:65535',
-         'detail' =>'required|max:65535',
-         'price' =>'required|digits_between:4,11',
-         'discount' =>'required|digits_between:4,11',
-         'quality' =>'required|digits_between:1,11',
-         'image' =>'size:4',
-         'image.*' =>'image|max:10000',
-         'avatar' =>'image|max:10000',
+            'title' =>'required|max:255|unique:posts',
+            'category_id' =>'required',
+            'description' =>'required|max:65535',
+            'detail' =>'required|max:65535',
+            'avatar' =>'required|image|max:10000',
         ];
     }
 
@@ -47,7 +37,6 @@ class EditProductRequest extends FormRequest
             'required'=>':attribute không được để trống',
             'max'=>':attribute không được vượt quá :max',
             'unique'=>':attribute đã được sử dụng',
-            'digits_between'=>':attribute phải là số và từ 4 đến 11 số',
             'max' => ':attribute kích thước không được vượt quá :max',
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute phải là 4 ảnh',
@@ -59,7 +48,7 @@ class EditProductRequest extends FormRequest
             'category_id' => 'Danh mục',
             'title' =>'Tiêu đề bài viết',
             'description' =>'Mô tả ngắn',
-            'detail' =>'Nội dung',
+            'detail' =>'Nội dung bài viết',
             'avatar' => 'Ảnh đại diện',
         ];
     }
