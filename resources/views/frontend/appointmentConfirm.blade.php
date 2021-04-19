@@ -125,19 +125,13 @@
                         </div>
                         <div class="1 box bg-gray-200">
                             <p></p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
-
+                                <p>Vietcombank:</p>
                                 <p> Số TK: 0081000830127</p>
-
                                 <p> DƯƠNG THỊ QUYÊN</p>
-
 
                                 <p> Vietinbank:</p>
-
                                 <p> Số TK: 100000335060</p>
-
                                 <p> DƯƠNG THỊ QUYÊN</p>
-
-
                                 <p> khi CK các bạn vui lòng nhập nội dung chuyển khoản là :</p>
                                 <p class="flex"><input type="text" class="form-control"
                                         value="{{$data->phone}} - Mã đơn : {{$data->id}}" id="myInput">

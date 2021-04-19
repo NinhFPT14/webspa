@@ -85,8 +85,7 @@ Chi tiết sản phẩm
                                
                                 <div class="rounded-3xl mt-30 bg-green-400 w-80 h-12 flex items-center bg-green-500 hover:bg-green-700">
                                     <a style="width: 100%; text-align: center; color: white; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande' sans-serif;">
-                                        <i class="ion-ios-cart fa-2x"></i>
-                                        <button type="submit" form="myform">Mua Ngay</button>
+                                        <button type="submit" form="myform">  <i class="ion-ios-cart fa-2x"></i>Mua Ngay</button>
                                     </a>
                                 </div>
                             </div>

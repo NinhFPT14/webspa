@@ -73,7 +73,7 @@ Giỏ Hàng
                     </table>   
                         </div>  
                         <div class="cart_submit">
-                            <a href="" class="btn btn-success">Đặt hàng</a>
+                            <a href="{{route('product.oder.product')}}" class="btn btn-success">Đặt hàng</a>
                         </div>      
                     </div>
                  </div>

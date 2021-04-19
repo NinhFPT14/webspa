@@ -16,6 +16,10 @@ class ProductController extends Controller
         }
         return view('frontend.product',compact('data'));
     }
+
+    public function oderProduct(){
+        return view('frontend.oderProduct');
+    }
     public function detailProduct($slug,$id){
         $data = DB::table('products')->orderBy('view')->where('status','==',0)->find($id);
         $view = $data->view + 1;
