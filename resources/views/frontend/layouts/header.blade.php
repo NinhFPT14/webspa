@@ -83,13 +83,15 @@
                     <div class="header_block_right block_right_two">
                         <ul>
                             <?php 
-                             $cart = Session::get('productId');
-                             if(Session::has('productId')){
-                                $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                              $cart=\Cookie::get('cartId');
+                             if($cart){
+                                $arrId=json_decode($cart);
+                                $product = DB::table('products')->where('status',0)->whereIn('id', $arrId)->get();
+                                $cart= $arrId;
                              }
                             ?>
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
-                                @if(Session::has('productId'))
+                                @if(\Cookie::has('cartId'))
                                   <span>{{count($product)}}</span></a>
                                 @else
                                 <span>0</span></a>
@@ -97,7 +99,7 @@
                                   
                                 <!--mini cart-->
                                 <div class="mini_cart">
-                                    @if(Session::has('productId'))
+                                    @if(\Cookie::has('cartId'))
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
@@ -181,7 +183,7 @@
                         <ul>
                         
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
-                                @if(Session::has('productId'))
+                                @if(\Cookie::has('cartId'))
                                 <span>{{count($product)}}</span></a>
                                     @else
                                     <span>0</span></a>
@@ -189,7 +191,7 @@
                                 <!--mini cart-->
                                 <div class="mini_cart">
 
-                                    @if(Session::has('productId'))
+                                    @if(\Cookie::has('cartId'))
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">

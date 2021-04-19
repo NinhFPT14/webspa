@@ -58,7 +58,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/gio-hang','Frontend\CartController@cart')->name('cart');
     Route::get('/them-vao-gio-hang/{id}','Frontend\CartController@add')->name('cart.add');
     Route::post('/them-nhieu-san-pham/{id}','Frontend\CartController@addMuch')->name('cart.addMuch');
-    Route::get('/xoa-gio-hang/{id}','Frontend\CartController@dalete')->name('cart.delete');
+    Route::get('/xoa-gio-hang/{id}','Frontend\CartController@delete')->name('cart.delete');
     Route::post('/cap-nhat-gio-hang/{id}','Frontend\CartController@update')->name('cart.update');
 
     //Đặt lịch
@@ -72,23 +72,6 @@ use RealRashid\SweetAlert\Facades\Alert;
         Route::post('/otp-huy-va-chuyen-lich','Frontend\AppointmentController@apiOtp')->name('appointment.apiOtp');
         Route::post('/chi-tiet-don','Frontend\AppointmentController@apiDetail')->name('appointment.apiDetail');
     });
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-Route::view('/demo-validate', 'demo-form');
-Route::post('/demo-validate', function(Request $request){
-    $validate = Validator::make($request->all(), [
-        'name'=> 'required|min:4'  
-      ]);
-    if($validate->fails()){
-        return json_encode([
-            'status' => false,
-            'messages' => $validate->errors()
-        ]);
-    }
-    return 'done';
-});
-
 
 Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     Route::get('/',function(){

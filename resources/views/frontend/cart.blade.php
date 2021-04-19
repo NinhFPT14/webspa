@@ -40,9 +40,12 @@ Giỏ Hàng
                             </tr>
                         </thead>
                         <tbody>
-                            @if(Session::has('productId'))
+
+                          
+                            @if(\Cookie::get('cartId'))
                             <?php 
-                              $cart = Session::get('productId');
+                              $cart=\Cookie::get('cartId');
+                              $cart=json_decode($cart);
                               $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
                             ?>
                             @foreach ($product as $value)

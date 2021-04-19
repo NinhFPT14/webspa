@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
+use Illuminate\Http\Response;
 
 class CartController extends Controller
 {
@@ -13,48 +14,73 @@ class CartController extends Controller
     }
 
     public function add($id){
-        $cart = Session::get('productId');
-        $cart[] = $id;
-        Session::put('productId',$cart);
-        return back();
+        $cart=\Cookie::get('cartId');
+        if($cart != null && $cart != "[]"){
+            $cart =json_decode($cart);
+            $kien_tra = false;
+            foreach($cart as $key => $value){
+                if($cart[$key] == $id){
+                    $cart[] = $id;
+                    $kien_tra = true;
+                }
+              }
+              if($kien_tra == false){
+                $cart[]= $id;
+              }
+        }else{
+            $cart = [];
+            $cart[]= $id;
+        }
+        $array_json=json_encode($cart);
+        return back()->withCookie(cookie()->forever('cartId',$array_json));
     }
 
     public function addMuch(Request $request ,$id){
-        $cart = Session::get('productId');
-        for ($x = 0; $x <= $request->number ; $x++) {
-            $cart[] = $id;
+        $cart=\Cookie::get('cartId');
+        if($cart != null && $cart != "[]"){
+            $cart=\Cookie::get('cartId');
+            $cart =json_decode($cart);
+            for ($x = 0; $x <= $request->number ; $x++) {
+                $cart[] = $id;
+            }
         }
-        Session::put('productId',$cart);
-        return redirect()->route('cart');
+        $array_json=json_encode($cart);
+        return redirect()->route('cart')->withCookie(cookie()->forever('cartId',$array_json));
     }
 
-    public function dalete($id){
-        $cart = Session::get('productId');
-        if($cart != null){
+    public function delete($id){
+        $cart=\Cookie::has('cartId');
+        $arrId =[];
+        if($cart){
+            $cart=\Cookie::get('cartId');
+            $cart =json_decode($cart);
             foreach($cart as $key => $value){
-              if($cart[$key] == $id){
-                  unset($cart[$key]);
+                if($cart[$key] != $id){
+                    $arrId[] = $value;
+                }
               }
-            }
-            Session::put('productId',$cart);
         }
-        return back();
+        $array_json=json_encode($arrId);
+        return back()->withCookie(cookie()->forever('cartId',$array_json));
     }
 
     public function update(Request $request , $id){
-        $cart = Session::get('productId');
-        if($cart != null){
+        $cart=\Cookie::has('cartId');
+        $arrId =[];
+        if($cart){
+            $cart=\Cookie::get('cartId');
+            $cart =json_decode($cart);
             foreach($cart as $key => $value){
-              if($cart[$key] == $id){
-                  unset($cart[$key]);
+                if($cart[$key] != $id){
+                    $arrId[] = $value;
+                }
               }
-            }
-            for ($i = 1; $i <= $request->number; $i++) {
-              $cart[] = $id;
-            }
-            Session::put('productId',$cart);
+              for ($i = 1; $i <= $request->number; $i++) {
+                $arrId[] = $id;
+              }
         }
-        return back();
+        $array_json=json_encode($arrId);
+        return back()->withCookie(cookie()->forever('cartId',$array_json));
     }
     
 }
