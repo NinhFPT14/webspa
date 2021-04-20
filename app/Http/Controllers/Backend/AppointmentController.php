@@ -17,12 +17,13 @@ class AppointmentController extends Controller
     
     public function sortAppointment(){
         $mytime = Carbon::now();
-        $appointment = Appointment::where('status',1)->orderByDesc('id')->paginate(10);
+        $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services'));
     }
 
-     public function apiGetDataById(Request $request){
+     public function apiGetDataById(Request $request){ // Lấy ra id từ request
+        // dd($request);
          if($request->has('id')){
              $appointment = Appointment::find($request->id);
              $appointment->load('services');
@@ -45,6 +46,7 @@ class AppointmentController extends Controller
     public function confirm(Request $request){
         if($request->has('id')){
             $flight = Appointment::find($request->id);
+            dd($flight);
             $flight->name = $request->name;
             $flight->phone = $request->phone;
             $flight->note = $request->note;

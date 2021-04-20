@@ -32,7 +32,7 @@ class AppointmentController extends Controller
     $serviceAll = Service::where('status',0)->get();
     $data = Appointment::where('status','!=',0)->whereIn('id', $arrId)->get();
     return view('frontend.booking',compact('data','serviceAll'));
-  }
+  }// Hiển thị lịch đã đặt từ khách hàng
 
   public function apiCancel(Request $request){
     try {
@@ -45,7 +45,7 @@ class AppointmentController extends Controller
     }
   }
 
-  public function apiConvert(Request $request){
+  public function apiConvert(Request $request){ // dùng để đổi lịch
     try {
 
         $validate = Validator::make($request->all(), 

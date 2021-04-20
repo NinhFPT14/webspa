@@ -3,7 +3,9 @@
  For licensing, see LICENSE.html or https://ckeditor.com/sales/license/ckfinder
  */
 
-var config = {};
+var config = {}
+
+
 
 // Set your configuration options below.
 
@@ -11,4 +13,4 @@ var config = {};
 // config.language = 'pl';
 // config.skin = 'jquery-mobile';
 
-CKFinder.define( config );
+CKFinder.define(config);
