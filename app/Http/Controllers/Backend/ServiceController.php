@@ -34,7 +34,7 @@ class ServiceController extends Controller
             );
             $data['image'] = "storage/".$path;  
            }
-        dd($data);
+        // dd($data);
         $Service = Service::create($data);
         alert()->success('Tạo thành công dịch vụ');
         return redirect()->route('listService');
