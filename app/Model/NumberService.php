@@ -14,5 +14,9 @@ class NumberService extends Model
     // {
     //     return $this->hasManyThrough(Appointment::class, Service::class, 'service_id', 'appointment_id', 'id', 'id');
     // }
+    public function services()
+    {
+        return $this->belongsToMany('App\Model\Service','service_id');
+    }
 
 }

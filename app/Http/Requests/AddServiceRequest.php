@@ -26,11 +26,11 @@ class AddServiceRequest extends FormRequest
         return [
             'name' =>'required|max:255|unique:services',
             'image' => 'required',
-            'time_working' => 'required|max:255',
-            'price' => 'required|digits_between:4,11',
+            'time_working' => 'required|max:255|digits_between:0,9999999',
+            'price' => 'required||digits_between:0,9999999',
             'description' => 'required|max:65535',
             'detail' => 'required|max:65535',
-            'discount' => 'required|max:255',
+            'discount' => 'required|max:255|digits_between:0,9999999',
             'category_id' => 'required'
             
         ];
@@ -45,7 +45,8 @@ class AddServiceRequest extends FormRequest
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute có độ dài lớn hơn 10 ký tự',
             'time_working' => ':attribute không được vượt quá :max',
-            'description' => ':attribute không vượt quá :max'
+            'description' => ':attribute không vượt quá :max',
+            'digits_between' => ':attribute phải lớn hơn 0'
 
         ];
     }

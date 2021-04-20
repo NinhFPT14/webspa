@@ -29,20 +29,23 @@ Chi tiết dịch vụ
                     <div class="single_blog">
                         <div class="blog_title">
                             <div class="blog_post flex">
+
                                 <ul>
+                            <li class="post_image"><img src="{{ $data->image }}" alt="" sizes="" srcset=""></li>
+
                                     <?php 
                                     $name_category = DB::table('categories')->find($data->category_id);
                                     ?>
-                                    <p>Loại danh mục : {{$name_category->name}} </p>
-                                    <li class="post_author">{{number_format($data->discount)}} vnđ</li>
+                                    <li><p>Loại danh mục : {{$name_category->name}} </p></li>
+                                    <li class="post_author"> {{number_format($data->discount)}} vnđ </li>
                                     <li class="post_date" style="text-decoration-line:line-through">{{number_format($data->price)}} vnđ</li>
+                                    <li><a class="button data_service" style="margin-left:50px" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a></li>
                                 </ul>
-                                <a class="button data_service" style="margin-left:50px" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
+                                
                             </div>
                         </div>
                         <div class="blog_content">
                             <div class="post_content">
-                                <strong>{!! $data->name !!}</strong>
                                 <blockquote>
                                     <p>{!! $data->description !!}</p>
                                 </blockquote>

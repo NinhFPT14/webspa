@@ -39,7 +39,7 @@ Tạo dịch vụ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-6">
                             <label for="exampleFormControlSelect1">Danh mục</label>
                             <select name="category_id" class="form-control" id="exampleFormControlSelect1">
                                 @foreach($cate as $value)
@@ -47,6 +47,16 @@ Tạo dịch vụ
                                 @endforeach
                             </select>
                             @error('category_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="exampleFormControlSelect1">Trạng thái</label>
+                            <select name="status" class="form-control" id="exampleFormControlSelect1">
+                                <option value="0">Sử dụng ngay</option>
+                                <option value="1">Không kích hoạt</option>
+                            </select>
+                            @error('status')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -91,6 +101,7 @@ Tạo dịch vụ
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <input type="hidden" name="view" value="1">
                         <button type="submit" class="btn btn-primary float-right ">Tạo</button>
                     </form>
                 </div>

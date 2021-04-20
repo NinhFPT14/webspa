@@ -33,10 +33,10 @@ class EditServiceRequest extends FormRequest
             ],
             'image' => 'image|max:10000',
             'time_working' => 'required|max:255',
-            'price' => 'required|max:10000',
+            'price' => 'required|max:10000|digits_between:0,9999999',
             'description' => 'required|max:65535',
             'detail' => 'required|max:65535',
-            'discount' => 'required|max:255',
+            'discount' => 'required|max:255|digits_between:0,9999999',
             'category_id' => 'required'
         ];
     }
@@ -48,7 +48,8 @@ class EditServiceRequest extends FormRequest
             'max' => ':attribute kích thước không được 255 ký tự',
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute có độ dài lớn hơn 10 ký tự',
-            'time_working' => ':attribute không được vượt quá :max'
+            'time_working' => ':attribute không được vượt quá :max',
+            'digits_between' => ':attribute phải lớn hơn 0'
         ];
     }
 

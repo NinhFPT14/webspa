@@ -34,7 +34,7 @@
                 
                             <p>   
                                 <label>Tài Khoản <span>*</span></label>
-                                <input type="text" name="phone" value="{{ old('phone') }}">
+                                <input type="number" name="phone" value="{{ old('phone') }}">
                              </p>
                              <p>   
                                 <label>Mật Khẩu <span>*</span></label>

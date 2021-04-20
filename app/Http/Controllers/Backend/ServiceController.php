@@ -8,7 +8,9 @@ use App\Http\Requests\AddServiceRequest;
 use App\Http\Requests\EditServiceRequest;
 use Illuminate\Support\Str;
 use App\Model\Appointment;
+use Illuminate\Support\Facades\Storage;
 use DB;
+use File;
 
 class ServiceController extends Controller
 {
@@ -20,20 +22,19 @@ class ServiceController extends Controller
     public function store(AddServiceRequest $request){
         $data = $request->all();
         unset($data['_token']);
-        $data['slug'] = 1;
+        $data['total_time'] = 0;
+        $data['time_distance'] = 0;
+        $data['slug'] = Str::slug($request->name.$request->id.'-');
+
         if($request->hasFile('image')){
             $extension = $request->image->extension();
             $filename =  uniqid(). "." . $extension;
             $path = $request->image->storeAs(
-              'image', $filename, 'public'
+              'dichvu_image', $filename, 'public'
             );
-            $data['avatar'] = "storage/".$path;  
+            $data['image'] = "storage/".$path;  
            }
-        $data['status'] = 0;
-        $data['total_time'] = 0;
-        $data['time_distance'] = 0;
-        $data['slug'] = Str::slug($request->name.$request->id.'-');
-        // dd($data);
+        dd($data);
         $Service = Service::create($data);
         alert()->success('Tạo thành công dịch vụ');
         return redirect()->route('listService');
@@ -58,9 +59,10 @@ class ServiceController extends Controller
     }
 
     public function delete($id){
-        $flight = Service::find($id);
-        $flight->delete();
-        alert()->error('Đã xóa dịch vụ'); 
+        $data = Service::find($id);
+        File::delete($data->image);
+        $data->delete();
+        alert()->success('Xóa dịch vụ thành công'); 
         return redirect()->route('listService');
     }
 
@@ -77,12 +79,11 @@ class ServiceController extends Controller
             $extension = $request->image->extension();
             $filename =  uniqid(). "." . $extension;
             $path = $request->image->storeAs(
-              'image', $filename, 'public'
+              'dichvu_image', $filename, 'public'
             );
             $data['image'] = "storage/".$path;  
            }
         // dd($data);
-
            Service::where('id',$id)->update($data);
         $flight = Service::where('id',$id)->update($data);
         alert()->success('Sửa thành công dịch vụ');

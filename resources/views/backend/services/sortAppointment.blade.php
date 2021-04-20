@@ -10,6 +10,7 @@ Bảng xếp lịch
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
+
 @endsection
 <div class="p-4">
     <div class=" d-flex align-items-center">
@@ -21,8 +22,21 @@ Bảng xếp lịch
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3">
-            {{-- table --}}
+        <div class="col-span-3 border border-danger">
+        <!-- Bảng xếp lịch -->
+            <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+                <div class="dhx_cal_navline">
+                    <div class="dhx_cal_prev_button">&nbsp;</div>
+                    <div class="dhx_cal_next_button">&nbsp;</div>
+                    <div class="dhx_cal_today_button"></div>
+                    <div class="dhx_cal_date"></div>
+                </div>
+            <div class="dhx_cal_header">
+            </div>
+            <div class="dhx_cal_data">
+        </div>
+        <!-- Bảng xếp lịch kết thúc -->
+    </div>
         </div>
 
         <div>
@@ -55,15 +69,15 @@ Bảng xếp lịch
                                         class="fas fa-calendar"></i></button></td>
                         
                         @if($value->status == 0)
-                            <td><a class="btn btn-danger" href="#">Chưa xác thực OTP</a></td>
+                            <td><a class="btn btn-danger" >Chưa xác thực OTP</a></td>
                         @elseif($value->status == 1)
-                            <td><a class="btn btn-warning" href="#">Đã xác thực OTP</a></td>
+                            <td><a class="btn btn-warning" >Đã xác thực OTP</a></td>
                         @elseif($value->status == 2)
-                        <td><a class="btn btn-info" href="#">Đã lên lịch</a></td>
+                        <td><a class="btn btn-info" >Đã lên lịch</a></td>
                         @elseif($value->status == 3)
-                        <td><a class="btn btn-success" href="#">Làm xong</a></td>
+                        <td><a class="btn btn-success" >Làm xong</a></td>
                         @elseif($value->status == 4)
-                        <td><a class="btn btn-dark" href="#">Hủy</a></td>
+                        <td><a class="btn btn-dark" >Hủy</a></td>
                         @endif
                         
                     </tr>
@@ -88,7 +102,7 @@ Bảng xếp lịch
                 <h4 class="modal-title  text-2xl" id="exampleModalLabel">Thông tin đặt lịch</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="">
+            <form action="{{ route('appointment.apiConvert') }}">
                 <div class="grid grid-cols-2 gap-4 pl-4">
                     <div>
                         <div class="row pl-4 pt-2">
@@ -233,13 +247,18 @@ Bảng xếp lịch
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <script>
 $(document).ready(function() {
-    $(".mul-select").select2();
+    $(".mul-select").select2(); //Select dịch vụ
     $('.btn-xep-lich').on('click', function() {
         $('#modalXepLich').modal('show');
-    })
+    }) // Hiển thị bảng xếp lịch
+
     $('.btn-xac-nhan').on('click', function() {
-        let appointmentId = $(this).data('orderid');
+
+        let appointmentId = $(this).data('orderid'); // Lấy id của đơn đặt lịch
+
         let apiGetAppointmentById = '{{route("appointment.getDataById")}}';
+        // console.log(apiGetAppointmentById);
+
         $.ajax({
             url: apiGetAppointmentById,
             method: "POST",
@@ -250,6 +269,7 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 let appointmentData = response.data;
+                // console.log(appointmentData.id)
                 $('.btn-xac-nhan').val(appointmentData.id);
                 $('#modal_name').val(appointmentData.name);
                 $('#modal_phone').val(appointmentData.phone);
@@ -294,14 +314,13 @@ $(document).ready(function() {
 
                 
                 $('#note_admin').val(appointmentData.note_admin);
-
                 $('#appointmentModal').modal('show');
                 $(".mul-select").select2();
             }
         })
     })
 
-
+// bắt sự kiện khi lưu trong form thông tin lịch đặt
     $('.btn-xac-nhan').on('click', function() {
         let appointmentId = $(".btn-xac-nhan").val();
         let name = $("#modal_name").val();
