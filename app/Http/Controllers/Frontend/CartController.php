@@ -40,9 +40,14 @@ class CartController extends Controller
         if($cart != null && $cart != "[]"){
             $cart=\Cookie::get('cartId');
             $cart =json_decode($cart);
-            for ($x = 0; $x <= $request->number ; $x++) {
+            for ($x = 1; $x <= $request->number ; $x++) {
                 $cart[] = $id;
             }
+        }else{
+            $cart =[];
+            for ($x = 1; $x <= $request->number ; $x++) {
+                $cart[] = $id;
+            }  
         }
         $array_json=json_encode($cart);
         return redirect()->route('cart')->withCookie(cookie()->forever('cartId',$array_json));

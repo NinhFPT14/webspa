@@ -27,8 +27,11 @@ class AppointmentController extends Controller
   public function listBooking(Request $request){
     $user=\Cookie::get('appointmentId');
     $user=json_decode($user);
+    $data = [];
+    if($user){
+        $data = Appointment::where('status','!=',0)->whereIn('id', $user)->get();
+    }
     $serviceAll = Service::where('status',0)->get();
-    $data = Appointment::where('status','!=',0)->whereIn('id', $user)->get();
     return view('frontend.booking',compact('data','serviceAll'));
   }// Hiển thị lịch đã đặt từ khách hàng
 
