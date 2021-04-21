@@ -13,14 +13,14 @@ class FeedbackController extends Controller
       $validate = Validator::make($request->all(), 
         [
           'name' => 'required|max:255',
-          'phone_number' => 'required|digits_between:10,11',
+          'phone_number' => 'required|regex:/^[0][0-9]{9}$/',
           'content' => 'required|max:65535',
         ],
         [
         'name.required' => 'Họ tên không được để trống',
         'name.max' => 'Họ tên không được vượt quá 255 ký tự',
         'phone_number.required' => "Số điện thoại không được để trống",
-        'phone_number.digits_between' => "Số điện thoại không hợp lệ",
+        'phone_number.regex' => "Sô điện thoại không hợp lệ",
         'content.required' => 'Nội dung không được để trống',
         'content.max' => 'Nội dung không được vượt quá 65535 ký tự',
         ]);

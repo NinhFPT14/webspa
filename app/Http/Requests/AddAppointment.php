@@ -25,7 +25,7 @@ class AddAppointment extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'phone' => 'required|numeric|digits_between:10,11',
+            'phone' => 'required|regex:/^[0][0-9]{9}$/',
             'note' => 'max:65535',
             'time_ficked' => 'required|max:255',
             'time_start' => 'required|date|after_or_equal:today',
@@ -40,7 +40,7 @@ class AddAppointment extends FormRequest
             'required' =>':attribute không được để trống',
             'unique' =>':attribute đã tồn tại',
             'max' =>':attribute không được vượt quá :max ký tự',
-            'digits_between'=>':attribute phải là số và từ :min đến :max số',
+            'regex'=>':attribute không đúng định dạng số điện thoại',
             'date'=>':attribute phải là thời gian',
             'after_or_equal'=>':attribute phải là ngày hôm nay hoặc sau ngày hôm nay',
             'numeric'=>':attribute phải phải là số',

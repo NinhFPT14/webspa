@@ -110,7 +110,7 @@ class AppointmentController extends Controller
         $validate = Validator::make($request->all(), 
         [
             'name' => 'required|max:255',
-            'phone' => 'required|numeric|digits_between:10,11',
+            'phone' => 'required|regex:/^[0][0-9]{9}$/',
             'note' => 'max:65535',
             'time_ficked' => 'required|max:255',
             'time_start' => 'required|date|after_or_equal:today',
@@ -120,8 +120,7 @@ class AppointmentController extends Controller
         ['name.required' => 'Họ tên không được để trống',
         'name.max' => "Họ tên không được vượt quán 255 ký tự",
         'phone.required' => "Số điện thoại không được để trống",
-        'phone.numeric' => "Sô điện thoại phải là số",
-        'phone.digits_between' => "Sô điện thoại không hợp lệ",
+        'phone.regex' => "Sô điện thoại không hợp lệ",
         'note.max' => "Lời nhắn không được vượt quá 65535 ký tự",
         'time_ficked.required' => "Thời gian mong muốn không được để trống",
         'time_ficked.max' => "Thời gian mong muốn không hợp lệ",

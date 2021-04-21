@@ -25,24 +25,25 @@ Sản phẩm
          <div class="checkout_form">
              <div class="row">
                  <div class="col-lg-6 col-md-6">
-                     <form action="#">
                          <h3>THÔNG TIN ĐẶT HÀNG</h3>
                          <div class="row">
                              <div class="col-12 mb-20">
                                 <label>Họ tên<span>*</span></label>
-                                <input type="text">    
+                                <input type="text" name="name" id="input_name">    
+                                <p id="thong_bao_name" class="text-danger"></p>
                                 <label>Số điện thoại  <span>*</span></label>
-                                <input type="text"> 
-                                 <label>Địa chỉ</label>
-                                 <input type="text">     
-                                 <label for="order_note">Lời nhắn</label>
-                                 <textarea name="note" class="form-control" cols="30" rows="10"></textarea>
+                                <input type="text" name="phone"  id="input_phone"> 
+                                <p id="thong_bao_phone" class="text-danger"></p>
+                                 <label>Địa chỉ <span>*</span></label>
+                                 <input type="text" name="address"  id="input_address">     
+                                 <p id="thong_bao_address" class="text-danger"></p>
+                                 <label for="order_note" name="note">Lời nhắn</label>
+                                 <textarea name="note"  id="input_note" class="form-control" cols="30" rows="10"></textarea>
+                                 <p id="thong_bao_note" class="text-danger"></p>
                              </div>
                          </div>
-                     </form>    
                  </div>
                  <div class="col-lg-6 col-md-6">
-                     <form action="#">    
                          <h3>Sản phẩm</h3> 
                          <div class="order_table table-responsive">
                              <table>
@@ -53,12 +54,12 @@ Sản phẩm
                                      </tr>
                                  </thead>
                                  <tbody>
-                                    @if(Session::has('productId'))
+                                    @if(\Cookie::has('oderProductId'))
                                     <?php 
-                                    $cart=\Cookie::get('cartId');
-                                    $cart=json_decode($cart);
+                                    $cart=\Cookie::get('oderProductId');
+                                    $cart =json_decode($cart);
                                       $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
-                                      $total_money = 0;
+                                      $total_monney = 0;
                                     ?>
                                     @foreach ($product as $value)
                                          <?php 
@@ -68,7 +69,7 @@ Sản phẩm
                                                 $number_product++;
                                              }
                                            }
-                                           $total_money += ($value->discount * $number_product);
+                                           $total_monney += ($value->discount * $number_product);
                                          ?>
                                      <tr>
                                         <td>{{$value->name}}<strong> × {{$number_product}}</strong></td>
@@ -80,17 +81,16 @@ Sản phẩm
                                  <tfoot>
                                      <tr class="order_total">
                                          <th>Tổng tiền</th>
-                                         <td><strong> VNĐ</strong></td>
+                                         <td><strong>{{number_format($total_monney)}}VNĐ</strong></td>
                                      </tr>
                                  </tfoot>
                              </table>     
                          </div>
                          
                              <div class="order_button">
-                                 <button  type="submit">Đặt hàng</button> 
+                               <a class="btn btn-success submit_oder" data-total="{{$total_monney}}">Đặt hàng</a>
                              </div>    
                          </div> 
-                     </form>         
                  </div>
              </div> 
          </div> 
@@ -110,4 +110,71 @@ Sản phẩm
 
     </div>
 </div>
+@endsection
+
+
+
+@section('page-script')
+<script>
+$(document).ready(function() {
+    $('.submit_oder').on('click', function() {
+        $("p#thong_bao_name" ).html(' ');
+        $("p#thong_bao_phone" ).html(' ');
+        $("p#thong_bao_address" ).html(' ');
+        $("p#thong_bao_note" ).html(' ');
+
+        let total_monney = $(this).data('total');
+        let name = $("#input_name").val();
+        let phone = $("#input_phone").val();
+        let address = $("#input_address").val();
+        let note = $("#input_note").val();
+console.log(name);
+console.log(phone);
+console.log(address);
+console.log(note);
+console.log(total_monney);
+       let apiOderSave = '{{route("product.oder.save")}}';
+       $.ajax({
+           url: apiOderSave,
+           method: "POST",
+           data: {
+               name:name ,
+               phone: phone,
+               address: address,
+               note: note,
+               total_monney:total_monney,
+               _token: '{{csrf_token()}}',
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    swal("Đặt hàng thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
+                    window.location.href = '{{route("home")}}';
+                }else{
+                    if(response.messages.name){
+                        $("p#thong_bao_name" ).html('- ' + response.messages.name);
+                        }
+                    if(response.messages.phone){
+                        $("p#thong_bao_phone" ).html('- ' + response.messages.phone);
+                            }
+                    if(response.messages.address){
+                        $("p#thong_bao_address" ).html('- ' + response.messages.address);
+                        }
+                    if(response.messages.note){
+                        $("p#thong_bao_note" ).html('- ' + response.messages.note);
+                        }
+                    if(response.fail){
+                        swal("Đặt hàng thất bại", " ", "warning");
+                    }
+               }
+           }
+           
+       })
+
+   })
+
+   
+
+})
+</script>
 @endsection
