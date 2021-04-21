@@ -46,9 +46,8 @@ Liên hệ
                 <div class="col-lg-6 col-md-12">
                     <div class="contact_message content">
                         <h3>Liên hệ với chúng tôi</h3>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                            est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
-                            formas human. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam</p>
+                        <p>Mọi thông tin cần trao đổi hoặc tìm hiểu thêm, vui lòng liên lạc qua Fanpage của Queen Spa hoặc Hotline.
+                        </p>
                         <ul>
                         <?php
                             $data = App\Model\Footer::get();

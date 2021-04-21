@@ -23,7 +23,7 @@
     @yield('link')
 </head>
 
-<body id="page-top" class="sidebar-toggled">
+<body id="page-top" class="sidebar-toggled" onload="init();">
 
     <!-- Page Wrapper -->
     <div id="wrapper">

@@ -54,19 +54,18 @@ Danh sách đơn đặt lịch
                                     <td>{{$value->phone_number}}</td>
                                     <td class="product_total text-primary detail_oder" data-orderid="{{$value->id}}"><a>Xem</a></td>
                                     @if($value->status == 0)
-                                    <td class="text-warning">Chờ xác nhận</td>
+                                    <td class="text-warning order_status{{$value->id}}">Chờ xác nhận</td>
                                     @elseif($value->status == 1)
-                                    <td class="text-primary">Đã xác nhận</td>
+                                    <td class="text-primary order_status{{$value->id}}">Đã xác nhận</td>
                                     @elseif($value->status == 2)
-                                    <td class="text-success">Đang gửi</td>
+                                    <td class="text-success order_status{{$value->id}}">Đang gửi</td>
                                     @elseif($value->status == 3)
-                                    <td class="text-success">Đã nhận hàng</td>
+                                    <td class="text-success order_status{{$value->id}}">Đã nhận hàng</td>
                                     @elseif($value->status == 4)
                                     <td class="text-danger">Từ chối</td>
                                     @else
                                     <td class="text-danger">Đã huỷ</td>
                                     @endif
-
                                     @if($value->status == 0 || $value->status == 1)
                                     <td class="product_total text-danger btn_huy_don" data-orderid="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
                                     @endif
@@ -176,7 +175,8 @@ $(document).ready(function() {
            dataType: 'json',
            success: function(response) {
                 if(response.data){
-                    $( "#key"+response.data ).remove();
+                    $("td.order_status"+response.data).attr('name');
+                    $("td.order_status"+response.data ).html('Đã huỷ');
                 }else{
                     swal("Đơn đặt hàng không tồn tại", "", "warning");
                 }

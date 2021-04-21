@@ -15,9 +15,11 @@ class CartController extends Controller
     }
 
     public function add($id){
-        $cart=\Cookie::get('cartId');
-        if($cart != null && $cart != "[]"){
+        $cart=\Cookie::has('cartId');
+        if($cart){
+            $cart=\Cookie::get('cartId');
             $cart =json_decode($cart);
+            dd($cart);
             $kien_tra = false;
             foreach($cart as $key => $value){
                 if($cart[$key] == $id){
