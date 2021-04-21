@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\Product;
 use App\Model\Oder;
 use App\Model\ProductOder;
+use Cookie;
 use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
@@ -30,19 +31,8 @@ class ProductController extends Controller
 
     public function oderDelete(Request $request){
         try {
-            $oder=\Cookie::get('oderId');
-            $arrId =[];
-            $oder =json_decode($oder);
-            foreach($oder as $value){
-                    if($value != $request->id){
-                        $arrId[] = $value;
-                }
-            }
-            ProductOder::where('oder_id',$request->id)->delete();
-            Oder::where('id',$request->id)->delete();
-
-            $array_json=json_encode($arrId);
-            return response()->json(['status' => true, 'data' => $request->id])->withCookie(cookie()->forever('oderId',$array_json));
+            Oder::where('id',$request->id)->update(['status'=>5]);
+            return response()->json(['status' => true, 'data' => $request->id]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
@@ -112,16 +102,30 @@ class ProductController extends Controller
             $oder->save();
 
             $product=\Cookie::get('oderProductId');
-            // dd($product);
             $arrId =json_decode($product);
+            $cart=\Cookie::get('cartId');
+            $cart =json_decode($cart);
+            $arrayCart =[];
+            $a =[];
             foreach(array_count_values($arrId) as $key =>$value){
                 $ProductOder = new ProductOder();
                 $ProductOder->product_id = $key;
                 $ProductOder->oder_id = $oder->id;
                 $ProductOder->quality = $value;
                 $ProductOder->save();
+                $a[] = $key;
+            }
+            foreach($cart as $key=>$order) {
+                for ($x =0; $x < count($a);$x++) {
+                    if($a[$x] == $order){
+                        unset($cart[$key]);
+                    }
+                    }
             }
 
+            foreach($cart as $value){
+                $arrayCartId[] = $value;
+            }
             $oderId=\Cookie::get('oderId');
             if($oderId != null && $oderId != "[]"){
                 $oderId =json_decode($oderId);
@@ -131,7 +135,8 @@ class ProductController extends Controller
                 $oderId[]= $oder->id;
             }
             $array_json=json_encode($oderId);
-            return response()->json(['status' => true, 'data' => 'thành công' ])->withCookie(cookie()->forever('oderId',$array_json));
+            $array_cart=json_encode($arrayCartId);
+            return response()->json(['status' => true, 'data' => 'thành công' ])->withCookie(cookie()->forever('oderId',$array_json))->withCookie(cookie()->forever('cartId',$array_cart));
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
