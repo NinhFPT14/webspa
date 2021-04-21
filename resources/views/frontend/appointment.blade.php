@@ -63,7 +63,7 @@
                         </div>
                         <div class="col-md-6">
                             <label><strong> Ngày Hẹn<span class="text-danger"> *</span></strong></label>
-                            <input type="date" class="form-control pr-4" name="time_start">
+                            <input type="date" class="form-control"  name="time_start">
                             @error('time_start')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
