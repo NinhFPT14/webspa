@@ -16,9 +16,26 @@ class ProductController extends Controller
         }
         return view('frontend.product',compact('data'));
     }
-
+    
     public function oderProduct(){
         return view('frontend.oderProduct');
+    }
+
+    public function oderProductAdd(Request $request){
+        try {
+            $cart=\Cookie::get('cartId');
+            $arrId =[];
+            $cart =json_decode($cart);
+                foreach($cart as $key => $value){
+                    if($cart[$key] != $request->id){
+                        $arrId[] = $value;
+                    }
+                  }
+            $array_json=json_encode($arrId);
+            return response()->json(['status' => true, 'data' => 'thành công' ])->withCookie(cookie()->forever('cartId',$array_json));
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
     }
     public function detailProduct($slug,$id){
         $data = DB::table('products')->orderBy('view')->where('status','==',0)->find($id);

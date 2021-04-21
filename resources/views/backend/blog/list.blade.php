@@ -47,7 +47,7 @@ Back-Danh sách bài viết
                             <td>{{$value->title}}</td>
                             
                             <td>{!! $value->description!!}</td>
-                            <td><img class="img-thumbnail"  src="{{ $value->avatar}}" alt="{{ $value->avatar}}" srcset=""></td>
+                            <td><img class="img-thumbnail" width="250"  src="{{ $value->avatar}}" alt="{{ $value->avatar}}" srcset=""></td>
                             <td>
                                 @if($value->status == 0)
                                 <a href="{{route('statusBaiviet',['id'=>$value->id,'status'=>1])}}"
@@ -64,10 +64,7 @@ Back-Danh sách bài viết
                             <td>
                                 <a href="{{route('detailBlog',['id'=>$value->id])}}"
                                     class="btn btn-primary" target="_blank">Xem</a>
-                            </td>
-                            
-                            <td>
-                            <a onclick="return confirm('Bạn có chắc muốn sửa chứ')" href="{{route('editBaiviet',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
+                                    <a onclick="return confirm('Bạn có chắc muốn sửa chứ')" href="{{route('editBaiviet',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
                             <a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{route('deleteBaiviet',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
                             </td>
                         </tr>

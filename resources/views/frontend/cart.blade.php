@@ -51,7 +51,7 @@ Giỏ Hàng
                             ?>
                             @foreach ($product as $value)
                             <tr id="key{{$value->id}}">
-                                 <td><input type="checkbox" class="form-check-input" id="checkbox"></td>
+                                 <td><input type="checkbox" class="form-check-input checkbox" name="choose" value="{{$value->id}}"></td>
                                  <td class="product_thumb"><a href="#"><img src="{{$value->avatar}}" alt="" class="w-20"></a></td>
                                  <td class="product_name"><a href="#">{{$value->name}}</a></td>
                                  <td class="product-price">{{number_format($value->discount)}} VNĐ</td>
@@ -78,7 +78,7 @@ Giỏ Hàng
                         </div>  
                         <div class="cart_submit">
                             <a class="float-left ml-11"><input type="checkbox" id="checkboxAll">  Tất cả</a>
-                            <a href="{{route('product.oder.product')}}" class="btn btn-success">Đặt hàng</a>
+                            <a class="btn btn-success oder_product">Đặt hàng</a>
                         </div>      
                     </div>
                  </div>
@@ -96,10 +96,42 @@ $(document).ready(function() {
     $('#checkboxAll').on('click', function() {
         var status = $('#checkboxAll').is(':checked');
         if(status == true){
-            $("input#checkbox").prop('checked',true);
+            $("input.checkbox").prop('checked',true);
         }else{
-            $("input#checkbox").prop('checked',false);
+            $("input.checkbox").prop('checked',false);
         }
+   })
+
+   $('.oder_product').on('click', function() {
+            var checkbox = document.getElementsByName('choose');
+            var result = new Array();
+            // Lặp qua từng checkbox để lấy giá trị
+            for (var i = 0; i < checkbox.length; i++){
+                if (checkbox[i].checked === true){
+                    result.push(checkbox[i].value);
+                }
+            }
+            if(result.length >=1){
+                let apiOderAdd = '{{route("product.oder.add")}}';
+                $.ajax({
+                url: apiOderAdd,
+                method: "POST",
+                data: {
+                    id: result,
+                    _token: '{{csrf_token()}}'
+                },
+                dataType: 'json',
+                success: function(response) {
+                        if(response.data){
+                            swal("Thành công", "", "success");
+                        }else{
+                            swal("Thất bại", "", "warning");
+                            }
+                        }
+                    })
+            }else{
+                swal("Từ chối", "Bạn phải chọn sản phẩm trước khi đặt", "warning");
+            }
    })
 
    $('.product_id_remove').on('click', function() {
