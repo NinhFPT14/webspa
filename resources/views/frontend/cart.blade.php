@@ -37,6 +37,7 @@ Giỏ Hàng
                                 <th class="product-price">Giá</th>
                                 <th class="product_quantity">Số Lượng</th>
                                 <th class="product_total">tổng tiền</th>
+                                <th class="product_remove"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,8 +50,8 @@ Giỏ Hàng
                               $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
                             ?>
                             @foreach ($product as $value)
-                            <tr>
-                                <td class="product_remove"><a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="fa fa-trash-o"></i></a></td>
+                            <tr id="key{{$value->id}}">
+                                 <td><input type="checkbox" class="form-check-input" id="checkbox"></td>
                                  <td class="product_thumb"><a href="#"><img src="{{$value->avatar}}" alt="" class="w-20"></a></td>
                                  <td class="product_name"><a href="#">{{$value->name}}</a></td>
                                  <td class="product-price">{{number_format($value->discount)}} VNĐ</td>
@@ -64,11 +65,11 @@ Giỏ Hàng
                                  ?>
                                  <form action="{{route('cart.update',['id'=>$value->id])}}" method="POST">
                                     @csrf
-                                 <td class="product_quantity"><label>Số lượng</label> <input name="number" min="0" max="100" value="{{$number_product}}" type="number">
-                                    <button type="submit" class="btn btn-secondary">Cập Nhập</button>
+                                 <td class="product_quantity"><label>Số lượng</label> <input class="number_product" name="number" min="1" max="100" value="{{$number_product}}" data-productid="{{$value->id}}" type="number">
                                 </td>
                                </form>
-                                 <td class="product_total">{{number_format($value->discount * $number_product)}} VNĐ</td>
+                            <td id="product_total{{$value->id}}">{{number_format($value->discount * $number_product)}} VNĐ</td>
+                                <td class="product_id_remove text-danger" data-productid="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
                              </tr>
                             @endforeach
                             @endif
@@ -76,6 +77,7 @@ Giỏ Hàng
                     </table>   
                         </div>  
                         <div class="cart_submit">
+                            <a class="float-left ml-11"><input type="checkbox" id="checkboxAll">  Tất cả</a>
                             <a href="{{route('product.oder.product')}}" class="btn btn-success">Đặt hàng</a>
                         </div>      
                     </div>
@@ -85,4 +87,79 @@ Giỏ Hàng
 </div>
 <!--shopping cart area end -->
 
+@endsection
+
+
+@section('page-script')
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+$(document).ready(function() {
+    $('#checkboxAll').on('click', function() {
+        var status = $('#checkboxAll').is(':checked');
+        if(status == true){
+            $("input#checkbox").prop('checked',true);
+        }else{
+            $("input#checkbox").prop('checked',false);
+        }
+   })
+
+   $('.product_id_remove').on('click', function() {
+    let product_id = $(this).data('productid');
+    let apiDeleteCart = '{{route("cart.delete")}}';
+    swal({
+		title: "Bạn chắc chắn muốn xoá sản phẩm này?",
+		text: "Nếu chắc chắn ấn ĐỒNG Ý không ấn Từ chối!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#ce1126',
+        cancelButtonText: 'Từ chối',
+		confirmButtonText: 'Đồng ý',
+		closeOnConfirm: true,
+	},
+	function(){
+        $.ajax({
+           url: apiDeleteCart,
+           method: "POST",
+           data: {
+               id: product_id,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    $( "#key"+product_id ).remove();
+                }else{
+                    swal("Thất bại", "", "warning");
+                }
+           }
+           
+       })
+	});
+   })
+    $('.number_product').on('change', function() {
+        let product_id = $(this).data('productid');
+        let number = $(this).val();
+       let apiUpdateCart = '{{route("cart.update")}}';
+       $.ajax({
+           url: apiUpdateCart,
+           method: "POST",
+           data: {
+               id: product_id,
+               number: number,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    $("td#product_total"+product_id ).html(new Intl.NumberFormat().format(response.data * number)+ 'VNĐ');
+                }else{
+                    swal("Thất bại", "", "warning");
+                }
+           }
+           
+       })
+   })
+
+})
+</script>
 @endsection

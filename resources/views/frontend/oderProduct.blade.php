@@ -55,7 +55,8 @@ Sản phẩm
                                  <tbody>
                                     @if(Session::has('productId'))
                                     <?php 
-                                      $cart = Session::get('productId');
+                                    $cart=\Cookie::get('cartId');
+                                    $cart=json_decode($cart);
                                       $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
                                       $total_money = 0;
                                     ?>
@@ -79,48 +80,12 @@ Sản phẩm
                                  <tfoot>
                                      <tr class="order_total">
                                          <th>Tổng tiền</th>
-                                         <td><strong>{{number_format($total_money)}} VNĐ</strong></td>
+                                         <td><strong> VNĐ</strong></td>
                                      </tr>
                                  </tfoot>
                              </table>     
                          </div>
-                         <div class="payment_method">
-                            <div class="panel-default">
-                                 <input id="payment" name="check_method" type="radio" data-target="createp_account" />
-                                 <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Thanh toán qua chuyển khoản</label>
-
-                                 <div id="method" class="collapse one" data-parent="#accordion">
-                                     <div class="card-body1">
-                                        <p>
-                                        </p> Các bạn vui lòng chuyển khoản tới các số TK của QueenSpa:</p>
-
-                                        <p> Số TK: 0081000830127</p>
-        
-                                        <p> DƯƠNG THỊ QUYÊN</p>
-        
-        
-                                        <p> Vietinbank:</p>
-        
-                                        <p> Số TK: 100000335060</p>
-        
-                                        <p> DƯƠNG THỊ QUYÊN</p>
-                                        </p> Nội dung chuyển khoản gồm số điện thoại và mã đơn đặt hàng </p>
-                                        </p>
-                                     </div>
-                                 </div>
-                             </div> 
-                            <div class="panel-default">
-                                 <input id="payment_defult" name="check_method" type="radio" data-target="createp_account" />
-                                 <label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult" aria-controls="collapsedefult">Thanh toán khi giao hàng (COD)<img src="assets/img/icon/papyel.png" alt=""></label>
-
-                                 <div id="collapsedefult" class="collapse one" data-parent="#accordion">
-                                     <div class="card-body1">
-                                        <p> Đối với các bạn ở xa , muốn sử dụng hình thức COD (thanh toán khi nhận hàng), khách hàng vui lòng để lại đầy đủ thông tin QueenSpa sẽ gửi hàng sớm nhất</p>
-                                        <p> - Các bạn sẽ thanh toán trực tiếp cho bên chuyển phát sau khi đã nhận được hàng.</p>
-                                        <p> - QueenSpa sẽ gửi hàng đi ngay trong ngày sau khi nhận được đơn đặt hàng. </p>
-                                     </div>
-                                 </div>
-                             </div>
+                         
                              <div class="order_button">
                                  <button  type="submit">Đặt hàng</button> 
                              </div>    

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Http\Response;
+use App\Model\Product;
 
 class CartController extends Controller
 {
@@ -53,40 +54,52 @@ class CartController extends Controller
         return redirect()->route('cart')->withCookie(cookie()->forever('cartId',$array_json));
     }
 
-    public function delete($id){
-        $cart=\Cookie::has('cartId');
-        $arrId =[];
-        if($cart){
+    public function delete(Request $request){
+        try {
             $cart=\Cookie::get('cartId');
-            $cart =json_decode($cart);
-            foreach($cart as $key => $value){
-                if($cart[$key] != $id){
-                    $arrId[] = $value;
-                }
-              }
+            $arrId =[];
+            if($cart != null && $cart != "[]"){
+                $cart=\Cookie::get('cartId');
+                $cart =json_decode($cart);
+                foreach($cart as $key => $value){
+                    if($cart[$key] != $request->id){
+                        $arrId[] = $value;
+                    }
+                  }
+            }
+            $array_json=json_encode($arrId);
+            return response()->json(['status' => true, 'data' => 'thành công' ])->withCookie(cookie()->forever('cartId',$array_json));
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
-        $array_json=json_encode($arrId);
-        return back()->withCookie(cookie()->forever('cartId',$array_json));
     }
 
-    public function update(Request $request , $id){
-        $cart=\Cookie::has('cartId');
-        $arrId =[];
-        if($cart){
+    public function update(Request $request){
+        try {
             $cart=\Cookie::get('cartId');
-            $cart =json_decode($cart);
-            foreach($cart as $key => $value){
-                if($cart[$key] != $id){
-                    $arrId[] = $value;
+            $arrId =[];
+            if($cart != null && $cart != "[]"){
+                $cart=\Cookie::get('cartId');
+                $cart =json_decode($cart);
+                foreach($cart as $key => $value){
+                    if($cart[$key] != $request->id){
+                        $arrId[] = $value;
+                    }
+                  }
+                  for ($i = 1; $i <= $request->number; $i++) {
+                    $arrId[] = $request->id;
+                  }
+            }else{
+                for ($i = 1; $i <= $request->number; $i++) {
+                    $arrId[] = $request->id;
+                  }
                 }
-              }
-              for ($i = 1; $i <= $request->number; $i++) {
-                $arrId[] = $id;
-              }
+            $array_json=json_encode($arrId);
+            $discount = Product::find($request->id);
+            return response()->json(['status' => true, 'data' => $discount->discount ])->withCookie(cookie()->forever('cartId',$array_json));
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
-        $array_json=json_encode($arrId);
-        return back()->withCookie(cookie()->forever('cartId',$array_json));
     }
-    
 }
 ?>

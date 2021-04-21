@@ -58,8 +58,8 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/gio-hang','Frontend\CartController@cart')->name('cart');
     Route::get('/them-vao-gio-hang/{id}','Frontend\CartController@add')->name('cart.add');
     Route::post('/them-nhieu-san-pham/{id}','Frontend\CartController@addMuch')->name('cart.addMuch');
-    Route::get('/xoa-gio-hang/{id}','Frontend\CartController@delete')->name('cart.delete');
-    Route::post('/cap-nhat-gio-hang/{id}','Frontend\CartController@update')->name('cart.update');
+    Route::post('/xoa-gio-hang','Frontend\CartController@delete')->name('cart.delete');
+    Route::post('/cap-nhat-gio-hang','Frontend\CartController@update')->name('cart.update');
 
     //Đặt lịch 
     Route::group(['prefix' => 'dat-lich'], function() {
