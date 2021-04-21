@@ -151,13 +151,8 @@
                                                 d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                         </svg></a>
                                     <ul class="sub_menu pages">
-                                        @if(Illuminate\Support\Facades\Auth::check())
-                                        <li><a href="{{route('logout')}}">Đăng xuất</a></li>
-                                        @else
                                         <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
-                                        <li><a href="{{route('login')}}">Đăng Nhập</a></li>
-                                        @endif
-
+                                        <li><a href="{{route('product.oder.list')}}">Đơn đặt hàng</a></li>
                                     </ul>
                                 </li>
 
@@ -293,12 +288,8 @@
                             <li class="menu-item-has-children active">
                                 <a>Tài Khoản</a>
                                 <ul class="sub-menu">
-                                    @if(Illuminate\Support\Facades\Auth::check())
-                                    <li><a href="{{route('logout')}}">Đăng xuất</a></li>
-                                    @else
                                     <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
-                                    <li><a href="{{route('login')}}">Đăng Nhập</a></li>
-                                    @endif
+                                    <li><a href="{{route('product.oder.list')}}">Đơn đặt hàng</a></li>
                                 </ul>
                             </li>
                         </ul>

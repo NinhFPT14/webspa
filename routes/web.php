@@ -24,8 +24,11 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/san-pham/{id}','Frontend\ProductController@product')->name('product');
     Route::get('/chi-tiet-san-pham/{slug}/{id}','Frontend\ProductController@detailProduct')->name('detailProduct');
     Route::post('/tim-kiem-san-pham','Frontend\ProductController@search')->name('product.search.user');
-    Route::get('/trang-dat-san-pham','Frontend\ProductController@oderProduct')->name('product.oder.product');
+    Route::get('/trang-dat-san-pham','Frontend\ProductController@oderProduct')->name('product.oder');
     Route::post('/lay-thong-tin-san-pham','Frontend\ProductController@oderProductAdd')->name('product.oder.add');
+    Route::post('/dat-san-pham','Frontend\ProductController@oderSave')->name('product.oder.save');
+    Route::get('/danh-sach-don-dat-san-pham','Frontend\ProductController@oderList')->name('product.oder.list');
+    Route::get('/huy-don-dat-hang','Frontend\ProductController@oderDelete')->name('product.oder.delete');
     //ServiceController
     Route::get('dich-vu/{id}','Frontend\ServiceController@service')->name('service');
     Route::post('tim-kiem-dich-vu','Frontend\ServiceController@search')->name('service.search.user');

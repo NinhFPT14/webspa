@@ -123,7 +123,7 @@ $(document).ready(function() {
                 dataType: 'json',
                 success: function(response) {
                         if(response.data){
-                            swal("Thành công", "", "success");
+                            window.location.href = '{{route("product.oder")}}';
                         }else{
                             swal("Thất bại", "", "warning");
                             }
