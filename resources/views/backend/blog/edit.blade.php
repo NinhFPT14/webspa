@@ -94,25 +94,27 @@ Sửa bài viết
         </div>
     </form>
 </div>
-@section('ckeditor')
-<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
-<script>
-CKEDITOR.replace( 'descs', {
-    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-    filebrowserWindowWidth : '1000',
-    filebrowserWindowHeight : '700'
-});
-CKEDITOR.replace( 'details', {
-    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
-    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?Type=Images',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
-    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-    filebrowserWindowWidth : '1000',
-    filebrowserWindowHeight : '700'
-});
-</script>
+
 @endsection
+@section('ckeditor')
+<script type="text/javascript">
+    CKEDITOR.replace( 'descs', {
+        filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+        filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+        filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+        filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+        filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+        uiColor: '#CCEAEE',
+        
+    } );
+    CKEDITOR.replace( 'details',
+ {
+     filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+     filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+     filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+     filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+     uiColor: '#CCEAEE'
+ });
+</script>
+
 @endsection
