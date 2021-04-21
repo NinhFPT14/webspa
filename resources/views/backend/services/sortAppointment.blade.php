@@ -8,9 +8,10 @@ Bảng xếp lịch
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
-
+<script src="{{ asset('jsCalendar/dhtmlxscheduler.js') }}" type="text/javascript" charset="utf-8"></script>
+<script src=" {{ asset('jsCalendar/ext/dhtmlxscheduler_timeline.js') }} " type="text/javascript" charset="utf-8"></script>
+<link rel='stylesheet' type='text/css' href=" {{ asset('jsCalendar/dhtmlxscheduler_material.css') }} ">
 @endsection
 <div class="p-4">
     <div class=" d-flex align-items-center">
@@ -22,7 +23,7 @@ Bảng xếp lịch
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3 border border-danger">
+        <div class="col-span-3 border border-success ">
         <!-- Bảng xếp lịch -->
             <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
                 <div class="dhx_cal_navline">
@@ -358,5 +359,112 @@ $(document).ready(function() {
 });
 </script>
 
+<!-- Js cua bang dat lich -->
+<script type="text/javascript" charset="utf-8">
+        function init() {
+
+            scheduler.locale.labels.timeline_tab = "Timeline";
+            scheduler.locale.labels.section_custom = "Section";
+            scheduler.locale.labels.timeline_scale_header = "Sections";
+            scheduler.config.details_on_create = true;
+            scheduler.config.details_on_dblclick = true;
+
+            //===============
+            //Configuration
+            //===============
+            var sections = [];
+
+            for (var i = 1; i < 7; i++) {
+                sections.push({
+                    key: i,
+                    label: "Ghế " + i
+                })
+            } // Lưu & Export Ghế làm
+            var days = 1;
+
+            scheduler.createTimelineView({
+                name: "timeline",
+                x_unit: "hour",
+                x_date: "%H:%i",
+                x_step: 1,
+                x_size: 24 * days,
+                scrollable: true,
+                scroll_position: new Date(2021, 4, 14),
+
+                column_width: 70,
+                x_length: 24 * days,
+                y_unit: sections,
+                y_property: "section_id",
+                render: "bar",
+                second_scale: {
+                    x_unit: "day", // unit which should be used for second scale
+                    x_date: "%F %d" // date format which should be used for second scale, "July 01"
+                }
+            });
+
+            //===============
+            //Data loading
+            //===============
+            scheduler.config.lightbox.sections = [{
+                name: "description",
+                height: 50,
+                map_to: "text",
+                type: "textarea",
+                focus: true
+            }, {
+                name: "custom",
+                height: 30,
+                type: "select",
+                options: sections,
+                map_to: "section_id"
+            }, {
+                name: "time",
+                height: 72,
+                type: "time",
+                map_to: "auto"
+            }];
+
+            var start = new Date(2021, 4, 14)
+            scheduler.init('scheduler_here', start, "timeline");
+            scheduler.parse(generateEvents(start, scheduler.date.add(start, days, "day"), sections.length * 10, sections));
+
+
+            function randomDate(date1, date2) {
+                function getRandomArbitrary(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+                var date1 = date1;
+                var date2 = date2;
+                date1 = new Date(date1).getTime();
+                date2 = new Date(date2).getTime();
+                if (date1 > date2) {
+                    return new Date(getRandomArbitrary(date2, date1))
+                } else {
+                    return new Date(getRandomArbitrary(date1, date2))
+
+                }
+            }
+
+            function randomIntFromInterval(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+
+            function generateEvents(from, to, count, sections) {
+                var evs = [];
+                // Ramdom Data
+                for (var i = 0; i < 9; i++) {
+                    var ev = {
+                        section_id: sections[randomIntFromInterval(0, sections.length - 1)].key,
+                        text: "event " + i,
+                        start_date: randomDate(from, to),
+                        id: scheduler.uid()
+                    }
+                    ev.end_date = scheduler.date.add(ev.start_date, randomIntFromInterval(1, 24), "hour");
+                    evs.push(ev);
+                }
+                return evs;
+            }
+        }
+    </script>
 
 @endsection
