@@ -8,7 +8,6 @@ Bảng xếp lịch
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 
     <script src="{{ asset('jsCalendar/dhtmlxscheduler.js') }}" type="text/javascript" charset="utf-8"></script>
@@ -26,7 +25,7 @@ Bảng xếp lịch
         </div>
     </div>
     <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3 border border-danger">
+        <div class="col-span-3 border border-success ">
         <!-- Bảng xếp lịch -->
             <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
                 <div class="dhx_cal_navline">
