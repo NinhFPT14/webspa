@@ -86,8 +86,9 @@ Tạo dịch vụ
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Tiêu đề</label>
+                            
                             <textarea class="form-control" name="description" id="description"
-                                rows="1">{{ old('description')}}</textarea>
+                                rows="2" data-sample-short>>{{ old('description')}}</textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -96,7 +97,7 @@ Tạo dịch vụ
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Chi tiết</label>
                             <textarea class="form-control" name="detail" id="detail"
-                                rows="4">{{ old('detail') }}</textarea>
+                                rows="11" cols="80" >{{ old('detail') }}</textarea>
                             @error('detail')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -111,44 +112,26 @@ Tạo dịch vụ
 </div>
 @endsection
 @section('ckeditor')
-<script src="{{asset('backEnd/ckeditor/ckeditor.js')}}"> </script>
-<script>
-CKEDITOR.replace('detail');
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'detail', {
+        filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+        filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+        filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+        filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+        filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+        uiColor: '#CCEAEE',
+        
+    } );
+    CKEDITOR.replace( 'description',
+ {
+     filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+     filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+     filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+     filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}'
+ });
 </script>
-<script>
-CKEDITOR.replace('description', {
-    // Define the toolbar groups as it is a more accessible solution.
-    toolbarGroups: [{
-            "name": "basicstyles",
-            "groups": ["basicstyles"]
-        },
-        {
-            "name": "links",
-            "groups": ["links"]
-        },
-        {
-            "name": "paragraph",
-            "groups": ["list", "blocks"]
-        },
-        {
-            "name": "document",
-            "groups": ["mode"]
-        },
-        {
-            "name": "insert",
-            "groups": ["insert"]
-        },
-        {
-            "name": "styles",
-            "groups": ["styles"]
-        },
-        {
-            "name": "about",
-            "groups": ["about"]
-        }
-    ],
-    // Remove the redundant buttons from toolbar groups defined above.
-    removeButtons: 'Underline,Strike,Subscript,Superscript,Anchor,Styles,Specialchar'
-});
-</script>
+
+    
+
 @endsection
