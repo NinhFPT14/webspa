@@ -55,6 +55,7 @@
 <script src="{{asset('frontEnd/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontEnd/js/bootstrap.min.js.map')}}"></script>
 <script src="{{asset('frontEnd/js/dropzone.min.js')}}"></script>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <!-- Plugins JS -->
 @include('sweetalert::alert')
 @yield('page-script')

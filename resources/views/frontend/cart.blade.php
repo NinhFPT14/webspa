@@ -91,7 +91,6 @@ Giỏ Hàng
 
 
 @section('page-script')
-<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <script>
 $(document).ready(function() {
     $('#checkboxAll').on('click', function() {
@@ -159,6 +158,8 @@ $(document).ready(function() {
            
        })
    })
+
+   
 
 })
 </script>

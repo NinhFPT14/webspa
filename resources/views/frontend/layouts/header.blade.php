@@ -91,6 +91,7 @@
                                 $cart= $arrId;
                              }
                              $number = 0;
+                             $number2 = 0;
                             ?>
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
                                 @if(\Cookie::has('cartId'))
@@ -121,9 +122,6 @@
                                             ?>
                                             <span class="quantity">Số lượng: {{$number_product}}</span>
                                             <span class="price_cart">Giá :{{number_format($value->discount)}}VNĐ</span>
-                                        </div>
-                                        <div class="cart_remove">
-                                            <a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
                                     <?php
@@ -191,7 +189,7 @@
                     <div class="header_block_right block_right_two">
                         <ul>
                         
-                            <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
+                            <li class="mini_cart_wrapper"><a><i class="ion-bag"></i>
                                 @if(\Cookie::has('cartId'))
                                 <span>{{count($product)}}</span></a>
                                     @else
@@ -215,14 +213,17 @@
                                                  $number_product++;
                                               }
                                             }
+                                            $number2 +=1;
                                           ?>
                                             <span class="quantity">Số lượng: {{$number_product}}</span>
                                             <span class="price_cart">Giá :{{number_format($value->discount)}}VNĐ</span>
                                         </div>
-                                        <div class="cart_remove">
-                                            <a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="ion-android-close"></i></a>
-                                        </div>
                                     </div>
+                                    <?php
+                                    if($number2 == 3){
+                                        break;
+                                    }
+                                    ?>
                                     @endforeach
                                     @endif
                                    
@@ -326,6 +327,7 @@
 <!-- Load Facebook SDK for JavaScript -->
 <div id="fb-root"></div>
 <script>
+
 window.fbAsyncInit = function() {
     FB.init({
         xfbml: true,
