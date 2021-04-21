@@ -28,7 +28,8 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::post('/lay-thong-tin-san-pham','Frontend\ProductController@oderProductAdd')->name('product.oder.add');
     Route::post('/dat-san-pham','Frontend\ProductController@oderSave')->name('product.oder.save');
     Route::get('/danh-sach-don-dat-san-pham','Frontend\ProductController@oderList')->name('product.oder.list');
-    Route::get('/huy-don-dat-hang','Frontend\ProductController@oderDelete')->name('product.oder.delete');
+    Route::post('/huy-don-dat-hang','Frontend\ProductController@oderDelete')->name('product.oder.delete');
+    Route::post('/chi-tiet-don-dat-hang','Frontend\ProductController@orderDetail')->name('product.order.detail');
     //ServiceController
     Route::get('dich-vu/{id}','Frontend\ServiceController@service')->name('service');
     Route::post('tim-kiem-dich-vu','Frontend\ServiceController@search')->name('service.search.user');

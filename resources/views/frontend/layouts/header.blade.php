@@ -286,7 +286,7 @@
                                 <a href="{{route('contact')}}">Liên Hệ</a>
                             </li>
                             <li class="menu-item-has-children active">
-                                <a>Tài Khoản</a>
+                                <a>Quản lý đơn</a>
                                 <ul class="sub-menu">
                                     <li><a href="{{route('appointment.listBooking')}}">Đơn đặt lịch</a></li>
                                     <li><a href="{{route('product.oder.list')}}">Đơn đặt hàng</a></li>

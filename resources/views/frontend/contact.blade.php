@@ -50,9 +50,14 @@ Liên hệ
                             est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
                             formas human. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam</p>
                         <ul>
-                            <li><i class="fa fa-fax"></i> Địa Chỉ: No 40 Baria Sreet 133/2 NewYork City</li>
-                            <li><i class="fa fa-envelope-o"></i><a href="#">Infor@roadthemes.com</a></li>
-                            <li><i class="fa fa-phone"></i></i> 0(1234) 567 890</li>
+                        <?php
+                            $data = App\Model\Footer::get();
+                        ?>
+                            @foreach ($data as $item)
+                            <li><i class="fa fa-fax"></i> Địa Chỉ:{{$item->address}}</li>
+                            <li><i class="fa fa-envelope-o"></i><a href="#">I {{$item->email}}</a></li>
+                            <li><i class="fa fa-phone"></i></i> {{$item->phone_number}}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

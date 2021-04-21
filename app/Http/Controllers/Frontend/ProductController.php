@@ -38,8 +38,21 @@ class ProductController extends Controller
                         $arrId[] = $value;
                 }
             }
+            ProductOder::where('oder_id',$request->id)->delete();
+            Oder::where('id',$request->id)->delete();
+
             $array_json=json_encode($arrId);
             return response()->json(['status' => true, 'data' => $request->id])->withCookie(cookie()->forever('oderId',$array_json));
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+
+    public function orderDetail(Request $request){
+        try {
+            $informationOrder =Oder::find($request->id);
+            $product =ProductOder::where('oder_id',$request->id)->get();
+            return response()->json(['status' => true, 'data' => $informationOrder]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
@@ -57,6 +70,7 @@ class ProductController extends Controller
                     }            
                 }
             }
+
             $array_json=json_encode($arrId);
             return response()->json(['status' => true, 'data' => 'thành công' ])->withCookie(cookie()->forever('oderProductId',$array_json));
         } catch (Exception $e) {
@@ -68,15 +82,14 @@ class ProductController extends Controller
         $validate = Validator::make($request->all(), 
         [
             'name' => 'required|max:255',
-            'phone' => 'required|numeric|digits_between:10,11',
+            'phone' => 'required|regex:/^[0][0-9]{9}$/',
             'address' => 'required|max:255',
             'note' => 'max:65535',
         ],
         ['name.required' => 'Họ tên không được để trống',
         'name.max' => "Họ tên không được vượt quán 255 ký tự",
         'phone.required' => "Số điện thoại không được để trống",
-        'phone.numeric' => "Sô điện thoại phải là số",
-        'phone.digits_between' => "Sô điện thoại không hợp lệ",
+        'phone.regex' => "Sô điện thoại không hợp lệ",
         'note.max' => "Lời nhắn không được vượt quá 65535 ký tự",
         'address.required' => "Địa chỉ không được để trống",
         'address.max' => "Địa chỉ không được vượt quá 255 ký tự",
