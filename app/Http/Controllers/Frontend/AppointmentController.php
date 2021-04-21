@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use App\Model\Appointment;
@@ -20,17 +21,17 @@ class AppointmentController extends Controller
 {
    public function appointment(){
     return view('frontend.appointment');
-   }// Hiển thị trang đặt lịch ở phía Client
+   }
+   // Hiển thị trang đặt lịch ở phía Client
    
-  public function listBooking(){
-    $arrId = [];
-    if(Session::has('appointmentId')){
-       foreach(Session::get('appointmentId') as $value){
-        $arrId[]= $value;
-       }
+  public function listBooking(Request $request){
+    $user=\Cookie::get('appointmentId');
+    $user=json_decode($user);
+    $data = [];
+    if($user){
+        $data = Appointment::where('status','!=',0)->whereIn('id', $user)->get();
     }
     $serviceAll = Service::where('status',0)->get();
-    $data = Appointment::where('status','!=',0)->whereIn('id', $arrId)->get();
     return view('frontend.booking',compact('data','serviceAll'));
   }// Hiển thị lịch đã đặt từ khách hàng
 
@@ -150,9 +151,14 @@ class AppointmentController extends Controller
             NumberService::create(['appointment_id'=>$flight->id ,'service_id'=>$value]);
         };
 
-        $booking = Session::get('appointmentId');
-        $booking[] = $flight->id;
-        Session::put('appointmentId',$booking);
+        //Cookie
+
+        $user=\Cookie::get('appointmentId');
+        if($user){
+            $user =json_decode($user);
+        }
+        $user[] = $flight->id;
+        $array_json=json_encode($user);
 
         //  Gửi otp 
         $phones =[$request->phone];
@@ -161,7 +167,7 @@ class AppointmentController extends Controller
         $sender = "981c320db4992b97";
         $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
         $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
-        return response()->json(['status' => true, 'data' => $flight->id ]);
+        return response()->json(['status' => true, 'data' => $flight->id ])->withCookie(cookie()->forever('appointmentId',$array_json));
     }
 
     public function apiconfirmOtp(Request $request){

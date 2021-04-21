@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusFeedbacks extends Migration
+class AddTotalMonneyOder extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddStatusFeedbacks extends Migration
      */
     public function up()
     {
-        Schema::table('feedbacks', function (Blueprint $table) {
-            $table->integer('status');
+        Schema::table('oders', function (Blueprint $table) {
+            $table->string('total_monney');
         });
     }
 
@@ -25,7 +25,7 @@ class AddStatusFeedbacks extends Migration
      */
     public function down()
     {
-        Schema::table('feedbacks', function (Blueprint $table) {
+        Schema::table('oders', function (Blueprint $table) {
             //
         });
     }

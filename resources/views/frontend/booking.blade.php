@@ -86,7 +86,7 @@ Danh sách đơn đặt lịch
 </div>
 
  {{-- Modal chuyể lịch --}}
- <div class="modal fade" id="modal_convert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal fade" data-keyboard="false"  data-backdrop="static" id="modal_convert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header  btn-success">
@@ -121,7 +121,7 @@ Danh sách đơn đặt lịch
 
 
   {{-- Modal otp --}}
-  <div class="modal fade" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" data-keyboard="false"  data-backdrop="static" id="modal_otp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header  btn-success">
@@ -153,7 +153,7 @@ Danh sách đơn đặt lịch
 
 
  <!-- Modal chi tiết-->
-<div class="modal fade" id="modal_chi_tiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" data-keyboard="false"  data-backdrop="static" id="modal_chi_tiet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header  btn-success">
@@ -259,8 +259,20 @@ $(document).ready(function() {
 
 
     $('.btn_chuyen_lich').on('click', function() {
-        //set lại validate form otp
-        $("p#thong_bao_code" ).html(' ');
+       let appointment_id = $(this).data('orderid');
+        swal({
+		title: "Bạn chắc chắn muốn chuyển lịch?",
+		text: "Nếu chắc chắn ấn ĐỒNG Ý không ấn Từ chối!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#FFB90F',
+        cancelButtonText: 'Từ chối',
+		confirmButtonText: 'Đồng ý',
+		closeOnConfirm: true,
+	},
+	function(){
+       //set lại validate form otp
+       $("p#thong_bao_code" ).html(' ');
         $("p#thong_bao_fail" ).html(' ');
         $("p#thong_bao_id" ).html(' ');
         $("#modal_code_otp").val( ' ');
@@ -269,7 +281,6 @@ $(document).ready(function() {
         $("#modal_time_ficked").val(' ');
         $("#modal_time_start").val(' ');
         $('.modal-xac-nhan-otp').attr('id',' ');
-       let appointment_id = $(this).data('orderid');
        let apiOtp = '{{route("appointment.apiOtp")}}';
        $.ajax({
            url: apiOtp,
@@ -291,6 +302,8 @@ $(document).ready(function() {
            }
            
        })
+	});
+        
    })
 
    $('.modal-xac-nhan-otp').on('click', function() {

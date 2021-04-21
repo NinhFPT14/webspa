@@ -27,6 +27,7 @@
                                                 @foreach ($category as $value)
                                                 <?php
                                                  $product = DB::table('products')->where('category_id',$value->id)->get();
+
                                                 ?>
                                                 @if(count( $product) >=1)
                                                 <li>
@@ -83,13 +84,16 @@
                     <div class="header_block_right block_right_two">
                         <ul>
                             <?php 
-                             $cart = Session::get('productId');
-                             if(Session::has('productId')){
-                                $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                              $cart=\Cookie::get('cartId');
+                             if($cart){
+                                $arrId=json_decode($cart);
+                                $product = DB::table('products')->where('status',0)->whereIn('id', $arrId)->get();
+                                $cart= $arrId;
                              }
+                             $number = 0;
                             ?>
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
-                                @if(Session::has('productId'))
+                                @if(\Cookie::has('cartId'))
                                   <span>{{count($product)}}</span></a>
                                 @else
                                 <span>0</span></a>
@@ -97,7 +101,7 @@
                                   
                                 <!--mini cart-->
                                 <div class="mini_cart">
-                                    @if(Session::has('productId'))
+                                    @if(\Cookie::has('cartId'))
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
@@ -112,7 +116,9 @@
                                                  $number_product++;
                                               }
                                             }
-                                          ?>
+                                            $number +=1;
+                                 
+                                            ?>
                                             <span class="quantity">Số lượng: {{$number_product}}</span>
                                             <span class="price_cart">Giá :{{number_format($value->discount)}}VNĐ</span>
                                         </div>
@@ -120,11 +126,16 @@
                                             <a href="{{route('cart.delete',['id'=>$value->id])}}"><i class="ion-android-close"></i></a>
                                         </div>
                                     </div>
+                                    <?php
+                                    if($number == 3){
+                                        break;
+                                    }
+                                    ?>
                                     @endforeach
                                     @endif
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="{{route('cart')}}">Giỏ Hàng</a>
+                                            <a href="{{route('cart')}}">Tất cả</a>
                                         </div>
                                     </div>
                                 </div>
@@ -181,7 +192,7 @@
                         <ul>
                         
                             <li class="mini_cart_wrapper"><a href="{{route('cart')}}"><i class="ion-bag"></i>
-                                @if(Session::has('productId'))
+                                @if(\Cookie::has('cartId'))
                                 <span>{{count($product)}}</span></a>
                                     @else
                                     <span>0</span></a>
@@ -189,7 +200,7 @@
                                 <!--mini cart-->
                                 <div class="mini_cart">
 
-                                    @if(Session::has('productId'))
+                                    @if(\Cookie::has('cartId'))
                                     @foreach ($product as $value)
                                     <div class="cart_item">
                                         <div class="cart_img">
@@ -217,7 +228,7 @@
                                    
                                     <div class="mini_cart_footer">
                                         <div class="cart_button">
-                                            <a href="{{route('cart')}}">Giỏ Hàng</a>
+                                            <a href="{{route('cart')}}">Tất cả</a>
                                         </div>
                                     </div>
                                 </div>
