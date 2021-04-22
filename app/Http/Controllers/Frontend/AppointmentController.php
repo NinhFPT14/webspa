@@ -29,7 +29,7 @@ class AppointmentController extends Controller
     $user=json_decode($user);
     $data = [];
     if($user){
-        $data = Appointment::where('status','!=',0)->whereIn('id', $user)->get();
+        $data = Appointment::where('status','!=',0)->whereIn('id', $user)->orderBy('id', 'DESC')->get();
     }
     $serviceAll = Service::where('status',0)->get();
     return view('frontend.booking',compact('data','serviceAll'));

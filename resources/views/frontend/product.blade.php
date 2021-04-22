@@ -62,7 +62,7 @@ Sản phẩm
 
                 </div>
                 <div class="shop_banner">
-                    <img src="frontEnd/img/bg/banner30.jpg" alt="">
+                    <img src="frontEnd/img/bg/banner-san-pham.png" alt="">
                 </div>
 
                 <div class="shop_toolbar_wrapper">
