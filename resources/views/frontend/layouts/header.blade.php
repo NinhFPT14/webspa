@@ -87,7 +87,7 @@
                               $cart=\Cookie::get('cartId');
                              if($cart){
                                 $arrId=json_decode($cart);
-                                $product = DB::table('products')->where('status',0)->whereIn('id', $arrId)->get();
+                                $product = DB::table('products')->where('status',0)->whereIn('id', $arrId)->orderBy('id', 'DESC')->get();
                                 $cart= $arrId;
                              }
                              $number = 0;

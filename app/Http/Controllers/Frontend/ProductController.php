@@ -42,7 +42,7 @@ class ProductController extends Controller
         try {
             $informationOrder =Oder::find($request->id);
             $product =ProductOder::where('oder_id',$request->id)->get();
-            return response()->json(['status' => true, 'data' => $informationOrder]);
+            return response()->json(['status' => true, 'data' => $informationOrder , 'product'=> $product]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
@@ -105,13 +105,16 @@ class ProductController extends Controller
             $arrId =json_decode($product);
             $cart=\Cookie::get('cartId');
             $cart =json_decode($cart);
-            $arrayCart =[];
+            $arrayCartId =[];
             $a =[];
             foreach(array_count_values($arrId) as $key =>$value){
+                $pr = Product::find($key);
                 $ProductOder = new ProductOder();
                 $ProductOder->product_id = $key;
                 $ProductOder->oder_id = $oder->id;
                 $ProductOder->quality = $value;
+                $ProductOder->name = $pr->name;
+                $ProductOder->price = $pr->discount;
                 $ProductOder->save();
                 $a[] = $key;
             }
