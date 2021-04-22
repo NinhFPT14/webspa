@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="backEnd/css/sb-admin-2.min.css" rel="stylesheet">
+    
     @yield('link')
 </head>
 
@@ -88,6 +89,7 @@
         integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous">
     </script>
     <script src="{{asset('ckeditor/ckeditor.js')}}"> </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{asset('ckfinder/ckfinder.js')}}"></script>
     <script>
 	CKFinder.start();
