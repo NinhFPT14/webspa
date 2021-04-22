@@ -128,11 +128,6 @@ $(document).ready(function() {
         let phone = $("#input_phone").val();
         let address = $("#input_address").val();
         let note = $("#input_note").val();
-console.log(name);
-console.log(phone);
-console.log(address);
-console.log(note);
-console.log(total_monney);
        let apiOderSave = '{{route("product.oder.save")}}';
        $.ajax({
            url: apiOderSave,
@@ -149,7 +144,7 @@ console.log(total_monney);
            success: function(response) {
                 if(response.data){
                     swal("Đặt hàng thành công", "QueenSpa cảm ơn quý khách đã tin tưởng và sử dụng dịch vụ ", "success");
-                    window.location.href = '{{route("home")}}';
+                    window.location.href = '{{route("product.oder.list")}}';
                 }else{
                     if(response.messages.name){
                         $("p#thong_bao_name" ).html('- ' + response.messages.name);

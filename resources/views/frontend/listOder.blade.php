@@ -44,7 +44,7 @@ Danh sách đơn đặt lịch
                                 <?php 
                                 $oder=\Cookie::get('oderId');
                                 $oder=json_decode($oder);
-                                $listOder = DB::table('oders')->whereIn('id', $oder)->get();
+                                $listOder = DB::table('oders')->whereIn('id', $oder)->orderBy('id', 'DESC')->get();
                                 ?>
                                 <tbody>
                                 @foreach($listOder as $value )
@@ -54,14 +54,19 @@ Danh sách đơn đặt lịch
                                     <td>{{$value->phone_number}}</td>
                                     <td class="product_total text-primary detail_oder" data-orderid="{{$value->id}}"><a>Xem</a></td>
                                     @if($value->status == 0)
-                                    <td>Chờ xác nhận</td>
+                                    <td class="text-warning order_status{{$value->id}}">Chờ xác nhận</td>
                                     @elseif($value->status == 1)
-                                    <td>Đang gửi hàng</td>
-                                    @elseif($value->status == 1)
-                                    <td>Đã nhận hàng</td>
+                                    <td class="text-primary order_status{{$value->id}}">Đã xác nhận</td>
+                                    @elseif($value->status == 2)
+                                    <td class="text-success order_status{{$value->id}}">Đang gửi</td>
+                                    @elseif($value->status == 3)
+                                    <td class="text-success order_status{{$value->id}}">Đã nhận hàng</td>
+                                    @elseif($value->status == 4)
+                                    <td class="text-danger">Từ chối</td>
+                                    @else
+                                    <td class="text-danger">Đã huỷ</td>
                                     @endif
-
-                                    @if($value->status == 0)
+                                    @if($value->status == 0 || $value->status == 1)
                                     <td class="product_total text-danger btn_huy_don" data-orderid="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
                                     @endif
                                 </tr>
@@ -106,31 +111,6 @@ Danh sách đơn đặt lịch
                     <label for="exampleInputPassword1">Lời nhắn</label>
                     <textarea class="form-control"  name="note" id="modal_detail_note" rows="5"></textarea>
                 </div>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="product_remove">Tên sản phẩm</th>
-                                <th class="product_remove">Giá</th>
-                            </tr>
-                        </thead>
-                        @if(\Cookie::get('oderId'))
-                        <?php 
-                        $oder=\Cookie::get('oderId');
-                        $oder=json_decode($oder);
-                        $listOder = DB::table('oders')->whereIn('id', $oder)->get();
-                        ?>
-                        <tbody>
-                        @foreach($listOder as $value )
-                        <tr>
-                            <td>{{$value->name}}</td>
-                            <td>{{$value->id}}</td>
-                        </tr>
-                        @endforeach
-                        </tbody>
-                        @endif
-                    </table>
-                
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">TẮT</button>
@@ -147,10 +127,32 @@ Danh sách đơn đặt lịch
 $(document).ready(function() {
     $('.detail_oder').on('click', function() {
         $('#modal_chi_tiet').modal('show')
+        let order_id = $(this).data('orderid');
+        let apiOrderDetail = '{{route("product.order.detail")}}';
+       $.ajax({
+           url: apiOrderDetail,
+           method: "POST",
+           data: {
+               id: order_id,
+               _token: '{{csrf_token()}}'
+           },
+           dataType: 'json',
+           success: function(response) {
+                if(response.data){
+                    $("#modal_name").val(response.data.name);
+                    $("#modal_address").val(response.data.address);
+                    $("#modal_phone").val(response.data.phone_number);
+                    $("#modal_note").val(response.data.note);
+                }else{
+                    swal("Đơn đặt hàng không tồn tại", "", "warning");
+                }
+           }
+           
+       })
     })
 
     $('.btn_huy_don').on('click', function() {
-       let appointment_id = $(this).data('orderid');
+       let oder_id = $(this).data('orderid');
         swal({
 		title: "Bạn chắc chắn muốn hủy đơn?",
 		text: "Nếu chắc chắn ấn ĐỒNG Ý không ấn Từ chối!",
@@ -162,24 +164,21 @@ $(document).ready(function() {
 		closeOnConfirm: true,
 	},
 	function(){
-       let apiOtp = '{{route("appointment.apiOtp")}}';
+       let apiOderDelete = '{{route("product.oder.delete")}}';
        $.ajax({
-           url: apiOtp,
+           url: apiOderDelete,
            method: "POST",
            data: {
-               id: appointment_id,
+               id: oder_id,
                _token: '{{csrf_token()}}'
            },
            dataType: 'json',
            success: function(response) {
                 if(response.data){
-                    $('#modal_otp').modal('show')
-                    $('.modal-xac-nhan-otp').attr('name',response.data);
-                    $('.modal-xac-nhan-otp').attr('id','id_huy_don');
-                    //set trước name là id apppoinment cho nút chuyển lịch
-                    $('.modal_conver_appointment').attr('name',response.data);
+                    $("td.order_status"+response.data).attr('name');
+                    $("td.order_status"+response.data ).html('Đã huỷ');
                 }else{
-                    swal("Đơn đặt lịch không tồn tại", "", "warning");
+                    swal("Đơn đặt hàng không tồn tại", "", "warning");
                 }
            }
            

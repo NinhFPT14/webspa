@@ -9,8 +9,8 @@ Giới thiệu
                 <div class="col-12">
                     <div class="breadcrumb_content">
                         <ul>
-                            <li><a href="">Trang Chủ</a></li>
-                            <li><a href="{{route('about')}}">Giới Thiệu</a></li>
+                            <li><a href="{{route('home')}}">Trang Chủ</a></li>
+                            <li><a>Giới Thiệu</a></li>
                         </ul>
                     </div>
                 </div>
@@ -31,13 +31,10 @@ Giới thiệu
                     </div>
                     <div class="col-lg-6 col-md-12">
                         <div class="about_content">
-                            <h1>Chào Mừng Bạn Đến Với SPA QUEEN BEAUTY</h1>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident ducimus id mollitia
-                                quisquam accusamus recusandae enim dolorem vitae laborum amet molestiae, molestias
-                                alias, neque impedit, assumenda corporis. Facere esse, error? Molestias explicabo
-                                voluptate, odit excepturi molestiae pariatur facilis facere, sunt laborum earum tenetur
-                                inventore! Error voluptatum iusto quidem officia, et omnis cupiditate rem, tenetur odit
-                                explicabo adipisci totam, eius?</p>
+                            <h1>CHÀO MỪNG BẠN ĐẾN VỚI QUEEN SPA</h1>
+                            <p><strong>QUEEN SPA</strong> là thương hiệu Spa chuyên dịch vụ làm đẹp hàng đầu Thái Nguyên nói riêng và khu vực phía bắc nói chung.
+                        Không ngừng nâng cấp dịch vụ, không gian và thiết bị cho khách hàng. Queen Spa tự tin khẳng định là thương hiệu làm đẹp <strong>UY TÍN – CHẤT LƯỢNG – AN TOÀN</strong>. Với sứ mệnh “đánh thức vẻ đẹp tiềm ẩn của bạn”, Chúng tôi hướng đến dịch vụ làm đẹp nhẹ nhàng hiệu quả với mức giá phù hợp cho mọi người. Nhận được niềm tin của khách hàng, là thành tựu lớn nhất với chúng tôi
+                        </p>
                            
                         </div>
                     </div>
