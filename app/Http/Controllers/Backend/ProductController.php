@@ -23,6 +23,9 @@ class ProductController extends Controller
         $category = Category::where('type',0)->get();
         return view('backend.products.add',compact('category'));
     }
+    public function order(){
+        return view('backend.products.orderProduct');
+    }
     public function store(AddProductRequest $request){
         $data = $request->all();
         unset($data['_token'],$data['image']);

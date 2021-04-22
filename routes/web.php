@@ -129,6 +129,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}','Backend\ProductController@update')->name('updateProduct');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductController@status')->name('statusProduct');
         Route::post('/tim-kiem-san-pham','Backend\ProductController@search')->name('product.search');
+        Route::get('/danh-sach-don-dat-hang','Backend\ProductController@order')->name('product.order.admin');
     });
 
     //LogoController
