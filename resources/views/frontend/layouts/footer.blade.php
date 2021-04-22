@@ -59,16 +59,13 @@
                     </div>
                     <div class="col-lg-3 col-md-4">
                         <div class="widgets_container widget_newsletter">
-                            <h3>Đăng Ký</h3>
+                            <h3>Thời Gian Làm Việc</h3>
                             <div class="newsletter_desc">
-                                <p>Nhập số điện thoại để nhận thông tin ưu đãi sắp tới</p>
+                                <p>Giờ Mở Cửa : 08:00 AM</p>
+                                <p>Giờ Đóng cửa : 21:00 PM</p>
+                                <p><span class="text-indigo-900">QUEENSPA</span> mở cửa các ngày trong tuần</p>
                             </div>
-                            <div class="newsletter_form">
-                                <form action="#">
-                                    <input placeholder="Nhập số điện thoại" type="text">
-                                    <button type="submit"><i class="ion-android-mail"></i></button>
-                                </form>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -76,7 +73,7 @@
                         <div class="widgets_container">
                             <h3>Fanpage</h3>
                             <div class="instagram_gallery">
-                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F1998-Confessions-104391394563784%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F1998-Confessions-104391394563784%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="250" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 
                             </div>
                         </div>
@@ -85,21 +82,5 @@
                 </div>
             </div>
         </div>
-       <div class="footer_bottom" style="font-family: 'Times New Roman', Times, serif;background-image:url('./frontEnd/img/bg/bg-breadcrumb.jpg ')">      
-            <div class="container">
-               <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="copyright_area ">
-                        <h1 class=""> <span class="text-3xl " style="color: #AE307C;"> Queen Spa</span><span class="text-2xl"> nơi vẻ đẹp tỏa sáng</span></h1>
-                        <h1> <span class="text-xl">HOTLINE:0315586426</span></h1>
-                        <h1><span class="text-xl">EMAIL:QUEENSPA@GMAIL.COM</span></h1>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5  flex justify-center" >
-                        <div class="footer_payment  " >
-                            <img cl  src="./frontEnd/img/logo/logodatlich1.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>  
+     
     </footer>

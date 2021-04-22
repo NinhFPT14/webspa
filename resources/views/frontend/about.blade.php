@@ -26,7 +26,7 @@ Giới thiệu
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="about_thumb">
-                            <img src="frontEnd/img/about/about1.jpg" alt="">
+                            <img src="frontEnd/img/bg/anh_menu.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
@@ -43,58 +43,12 @@ Giới thiệu
             <!--about section end-->
 
             <!--counterup area -->
-            <div class="counterup_section">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single_counterup">
-                            <div class="counter_img">
-                                <img src="frontEnd/img/about/count.png" alt="">
-                            </div>
-                            <div class="counter_info">
-                                <h2 class="counter_number">2170</h2>
-                                <p>Khách hàng đã tham gia</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single_counterup count-two">
-                            <div class="counter_img">
-                                <img src="frontEnd/img/about/count2.png" alt="">
-                            </div>
-                            <div class="counter_info">
-                                <h2 class="counter_number">100</h2>
-                                <p>Đạt 100 giải thưởng về thẩm mỹ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single_counterup">
-                            <div class="counter_img">
-                                <img src="frontEnd/img/about/count3.png" alt="">
-                            </div>
-                            <div class="counter_info">
-                                <h2 class="counter_number">14</h2>
-                                <p>14 Năm phát triển</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                        <div class="single_counterup count-two">
-                            <div class="counter_img">
-                                <img src="frontEnd/img/about/count4.png" alt="">
-                            </div>
-                            <div class="counter_info">
-                                <h2 class="counter_number">2015</h2>
-                                <p>Được bình chọn là spa yêu thích</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <!--counterup end-->
-
+          
             <!--about progress bar -->
             <div class="about_progressbar">
+                
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-6">
                         <div class="progressbar_inner">
@@ -129,6 +83,24 @@ Giới thiệu
                     <div class="col-lg-6 col-md-6">
                         <div class="about__img">
                             <img src="frontEnd/img/about/about2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about_section">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about_thumb">
+                            <img src="frontEnd/img/about/gioi-thieu-2.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about_content">
+                            <h1>Cập nhật công nghệ hiện đại</h1>
+                            <p><strong>QUEEN SPA</strong> 
+                                Không ngừng cải tiến về chuyên môn và trang thiết bị, khách hàng khi tới với QUEEN Beauty & Spa sẽ được trải nghiệm những liệu trình làm đẹp công nghệ cao và hiện đại như Thermage - Siêu trẻ hoá da ngay tức khắc, HIFU, Meso therapy, PRP, Điều trị mụn laser,...
+                        </p>
+                           
                         </div>
                     </div>
                 </div>

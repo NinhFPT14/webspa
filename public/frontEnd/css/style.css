@@ -946,7 +946,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   position: relative;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 1920px) {
   .main_menu {
     margin-left: 28px;
   }
@@ -995,7 +995,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #ffffff;
   position: relative;
 }
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 992px) and (max-width: 1920px) {
   .main_menu nav > ul > li > a {
     padding: 27px 19px 27px 19px;
   }
@@ -6589,14 +6589,14 @@ text-align: center;
 
 /* 10. shop page css here */
 .breadcrumbs_area {
-  background: #f9f9f9 url("../img/bg/bg-breadcrumb.jpg") no-repeat center;
+  background: #f9f9f9 url("../img/bg/ban1.jpg") no-repeat center;
 }
 
 .breadcrumb_content {
   padding: 75px 0;
   text-align: center;
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: px) {
   .breadcrumb_content {
     padding: 50px 0;
   }
@@ -6611,7 +6611,7 @@ text-align: center;
   line-height: 36px;
   font-weight: 900;
   text-transform: uppercase;
-  color: #ffffff;
+  color:black;
   margin-bottom: 15px;
 }
 @media only screen and (max-width: 767px) {
@@ -6632,7 +6632,7 @@ text-align: center;
   margin-right: 13px;
   padding-right: 23px;
   position: relative;
-  color: #ffffff;
+  color: black;
 }
 .breadcrumb_content ul li a:hover {
   color: #83b53b;

@@ -15,85 +15,77 @@ Bảng xếp lịch
 
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
-<div class="p-4">
-    <div class=" d-flex align-items-center">
-        <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Tên KH, SĐT, Mã lịch hẹn" aria-label="First name">
+<div class="grid grid-cols-3 gap-4   pl-4">
+<div class="col-span-2">
+    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+        <div class="dhx_cal_navline">
+            <div class="dhx_cal_prev_button">&nbsp;</div>
+            <div class="dhx_cal_next_button">&nbsp;</div>
+            <div class="dhx_cal_today_button"></div>
+            <div class="dhx_cal_date"></div>
         </div>
-        <div class="col-md-2">
-            <input type="date" class="form-control" placeholder="" aria-label="First name">
-        </div>
+    <div class="dhx_cal_header">
     </div>
-    <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3 border border-success ">
-        <!-- Bảng xếp lịch -->
-            <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-                <div class="dhx_cal_navline">
-                    <div class="dhx_cal_prev_button">&nbsp;</div>
-                    <div class="dhx_cal_next_button">&nbsp;</div>
-                    <div class="dhx_cal_today_button"></div>
-                    <div class="dhx_cal_date"></div>
-                </div>
-            <div class="dhx_cal_header">
-            </div>
-            <div class="dhx_cal_data">
-        </div>
-        <!-- Bảng xếp lịch kết thúc -->
-    </div>
-        </div>
+    <div class="dhx_cal_data">
+</div>
+<!-- Bảng xếp lịch kết thúc -->
+</div>
 
-        <div>
-            <form action="{{route('searchTimeAppointment')}}" method="POST">
-                @csrf
-                <div class="flex">
-                    <input type="date" name="time" class="form-control" value="" placeholder=""
-                        aria-label="First name">
-                    <button type="submit" class="form-control btn btn-primary">Tìm kiếm</button>
-                </div>
-            </form>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">STT-Tên</th>
-                        <th scope="col">SĐT</th>
-                        <th scope="col">Xác nhận</th>
-                        <th scope="col">Xếp lịch</th>
-                        <th scope="col">Trạng thái</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($appointment as $value)
-                    <tr>
-                        <td>{{ $value->id }}<br>{{$value->name}}</td>
-                        <td>{{$value->phone}}</td>
-                        <td><button type="button" class="btn btn-success btn-xac-nhan " data-orderid="{{$value->id}}"><i
-                                    class="fas fa-fw fa-edit"></i></button></td>
-                        <td><button type="button" class="btn btn-success btn-xep-lich " data-orderid="{{$value->id}}"><i
-                                        class="fas fa-calendar"></i></button></td>
-                        
-                        @if($value->status == 0)
-                            <td><a class="btn btn-danger" >Chưa xác thực OTP</a></td>
-                        @elseif($value->status == 1)
-                            <td><a class="btn btn-warning" >Đã xác thực OTP</a></td>
-                        @elseif($value->status == 2)
-                        <td><a class="btn btn-info" >Đã lên lịch</a></td>
-                        @elseif($value->status == 3)
-                        <td><a class="btn btn-success" >Làm xong</a></td>
-                        @elseif($value->status == 4)
-                        <td><a class="btn btn-dark" >Hủy</a></td>
-                        @endif
-                        
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <div class="d-flex justify-content-center">
-                <ul class="pagination pagination-sm m-t-none m-b-none">
-                    {!!$appointment->links()!!}
-                </ul>
+</div>
+<div class=" col-span">
+    <div>
+        <form action="{{route('searchTimeAppointment')}}" method="POST">
+            @csrf
+            <div class="flex">
+                <input type="date" name="time" class="form-control" value="" placeholder=""
+                    aria-label="First name">
+                <button type="submit" class="form-control btn btn-primary">Tìm kiếm</button>
             </div>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">STT-Tên</th>
+                    <th scope="col">SĐT</th>
+                    <th scope="col">Xác nhận</th>
+                    <th scope="col">Xếp lịch</th>
+                    <th scope="col">Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($appointment as $value)
+                <tr>
+                    <td>{{ $value->id }}<br>{{$value->name}}</td>
+                    <td>{{$value->phone}}</td>
+                    <td><button type="button" class="btn btn-success btn-xac-nhan " data-orderid="{{$value->id}}"><i
+                                class="fas fa-fw fa-edit"></i></button></td>
+                    <td><button type="button" class="btn btn-success btn-xep-lich " data-orderid="{{$value->id}}"><i
+                                    class="fas fa-calendar"></i></button></td>
+                    
+                    @if($value->status == 0)
+                        <td><a class="btn btn-danger" >Chưa xác thực OTP</a></td>
+                    @elseif($value->status == 1)
+                        <td><a class="btn btn-warning" >Đã xác thực OTP</a></td>
+                    @elseif($value->status == 2)
+                    <td><a class="btn btn-info" >Đã lên lịch</a></td>
+                    @elseif($value->status == 3)
+                    <td><a class="btn btn-success" >Làm xong</a></td>
+                    @elseif($value->status == 4)
+                    <td><a class="btn btn-dark" >Hủy</a></td>
+                    @endif
+                    
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            <ul class="pagination pagination-sm m-t-none m-b-none">
+                {!!$appointment->links()!!}
+            </ul>
         </div>
     </div>
+</div>
+
 </div>
 
 
