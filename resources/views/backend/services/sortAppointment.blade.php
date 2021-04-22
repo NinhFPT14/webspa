@@ -32,7 +32,7 @@ Bảng xếp lịch
 </div>
 
 </div>
-<div class=" col-span">
+<div class=" col-span-1">
     <div>
         <form action="{{route('searchTimeAppointment')}}" method="POST">
             @csrf
