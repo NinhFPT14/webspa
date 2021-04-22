@@ -10,6 +10,8 @@ use App\Model\ProductImage;
 use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\EditProductRequest;
 use Illuminate\Support\Str;
+use App\Model\Oder;
+use App\Model\ProductOder;
 use Illuminate\Support\Facades\Storage;
 use File;
 
@@ -24,7 +26,8 @@ class ProductController extends Controller
         return view('backend.products.add',compact('category'));
     }
     public function order(){
-        return view('backend.products.orderProduct');
+        $data = Oder::where('status','!=',5)->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.products.orderProduct',compact('data'));
     }
     public function store(AddProductRequest $request){
         $data = $request->all();
