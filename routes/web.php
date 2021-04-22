@@ -170,18 +170,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/tim-kiem','Backend\VoucherController@search')->name('VoucherService.search');
     });
 
-    // vouchers product
-    Route::group(['prefix' => 'ma-giam-gia-san-pham'], function() {
-        Route::get('/trang-tao','Backend\ProductVoucherController@add')->name('addVoucherProduct');
-        Route::post('/tao-moi','Backend\ProductVoucherController@store')->name('saveVoucherProduct');
-        Route::get('/danh-sach','Backend\ProductVoucherController@list')->name('listVoucherProduct');
-        Route::get('/xoa/{id}','Backend\ProductVoucherController@delete')->name('deleteVoucherProduct');
-        Route::get('/trang-sua/{id}', 'Backend\ProductVoucherController@edit')->name('editVoucherProduct');
-        Route::post('/cap-nhat/{id}', 'Backend\ProductVoucherController@update')->name('updateVoucherProduct');
-        Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductVoucherController@status')->name('statusVoucherProduct');
-        Route::post('/tim-kiem','Backend\ProductVoucherController@search')->name('VoucherProduct.search');
-    });
-
     // Ghế làm locationCOntroller
     Route::group(['prefix' => 'ghe-lam'], function() {
         Route::get('/trang-tao','Backend\LocationController@add')->name('addLocation');
