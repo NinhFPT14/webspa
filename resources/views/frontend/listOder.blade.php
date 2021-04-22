@@ -111,6 +111,25 @@ Danh sách đơn đặt lịch
                     <label for="exampleInputPassword1">Lời nhắn</label>
                     <textarea class="form-control"  name="note" id="modal_detail_note" rows="5"></textarea>
                 </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Tên sản phẩm </th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal_tbody">
+                    </tbody>
+                    <thead>
+                        <tr>
+                        <th scope="col">Tổng tiền </th>
+                        <th scope="col"></th>
+                        <th scope="col" class="modal_total_monney_detail"></th>
+                        </tr>
+                    </thead>
+                </table>
+                <p class="modal_created_at"></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">TẮT</button>
@@ -143,6 +162,20 @@ $(document).ready(function() {
                     $("#modal_address").val(response.data.address);
                     $("#modal_phone").val(response.data.phone_number);
                     $("#modal_note").val(response.data.note);
+                    $("p.modal_created_at").html('Thời gian đặt : ' + response.data.created_at );
+                    $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
+                }
+                if(response.product){
+                    let output = "";
+                    for(let i = 0; i < response.product.length; i++) {
+                        var obj = response.product[i];
+                        output += `<tr>
+                        <th scope="row"> `+obj.name+`</th>
+                        <td> `+obj.quality+`</td>
+                        <td> `+obj.price+` VNĐ</td>
+                        </tr>`;
+                    }
+                    $("#modal_tbody").html(output);
                 }else{
                     swal("Đơn đặt hàng không tồn tại", "", "warning");
                 }
@@ -175,8 +208,8 @@ $(document).ready(function() {
            dataType: 'json',
            success: function(response) {
                 if(response.data){
-                    $("td.order_status"+response.data).attr('name');
                     $("td.order_status"+response.data ).html('Đã huỷ');
+                    $("td.order_status"+response.data).attr('class','text-danger');
                 }else{
                     swal("Đơn đặt hàng không tồn tại", "", "warning");
                 }
