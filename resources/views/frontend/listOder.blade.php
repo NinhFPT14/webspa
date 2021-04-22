@@ -162,17 +162,18 @@ $(document).ready(function() {
                     $("#modal_address").val(response.data.address);
                     $("#modal_phone").val(response.data.phone_number);
                     $("#modal_note").val(response.data.note);
-                    $("p.modal_created_at").html('Thời gian đặt : ' + response.data.created_at );
+                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:MM:SS'));
                     $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
                 }
                 if(response.product){
                     let output = "";
                     for(let i = 0; i < response.product.length; i++) {
                         var obj = response.product[i];
+                        var price = new Intl.NumberFormat().format(obj.price);
                         output += `<tr>
                         <th scope="row"> `+obj.name+`</th>
                         <td> `+obj.quality+`</td>
-                        <td> `+obj.price+` VNĐ</td>
+                        <td> `+price+` VNĐ</td>
                         </tr>`;
                     }
                     $("#modal_tbody").html(output);
