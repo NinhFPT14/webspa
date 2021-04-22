@@ -26,13 +26,6 @@
         Quản lý
     </div>
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Tài khoản </span>
-        </a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#category" aria-expanded="true"
             aria-controls="category">
             <i class="fas fa-fw fa-th-list"></i>
@@ -93,7 +86,6 @@
         <div id="voucher_service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('listVoucherService') }}">Dịch vụ</a>
-                <a class="collapse-item" href="{{ route('listVoucherProduct') }}">Sản phẩm</a>
             </div>
         </div>
     </li>
