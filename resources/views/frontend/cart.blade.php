@@ -47,7 +47,7 @@ Giỏ Hàng
                             <?php 
                               $cart=\Cookie::get('cartId');
                               $cart=json_decode($cart);
-                              $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->get();
+                              $product = DB::table('products')->where('status',0)->whereIn('id', $cart)->orderBy('id', 'DESC')->get();
                             ?>
                             @foreach ($product as $value)
                             <tr id="key{{$value->id}}">
