@@ -22,7 +22,10 @@
     <link href="backEnd/css/sb-admin-2.min.css" rel="stylesheet">
     @yield('link')
 </head>
+<style>
 
+
+</style>
 <body id="page-top" class="sidebar-toggled" onload="init();">
 
     <!-- Page Wrapper -->
@@ -88,9 +91,6 @@
     </script>
     <script src="{{asset('ckeditor/ckeditor.js')}}"> </script>
     <script src="{{asset('ckfinder/ckfinder.js')}}"></script>
-    <script>
-	CKFinder.start();
-    </script>
     @yield('ckeditor')
     @yield('js')
 </body>
