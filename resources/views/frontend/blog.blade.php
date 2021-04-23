@@ -27,6 +27,40 @@ Bài viết
     <div class="main_blog_area">
         <div class="container">
             <div class="row">
+            <div class="col-lg-3 col-md-12">
+                    <div class="blog_sidebar_widget">
+                        <div class="widget_list widget_categories">
+                            <h2>Danh Mục Bài Viết</h2>
+                            <ul>
+                            <?php
+                             $category = DB::table('categories')->where('type',2)->where('status',0)->get();
+                            ?>
+                            @foreach($category as $item)
+                            <?php
+                             $post = DB::table('posts')->where('category_id',$item->id)->get();
+                            ?>
+                            <li>
+                                <a href="{{route('danhmucbaiviet',['id'=> $item->id])}}">{{$item->name}}
+                                    <span>({{count($post)}})</span></a>
+                            </li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        <div class="widget_list widget_search mb-30">
+                            <h2>Tìm Kiếm</h2>
+                            <form action="{{route('blog.search')}}" method="GET">
+                                @csrf
+                            <div class="input-group">
+                                <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm...."
+                                    aria-label="Search" aria-describedby="basic-addon2" name="name" >
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                    </button>
+                            </div>
+                            </form>
+                        </div>
+                      
+                    </div>
+                </div>
                 <div class="col-lg-9 col-md-12">
                     <div class="blog_wrapper">
                         <div class="blog_header">
@@ -74,40 +108,7 @@ Bài viết
                         @endforeach
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-12">
-                    <div class="blog_sidebar_widget">
-                        <div class="widget_list widget_categories">
-                            <h2>Danh Mục Bài Viết</h2>
-                            <ul>
-                            <?php
-                             $category = DB::table('categories')->where('type',2)->where('status',0)->get();
-                            ?>
-                            @foreach($category as $item)
-                            <?php
-                             $post = DB::table('posts')->where('category_id',$item->id)->get();
-                            ?>
-                            <li>
-                                <a href="{{route('danhmucbaiviet',['id'=> $item->id])}}">{{$item->name}}
-                                    <span>({{count($post)}})</span></a>
-                            </li>
-                            @endforeach
-                            </ul>
-                        </div>
-                        <div class="widget_list widget_search mb-30">
-                            <h2>Tìm Kiếm</h2>
-                            <form action="{{route('blog.search')}}" method="GET">
-                                @csrf
-                            <div class="input-group">
-                                <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm...."
-                                    aria-label="Search" aria-describedby="basic-addon2" name="name" >
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                    </button>
-                            </div>
-                            </form>
-                        </div>
-                      
-                    </div>
-                </div>
+                
                 <div class="col-12">
                     <!--blog pagination area start-->
                     <div class="blog_pagination mt-60">

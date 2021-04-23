@@ -25,46 +25,6 @@ Dịch Vụ
 <div class="main_blog_area">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 col-md-12">
-                <div class="blog_wrapper">
-                    <div class="single_blog">   
-                        @foreach ($data as $value)
-                        <div class="blog_container">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-5">
-                                    <div class="blog_thumb">
-                                        <a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"><img  src="{{$value->image}}" style="width:300px" alt="" ></a>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-8 col-md-7">
-                                    <div class="blog_content">
-                                        <div class="blog_title">
-                                            <h2><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}">{{$value->name}}</a></h2>
-                                        </div>
-                                        <p class="blog_desc">{!! $value->description !!}</p>
-                                        <div class="blog_post">
-                                            <ul>
-                                                <li class="post_author">{{number_format($value->discount)}} vnđ</li>
-                                                <li class="post_date" style="text-decoration-line:line-through">{{number_format($value->price)}} vnđ</li>
-                                            </ul>
-                                        </div><br>
-                                        <a class="data_service" data-orderid="{{$value->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><br><br>
-                        @endforeach
-                        <div class="shop_toolbar t_bottom">
-                            <div class="pagination">
-                                <ul>
-                                    <li class="current">{!!$data->links()!!}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-3 col-md-12">
                 <div class="blog_sidebar_widget">
                     <div class="widget_list widget_categories">
@@ -95,6 +55,42 @@ Dịch Vụ
                     </div>
                 </div>
             </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="blog_wrapper">
+                    <div class="single_blog">   
+                        @foreach ($data as $value)
+                        <div class="blog_container">
+                            <div class="row">
+                                
+                                <div class="col-lg-8 col-md-7">
+                                    <div class="blog_content">
+                                        <div class="blog_title">
+                                            <h2><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}">{{$value->name}}</a></h2>
+                                        </div>
+                                        <p class="blog_desc">{!! $value->description !!}</p>
+                                        <div class="blog_post">
+                                            <ul>
+                                                <li class="post_author">{{number_format($value->discount)}} vnđ</li>
+                                                <li class="post_date" style="text-decoration-line:line-through">{{number_format($value->price)}} vnđ</li>
+                                            </ul>
+                                        </div><br>
+                                        <a class="data_service" data-orderid="{{$value->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><br><br>
+                        @endforeach
+                        <div class="shop_toolbar t_bottom">
+                            <div class="pagination">
+                                <ul>
+                                    <li class="current">{!!$data->links()!!}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>
