@@ -40,7 +40,7 @@ Danh sách danh mục
                         <tr>
                             <th scope="col">#ID</th>
                             <th scope="col">Tên</th>
-                            <th scope="col">Loại</th>
+                            <th scope="col">Danh mục</th>
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Hành động</th>
                         </tr>
