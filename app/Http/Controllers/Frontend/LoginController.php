@@ -15,10 +15,7 @@ class LoginController extends Controller
     }
 
     public function getLogin(Request $request){
-        if (Auth::attempt(['phone_number' => $request->phone, 'password' => $request->password]) && Auth::user()->role == 0) {
-            return redirect()->route('home');
-        }
-        else if(Auth::attempt(['phone_number' => $request->phone, 'password' => $request->password]) && Auth::user()->role == 1){
+        if (Auth::attempt(['phone_number' => $request->phone, 'password' => $request->password])) {
             return redirect()->route('dashboard');
         }else{
             alert()->error('Đăng nhập thất bại','Tài khoản hoặc mật khẩu không đúng');
