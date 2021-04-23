@@ -128,11 +128,10 @@
                 src="backEnd/img/undraw_profile.svg">
         </a>
         <!-- Dropdown - User Information -->
-        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-            aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
+            <a class="dropdown-item modal_otp" data-userid ="{{Auth::user()->id}}">
                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Thông tin tài khoản
+                Đổi mật khẩu
             </a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item"  data-toggle="modal" data-target="#logoutModal">
@@ -201,6 +200,56 @@
           </div>
         </div>
       </div>    
+
+<!-- Modal otp -->
+<div class="modal fade" id="modalOtp" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header btn-success">
+        <h5 class="modal-title" id="staticBackdropLabel">XÁC THỰC OTP ĐỔI MẬT KHẨU</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nhập mã otp</label>
+            <input type="text" class="form-control" id="code_otp" >
+            <p id="thong_bao_otp" class="text-danger"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-success btn-gui-otp" name="" data-userid ="{{Auth::user()->id}}">Gửi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal đổi mật khẩu -->
+<div class="modal fade" id="modalPassword" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header btn-success">
+        <h5 class="modal-title" id="staticBackdropLabel">ĐỔI MẬT KHẨU</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label for="exampleInputPassword1">Mật khẩu mới</label>
+            <input type="password" class="form-control" id="password" >
+            <p id="thong_bao_mk" class="text-danger"></p>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nhập lại</label>
+            <input type="password" class="form-control" id="password_confirm" >
+            <p id="thong_bao_mk2" class="text-danger"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-success btn-doi-mat-khau" name="" data-userid ="{{Auth::user()->id}}">Gửi</button>
+      </div>
+    </div>
+  </div>
+</div>
 @section("js")
 <script src="momentjs/moment.min.js"></script>
 <script>
@@ -223,6 +272,89 @@ $(document).ready(function() {
                 $('#modalPhone').val(appointmentData.phone_number);
                 $('#modalCreated').val(moment(new Date(appointmentData.created_at)).format('DD-MM-YYYY HH:MM:SS'));
                 $('#modalContent').val(appointmentData.content);
+            }
+        })
+    })
+
+
+    $('.modal_otp').on('click', function() {
+        $("p#thong_bao_otp" ).html(' ');
+        $("p#thong_bao_mk" ).html(' ');
+        $("p#thong_bao_mk2" ).html(' ');
+        $('#modalOtp').modal('show');
+        let id = $(this).data('userid');
+        let apiOtp = '{{route("login.otp")}}';
+        $.ajax({
+            url: apiOtp,
+            method: "POST",
+            data: {
+                id: id,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(response) {
+            }
+        })
+    })
+
+    $('.btn-gui-otp').on('click', function() {
+        let code = $("#code_otp").val();
+        let id = $(this).data('userid');
+        let apiConfirmOtp = '{{route("login.confirm.otp")}}';
+        $.ajax({
+            url: apiConfirmOtp,
+            method: "POST",
+            data: {
+                id: id,
+                code:code,
+                _token: '{{csrf_token()}}'
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.data){
+                    $('#modalOtp').modal('hide');
+                    $("#code_otp").val( ' ');
+                    $('#modalPassword').modal('show');
+                }else if(response.messages){
+                    $("p#thong_bao_otp" ).html('- ' + response.messages.code);
+                }
+                else{
+                    $("p#thong_bao_otp" ).html('- ' + response.fail);
+                }
+            }
+        })
+    })
+
+    $('.btn-doi-mat-khau').on('click', function() {
+        let password = $("#password").val();
+        let password_confirm = $("#password_confirm").val();
+        let id = $(this).data('userid');
+        let apiConfirmOtp = '{{route("login.password")}}';
+        $.ajax({
+            url: apiConfirmOtp,
+            method: "POST",
+            data: {
+                id: id,
+                password:password,
+                password_confirm:password_confirm,
+                _token: '{{csrf_token()}}',
+            },
+            dataType: 'json',
+            success: function(response) {
+                if(response.data){
+                    $('#modalPassword').modal('hide')
+                    swal({
+                        title: "Thành công!",
+                        text: "Đổi mật khẩu thành công",
+                        icon: "success",
+                        button: "OK",
+                        });
+                }else if(response.messages.password){
+                    $("p#thong_bao_mk" ).html('- ' + response.messages.password);
+                }
+                else{
+                    $("p#thong_bao_mk2" ).html('- ' + response.messages.password_confirm);
+                }
             }
         })
     })

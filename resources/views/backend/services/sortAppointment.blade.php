@@ -10,7 +10,8 @@ Bảng xếp lịch
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 
-    <script src="{{ asset('jsCalendar/dhtmlxscheduler.js') }}" type="text/javascript" charset="utf-8"></script>
+ 
+ miend">32    <script src="{{ asset('jsCalendar/dhtmlxscheduler.js') }}" type="text/javascript" charset="utf-188"></script>
     <script src=" {{ asset('jsCalendar/ext/dhtmlxscheduler_timeline.js') }} " type="text/javascript" charset="utf-8"></script>
 
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
@@ -349,114 +350,99 @@ $(document).ready(function() {
                 swal("Thành công", "xác nhận thành công ấn ok để tiếp tục !", "success");
             }
         })
-    })
-});
 </script>
 <script type="text/javascript" charset="utf-8">
-        function init() {
+		window.addEventListener("DOMContentLoaded", function(){
 
-            scheduler.locale.labels.timeline_tab = "Timeline";
-            scheduler.locale.labels.section_custom = "Section";
-            scheduler.locale.labels.timeline_scale_header = "Sections";
-            scheduler.config.details_on_create = true;
-            scheduler.config.details_on_dblclick = true;
+			scheduler.locale.labels.timeline_tab = "Timeline";
+			scheduler.locale.labels.section_custom = "Section";
+			scheduler.config.details_on_dblclick = false;
 
-            //===============
-            //Configuration
-            //===============
-            var sections = [];
+			//===============
+			//Configuration
+			//===============
+			var sections = [
+				{key:1, label:"Ghế 1"},
+				{key:2, label:"Ghế 2"},
+				{key:3, label:"Ghế 3"},
+				{key:4, label:"Ghế 4"},
+                {key:5, label:"Ghế 4"},
+                {key:6, label:"Ghế 5"},
+                {key:7, label:""},
+                {key:8, label:""},
+                {key:9, label:""},
+                {key:10, label:""}
+			];
 
-            for (var i = 1; i < 7; i++) {
-                sections.push({
-                    key: i,
-                    label: "Ghế " + i
-                })
-            } // Lưu & Export Ghế làm
-            var days = 1;
+			var durations = {
+				day: 24 * 60 * 60 * 1000,
+				hour: 60 * 60 * 1000,
+				minute: 60 * 1000
+			};
 
-            scheduler.createTimelineView({
-                name: "timeline",
-                x_unit: "hour",
-                x_date: "%H:%i",
-                x_step: 1,
-                x_size: 24 * days,
-                scrollable: true,
-                scroll_position: new Date(2021, 4, 14),
+			var get_formatted_duration = function(start, end) {
+				var diff = end - start;
 
-                column_width: 70,
-                x_length: 24 * days,
-                y_unit: sections,
-                y_property: "section_id",
-                render: "bar",
-                second_scale: {
-                    x_unit: "day", // unit which should be used for second scale
-                    x_date: "%F %d" // date format which should be used for second scale, "July 01"
-                }
-            });
+				var days = Math.floor(diff / durations.day);
+				diff -= days * durations.day;
+				var hours = Math.floor(diff / durations.hour);
+				diff -= hours * durations.hour;
+				var minutes = Math.floor(diff / durations.minute);
 
-            //===============
-            //Data loading
-            //===============
-            scheduler.config.lightbox.sections = [{
-                name: "description",
-                height: 50,
-                map_to: "text",
-                type: "textarea",
-                focus: true
-            }, {
-                name: "custom",
-                height: 30,
-                type: "select",
-                options: sections,
-                map_to: "section_id"
-            }, {
-                name: "time",
-                height: 72,
-                type: "time",
-                map_to: "auto"
-            }];
-
-            var start = new Date(2021, 4, 14)
-            scheduler.init('scheduler_here', start, "timeline");
-            scheduler.parse(generateEvents(start, scheduler.date.add(start, days, "day"), sections.length * 10, sections));
+				var results = [];
+				if (days) results.push(days + " days");
+				if (hours) results.push(hours + " hours");
+				if (minutes) results.push(minutes + " minutes");
+				return results.join(", ");
+			};
 
 
-            function randomDate(date1, date2) {
-                function getRandomArbitrary(min, max) {
-                    return Math.random() * (max - min) + min;
-                }
-                var date1 = date1;
-                var date2 = date2;
-                date1 = new Date(date1).getTime();
-                date2 = new Date(date2).getTime();
-                if (date1 > date2) {
-                    return new Date(getRandomArbitrary(date2, date1))
-                } else {
-                    return new Date(getRandomArbitrary(date1, date2))
+			var resize_date_format = scheduler.date.date_to_str(scheduler.config.hour_date);
 
-                }
-            }
+			scheduler.templates.event_bar_text = function(start, end, event) {
+				var state = scheduler.getState();
+				if (state.drag_id == event.id) {
+					return resize_date_format(start) + " - " + resize_date_format(end) + " (" + get_formatted_duration(start, end) + ")";
+				}
+				return event.text; // default
+			};
 
-            function randomIntFromInterval(min, max) {
-                return Math.floor(Math.random() * (max - min + 1) + min);
-            }
+			scheduler.createTimelineView({
+				name:	"timeline",
+				x_unit:	"minute",
+				x_date:	"%H:%i",
+				x_step:	30,
+				x_size: 24,
+				x_start: 18,
+				x_length:	48,
+				y_unit:	sections,
+				y_property:	"section_id",
+				render:"bar",
+				event_dy: "full"
+			});
 
-            function generateEvents(from, to, count, sections) {
-                var evs = [];
-                // Ramdom Data
-                for (var i = 0; i < 9; i++) {
-                    var ev = {
-                        section_id: sections[randomIntFromInterval(0, sections.length - 1)].key,
-                        text: "event " + i,
-                        start_date: randomDate(from, to),
-                        id: scheduler.uid()
-                    }
-                    ev.end_date = scheduler.date.add(ev.start_date, randomIntFromInterval(1, 24), "hour");
-                    evs.push(ev);
-                }
-                return evs;
-            }
-        }
-    </script>
+
+			//===============
+			//Data loading
+			//===============
+			scheduler.config.lightbox.sections = [
+				{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
+				{name:"custom", height:23, type:"select", options:sections, map_to:"section_id" },
+				{name:"time", height:72, type:"time", map_to:"auto"}
+			];
+
+			scheduler.init('scheduler_here', new Date(2017, 5, 30), "timeline");
+			scheduler.parse([
+				{ start_date: "2017-06-30 09:00", end_date: "2017-06-30 12:00", text:"Khách Dịu", section_id:1},
+				{ start_date: "2017-06-30 10:00", end_date: "2017-06-30 16:00", text:"Khách Vip Công", section_id:2},
+				{ start_date: "2017-06-30 10:00", end_date: "2017-06-30 14:00", text:"Khách Vinh", section_id:3},
+				{ start_date: "2017-06-30 12:00", end_date: "2017-06-30 13:00", text:"Khách Thi", section_id:4},
+				{ start_date: "2017-06-30 14:00", end_date: "2017-06-30 16:00", text:"Khách Tú", section_id:5},
+				{ start_date: "2017-06-30 16:00", end_date: "2017-06-30 17:00", text:"Khách Hải", section_id:5},
+				{ start_date: "2017-06-30 16:30", end_date: "2017-06-30 18:00", text:"Khách Ninh", section_id:5},
+			]);
+		});
+</script>
+
 
 @endsection

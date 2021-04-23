@@ -78,6 +78,12 @@ use RealRashid\SweetAlert\Facades\Alert;
         Route::post('/chi-tiet-don','Frontend\AppointmentController@apiDetail')->name('appointment.apiDetail');
     });
 
+
+    //Đổi gửi otp đổi mật khẩu và quên mật khẩu
+    Route::post('/gui-otp-doi-mat-khau-admin','Backend\LoginController@otp')->name('login.otp');
+    Route::post('/xac-nhan-so-dien-thoai','Backend\LoginController@confirmPhone')->name('login.confirm.phone');
+    Route::post('/cap-lai-mat-khau','Backend\LoginController@renewPassword')->name('login.renew.password');
+    
 Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     Route::get('/',function(){
         return view('backend.dashboard');
@@ -129,6 +135,9 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}','Backend\ProductController@update')->name('updateProduct');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\ProductController@status')->name('statusProduct');
         Route::post('/tim-kiem-san-pham','Backend\ProductController@search')->name('product.search');
+        Route::get('/danh-sach-don-dat-hang','Backend\ProductController@order')->name('product.order.admin');
+        Route::post('/doi-trang-thai-don-hang','Backend\ProductController@editStatus')->name('product.edit.admin');
+        Route::post('/tim-kiem-don-hang','Backend\ProductController@orderSearch')->name('product.order.search');
     });
 
     //LogoController
@@ -204,7 +213,9 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}', 'Backend\MapController@update')->name('updateMap');
     });
 
-    
+    // đổi mật khẩu -- route gửi mã otp ở trên name route "login.otp"
+        Route::post('/xac-thuc-otp-doi-mat-khau-admin','Backend\LoginController@confirmOtp')->name('login.confirm.otp');
+        Route::post('/doi-mat-khau-admin','Backend\LoginController@password')->name('login.password');
 
 
 });

@@ -49,7 +49,7 @@
         <div id="product" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{route('listProduct')}}">Danh sách</a>
-                <a class="collapse-item" href="404.html">Quản lý đơn</a>
+                <a class="collapse-item" href="{{route('product.order.admin')}}">Quản lý đơn</a>
             </div>
         </div>
     </li>
