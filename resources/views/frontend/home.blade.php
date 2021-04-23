@@ -239,10 +239,6 @@ Trang chủ
                <div class="col-lg-9">
                    <div class="product_wrapper">
                         <div class="row product_slick_column3">
-                            <?php
-
-                            $favorite_product = DB::table('products')->where('category_id',12)->get();
-                            ?>
                             @foreach ($favorite_product as $value)
                             <div class="col-lg-3">
                                 <div class="single_product">
