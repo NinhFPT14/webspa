@@ -207,7 +207,10 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}', 'Backend\MapController@update')->name('updateMap');
     });
 
-    
+    // login
+        Route::post('/gui-otp-doi-mat-khau-admin','Backend\LoginController@otp')->name('login.otp');
+        Route::post('/xac-thuc-otp-doi-mat-khau-admin','Backend\LoginController@confirmOtp')->name('login.confirm.otp');
+        Route::post('/doi-mat-khau-admin','Backend\LoginController@password')->name('login.password');
 
 
 });
