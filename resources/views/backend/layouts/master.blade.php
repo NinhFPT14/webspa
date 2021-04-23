@@ -23,7 +23,10 @@
     
     @yield('link')
 </head>
+<style>
 
+
+</style>
 <body id="page-top" class="sidebar-toggled" onload="init();">
 
     <!-- Page Wrapper -->
@@ -91,9 +94,6 @@
     <script src="{{asset('ckeditor/ckeditor.js')}}"> </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{asset('ckfinder/ckfinder.js')}}"></script>
-    <script>
-	CKFinder.start();
-    </script>
     @yield('ckeditor')
     @yield('js')
 </body>
