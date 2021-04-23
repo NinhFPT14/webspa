@@ -10,6 +10,8 @@ use App\Model\ProductImage;
 use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\EditProductRequest;
 use Illuminate\Support\Str;
+use App\Model\Oder;
+use App\Model\ProductOder;
 use Illuminate\Support\Facades\Storage;
 use File;
 
@@ -23,6 +25,29 @@ class ProductController extends Controller
         $category = Category::where('type',0)->get();
         return view('backend.products.add',compact('category'));
     }
+    public function order(){
+        $data = Oder::where('status','!=',5)->orderBy('id', 'DESC')->paginate(10);
+        return view('backend.products.orderProduct',compact('data'));
+    }
+
+    public function orderSearch(Request $request){
+        $data = Oder::where('status','!=',5)->where('name', 'like', '%' . $request->name . '%')
+        ->orWhere('id', 'LIKE', '%' . $request->name . '%')
+        ->orWhere('phone_number', 'LIKE', '%' . $request->name . '%')
+        ->orWhere('address', 'LIKE', '%' . $request->name . '%')
+         ->paginate(10);
+        return view('backend.products.orderProduct',compact('data'));
+    }
+
+    public function editStatus(Request $request){
+        try {
+            Oder::where('id',$request->id)->update(['status'=>$request->status]);
+            return response()->json(['status' => true, 'data' => $request->id]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+    
     public function store(AddProductRequest $request){
         $data = $request->all();
         unset($data['_token'],$data['image']);

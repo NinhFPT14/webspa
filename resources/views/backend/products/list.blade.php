@@ -37,6 +37,7 @@ Danh sách sản phẩm
                             <th scope="col">Số lượng</th>
                             <th scope="col">Giá cũ</th>
                             <th scope="col">Giá giảm</th>
+                            <th scope="col">Lượt xem</th>
                             <th scope="col">Chi tiết</th>
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Hành động</th>
@@ -54,6 +55,7 @@ Danh sách sản phẩm
                             <td>{{number_format($value->quality)}}</td>
                             <td>{{number_format($value->price)}} VNĐ</td>
                             <td>{{number_format($value->discount)}} VNĐ</td>
+                            <td>{{$value->view}}</td>
                             <td>
                                 <a href="{{route('detailProduct',['slug'=>$value->slug,'id'=>$value->id])}}"
                                     class="btn btn-primary" target="_blank">Xem</a>

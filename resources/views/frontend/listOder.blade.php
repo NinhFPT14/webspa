@@ -3,8 +3,6 @@
 Danh sách đơn đặt lịch
 @endsection
 @section('content')
-
-
 <div class="breadcrumbs_area">
     <div class="container">
         <div class="row">
@@ -56,15 +54,17 @@ Danh sách đơn đặt lịch
                                     @if($value->status == 0)
                                     <td class="text-warning order_status{{$value->id}}">Chờ xác nhận</td>
                                     @elseif($value->status == 1)
-                                    <td class="text-primary order_status{{$value->id}}">Đã xác nhận</td>
+                                    <td class="text-primary order_status{{$value->id}}">Đã lên đơn</td>
                                     @elseif($value->status == 2)
-                                    <td class="text-success order_status{{$value->id}}">Đang gửi</td>
+                                    <td class="text-success order_status{{$value->id}}">Đã gửi hàng</td>
                                     @elseif($value->status == 3)
                                     <td class="text-success order_status{{$value->id}}">Đã nhận hàng</td>
                                     @elseif($value->status == 4)
-                                    <td class="text-danger">Từ chối</td>
-                                    @else
+                                    <td class="text-danger">Bị từ chối</td>
+                                    @elseif($value->status == 5)
                                     <td class="text-danger">Đã huỷ</td>
+                                    @else
+                                    <td class="text-warning">Hoàn trả</td>
                                     @endif
                                     @if($value->status == 0 || $value->status == 1)
                                     <td class="product_total text-danger btn_huy_don" data-orderid="{{$value->id}}"><i class="fa fa-trash-o"></i></td>
