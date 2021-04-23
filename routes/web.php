@@ -78,6 +78,12 @@ use RealRashid\SweetAlert\Facades\Alert;
         Route::post('/chi-tiet-don','Frontend\AppointmentController@apiDetail')->name('appointment.apiDetail');
     });
 
+
+    //Đổi gửi otp đổi mật khẩu và quên mật khẩu
+    Route::post('/gui-otp-doi-mat-khau-admin','Backend\LoginController@otp')->name('login.otp');
+    Route::post('/xac-nhan-so-dien-thoai','Backend\LoginController@confirmPhone')->name('login.confirm.phone');
+    Route::post('/cap-lai-mat-khau','Backend\LoginController@renewPassword')->name('login.renew.password');
+    
 Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     Route::get('/',function(){
         return view('backend.dashboard');
@@ -207,8 +213,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/cap-nhat/{id}', 'Backend\MapController@update')->name('updateMap');
     });
 
-    // login
-        Route::post('/gui-otp-doi-mat-khau-admin','Backend\LoginController@otp')->name('login.otp');
+    // đổi mật khẩu -- route gửi mã otp ở trên name route "login.otp"
         Route::post('/xac-thuc-otp-doi-mat-khau-admin','Backend\LoginController@confirmOtp')->name('login.confirm.otp');
         Route::post('/doi-mat-khau-admin','Backend\LoginController@password')->name('login.password');
 

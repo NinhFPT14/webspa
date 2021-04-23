@@ -76,5 +76,79 @@ class LoginController extends Controller
         $user->save();
         return response()->json(['status' => true, 'data' => 'thành công' ]);
  }
+
+
+    public function confirmPhone (Request $request){
+        $validate = Validator::make($request->all(), 
+        [
+            'phone' => 'required|regex:/^[0][0-9]{9}$/',
+        ],
+        [
+            'phone.required' => 'Số điện thoại không được để trống',
+            'phone.regex' => 'Số điện thoại không hợp lệ',
+        ]);
+        if($validate->fails()){
+            return json_encode([
+                'status' => false,
+                'messages' => $validate->errors()
+            ]);
+            return 'done';
+        }
+
+        $user = User::where('phone_number',$request->phone)->get();
+        if(count($user) != 0){
+            foreach($user as $value){
+                $otp = rand(10000,90000);
+                $user = User::find($value->id);
+                $user->phone_code = $otp;
+                $user->save();
+                $phones =[$value->phone_number];
+                $content ="Mã cấp lại mật khẩu của bạn là : ".$otp;
+                $type = 2;
+                $sender = "981c320db4992b97";
+                $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+                $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+                return response()->json(['status' => true, 'data' =>  $user->id]);
+            }
+        }else{
+            return response()->json(['status' => true, 'fail' => 'Số điện thoại không tồn tại' ]);
+        }
+    }
+
+    public function renewPassword (Request $request){
+        $validate = Validator::make($request->all(), 
+        [
+            'code' => 'required|numeric',
+        ],
+        [
+            'code.required' => 'Mã OTP không được để trống',
+            'code.numeric' => 'Mã OTP phải là số',
+        ]);
+        if($validate->fails()){
+            return json_encode([
+                'status' => false,
+                'messages' => $validate->errors()
+            ]);
+            return 'done';
+        }
+
+        $user = User::find($request->id);
+        if($user->phone_code == $request->code){
+            $password = rand(100000,900000);
+            $user->password = bcrypt($password);
+            $user->save();
+
+            $phones =[$user->phone_number];
+            $content =" Mật khẩu mới của bạn là : ".$password ." Vui lòng đăng nhập và đổi lại mật khẩu";
+            $type = 2;
+            $sender = "981c320db4992b97";
+            $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+            $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+            return response()->json(['status' => true, 'data' => 'thành công' ]);
+
+        }else{
+             return response()->json(['status' => false, 'fail' => 'Mã otp không đúng' ]);
+        }
+    }
     
 }
