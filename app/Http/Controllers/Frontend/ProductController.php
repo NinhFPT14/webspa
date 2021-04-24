@@ -32,6 +32,12 @@ class ProductController extends Controller
     public function oderDelete(Request $request){
         try {
             Oder::where('id',$request->id)->update(['status'=>5]);
+            $productOder = ProductOder::where('oder_id',$request->id)->get();
+            foreach($productOder as $value){
+                $pr = Product::find($value->product_id);
+                $pr->quality = ($pr->quality) +$value->quality;
+                $pr->save(); 
+            }
             return response()->json(['status' => true, 'data' => $request->id]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
@@ -97,7 +103,8 @@ class ProductController extends Controller
             $oder->phone_number = $request->phone;
             $oder->address = $request->address;
             $oder->note = $request->note;
-            $oder->total_monney = $request->total_monney;
+            $oder->total_monney = ($request->total_monney) + ($request->total_monney *10)/100;
+            $oder->tax = ($request->total_monney *10)/100;
             $oder->status = 0;
             $oder->save();
 
@@ -109,6 +116,8 @@ class ProductController extends Controller
             $a =[];
             foreach(array_count_values($arrId) as $key =>$value){
                 $pr = Product::find($key);
+                $pr->quality = ($pr->quality) -$value;
+                $pr->save();
                 $ProductOder = new ProductOder();
                 $ProductOder->product_id = $key;
                 $ProductOder->oder_id = $oder->id;

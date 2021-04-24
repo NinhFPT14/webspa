@@ -78,7 +78,8 @@ Chi tiết sản phẩm
                                         <?php 
                                         $category = DB::table('categories')->find($data->category_id);
                                         ?>
-                                        <span>Danh Mục: <a href="#">{{ $category->name}}</a></span>
+                                        <span>Danh Mục: <a href="#">{{ $category->name}}</a></span><br>
+                                        <span>Hàng còn: <a href="#">{{ $data->quality}} sản phẩm</a></span>
                                     </div>
 
                                 </form>

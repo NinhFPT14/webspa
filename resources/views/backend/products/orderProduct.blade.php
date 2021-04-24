@@ -10,8 +10,10 @@ Danh sách đơn đặt hàng
             <li class="breadcrumb-item active" aria-current="page"><a href="{{route('product.order.admin')}}">Danh sách đơn đặt hàng</a></li>
         </ol>
     </nav>
+    
     <div class="card shadow mb-4">
         <div class="card-header py-3">
+        <a href="{{route('product.order.add')}}" class="btn btn-primary" role="button">Tạo đơn</a>
             <form action="{{route('product.order.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
@@ -149,7 +151,7 @@ $(document).ready(function() {
                     $("#modal_address").val(response.data.address);
                     $("#modal_phone").val(response.data.phone_number);
                     $("#modal_note").val(response.data.note);
-                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY h:mm'));
+                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:mm'));
                     $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
                 }
                 if(response.product){
