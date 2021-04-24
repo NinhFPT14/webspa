@@ -21,6 +21,27 @@ class AppointmentController extends Controller
         $services = Service::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services'));
     }
+    
+    public function listAppointment(){
+        $appointment = Appointment::where('status','!=' ,0)->orderByDesc('id')->paginate(10);
+        return view('backend.services.listAppointment',compact('appointment'));
+    }
+
+    public function detailAppointment(Request $request){
+        try {
+            $appointment = Appointment::find($request->id);
+            $services = NumberService::where('appointment_id',$appointment->id)->get();
+            $arrayId =[];
+            foreach($services as $value){
+                $arrayId[] = $value->service_id;
+            }
+            $service = Service::whereIn('id', $arrayId)->get();
+            return response()->json(['status' => true, 'data' => $appointment ,'service'=>$service]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+        
+    }
 
      public function apiGetDataById(Request $request){ // Lấy ra id từ request
         // dd($request);

@@ -160,6 +160,9 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\ServiceController@delete')->name('deleteService');
         Route::get('/trang-sua/{id}','Backend\ServiceController@edit')->name('editService');
         Route::post('/cap-nhat/{id}','Backend\ServiceController@update')->name('updateService');
+
+        Route::get('/danh-sach-dat-lich','Backend\AppointmentController@listAppointment')->name('listAppointment');
+        Route::post('/chi-tiet-don-dat-lich','Backend\AppointmentController@detailAppointment')->name('detailAppointment');
         Route::post('get-data-by-id', 'Backend\AppointmentController@apiGetDataById')->name('appointment.getDataById');
         Route::get('/bang-xep-lich','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
         Route::post('/tim-kiem-don-theo-thoi-gian','Backend\AppointmentController@searchTimeAppointment')->name('searchTimeAppointment');
