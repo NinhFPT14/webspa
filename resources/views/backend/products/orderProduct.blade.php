@@ -13,7 +13,6 @@ Danh sách đơn đặt hàng
     
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-        <a href="{{route('product.order.add')}}" class="btn btn-primary" role="button">Tạo đơn</a>
             <form action="{{route('product.order.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">

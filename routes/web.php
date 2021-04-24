@@ -138,7 +138,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/danh-sach-don-dat-hang','Backend\ProductController@order')->name('product.order.admin');
         Route::post('/doi-trang-thai-don-hang','Backend\ProductController@editStatus')->name('product.edit.admin');
         Route::post('/tim-kiem-don-hang','Backend\ProductController@orderSearch')->name('product.order.search');
-        Route::get('/tao-don-hang-admin','Backend\ProductController@addOrder')->name('product.order.add');
     });
 
     //LogoController
