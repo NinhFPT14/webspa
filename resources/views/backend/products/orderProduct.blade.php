@@ -16,8 +16,22 @@ Danh sách đơn đặt hàng
             <form action="{{route('product.order.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."
-                        aria-label="Search" aria-describedby="basic-addon2" name="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="name">
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control"name="time">
+                    </div>
+                    <div class="form-group">
+                        <select  name="type" class="form-control">
+                            <option value="0">Chờ xác nhận</option>
+                            <option value="1">Đã lên đơn </option>
+                            <option value="2">Đã gửi hàng</option>
+                            <option value="3">Đã nhận hàng</option>
+                            <option value="4">Từ chối đơn</option>
+                            <option value="6">Hoàn trả</option>
+                        </select>
+                    </div>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -36,7 +50,7 @@ Danh sách đơn đặt hàng
                             <th scope="col">Số điện thoại</th>
                             <th scope="col">Trạng thái </th>
                             <th scope="col">Chi tiết</th>
-
+                            <th scope="col">Sửa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,7 +74,9 @@ Danh sách đơn đặt hàng
                             <td>
                                 <a class="btn btn-primary detail_oder" data-orderid="{{$value->id}}">Xem</a>
                             </td>
-                            
+                            <td>
+                                <a class="btn btn-warning " href="{{route('product.order.edit',['id'=>$value->id])}}">Sửa</a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

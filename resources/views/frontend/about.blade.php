@@ -82,7 +82,7 @@ Giới thiệu
                     </div>
                     <div class="col-lg-6 col-md-6">
                         <div class="about__img">
-                            <img src="frontEnd/img/about/about2.jpg" alt="">
+                            <img src="frontEnd/img/about/bdd1f3e9984b6a15335a.jpg" alt="">
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ Giới thiệu
                 <div class="row">
                     <div class="col-lg-6 col-md-12">
                         <div class="about_thumb">
-                            <img src="frontEnd/img/about/gioi-thieu-2.png" alt="">
+                            <img src="frontEnd/img/about/7f91f42098826adc3393.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">

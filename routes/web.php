@@ -36,25 +36,13 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('chi-tiet-dich-vu/{slug}/{id}','Frontend\ServiceController@detailService')->name('detailService');
 
     //BlogController-Font-end
-    Route::get('/trang-blog','Frontend\BlogController@list')->name('listBlog');
+    Route::get('/trang-bai-viet','Frontend\BlogController@list')->name('listBlog');
     Route::get('/chi-tiet-bai-viet/{id}','Frontend\BlogController@detailBlog')->name('detailBlog');
     Route::get('danh-muc-bai-viet/{id}','Frontend\BlogController@categoryBlog')->name('danhmucbaiviet');
     Route::get('/tim-kiem-bai-viet-index','Frontend\BlogController@search')->name('blog.search');
 
 
-    //BlogController-Back-End
-    Route::group(['prefix' => 'bai-viet'], function() {
-        Route::get('/','BackEnd\BlogController@index')->name('baiviet');
-        Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\BlogController@status')->name('statusBaiviet');
-        Route::get('/tao-moi','BackEnd\BlogController@create')->name('addBaiviet');
-        Route::post('/luu-tao-moi','Backend\BlogController@store')->name('storeBaiviet');
-        Route::get('/xoa/{id}','Backend\BlogController@destroy')->name('deleteBaiviet');
-        Route::get('/trang-edit/{id}','Backend\BlogController@edit')->name('editBaiviet');
-        Route::post('/cap-nhat/{id}','Backend\BlogController@update')->name('updateBaiviet');
-        Route::post('/tim-kiem-bai-viet','Backend\BlogController@search')->name('baiviet.search');
 
-        
-    });
 
     //LoginController
 
@@ -138,6 +126,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/danh-sach-don-dat-hang','Backend\ProductController@order')->name('product.order.admin');
         Route::post('/doi-trang-thai-don-hang','Backend\ProductController@editStatus')->name('product.edit.admin');
         Route::post('/tim-kiem-don-hang','Backend\ProductController@orderSearch')->name('product.order.search');
+        Route::get('/trang-sua-don-hang/{id}','Backend\ProductController@editOrder')->name('product.order.edit');
     });
 
     //LogoController
@@ -219,7 +208,20 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     // đổi mật khẩu -- route gửi mã otp ở trên name route "login.otp"
         Route::post('/xac-thuc-otp-doi-mat-khau-admin','Backend\LoginController@confirmOtp')->name('login.confirm.otp');
         Route::post('/doi-mat-khau-admin','Backend\LoginController@password')->name('login.password');
+    
+        //BlogController-Back-End
+    Route::group(['prefix' => 'bai-viet'], function() {
+        Route::get('/','BackEnd\BlogController@index')->name('listBaiviet');
+        Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\BlogController@status')->name('statusBaiviet');
+        Route::get('/tao-moi','BackEnd\BlogController@create')->name('addBaiviet');
+        Route::post('/luu-tao-moi','Backend\BlogController@store')->name('storeBaiviet');
+        Route::get('/xoa/{id}','Backend\BlogController@destroy')->name('deleteBaiviet');
+        Route::get('/trang-edit/{id}','Backend\BlogController@edit')->name('editBaiviet');
+        Route::post('/cap-nhat/{id}','Backend\BlogController@update')->name('updateBaiviet');
+        Route::post('/tim-kiem-bai-viet','Backend\BlogController@search')->name('baiviet.search');
 
+        
+    });
 
 });
 

@@ -31,16 +31,20 @@ class ProductController extends Controller
         return view('backend.products.orderProduct',compact('data'));
     }
 
-    public function addOrder(){
-        $product = Product::where('status',0)->get();
-        return view('backend.products.addOrder',compact('product'));
+    public function editOrder($id){
+        $data = Oder::find($id);
+        return view('backend.products.editOrderProduct',compact('data'));
     }
     
     public function orderSearch(Request $request){
-        $data = Oder::where('status','!=',5)->where('name', 'like', '%' . $request->name . '%')
+        dd($request->all());
+        $data = Oder::where('status','!=',5)
+        ->orWhere('name', 'like', '%' . $request->name . '%')
         ->orWhere('id', 'LIKE', '%' . $request->name . '%')
         ->orWhere('phone_number', 'LIKE', '%' . $request->name . '%')
         ->orWhere('address', 'LIKE', '%' . $request->name . '%')
+        ->orWhere('created_at',$request->time)
+        ->orWhere('status',$request->type)
          ->paginate(10);
         return view('backend.products.orderProduct',compact('data'));
     }
