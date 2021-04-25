@@ -42,19 +42,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::get('/tim-kiem-bai-viet-index','Frontend\BlogController@search')->name('blog.search');
 
 
-    //BlogController-Back-End
-    Route::group(['prefix' => 'bai-viet'], function() {
-        Route::get('/','BackEnd\BlogController@index')->name('baiviet');
-        Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\BlogController@status')->name('statusBaiviet');
-        Route::get('/tao-moi','BackEnd\BlogController@create')->name('addBaiviet');
-        Route::post('/luu-tao-moi','Backend\BlogController@store')->name('storeBaiviet');
-        Route::get('/xoa/{id}','Backend\BlogController@destroy')->name('deleteBaiviet');
-        Route::get('/trang-edit/{id}','Backend\BlogController@edit')->name('editBaiviet');
-        Route::post('/cap-nhat/{id}','Backend\BlogController@update')->name('updateBaiviet');
-        Route::post('/tim-kiem-bai-viet','Backend\BlogController@search')->name('baiviet.search');
 
-        
-    });
 
     //LoginController
 
@@ -219,7 +207,20 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     // đổi mật khẩu -- route gửi mã otp ở trên name route "login.otp"
         Route::post('/xac-thuc-otp-doi-mat-khau-admin','Backend\LoginController@confirmOtp')->name('login.confirm.otp');
         Route::post('/doi-mat-khau-admin','Backend\LoginController@password')->name('login.password');
+    
+        //BlogController-Back-End
+    Route::group(['prefix' => 'bai-viet'], function() {
+        Route::get('/','BackEnd\BlogController@index')->name('listBaiviet');
+        Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\BlogController@status')->name('statusBaiviet');
+        Route::get('/tao-moi','BackEnd\BlogController@create')->name('addBaiviet');
+        Route::post('/luu-tao-moi','Backend\BlogController@store')->name('storeBaiviet');
+        Route::get('/xoa/{id}','Backend\BlogController@destroy')->name('deleteBaiviet');
+        Route::get('/trang-edit/{id}','Backend\BlogController@edit')->name('editBaiviet');
+        Route::post('/cap-nhat/{id}','Backend\BlogController@update')->name('updateBaiviet');
+        Route::post('/tim-kiem-bai-viet','Backend\BlogController@search')->name('baiviet.search');
 
+        
+    });
 
 });
 
