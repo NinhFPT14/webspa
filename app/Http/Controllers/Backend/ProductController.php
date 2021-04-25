@@ -26,26 +26,99 @@ class ProductController extends Controller
         $category = Category::where('type',0)->get();
         return view('backend.products.add',compact('category'));
     }
-    public function order(){
+    public function listOrder(){
         $data = Oder::where('status','!=',5)->orderBy('id', 'DESC')->paginate(10);
         return view('backend.products.orderProduct',compact('data'));
     }
 
     public function editOrder($id){
         $data = Oder::find($id);
-        return view('backend.products.editOrderProduct',compact('data'));
+        $productOder = ProductOder::where('oder_id',$data->id)->get();
+        $product = Product::where('status', 0)->get();
+        return view('backend.products.editOrderProduct',compact('data','productOder','product'));
     }
+    public function updateOrder(Request $request ,$id){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'phone_number' => 'required|regex:/^[0][0-9]{9}$/',
+            'address' => 'required|max:255',
+            'note' => 'max:65535',
+        ],
+        ['name.required' => 'Họ tên không được để trống',
+        'name.max' => "Họ tên không được vượt quán 255 ký tự",
+        'phone_number.required' => "Số điện thoại không được để trống",
+        'phone_number.regex' => "Sô điện thoại không hợp lệ",
+        'note.max' => "Lời nhắn không được vượt quá 65535 ký tự",
+        'address.required' => "Địa chỉ không được để trống",
+        'address.max' => "Địa chỉ không được vượt quá 255 ký tự",
+        ]);
+        $data = Oder::find($id);
+        $data->name =$request->name;
+        $data->phone_number =$request->phone_number;
+        $data->address =$request->address;
+        $data->note =$request->note;
+        $data->status =$request->status;
+        $data->save();
+        alert()->success('Sửa thành công đơn đặt hàng'); 
+        return redirect()->route('product.order.admin');
+    }
+    public function addProductOrder(Request $request ,$id){
+        $data = Oder::find($id);
+        $productOder = ProductOder::where('oder_id',$data->id)->get();
+        $product = Product::find($request->product_id);
+        $check = 0;
+        foreach($productOder as $value){
+            if($value->product_id == $request->product_id){
+                $check = 1;
+                $update = ProductOder::find($value->id);
+                $update->quality = $update->quality + $request->number;
+                $update->save();
+
+                $price = $product->discount *  $update->quality;
+                $total = $data->total_monney + $price + ($price*10/100);
+                $data->total_monney = $total;
+                $data->tax = $data->tax -($price*10/100);
+                $data->save();
+            }
+        };
+        if($check == 0){
+           $add = new ProductOder();
+           $add->product_id = $request->product_id;
+           $add->oder_id    = $id;
+           $add->quality =  $request->number;
+           $add->name = $product->name;
+           $add->price = $product->discount;
+           $add->save();
+           
+           $price = $product->discount * $request->number;
+           $total = $data->total_monney + $price + ($price*10/100);
+           $data->total_monney = $total;
+           $data->tax = $data->tax + ($price*10/100);
+           $data->save();
+        }
+        return redirect()->route('product.order.edit',['id'=>$id]);
+    }
+    public function deleteProductOrder($id ,$productOder){
+        $data = Oder::find($id);
+        $flight = ProductOder::find($productOder);
+
+        $price = $flight->price *  $flight->quality; 
+        $total = $data->total_monney - $price - ($price*10/100);
+        $data->total_monney = $total;
+        $data->tax = $data->tax - ($price*10/100);
+        $data->save();
+
+        $flight->delete();
+
+        return redirect()->route('product.order.edit',['id'=>$id]);
+    }
+
     
-    public function orderSearch(Request $request){
-        dd($request->all());
+    public function searchOrder(Request $request){
         $data = Oder::where('status','!=',5)
-        ->orWhere('name', 'like', '%' . $request->name . '%')
-        ->orWhere('id', 'LIKE', '%' . $request->name . '%')
-        ->orWhere('phone_number', 'LIKE', '%' . $request->name . '%')
-        ->orWhere('address', 'LIKE', '%' . $request->name . '%')
-        ->orWhere('created_at',$request->time)
-        ->orWhere('status',$request->type)
-         ->paginate(10);
+        ->where('name', 'like', '%' . $request->key . '%')
+        ->orWhere('status',$request->status)
+        ->paginate(10);
         return view('backend.products.orderProduct',compact('data'));
     }
 

@@ -147,7 +147,6 @@ class AppointmentController extends Controller
         $flight->note = $request->note;
         $flight->time_ficked = $request->time_ficked;
         $flight->time_start = $request->time_start;
-        $flight->token = $request->_token;
         $flight->total_money = $total_money;
         $flight->status = 0;
         $flight->otp = $otp;

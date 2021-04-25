@@ -27,6 +27,10 @@ class AppointmentController extends Controller
         return view('backend.services.listAppointment',compact('appointment'));
     }
 
+    public function edit($id){
+        return view('backend.services.editAppointment');
+    }
+
     public function detailAppointment(Request $request){
         try {
             $appointment = Appointment::find($request->id);
