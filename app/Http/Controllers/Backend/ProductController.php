@@ -31,9 +31,9 @@ class ProductController extends Controller
         return view('backend.products.orderProduct',compact('data'));
     }
 
-    public function addOrder(){
-        $product = Product::where('status',0)->get();
-        return view('backend.products.addOrder',compact('product'));
+    public function editOrder($id){
+        $data = Oder::find($id);
+        return view('backend.products.editOrderProduct',compact('data'));
     }
     
     public function orderSearch(Request $request){
