@@ -135,6 +135,11 @@ class AppointmentController extends Controller
             ]);
             return 'done';
         }
+        $total_money = 0;
+        foreach($request->service_id as $value){
+            $service = Service::find($value);
+            $total_money += $service->discount;
+        };
         $otp = rand(10000,90000);
         $flight = new Appointment;
         $flight->name = $request->name;
@@ -143,6 +148,7 @@ class AppointmentController extends Controller
         $flight->time_ficked = $request->time_ficked;
         $flight->time_start = $request->time_start;
         $flight->token = $request->_token;
+        $flight->total_money = $total_money;
         $flight->status = 0;
         $flight->otp = $otp;
         $flight->save();

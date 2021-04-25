@@ -59,6 +59,7 @@ Danh sách đơn đặt hàng
                             <td>
                                 <a class="btn btn-primary detail_oder" data-orderid="{{$value->id}}">Xem</a>
                             </td>
+                            
                         </tr>
                     @endforeach
                     </tbody>
