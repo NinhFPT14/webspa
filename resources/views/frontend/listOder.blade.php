@@ -123,6 +123,11 @@ Danh sách đơn đặt lịch
                     </tbody>
                     <thead>
                         <tr>
+                        <th scope="col">Thuế VAT 10% </th>
+                        <th scope="col"></th>
+                        <th scope="col" class="modal_tax"></th>
+                        </tr>
+                        <tr>
                         <th scope="col">Tổng tiền </th>
                         <th scope="col"></th>
                         <th scope="col" class="modal_total_monney_detail"></th>
@@ -162,8 +167,9 @@ $(document).ready(function() {
                     $("#modal_address").val(response.data.address);
                     $("#modal_phone").val(response.data.phone_number);
                     $("#modal_note").val(response.data.note);
-                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:MM:SS'));
+                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:mm'));
                     $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
+                    $("th.modal_tax").html(new Intl.NumberFormat().format(response.data.tax)+ ' VNĐ');
                 }
                 if(response.product){
                     let output = "";

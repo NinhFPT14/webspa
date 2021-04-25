@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use App\Model\Oder;
 use App\Model\ProductOder;
 use Illuminate\Support\Facades\Storage;
+
 use File;
 
 class ProductController extends Controller
@@ -30,6 +31,11 @@ class ProductController extends Controller
         return view('backend.products.orderProduct',compact('data'));
     }
 
+    public function addOrder(){
+        $product = Product::where('status',0)->get();
+        return view('backend.products.addOrder',compact('product'));
+    }
+    
     public function orderSearch(Request $request){
         $data = Oder::where('status','!=',5)->where('name', 'like', '%' . $request->name . '%')
         ->orWhere('id', 'LIKE', '%' . $request->name . '%')
