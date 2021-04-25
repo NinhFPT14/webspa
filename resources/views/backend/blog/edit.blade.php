@@ -10,7 +10,7 @@ Sửa bài viết
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('baiviet')}}">Tất Cả Bài Viết</a></li>
+            <li class="breadcrumb-item"><a href="{{route('listBaiviet')}}">Tất Cả Bài Viết</a></li>
             <li class="breadcrumb-item active" aria-current="page">Sửa bài viết</li>
         </ol>
     </nav>
