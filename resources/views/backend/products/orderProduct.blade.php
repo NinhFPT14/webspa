@@ -23,7 +23,7 @@ Danh sách đơn đặt hàng
                         <input type="date" class="form-control"name="time">
                     </div>
                     <div class="form-group">
-                        <select  name="type" class="form-control btn_doi_trang_thai">
+                        <select  name="type" class="form-control">
                             <option value="0">Chờ xác nhận</option>
                             <option value="1">Đã lên đơn </option>
                             <option value="2">Đã gửi hàng</option>

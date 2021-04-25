@@ -277,7 +277,7 @@
 
                             </li>
                             <li class="menu-item-has-children">
-                                <a href="{{route('baiviet')}}">Tin Tức </a>
+                                <a href="{{route('listBlog')}}">Tin Tức </a>
                             </li>
                             <li class="menu-item-has-children">
                                 <a href="{{route('about')}}">Giới Thiệu</a>

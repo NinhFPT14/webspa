@@ -37,10 +37,14 @@ class ProductController extends Controller
     }
     
     public function orderSearch(Request $request){
-        $data = Oder::where('status','!=',5)->where('name', 'like', '%' . $request->name . '%')
+        dd($request->all());
+        $data = Oder::where('status','!=',5)
+        ->orWhere('name', 'like', '%' . $request->name . '%')
         ->orWhere('id', 'LIKE', '%' . $request->name . '%')
         ->orWhere('phone_number', 'LIKE', '%' . $request->name . '%')
         ->orWhere('address', 'LIKE', '%' . $request->name . '%')
+        ->orWhere('created_at',$request->time)
+        ->orWhere('status',$request->type)
          ->paginate(10);
         return view('backend.products.orderProduct',compact('data'));
     }
