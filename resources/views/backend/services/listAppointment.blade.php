@@ -15,21 +15,32 @@ Danh sách đơn đặt lịch
         </ol>
     </nav>
     
-    <div class="card shadow mb-4">
+<div class="card shadow mb-4">
     <div class="card-header py-3">
-            <a href="{{route('addProduct')}}" class="btn btn-primary" role="button">Tạo đơn</a>
-            <form action="{{route('product.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
-                @csrf
-                <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."
-                        aria-label="Search" aria-describedby="basic-addon2" name="name">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fas fa-search fa-sm"></i>
-                        </button>
-                    </div>
+        <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            @csrf
+            <div class="input-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key">
                 </div>
-            </form>
+                <div class="form-group">
+                    <input type="date" class="form-control"name="time">
+                </div>
+                <div class="form-group">
+                    <select  name="type" class="form-control">
+                        <option value="1" >Chờ lên lịch</option>
+                        <option value="2">Đã lên lịch</option>
+                        <option value="3">Làm xong</option>
+                        <option value="4">Từ chối</option>
+                    </select>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -43,7 +54,7 @@ Danh sách đơn đặt lịch
                             <th scope="col">Ngày hẹn</th>
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Chi tiết</th>
-                            <th scope="col">Xếp lịch</th>
+                            <th scope="col">Sửa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,8 +78,9 @@ Danh sách đơn đặt lịch
                             <td>
                                 <a class="btn btn-primary btn-xem-chi-tiet" data-appointmentid="{{$value->id}}" target="_blank">Xem</a>
                             </td>
-                            <td><button type="button" class="btn btn-success btn-xep-lich " data-orderid="{{$value->id}}"><i
-                                    class="fas fa-calendar"></i></button></td>
+                            <td>  
+                                <a class="btn btn-warning " href="{{route('editAppointment',['id'=>$value->id])}}">Sửa</a>
+                            </td>
                             
                         </tr>
                     @endforeach    

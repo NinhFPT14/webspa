@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTaxOder extends Migration
+class DropColumBillServiceId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddTaxOder extends Migration
      */
     public function up()
     {
-        Schema::table('oders', function (Blueprint $table) {
-            $table->integer('tax');
+        Schema::table('sort_appointments', function (Blueprint $table) {
+            $table->dropForeign('sort_appointments_bill_service_id_foreign');
+            $table->dropColumn('bill_service_id');
         });
     }
 
@@ -25,7 +26,7 @@ class AddTaxOder extends Migration
      */
     public function down()
     {
-        Schema::table('oders', function (Blueprint $table) {
+        Schema::table('sort_appointments', function (Blueprint $table) {
             //
         });
     }

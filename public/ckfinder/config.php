@@ -32,8 +32,8 @@ $config['authentication'] = function () {
 /*============================ License Key ============================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_licenseKey
 
-$config['licenseName'] = 'quen-spa-haile';
-$config['licenseKey']  = '55K3A1P4ENYD2U3YW1DU635D1851S988';
+$config['licenseName'] = '';
+$config['licenseKey']  = '';
 
 /*============================ CKFinder Internal Directory ============================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_privateDir
@@ -76,7 +76,7 @@ $config['backends'][] = array(
 /*================================ Resource Types =====================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html#configuration_options_resourceTypes
 
-$config['defaultResourceTypes'] = '';
+$config['defaultResourceTypes'] = 'Files,Images';
 
 $config['resourceTypes'][] = array(
     'name'              => 'Files', // Single quotes not allowed.
@@ -125,7 +125,7 @@ $config['accessControl'][] = array(
 /*================================ Other Settings =====================================*/
 // https://ckeditor.com/docs/ckfinder/ckfinder3-php/configuration.html
 
-$config['overwriteOnUpload'] = true;
+$config['overwriteOnUpload'] = false;
 $config['checkDoubleExtension'] = true;
 $config['disallowUnsafeCharacters'] = false;
 $config['secureImageUploads'] = true;

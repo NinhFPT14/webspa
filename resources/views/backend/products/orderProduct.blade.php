@@ -17,13 +17,14 @@ Danh sách đơn đặt hàng
                 @csrf
                 <div class="input-group">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="name">
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key">
                     </div>
                     <div class="form-group">
                         <input type="date" class="form-control"name="time">
                     </div>
                     <div class="form-group">
                         <select  name="type" class="form-control">
+                            <option value ="">Chọn trạng thái</option>
                             <option value="0">Chờ xác nhận</option>
                             <option value="1">Đã lên đơn </option>
                             <option value="2">Đã gửi hàng</option>
@@ -49,6 +50,7 @@ Danh sách đơn đặt hàng
                             <th scope="col">Họ tên</th>
                             <th scope="col">Số điện thoại</th>
                             <th scope="col">Trạng thái </th>
+                            <th scope="col">Ngày</th>
                             <th scope="col">Chi tiết</th>
                             <th scope="col">Sửa</th>
                         </tr>
@@ -71,6 +73,7 @@ Danh sách đơn đặt hàng
                                     </select>
                                 </div>
                             </th>
+                            <th>{{date("d/m/Y H:i", strtotime($value->created_at))}}</th>
                             <td>
                                 <a class="btn btn-primary detail_oder" data-orderid="{{$value->id}}">Xem</a>
                             </td>
@@ -128,13 +131,11 @@ Danh sách đơn đặt hàng
                     <tbody id="modal_tbody">
                     </tbody>
                     <thead>
-                        <tr>
-                        <th scope="col">Tổng tiền </th>
-                        <th scope="col"></th>
-                        <th scope="col" class="modal_total_monney_detail"></th>
-                        </tr>
+                        
                     </thead>
                 </table>
+                <p class="modal_tax"></p>
+                <p class="modal_total_monney_detail"></p>
                 <p class="modal_created_at"></p>
       </div>
       <div class="modal-footer">
@@ -167,7 +168,8 @@ $(document).ready(function() {
                     $("#modal_phone").val(response.data.phone_number);
                     $("#modal_note").val(response.data.note);
                     $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:mm'));
-                    $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
+                    $("p.modal_tax").html('  Thuế VAT 10 % :' +new Intl.NumberFormat().format(response.data.tax)+ ' VNĐ');
+                    $("p.modal_total_monney_detail").html('  Tổng tiền :' + new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
                 }
                 if(response.product){
                     let output = "";

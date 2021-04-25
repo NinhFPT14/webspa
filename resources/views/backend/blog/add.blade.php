@@ -10,7 +10,7 @@ Bài viết mới
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('baiviet')}}">Tất Cả Bài Viết</a></li>
+            <li class="breadcrumb-item"><a href="{{route('listBaiviet')}}">Tất Cả Bài Viết</a></li>
             <li class="breadcrumb-item active" aria-current="page">Tạo bài viết mới</li>
         </ol>
     </nav>

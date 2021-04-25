@@ -50,7 +50,7 @@ class BlogController extends Controller
            $post = Post::create( $data);
            Post::where('id',$post->id)->update(['slug'=> Str::slug($post->title.$post->id.'-')]);
            alert()->success('Đăng bài viết mới thành công');
-        return redirect()->route('baiviet');
+        return redirect()->route('listBaiviet');
     }
 
     public function show($id)
@@ -93,7 +93,7 @@ class BlogController extends Controller
         File::delete($data->avatar);
         $data->delete();
         alert()->success('Xóa bài viết thành công'); 
-        return redirect()->route('baiviet');
+        return redirect()->route('listBaiviet');
     }
 
     public function search(Request $request) {
@@ -105,6 +105,6 @@ class BlogController extends Controller
         $flight->status = $status;
         $flight->save();
         alert()->success('Cập nhật trạng thái thành công'); 
-        return redirect()->route('baiviet',['type'=>$flight->type]);
+        return redirect()->route('listBaiviet',['type'=>$flight->type]);
     }
 }

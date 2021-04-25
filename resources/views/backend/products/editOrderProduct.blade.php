@@ -10,13 +10,11 @@ Sửa đơn đặt hàng
     <!-- Content Row -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('product.order.admin')}}">Danh sách đơn đặt lịch</a></li>
-            <li class="breadcrumb-item">Sửa đơn đặt lịch #{{$data->id}}</li>
+            <li class="breadcrumb-item"><a href="{{route('product.order.admin')}}">Danh sách đơn</a></li>
+            <li class="breadcrumb-item">Sửa đơn đặt hàng #{{$data->id}}</li>
         </ol>
     </nav>
 
-    <form method="POST" action="">
-        @csrf
         <div class="row">
             <!-- Content Column -->
             <div class="col-lg-6 mb-4">
@@ -26,6 +24,9 @@ Sửa đơn đặt hàng
                         <h6 class="m-0 font-weight-bold text-primary">Thông tin đặt hàng</h6>
                     </div>
                     <div class="card-body">
+                        <form method="POST" action="{{route('product.order.update',['id'=>$data->id])}}">
+                        @csrf
+                        <p>Thời gian đặt hàng : {{date("d/m/Y H:i", strtotime($data->created_at))}}</p>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Họ tên</label>
                             <input type="text" name="name" class="form-control" value="{{$data->name}}">
@@ -35,8 +36,8 @@ Sửa đơn đặt hàng
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Số điện thoại</label>
-                            <input type="text" name="phone" class="form-control" value="{{$data->phone_number}}" maxlength="10">
-                            @error('phone')
+                            <input type="text" name="phone_number" class="form-control" value="{{$data->phone_number}}" maxlength="10">
+                            @error('phone_number')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -54,6 +55,21 @@ Sửa đơn đặt hàng
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <select name="status" class="form-control" >
+                                <option value="0"{{$data->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
+                                <option value="1"{{$data->status == 1 ? 'selected':''}}>Đã lên đơn </option>
+                                <option value="2"{{$data->status == 2 ? 'selected':''}}>Đã gửi hàng</option>
+                                <option value="3"{{$data->status == 3 ? 'selected':''}}>Đã nhận hàng</option>
+                                <option value="4"{{$data->status == 4 ? 'selected':''}}>Từ chối đơn</option>
+                                <option value="6"{{$data->status == 6 ? 'selected':''}}>Hoàn trả</option>
+                            </select>
+                        </div>
+                        <div class="float-right ">
+                            <a class="btn btn-primary" href="{{route('product.order.admin')}}">Quay lại</a>
+                            <button type="submit" class="btn btn-warning ">Sửa</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -76,35 +92,42 @@ Sửa đơn đặt hàng
                               </tr>
                             </thead>
                             <tbody>
+                              @foreach($productOder as $value)  
                               <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>30000</td>
+                                <td>{{$value->product_id}}</td>
+                                <td>{{$value->name}}</td>
+                                <td>{{number_format($value->price)}}</td>
                                 <td>
-                                    <input class="number_product" name="number" min="1" max="100" value="10" type="number">
+                                    <input name="number" min="1" max="100" value="{{$value->quality}}" type="number">
                                 </td>
-                                <td class="product_id_remove" ><a href="" class="text-danger">Xoá</a></td>
+                                <td class="product_id_remove" ><a href="{{route('product.order.delete',['id'=>$data->id,'productOder'=>$value->id])}}" class="text-danger">Xoá</a></td>
                               </tr>
-
-                              <tr>
-                                <th scope="row"><strong>Thuế VAT 10%</strong></th>
-                                <th></th>
-                                <th></th>
-                                <th>200000 VNĐ</th>
-                              </tr>
-                              <tr>
-                                <th scope="row"><strong>Tổng tiền</strong></th>
-                                <th></th>
-                                <th></th>
-                                <th>2000000 VNĐ</th>
-                              </tr>
+                            @endforeach
                             </tbody>
                           </table>
-                        <button type="submit" class="btn btn-warning float-right ">Sửa</button>
+                          <p class=""><strong>Thuế :</strong> {{number_format($data->tax)}} VNĐ</p>
+                          <p class=""><strong>Tổng tiền  :</strong>{{number_format($data->total_monney)}} VNĐ</p>
+                          <form action="{{route('product.order.add',['id'=>$data->id])}}" method="POST">
+                            @csrf
+                            <div class="form-row align-items-center">
+                              <div class="col-sm-6 my-1">
+                                <select class="form-control" name="product_id">
+                                    @foreach($product as $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                  </select>
+                              </div>
+                              <div class="col-sm-2 my-1">
+                                <input type="number" name="number" class="form-control" min="1" value="1">
+                              </div>
+                              <div class="col-auto my-1">
+                                <button type="submit" class="btn btn-success">Thêm</button>
+                              </div>
+                            </div>
+                          </form>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
 </div>
 @endsection
