@@ -4,7 +4,7 @@ Danh sách đơn đặt lịch
 @endsection
 @section('content')
 @section("link")
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+{{--<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 @endsection
 <div class="container-fluid">
@@ -14,7 +14,7 @@ Danh sách đơn đặt lịch
             <li class="breadcrumb-item active" aria-current="page">Danh sách đơn đặt lịch</li>
         </ol>
     </nav>
-    
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
@@ -23,8 +23,10 @@ Danh sách đơn đặt lịch
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key">
                 </div>
-                <div class="form-group">
-                    <input type="date" class="form-control"name="time">
+                <div class="input-group input-daterange">
+                    <input type="text" class="form-control" name="from_time" autocomplete="off">
+                    <div class="input-group-addon">to</div>
+                    <input type="text" class="form-control" name="to_time" autocomplete="off">
                 </div>
                 <div class="form-group">
                     <select  name="type" class="form-control">
@@ -78,12 +80,12 @@ Danh sách đơn đặt lịch
                             <td>
                                 <a class="btn btn-primary btn-xem-chi-tiet" data-appointmentid="{{$value->id}}" target="_blank">Xem</a>
                             </td>
-                            <td>  
+                            <td>
                                 <a class="btn btn-warning " href="{{route('editAppointment',['id'=>$value->id])}}">Sửa</a>
                             </td>
-                            
+
                         </tr>
-                    @endforeach    
+                    @endforeach
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
@@ -157,6 +159,12 @@ Danh sách đơn đặt lịch
 @section('js')
 <script>
 $(document).ready(function() {
+    $('.input-daterange input').each(function() {
+        $(this).datepicker({
+            clearDates: true,
+            format: "dd/mm/yyyy"
+        });
+    });
     $('.btn-xem-chi-tiet').on('click', function() {
         $('#staticBackdrop').modal('show')
         let id = $(this).data('appointmentid');
@@ -187,16 +195,16 @@ $(document).ready(function() {
                         <td> `+price+` VNĐ</td>
                         </tr>`;
                     }
-                    
+
                     $("#modal_tbody").html(output);
                     $(".modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_money) + ' VNĐ');
                     }else{
                         swal("Đơn đặt hàng không tồn tại", "", "warning");
                     }
             }
-            
+
         })
-       
+
     })
 
 })

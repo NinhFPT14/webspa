@@ -15,21 +15,19 @@ Bảng xếp lịch
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
 
-<div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-wait">
-    <h1 class="text-center display-6 font-sans prose-blue">Bảng Xếp Lịch</h1>
-    <br>
-    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;' >
-	<div class="dhx_cal_navline">
-		<div class="dhx_cal_prev_button">&nbsp;</div>
-		<div class="dhx_cal_next_button">&nbsp;</div>
-		<div class="dhx_cal_today_button"></div>
-		<div class="dhx_cal_date"></div>
-	</div>
-	<div class="dhx_cal_header">
-	</div>
-	<div class="dhx_cal_data">
-	</div>
-</div>
+<div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
+       <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%'>
+                   <div class="dhx_cal_navline">
+                       <div class="dhx_cal_prev_button">&nbsp;</div>
+                       <div class="dhx_cal_next_button">&nbsp;</div>
+                       <div class="dhx_cal_today_button"></div>
+                       <div class="dhx_cal_date"></div>
+                   </div>
+               <div class="dhx_cal_header">
+               </div>
+               <div class="dhx_cal_data border-separate">
+       </div>
+       <!-- Bảng xếp lịch kết thúc -->
 </div>
 <br>
 
@@ -39,23 +37,43 @@ Bảng xếp lịch
 
 
 <script type="text/javascript" charset="utf-8">
+		
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
-            // scheduler.config.readonly = true;
-
+            scheduler.config.readonly = true;
 			//===============
 			//Configuration
 			//===============
-			var sections = [];
+            var sections = [
+				{key:0 ,label:"ghế demo"},
+			];
+			let apiDetail = '{{route("listSit")}}';
+			$.ajax({
+				url: apiDetail,
+				method: "GET",
+				data: {
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(response) {
+						if(response.data){
+							for(var i = 0 ; i < response.data.length ; i++ ){
+								sections.push({
+								key: response.data[i].id, 
+								label:  response.data[i].name
+								});	
+							}
+			
+						}else{
+							console.log('fdsd');
+						}
+				}
 
-            for (var i = 1; i < 7; i++) {
-                sections.push({
-                    key: i,
-                    label: "Ghế " + i
-                })
-            }
-            console.log(sections)
+			})
+			console.log(sections);
+
+
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
 				hour: 60 * 60 * 1000,
@@ -101,7 +119,7 @@ Bảng xếp lịch
 				y_property:	"section_id",
 				render:"bar",
 				event_dy: "full"
-                
+
 			});
 
 
