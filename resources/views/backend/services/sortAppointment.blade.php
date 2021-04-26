@@ -15,7 +15,7 @@ Bảng xếp lịch
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
 
-<div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
+<div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-wait">
     <h1 class="text-center display-6 font-sans prose-blue">Bảng Xếp Lịch</h1>
     <br>
     <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;' >
@@ -47,15 +47,15 @@ Bảng xếp lịch
 			//===============
 			//Configuration
 			//===============
-			var sections = [
-				{key:1, label:"Ghế 1"},
-				{key:2, label:"Ghế 2"},
-				{key:3, label:"Ghế 3"},
-				{key:4, label:"Ghế 4"},
-                {key:5, label:"Ghế 5"},
-                {key:6, label:"Ghế 6"},
-			];
+			var sections = [];
 
+            for (var i = 1; i < 7; i++) {
+                sections.push({
+                    key: i,
+                    label: "Ghế " + i
+                })
+            }
+            console.log(sections)
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
 				hour: 60 * 60 * 1000,
@@ -108,7 +108,11 @@ Bảng xếp lịch
 			//===============
 			//Data loading
 			//===============
+            var dateToStr = scheduler.date.date_to_str("%Y-%m-%d");
 
+            scheduler.templates.format_date = function(date){
+                return dateToStr (date);
+            };
 			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
             console.log(moment().format('l'));
             // Cần đổi dữ liệu theo sang ngày hiện tại được config từ momentjs
@@ -119,7 +123,7 @@ Bảng xếp lịch
 				{ start_date: "2021-04-25 12:00", end_date: "2021-04-25 13:00", text:"Khách Thi", section_id:4},
 				{ start_date: "2021-04-25 14:00", end_date: "2021-04-25 16:00", text:"Khách Tú", section_id:5},
 				{ start_date: "2021-04-25 16:00", end_date: "2021-04-25 17:00", text:"Khách Hải", section_id:5},
-				{ start_date: "2021-04-25 16:30", end_date: "2021-04-25 18:00", text:"Khách Ninh", section_id:5},
+				{ start_date: "2021-04-26 16:30", end_date: "2021-04-26 18:00", text:"Khách Ninh", section_id:5},
 			]);
 		});
 </script>
