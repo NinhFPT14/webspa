@@ -11,7 +11,7 @@ Sửa đơn đặt lịch
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('listAppointment')}}">Danh sách đơn</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Sửa đơn đặt lịch #</li>
+            <li class="breadcrumb-item active" aria-current="page">Sửa đơn đặt lịch #{{$data->id}}</li>
         </ol>
     </nav>
 
@@ -37,21 +37,23 @@ Sửa đơn đặt lịch
                                     $service = DB::table('services')->where('status',0)->where('category_id', $value->id)->get();
                                 ?>
                                 @foreach($service as $item)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                    @foreach($service_id as $id)
+                                        <option value="{{$item->id}}" {{$item->id == $id->service_id ? 'selected':''}}>{{$item->name}}</option>
+                                    @endforeach
                                 @endforeach
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Họ tên</label>
-                            <input type="text" name="name" class="form-control" id="formGroupExampleInput">
+                            <input type="text" name="name" class="form-control"  value="{{$data->name}}">
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Số điện thoại</label>
-                            <input type="text" name="name" class="form-control" id="formGroupExampleInput">
+                            <input type="text" name="name" class="form-control" value="{{$data->phone}}" >
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -60,9 +62,9 @@ Sửa đơn đặt lịch
                             <label for="formGroupExampleInput">Thời gian mong muốn</label>
                             <select class="form-control" name="time_ficked">
                                 <option selected disabled value="">Chọn thời gian</option>
-                                <option  value="Sáng">Sáng</option>
-                                <option  value="Chiều">Chiều</option>
-                                <option  value="Tối">Tối</option>
+                                <option  value="Sáng" {{$data->time_ficked == 'Sáng' ? 'selected':''}}>Sáng</option>
+                                <option  value="Chiều" {{$data->time_ficked == 'Chiều' ? 'selected':''}}>Chiều</option>
+                                <option  value="Tối" {{$data->time_ficked == 'Tối' ? 'selected':''}}>Tối</option>
                             </select>
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -70,15 +72,33 @@ Sửa đơn đặt lịch
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ngày làm</label>
-                            <input type="date" name="name" class="form-control" id="formGroupExampleInput">
+                            <input type="date" name="name" class="form-control" value="{{date("Y-m-d", strtotime($data->time_start))}}" >
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Lời nhắn</label>
-                            <textarea class="form-control" name="description" id="descs" cols="30" rows="4"></textarea>
+                            <textarea class="form-control" name="description" id="descs" cols="30" rows="4">{{$data->note}}</textarea>
                             @error('description')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Thanh toán</label>
+                            <select class="form-control" name="time_ficked">
+                                <option selected disabled value="">Chọn trạng thái thanh toán</option>
+                                <option  value="0">Thanh toán chuyển khoản</option>
+                                <option  value="1">Thanh toán tiền mặt</option>
+                            </select>
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Mã giảm giá</label>
+                            <input type="text" name="name" class="form-control">
+                            @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -89,37 +109,107 @@ Sửa đơn đặt lịch
             </div>
 
             <div class="col-lg-6 mb-4">
-
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Xếp lịch</h6>
                     </div>
                     <div class="card-body">
+                        <form method="POST"  action="{{route('sortAppointment',['id'=>$data->id])}}">
+                            @csrf
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Giá cũ</label>
-                            <input type="text" name="price" class="form-control" id="formGroupExampleInput" >
-                            @error('price')
+                            <label for="formGroupExampleInput">Chọn dịch vụ</label>
+                            <select class="form-control " name="service_id" >
+                                @foreach($serviceAppointment as $item)
+                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('service_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Giá giảm</label>
-                            <input type="text" name="discount" class="form-control" id="formGroupExampleInput">
-                            @error('discount')
+                            <label for="formGroupExampleInput">Ghế làm</label>
+                            <select class="form-control" name="location_id">
+                                <option selected disabled value="">Chọn trạng dịch vụ</option>
+                                @foreach($location as $value)
+                                <option  value="{{$value->id}}" {{old('location_id') == $value->id ? 'selected':''}}>{{$value->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('location_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Số lượng</label>
-                            <input type="text" name="quality" class="form-control" id="formGroupExampleInput" >
-                            @error('quality')
+                            <label for="formGroupExampleInput">Chọn thời gian bắt đầu</label>
+                            <input type="datetime-local" name="time_start" class="form-control" value="{{ old('time_start')}}"  >
+                            @error('time_start')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Chọn thời gian kết thúc</label>
+                            <input type="datetime-local" name="time_end" class="form-control" value="{{ old('time_end')}}"  >
+                            @error('time_end')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        @if(session('thongbao'))
+                        <div class="alert alert-danger">{{session('thongbao')}}</div>
+                        @endif
                         <button type="submit" class="btn btn-primary float-right ">Tạo</button>
+                    </form>
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Danh sách lịch làm</h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Ghế</th>
+                                <th scope="col">Dịch vụ</th>
+                                <th scope="col">Bắt đầu</th>
+                                <th scope="col">Kết thúc</th>
+                                <th scope="col">Trạng thái</th>
+                                <th scope="col">Huỷ lịch</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($sort as $value)
+                                <tr>
+                                    <th scope="row">{{$value->name_location}}</th>
+                                    <td>{{$value->name_service}}</td>
+                                    <td>{{$value->time_start}}</td>
+                                    <td>{{$value->time_end}}</td>
+                                    <td>
+                                        <div class="form-group">
+                                            <select class="form-control" name="time_ficked">
+                                                <option  value="0" {{$value->status == 0 ? 'selected':''}}>Chờ đến làm </option>
+                                                <option  value="1" {{$value->status == 1 ? 'selected':''}}>Đang làm</option>
+                                                <option  value="2" {{$value->status == 2 ? 'selected':''}}>Làm xong</option>
+                                                <option  value="3" {{$value->status == 3 ? 'selected':''}}>Đã huỷ</option>
+                                            </select>
+                                            @error('name')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>    
+                                    </td>
+                                    <td>
+                                        @if($value->status == 0)
+                                        <a href="{{route('cancelAppointment',['id'=>$value->id])}}" class="text-danger">Huỷ</a>
+                                        @endif
+                                    </td>
+                                </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
                     </div>
                 </div>
             </div>
+            
         </div>
 </div>
 @endsection

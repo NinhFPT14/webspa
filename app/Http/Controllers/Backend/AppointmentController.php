@@ -9,17 +9,58 @@ use App\Model\NumberService;
 use App\Model\BillService;
 use App\Model\ServiceVoucher;
 use App\Model\Service;
+use App\Model\Location;
+use App\Model\Staff;
+use App\Model\SortAppointment;
+use App\Http\Requests\addSortAppointment;
+use App\Http\Sms\SpeedSMSAPI;
 use DB;
 use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
     
-    public function sortAppointment(){
+    public function listSortAppointment(){
         $mytime = Carbon::now();
         $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services'));
+    }
+    
+    public function sortAppointment(addSortAppointment $request ,$id){
+        $appointment = Appointment::find($id);
+        $service = Service::find($request->service_id);
+        $location = Location::find($request->location_id);
+        $staff = Staff::find($location->staff_id);
+        $data =SortAppointment::where('location_id',$request->location_id)
+        ->where('time_end','>=',$request->time_start)
+        ->where('time_start','<=',$request->time_end)
+        ->where('status','<',2)
+        ->get();
+        if(count($data) == 0){
+            $sort = new SortAppointment();
+            $sort->appointment_id = $id;
+            $sort->service_id = $request->service_id;
+            $sort->location_id = $request->location_id;
+            $sort->time_start = $request->time_start;
+            $sort->time_end = $request->time_end;
+            $sort->status = 0;
+            $sort->name_service =$service->name;
+            $sort->name_location = $location->name;
+            $sort->name_staff = $staff->name;
+            $sort->save();
+               //  Gửi otp 
+            $phones =[$appointment->phone];
+            $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ $service->name vào $request->time_start và dự kiến kết thúc $request->time_end ";
+            $type = 2;
+            $sender = "981c320db4992b97";
+            $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+            $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+            alert()->success('Xếp lịch thành công');
+             return redirect()->route('editAppointment',['id'=>$id]);
+        }else{
+            return redirect()->route('editAppointment',['id'=>$id])->with('thongbao',"Từ $request->time_start đến  $request->time_end ghế đã hết");
+        }
     }
     
     public function listAppointment(){
@@ -28,8 +69,31 @@ class AppointmentController extends Controller
     }
 
     public function edit($id){
-        return view('backend.services.editAppointment');
+        $data = Appointment::find($id);
+        $service_id = NumberService::where('appointment_id',$data->id)->get();
+        $SortAppointment = SortAppointment::where('status','!=',3)->where('appointment_id',$id)->get();
+        $arr = [];
+        $arr2 = [];
+        foreach($service_id as $value){
+            $arr[] = $value->service_id;
+        }
+        foreach($SortAppointment as $value){
+            $arr2[] = $value->service_id;
+        }
+        $arrId = array_diff($arr, $arr2);
+        $serviceAppointment = Service::whereIn('id', $arrId)->get();
+        $location = Location::where('status',0)->get();
+        $sort = SortAppointment::where('appointment_id',$id)->orderBy('time_start', 'asc')->get();
+        return view('backend.services.editAppointment',compact('data','service_id','location','sort','serviceAppointment'));
     }
+    public function cancelAppointment($id){
+        $SortAppointment = SortAppointment::find($id);
+        $SortAppointment->status = 3;
+        $SortAppointment->save();
+        alert()->error('Huỷ lịch thành công');
+        return redirect()->route('editAppointment',['id'=>$SortAppointment->appointment_id]);
+    }
+    
 
     public function detailAppointment(Request $request){
         try {

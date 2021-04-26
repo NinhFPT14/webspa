@@ -160,10 +160,12 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/danh-sach-dat-lich','Backend\AppointmentController@listAppointment')->name('listAppointment');
         Route::post('/chi-tiet-don-dat-lich','Backend\AppointmentController@detailAppointment')->name('detailAppointment');
         Route::post('get-data-by-id', 'Backend\AppointmentController@apiGetDataById')->name('appointment.getDataById');
-        Route::get('/bang-xep-lich','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
+        Route::get('/bang-xep-lich','Backend\AppointmentController@listSortAppointment')->name('listSortAppointment');
         Route::post('/tim-kiem-don-theo-thoi-gian','Backend\AppointmentController@searchTimeAppointment')->name('searchTimeAppointment');
         Route::post('/xac-nhan-don','Backend\AppointmentController@confirm')->name('confirmAppointment');
         Route::get('/sua-don-dat-lich/{id}','Backend\AppointmentController@edit')->name('editAppointment');
+        Route::post('/xep-lich-lam/{id}','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
+        Route::get('/huy-lich-lam/{id}','Backend\AppointmentController@cancelAppointment')->name('cancelAppointment');
     });
 
     // vouchers service
