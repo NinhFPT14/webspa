@@ -24,7 +24,9 @@ class AppointmentController extends Controller
         $mytime = Carbon::now();
         $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
-        return view('backend.services.sortAppointment',compact('appointment','services'));
+        $location = Location::select('id','name')->get()->toArray();
+        // dd($location);
+        return view('backend.services.sortAppointment',compact('appointment','services','location'));
     }
 
     public function listSit(){

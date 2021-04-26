@@ -14,7 +14,6 @@ Bảng xếp lịch
 
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
-
 <div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%'>
                    <div class="dhx_cal_navline">
@@ -34,8 +33,6 @@ Bảng xếp lịch
 
 @section("js")
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
-
-
 <script type="text/javascript" charset="utf-8">
 		
 		window.addEventListener("DOMContentLoaded", function(){
@@ -45,33 +42,13 @@ Bảng xếp lịch
 			//===============
 			//Configuration
 			//===============
+			let apiDetail = [];
+			console.log(apiDetail)
             var sections = [
-				{key:0 ,label:"ghế demo"},
-			];
-			let apiDetail = '{{route("listSit")}}';
-			$.ajax({
-				url: apiDetail,
-				method: "GET",
-				data: {
-					_token: '{{csrf_token()}}'
-				},
-				dataType: 'json',
-				success: function(response) {
-						if(response.data){
-							for(var i = 0 ; i < response.data.length ; i++ ){
-								sections.push({
-								key: response.data[i].id, 
-								label:  response.data[i].name
-								});	
-							}
-			
-						}else{
-							console.log('fdsd');
-						}
-				}
-
-			})
-			console.log(sections);
+				{key:1, label:apiDetail},
+        		{key:2, label:"John Williams"},
+        		{key:3, label:"David Miller"},
+        		{key:4, label:"Linda Brown"}];
 
 
 			var durations = {
