@@ -27,6 +27,15 @@ class AppointmentController extends Controller
         return view('backend.services.sortAppointment',compact('appointment','services'));
     }
 
+    public function listSit(){
+        try {
+            $data = Location::where('status',0)->get();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+
     public function sortAppointment(addSortAppointment $request ,$id){
         $appointment = Appointment::find($id);
         $service = Service::find($request->service_id);

@@ -37,22 +37,45 @@ Bảng xếp lịch
 
 
 <script type="text/javascript" charset="utf-8">
+		
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
             scheduler.config.readonly = true;
-
 			//===============
 			//Configuration
 			//===============
-			var sections = [
-				{key:1, label:"Ghế 1"},
-				{key:2, label:"Ghế 2"},
-				{key:3, label:"Ghế 3"},
-				{key:4, label:"Ghế 4"},
-                {key:5, label:"Ghế 5"},
-                {key:6, label:"Ghế 6"},
+            var sections = [
+				{key:1 ,label:"ghế 1"},
+				{key:2 ,label:"ghế 2"},
+				{key:3 ,label:"ghế 3"},
+				{key:4 ,label:"ghế 4"},
 			];
+			let apiDetail = '{{route("listSit")}}';
+			$.ajax({
+				url: apiDetail,
+				method: "GET",
+				data: {
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(response) {
+						if(response.data){
+							for(var i = 0 ; i < response.data.length ; i++ ){
+								sections.push({
+								key: response.data[i].id, 
+								label:  response.data[i].name
+								});	
+							}
+			
+						}else{
+							console.log('fdsd');
+						}
+				}
+
+			})
+			console.log(sections);
+
 
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
