@@ -98,10 +98,10 @@ class ProductController extends Controller
                 $update->quality = $update->quality + $request->number;
                 $update->save();
 
-                $price = $product->discount *  $update->quality;
+                $price = $product->discount *  $request->number;
                 $total = $data->total_monney + $price + ($price*10/100);
                 $data->total_monney = $total;
-                $data->tax = $data->tax -($price*10/100);
+                $data->tax = $data->tax + ($price*10/100);
                 $data->save();
             }
         };

@@ -167,6 +167,7 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/huy-lich-lam/{id}','Backend\AppointmentController@cancelAppointment')->name('cancelAppointment');
 
         Route::get('/list-ghe-lam','Backend\AppointmentController@listSit')->name('listSit');
+        Route::get('/list-lich-lam','Backend\AppointmentController@listDo')->name('listDo');
     });
 
     // vouchers service
