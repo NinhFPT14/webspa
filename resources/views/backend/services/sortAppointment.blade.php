@@ -46,10 +46,7 @@ Bảng xếp lịch
 			//Configuration
 			//===============
             var sections = [
-				{key:1 ,label:"ghế 1"},
-				{key:2 ,label:"ghế 2"},
-				{key:3 ,label:"ghế 3"},
-				{key:4 ,label:"ghế 4"},
+				{key:0 ,label:"ghế demo"},
 			];
 			let apiDetail = '{{route("listSit")}}';
 			$.ajax({
