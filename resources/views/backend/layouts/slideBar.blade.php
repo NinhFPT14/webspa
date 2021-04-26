@@ -68,7 +68,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
                 <a class="collapse-item" href="{{ route('listAppointment') }}">Đơn đặt lịch</a>
-                <a class="collapse-item" href="{{ route('sortAppointment')}}">Bảng xếp lịch</a>
+                <a class="collapse-item" href="{{ route('listSortAppointment')}}">Bảng xếp lịch</a>
                 <a class="collapse-item" href="{{ route('listLocation')}}">Ghế làm</a>
                 <a class="collapse-item" href="{{ route('listStaff')}}">Nhân viên</a>
             </div>
