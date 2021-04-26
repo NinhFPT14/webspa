@@ -19,14 +19,23 @@ use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
-    
+
     public function listSortAppointment(){
         $mytime = Carbon::now();
         $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services'));
     }
-    
+
+    public function listSit(){
+        try {
+            $data = Location::where('status',0)->get();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+
     public function sortAppointment(addSortAppointment $request ,$id){
         $appointment = Appointment::find($id);
         $service = Service::find($request->service_id);
@@ -49,7 +58,7 @@ class AppointmentController extends Controller
             $sort->name_location = $location->name;
             $sort->name_staff = $staff->name;
             $sort->save();
-               //  Gửi otp 
+               //  Gửi otp
             $phones =[$appointment->phone];
             $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ $service->name vào $request->time_start và dự kiến kết thúc $request->time_end ";
             $type = 2;
@@ -62,9 +71,30 @@ class AppointmentController extends Controller
             return redirect()->route('editAppointment',['id'=>$id])->with('thongbao',"Từ $request->time_start đến  $request->time_end ghế đã hết");
         }
     }
-    
-    public function listAppointment(){
-        $appointment = Appointment::where('status','!=' ,0)->orderByDesc('id')->paginate(10);
+
+    public function listAppointment(Request $request){
+        if(!$request->hasAny(['key', 'from_time', 'to_time'])){
+            $appointment = Appointment::paginate(10);
+        }else{
+            if($request->has('key')){
+                $query = Appointment::where(function($q2) use ($request){
+                    $q2->where("name", "like", "%".$request->key."%")
+                        ->orWhere("phone", "like", "%".$request->key."%");
+                });
+            }
+            if($request->has(['from_time', 'to_time'])){
+                $query = $query->whereBetween('time_start', [
+                    Carbon::createFromFormat('d/m/Y', $request->from_time)->format('Y-m-d'),
+                    Carbon::createFromFormat('d/m/Y', $request->to_time)->format('Y-m-d')
+                ]);
+            }
+//             dd($query->toSql(), Carbon::createFromFormat('d/m/Y', $request->from_time)->format('Y-m-d'));
+            $appointment = $query->paginate(10);
+        }
+
+
+
+//        $appointment = Appointment::where('status','!=' ,0)->orderByDesc('id')->paginate(10);
         return view('backend.services.listAppointment',compact('appointment'));
     }
 
@@ -93,7 +123,7 @@ class AppointmentController extends Controller
         alert()->error('Huỷ lịch thành công');
         return redirect()->route('editAppointment',['id'=>$SortAppointment->appointment_id]);
     }
-    
+
 
     public function detailAppointment(Request $request){
         try {
@@ -108,7 +138,7 @@ class AppointmentController extends Controller
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
-        
+
     }
 
      public function apiGetDataById(Request $request){ // Lấy ra id từ request
@@ -156,5 +186,5 @@ class AppointmentController extends Controller
         }
         return response()->json(['status' => false, 'message' => 'Không có tham số id']);
     }
-     
+
 }

@@ -16,20 +16,18 @@ Bảng xếp lịch
 @endsection
 
 <div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
-    <h1 class="text-center display-6 font-sans prose-blue">Bảng Xếp Lịch</h1>
-    <br>
-    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;' >
-	<div class="dhx_cal_navline">
-		<div class="dhx_cal_prev_button">&nbsp;</div>
-		<div class="dhx_cal_next_button">&nbsp;</div>
-		<div class="dhx_cal_today_button"></div>
-		<div class="dhx_cal_date"></div>
-	</div>
-	<div class="dhx_cal_header">
-	</div>
-	<div class="dhx_cal_data">
-	</div>
-</div>
+       <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%'>
+                   <div class="dhx_cal_navline">
+                       <div class="dhx_cal_prev_button">&nbsp;</div>
+                       <div class="dhx_cal_next_button">&nbsp;</div>
+                       <div class="dhx_cal_today_button"></div>
+                       <div class="dhx_cal_date"></div>
+                   </div>
+               <div class="dhx_cal_header">
+               </div>
+               <div class="dhx_cal_data border-separate">
+       </div>
+       <!-- Bảng xếp lịch kết thúc -->
 </div>
 <br>
 
@@ -39,22 +37,42 @@ Bảng xếp lịch
 
 
 <script type="text/javascript" charset="utf-8">
+		
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
-            // scheduler.config.readonly = true;
-
+            scheduler.config.readonly = true;
 			//===============
 			//Configuration
 			//===============
-			var sections = [
-				{key:1, label:"Ghế 1"},
-				{key:2, label:"Ghế 2"},
-				{key:3, label:"Ghế 3"},
-				{key:4, label:"Ghế 4"},
-                {key:5, label:"Ghế 5"},
-                {key:6, label:"Ghế 6"},
+            var sections = [
+				{key:0 ,label:"ghế demo"},
 			];
+			let apiDetail = '{{route("listSit")}}';
+			$.ajax({
+				url: apiDetail,
+				method: "GET",
+				data: {
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(response) {
+						if(response.data){
+							for(var i = 0 ; i < response.data.length ; i++ ){
+								sections.push({
+								key: response.data[i].id, 
+								label:  response.data[i].name
+								});	
+							}
+			
+						}else{
+							console.log('fdsd');
+						}
+				}
+
+			})
+			console.log(sections);
+
 
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
@@ -101,7 +119,7 @@ Bảng xếp lịch
 				y_property:	"section_id",
 				render:"bar",
 				event_dy: "full"
-                
+
 			});
 
 
@@ -109,9 +127,9 @@ Bảng xếp lịch
 			//Data loading
 			//===============
 
-			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
-            console.log(moment().format('l'));
-            // Cần đổi dữ liệu theo sang ngày hiện tại được config từ momentjs
+			scheduler.init('scheduler_here', new Date(moment().format('l')), "timeline");
+
+
 			scheduler.parse([
 				{ start_date: "2021-04-25 09:00", end_date: "2021-04-25 12:00", text:"Khách Dịu", section_id:1},
 				{ start_date: "2021-04-25 10:00", end_date: "2021-04-25 16:00", text:"Khách Vip Công", section_id:2},
