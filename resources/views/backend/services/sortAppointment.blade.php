@@ -42,7 +42,7 @@ Bảng xếp lịch
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
-            scheduler.config.readonly = true;
+            // scheduler.config.readonly = true;
 
 			//===============
 			//Configuration
@@ -109,8 +109,9 @@ Bảng xếp lịch
 			//Data loading
 			//===============
 
-			scheduler.init('scheduler_here', new Date(moment().format('l')), "timeline");
-
+			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
+            console.log(moment().format('l'));
+            // Cần đổi dữ liệu theo sang ngày hiện tại được config từ momentjs
 			scheduler.parse([
 				{ start_date: "2021-04-25 09:00", end_date: "2021-04-25 12:00", text:"Khách Dịu", section_id:1},
 				{ start_date: "2021-04-25 10:00", end_date: "2021-04-25 16:00", text:"Khách Vip Công", section_id:2},
