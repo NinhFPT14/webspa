@@ -21,19 +21,20 @@ Danh sách đơn đặt lịch
             @csrf
             <div class="input-group">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key">
+                    <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
                 </div>
                 <div class="input-group input-daterange">
-                    <input type="text" class="form-control" name="from_time" autocomplete="off">
-                    <div class="input-group-addon">to</div>
-                    <input type="text" class="form-control" name="to_time" autocomplete="off">
+                    <input type="text" class="form-control" name="from_time" autocomplete="off" value="{{$from_time}}">
+                    <div class="input-group-addon">đến</div>
+                    <input type="text" class="form-control" name="to_time" autocomplete="off" value="{{$to_time}}">
                 </div>
                 <div class="form-group">
                     <select  name="type" class="form-control">
-                        <option value="1" >Chờ lên lịch</option>
-                        <option value="2">Đã lên lịch</option>
-                        <option value="3">Làm xong</option>
-                        <option value="4">Từ chối</option>
+                        <option selected disabled value="">Chọn trạng thái</option>
+                        <option value="1" {{$type == 1 ? 'selected':''}} >Chờ lên lịch</option>
+                        <option value="2" {{$type == 2 ? 'selected':''}}>Đã lên lịch</option>
+                        <option value="3" {{$type == 3 ? 'selected':''}}>Làm xong</option>
+                        <option value="4" {{$type == 4 ? 'selected':''}}>Từ chối</option>
                     </select>
                 </div>
                 <div class="input-group-append">
@@ -70,6 +71,7 @@ Danh sách đơn đặt lịch
                             <td>
                                 <div class="form-group">
                                     <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
+                    
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Chờ lên lịch</option>
                                         <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã lên lịch</option>
                                         <option value="3"{{$value->status == 3 ? 'selected':''}}>Làm xong</option>

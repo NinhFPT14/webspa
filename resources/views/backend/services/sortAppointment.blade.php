@@ -37,16 +37,19 @@ Bảng xếp lịch
 
 
 <script type="text/javascript" charset="utf-8">
-		
+						
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
-            scheduler.config.readonly = true;
+
 			//===============
 			//Configuration
 			//===============
-            var sections = [
-				{key:0 ,label:"ghế demo"},
+
+
+			var sections = [
+				{key:1, label:"Ghế 1"},
+				{key:2, label:"Ghế 2"},
 			];
 			let apiDetail = '{{route("listSit")}}';
 			$.ajax({
@@ -62,16 +65,18 @@ Bảng xếp lịch
 								sections.push({
 								key: response.data[i].id, 
 								label:  response.data[i].name
-								});	
+							});	
 							}
-			
 						}else{
 							console.log('fdsd');
 						}
 				}
 
 			})
+
 			console.log(sections);
+
+
 
 
 			var durations = {
