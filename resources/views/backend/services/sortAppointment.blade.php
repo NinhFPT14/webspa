@@ -16,7 +16,6 @@ Bảng xếp lịch
 @endsection
 
 <div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
-<<<<<<< HEAD
        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%'>
                    <div class="dhx_cal_navline">
                        <div class="dhx_cal_prev_button">&nbsp;</div>
@@ -29,22 +28,6 @@ Bảng xếp lịch
                <div class="dhx_cal_data border-separate">
        </div>
        <!-- Bảng xếp lịch kết thúc -->
-=======
-    <h1 class="text-center display-6 font-sans prose-blue">Bảng Xếp Lịch</h1>
-    <br>
-    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;' >
-	<div class="dhx_cal_navline">
-		<div class="dhx_cal_prev_button">&nbsp;</div>
-		<div class="dhx_cal_next_button">&nbsp;</div>
-		<div class="dhx_cal_today_button"></div>
-		<div class="dhx_cal_date"></div>
-	</div>
-	<div class="dhx_cal_header">
-	</div>
-	<div class="dhx_cal_data">
-	</div>
-</div>
->>>>>>> 6eff6da3cc4698a0380cb115743c6888133fa146
 </div>
 <br>
 
@@ -116,7 +99,7 @@ Bảng xếp lịch
 				y_property:	"section_id",
 				render:"bar",
 				event_dy: "full"
-                
+
 			});
 
 
@@ -125,6 +108,7 @@ Bảng xếp lịch
 			//===============
 
 			scheduler.init('scheduler_here', new Date(moment().format('l')), "timeline");
+
 
 			scheduler.parse([
 				{ start_date: "2021-04-25 09:00", end_date: "2021-04-25 12:00", text:"Khách Dịu", section_id:1},
