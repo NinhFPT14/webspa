@@ -4,7 +4,7 @@ Danh sách đơn đặt lịch
 @endsection
 @section('content')
 @section("link")
-<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+{{--<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">--}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 @endsection
 <div class="container-fluid">
@@ -14,24 +14,27 @@ Danh sách đơn đặt lịch
             <li class="breadcrumb-item active" aria-current="page">Danh sách đơn đặt lịch</li>
         </ol>
     </nav>
-    
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
             @csrf
             <div class="input-group">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key">
+                    <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
                 </div>
-                <div class="form-group">
-                    <input type="date" class="form-control"name="time">
+                <div class="input-group input-daterange">
+                    <input type="text" class="form-control" name="from_time" autocomplete="off" value="{{$from_time}}">
+                    <div class="input-group-addon">đến</div>
+                    <input type="text" class="form-control" name="to_time" autocomplete="off" value="{{$to_time}}">
                 </div>
                 <div class="form-group">
                     <select  name="type" class="form-control">
-                        <option value="1" >Chờ lên lịch</option>
-                        <option value="2">Đã lên lịch</option>
-                        <option value="3">Làm xong</option>
-                        <option value="4">Từ chối</option>
+                        <option selected disabled value="">Chọn trạng thái</option>
+                        <option value="1" {{$type == 1 ? 'selected':''}} >Chờ lên lịch</option>
+                        <option value="2" {{$type == 2 ? 'selected':''}}>Đã lên lịch</option>
+                        <option value="3" {{$type == 3 ? 'selected':''}}>Làm xong</option>
+                        <option value="4" {{$type == 4 ? 'selected':''}}>Từ chối</option>
                     </select>
                 </div>
                 <div class="input-group-append">
@@ -68,6 +71,7 @@ Danh sách đơn đặt lịch
                             <td>
                                 <div class="form-group">
                                     <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
+                    
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Chờ lên lịch</option>
                                         <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã lên lịch</option>
                                         <option value="3"{{$value->status == 3 ? 'selected':''}}>Làm xong</option>
@@ -78,12 +82,12 @@ Danh sách đơn đặt lịch
                             <td>
                                 <a class="btn btn-primary btn-xem-chi-tiet" data-appointmentid="{{$value->id}}" target="_blank">Xem</a>
                             </td>
-                            <td>  
+                            <td>
                                 <a class="btn btn-warning " href="{{route('editAppointment',['id'=>$value->id])}}">Sửa</a>
                             </td>
-                            
+
                         </tr>
-                    @endforeach    
+                    @endforeach
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
@@ -157,6 +161,12 @@ Danh sách đơn đặt lịch
 @section('js')
 <script>
 $(document).ready(function() {
+    $('.input-daterange input').each(function() {
+        $(this).datepicker({
+            clearDates: true,
+            format: "dd/mm/yyyy"
+        });
+    });
     $('.btn-xem-chi-tiet').on('click', function() {
         $('#staticBackdrop').modal('show')
         let id = $(this).data('appointmentid');
@@ -187,16 +197,16 @@ $(document).ready(function() {
                         <td> `+price+` VNĐ</td>
                         </tr>`;
                     }
-                    
+
                     $("#modal_tbody").html(output);
                     $(".modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_money) + ' VNĐ');
                     }else{
                         swal("Đơn đặt hàng không tồn tại", "", "warning");
                     }
             }
-            
+
         })
-       
+
     })
 
 })

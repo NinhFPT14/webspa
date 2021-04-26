@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $data = Post::paginate(8);
+        $data = Post::where('status','<',2)->paginate(8);
         // dd($data);
         return view('backend.blog.list', ['data'=> $data ]);
     }
@@ -90,8 +90,8 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $data = Post::find($id);
-        File::delete($data->avatar);
-        $data->delete();
+        $data->status = 2 ;
+        $data->save();
         alert()->success('Xóa bài viết thành công'); 
         return redirect()->route('listBaiviet');
     }

@@ -127,7 +127,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         // oder
         Route::get('/danh-sach-don-dat-hang','Backend\ProductController@listOrder')->name('product.order.admin');
         Route::post('/doi-trang-thai-don-hang','Backend\ProductController@editStatus')->name('product.edit.admin');
-        Route::post('/tim-kiem-don-hang','Backend\ProductController@searchOrder')->name('product.order.search');
         Route::get('/trang-sua-don-hang/{id}','Backend\ProductController@editOrder')->name('product.order.edit');
         Route::post('/them-sam-pham/{id}','Backend\ProductController@addProductOrder')->name('product.order.add');
         Route::get('/xoa-sam-pham/{id}/{productOder}','Backend\ProductController@deleteProductOrder')->name('product.order.delete');
@@ -166,6 +165,8 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/sua-don-dat-lich/{id}','Backend\AppointmentController@edit')->name('editAppointment');
         Route::post('/xep-lich-lam/{id}','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
         Route::get('/huy-lich-lam/{id}','Backend\AppointmentController@cancelAppointment')->name('cancelAppointment');
+
+        Route::get('/list-ghe-lam','Backend\AppointmentController@listSit')->name('listSit');
     });
 
     // vouchers service

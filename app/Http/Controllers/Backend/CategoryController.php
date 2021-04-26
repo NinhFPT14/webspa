@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Category;
 use App\Model\Product;
+use App\Model\Service;
+use App\Model\Post;
 use App\Http\Requests\AddCategoryRequest;
 use App\Http\Requests\EditCategoryRequest;
 use RealRashid\SweetAlert\Facades\Aler;
@@ -20,7 +22,7 @@ class CategoryController extends Controller
     public function store(AddCategoryRequest $request){
         $data = $request->all();
         unset($data['_token']);
-        $data['status'] =0;
+        $data['status'] = 0;
         $category = Category::create($data);
         alert()->success('Thành công', "Tạo thành công danh mục $request->name"); 
         return redirect()->route('addCategory');
@@ -28,7 +30,7 @@ class CategoryController extends Controller
     
 
     public function list($type){
-        $data = Category::where('type',$type)->paginate(10);
+        $data = Category::where('type',$type)->where('status','<',2)->paginate(10);
         return view('backend.categories.list',compact('data','type'));
     }
 
@@ -41,8 +43,34 @@ class CategoryController extends Controller
     }
 
     public function delete($id){
+        
         $flight = Category::find($id);
-        $flight->delete();
+        $flight->status = 2;
+        $flight->save();
+        if( $flight->type == 0){
+            $product = Product::where('category_id',$flight->id)->get();
+            foreach($product as $value){
+                $product = Product::find($value->id);
+                $product->status = 2;
+                $product->save();
+            }
+        }elseif($flight->type == 1){
+            $service = Service::where('category_id',$flight->id)->get();
+            foreach($service as $value){
+                $service = Service::find($value->id);
+                $service->status = 2;
+                $service->save();
+            }
+        }else{
+            $post = Post::where('category_id',$flight->id)->get();
+            foreach($post as $value){
+                $post = Post    ::find($value->id);
+                $post->status = 2;
+                $post->save();
+            }
+
+        }
+       
         alert()->error('Xóa thành công');
         return redirect()->route('listCategory',['type'=>$flight->type]);
     }

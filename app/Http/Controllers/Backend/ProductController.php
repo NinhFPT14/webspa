@@ -12,6 +12,7 @@ use App\Http\Requests\EditProductRequest;
 use Illuminate\Support\Str;
 use App\Model\Oder;
 use App\Model\ProductOder;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 use File;
@@ -19,16 +20,39 @@ use File;
 class ProductController extends Controller
 {
     public function list(){
-        $data = Product::paginate(9);
+        $data = Product::where('status','<',2)->paginate(9);
         return view('backend.products.list',compact('data'));
     }
     public function add(){
         $category = Category::where('type',0)->get();
         return view('backend.products.add',compact('category'));
     }
-    public function listOrder(){
-        $data = Oder::where('status','!=',5)->orderBy('id', 'DESC')->paginate(10);
-        return view('backend.products.orderProduct',compact('data'));
+    public function listOrder(Request $request){
+        if(!$request->hasAny(['key', 'from_time', 'to_time','type'])){
+            $data = Oder::where('status','!=',5)->orderByDesc('id')->paginate(10);
+        }else{
+            if($request->has('key')){
+                $query = Oder::where(function($q2) use ($request){
+                    $q2->where("name", "like", "%".$request->key."%")
+                        ->orWhere("phone_number", "like", "%".$request->key."%");
+                });
+            }
+            if($request->from_time != null && $request->to_time != null){
+                $query = $query->whereBetween('created_at', [
+                    Carbon::createFromFormat('d/m/Y', $request->from_time)->format('Y-m-d'),
+                    Carbon::createFromFormat('d/m/Y', $request->to_time)->format('Y-m-d')
+                ]);
+            }
+            if($request->has('type')){
+                $query =  $query->where("status",$request->type);
+            }
+            $data = $query->paginate(10);
+        }
+        $key = $request->key;
+        $from_time = $request->from_time;
+        $to_time = $request->to_time;
+        $type = $request->type;
+        return view('backend.products.orderProduct',compact('data','key','from_time','type','to_time'));
     }
 
     public function editOrder($id){
@@ -113,15 +137,6 @@ class ProductController extends Controller
         return redirect()->route('product.order.edit',['id'=>$id]);
     }
 
-    
-    public function searchOrder(Request $request){
-        $data = Oder::where('status','!=',5)
-        ->where('name', 'like', '%' . $request->key . '%')
-        ->orWhere('status',$request->status)
-        ->paginate(10);
-        return view('backend.products.orderProduct',compact('data'));
-    }
-
     public function editStatus(Request $request){
         try {
             Oder::where('id',$request->id)->update(['status'=>$request->status]);
@@ -163,13 +178,8 @@ class ProductController extends Controller
 
     public function delete($id){
         $data = Product::find($id);
-        File::delete($data->avatar);
-        $image = ProductImage::where('product_id',$data->id)->get();
-        foreach($image as $value){
-            File::delete($value->image);
-        }
-        ProductImage::where('product_id',$data->id)->delete();
-        $data->delete();
+        $data->status = 2;
+        $data->save();
         alert()->error('Đã xóa sản phẩm'); 
         return redirect()->route('listProduct');
     }
@@ -193,7 +203,6 @@ class ProductController extends Controller
 
     public function update(EditProductRequest $request ,$id){
         $data = $request->all();
-        // dd($data);
         unset($data['_token'],$data['image']);
         $product = Product::find($id);
         if($request->hasFile('avatar')){

@@ -14,7 +14,6 @@ Bảng xếp lịch
 
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
-
 <div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
        <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%'>
                    <div class="dhx_cal_navline">
@@ -31,14 +30,11 @@ Bảng xếp lịch
 </div>
 <br>
 
-    
-
 
 @section("js")
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
-
-
 <script type="text/javascript" charset="utf-8">
+						
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
@@ -46,14 +42,39 @@ Bảng xếp lịch
 			//===============
 			//Configuration
 			//===============
+
+
 			var sections = [
 				{key:1, label:"Ghế 1"},
 				{key:2, label:"Ghế 2"},
-				{key:3, label:"Ghế 3"},
-				{key:4, label:"Ghế 4"},
-                {key:5, label:"Ghế 5"},
-                {key:6, label:"Ghế 6"},
 			];
+			let apiDetail = '{{route("listSit")}}';
+			$.ajax({
+				url: apiDetail,
+				method: "GET",
+				data: {
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(response) {
+						if(response.data){
+							for(var i = 0 ; i < response.data.length ; i++ ){
+								sections.push({
+								key: response.data[i].id, 
+								label:  response.data[i].name
+							});	
+							}
+						}else{
+							console.log('fdsd');
+						}
+				}
+
+			})
+
+			console.log(sections);
+
+
+
 
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
@@ -95,25 +116,26 @@ Bảng xếp lịch
 				x_step:	60,
 				x_size: 14,
 				x_start: 9,
-				x_length: 48,
+				x_length: 24,
 				y_unit:	sections,
 				y_property:	"section_id",
 				render:"bar",
 				event_dy: "full"
+
 			});
 
 
 			//===============
 			//Data loading
 			//===============
-			scheduler.config.lightbox.sections = [
-				{name:"description", height:130, map_to:"text", type:"textarea" , focus:true},
-				{name:"custom", height:23, type:"select", options:sections, map_to:"section_id" },
-				{name:"time", height:72, type:"time", map_to:"auto"}
-			];
+            var dateToStr = scheduler.date.date_to_str("%Y-%m-%d");
 
-			scheduler.init('scheduler_here', new Date(moment().format('l')), "timeline");
-
+            scheduler.templates.format_date = function(date){
+                return dateToStr (date);
+            };
+			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
+            console.log(moment().format('l'));
+            // Cần đổi dữ liệu theo sang ngày hiện tại được config từ momentjs
 			scheduler.parse([
 				{ start_date: "2021-04-25 09:00", end_date: "2021-04-25 12:00", text:"Khách Dịu", section_id:1},
 				{ start_date: "2021-04-25 10:00", end_date: "2021-04-25 16:00", text:"Khách Vip Công", section_id:2},
@@ -121,7 +143,7 @@ Bảng xếp lịch
 				{ start_date: "2021-04-25 12:00", end_date: "2021-04-25 13:00", text:"Khách Thi", section_id:4},
 				{ start_date: "2021-04-25 14:00", end_date: "2021-04-25 16:00", text:"Khách Tú", section_id:5},
 				{ start_date: "2021-04-25 16:00", end_date: "2021-04-25 17:00", text:"Khách Hải", section_id:5},
-				{ start_date: "2021-04-25 16:30", end_date: "2021-04-25 18:00", text:"Khách Ninh", section_id:5},
+				{ start_date: "2021-04-26 16:30", end_date: "2021-04-26 18:00", text:"Khách Ninh", section_id:5},
 			]);
 		});
 </script>
