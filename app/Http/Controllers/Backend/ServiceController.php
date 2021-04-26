@@ -41,7 +41,7 @@ class ServiceController extends Controller
     }
 
     public function list(){
-        $data = Service::paginate(10);
+        $data = Service::where('status','<',2)->paginate(10);
         // dd($data);
         return view('backend.services.list',compact('data'));
     }
@@ -59,9 +59,9 @@ class ServiceController extends Controller
     }
 
     public function delete($id){
-        $data = Service::find($id);
-        File::delete($data->image);
-        $data->delete();
+        $flight = Service::find($id);
+        $flight->status = 2;
+        $flight->save();
         alert()->success('Xóa dịch vụ thành công'); 
         return redirect()->route('listService');
     }

@@ -19,7 +19,7 @@ use File;
 class ProductController extends Controller
 {
     public function list(){
-        $data = Product::paginate(9);
+        $data = Product::where('status','<',2)->paginate(9);
         return view('backend.products.list',compact('data'));
     }
     public function add(){
@@ -163,13 +163,8 @@ class ProductController extends Controller
 
     public function delete($id){
         $data = Product::find($id);
-        File::delete($data->avatar);
-        $image = ProductImage::where('product_id',$data->id)->get();
-        foreach($image as $value){
-            File::delete($value->image);
-        }
-        ProductImage::where('product_id',$data->id)->delete();
-        $data->delete();
+        $data->status = 2;
+        $data->save();
         alert()->error('Đã xóa sản phẩm'); 
         return redirect()->route('listProduct');
     }
