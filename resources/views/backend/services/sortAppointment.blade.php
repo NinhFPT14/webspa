@@ -34,21 +34,46 @@ Bảng xếp lịch
 @section("js")
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <script type="text/javascript" charset="utf-8">
-		
+						
 		window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
-            scheduler.config.readonly = true;
+
 			//===============
 			//Configuration
 			//===============
-			let apiDetail = [];
-			console.log(apiDetail)
-            var sections = [
-				{key:1, label:apiDetail},
-        		{key:2, label:"John Williams"},
-        		{key:3, label:"David Miller"},
-        		{key:4, label:"Linda Brown"}];
+
+
+			var sections = [
+				{key:1, label:"Ghế 1"},
+				{key:2, label:"Ghế 2"},
+			];
+			let apiDetail = '{{route("listSit")}}';
+			$.ajax({
+				url: apiDetail,
+				method: "GET",
+				data: {
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(response) {
+						if(response.data){
+							for(var i = 0 ; i < response.data.length ; i++ ){
+								sections.push({
+								key: response.data[i].id, 
+								label:  response.data[i].name
+							});	
+							}
+						}else{
+							console.log('fdsd');
+						}
+				}
+
+			})
+
+			console.log(sections);
+
+
 
 
 			var durations = {

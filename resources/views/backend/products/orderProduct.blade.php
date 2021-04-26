@@ -13,24 +13,25 @@ Danh sách đơn đặt hàng
     
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <form action="{{route('product.order.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key">
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
                     </div>
-                    <div class="form-group">
-                        <input type="date" class="form-control"name="time">
+                    <div class="input-group input-daterange">
+                        <input type="text" class="form-control" name="from_time" autocomplete="off" value="{{$from_time}}">
+                        <div class="input-group-addon">đến</div>
+                        <input type="text" class="form-control" name="to_time" autocomplete="off" value="{{$to_time}}">
                     </div>
                     <div class="form-group">
                         <select  name="type" class="form-control">
-                            <option value ="">Chọn trạng thái</option>
-                            <option value="0">Chờ xác nhận</option>
-                            <option value="1">Đã lên đơn </option>
-                            <option value="2">Đã gửi hàng</option>
-                            <option value="3">Đã nhận hàng</option>
-                            <option value="4">Từ chối đơn</option>
-                            <option value="6">Hoàn trả</option>
+                            <option value="0" {{$type == 0 ? 'selected':''}} >Chờ xác nhận</option>
+                            <option value="1" {{$type == 1 ? 'selected':''}}>Đã lên đơn </option>
+                            <option value="2"{{$type == 2 ? 'selected':''}}>Đã gửi hàng</option>
+                            <option value="3"{{$type == 3 ? 'selected':''}}>Đã nhận hàng</option>
+                            <option value="4"{{$type == 4 ? 'selected':''}}>Từ chối đơn</option>
+                            <option value="6"{{$type == 6 ? 'selected':''}}>Hoàn trả</option>
                         </select>
                     </div>
                     <div class="input-group-append">
@@ -64,7 +65,7 @@ Danh sách đơn đặt hàng
                             <th>
                                 <div class="form-group">
                                     <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
-                                        <option value="0"  {{$value->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
+                                        <option value="0" {{$value->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Đã lên đơn </option>
                                         <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã gửi hàng</option>
                                         <option value="3"{{$value->status == 3 ? 'selected':''}}>Đã nhận hàng</option>
@@ -149,6 +150,12 @@ Danh sách đơn đặt hàng
 @section('js')
 <script>
 $(document).ready(function() {
+    $('.input-daterange input').each(function() {
+        $(this).datepicker({
+            clearDates: true,
+            format: "dd/mm/yyyy"
+        });
+    });
     $('.detail_oder').on('click', function() {
         $('#staticBackdrop').modal('show')
         let order_id = $(this).data('orderid');

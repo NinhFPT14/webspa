@@ -24,8 +24,9 @@ class AppointmentController extends Controller
         $mytime = Carbon::now();
         $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
-        $location = Location::select('id','name')->get()->toArray();
+        // $location = Location::select('id','name')->get()->toArray();
         // dd($location);
+        $location = Location::where('status',0)->get();
         return view('backend.services.sortAppointment',compact('appointment','services','location'));
     }
 
@@ -84,20 +85,22 @@ class AppointmentController extends Controller
                         ->orWhere("phone", "like", "%".$request->key."%");
                 });
             }
-            if($request->has(['from_time', 'to_time'])){
+            if($request->from_time != null && $request->to_time != null){
                 $query = $query->whereBetween('time_start', [
                     Carbon::createFromFormat('d/m/Y', $request->from_time)->format('Y-m-d'),
                     Carbon::createFromFormat('d/m/Y', $request->to_time)->format('Y-m-d')
                 ]);
             }
-//             dd($query->toSql(), Carbon::createFromFormat('d/m/Y', $request->from_time)->format('Y-m-d'));
+            if($request->has('type')){
+                $query =  $query->where("status",$request->type);
+            }
             $appointment = $query->paginate(10);
         }
-
-
-
-//        $appointment = Appointment::where('status','!=' ,0)->orderByDesc('id')->paginate(10);
-        return view('backend.services.listAppointment',compact('appointment'));
+        $key = $request->key;
+        $from_time = $request->from_time;
+        $to_time = $request->to_time;
+        $type = $request->type;
+        return view('backend.services.listAppointment',compact('appointment','key','from_time','to_time','type'));
     }
 
     public function edit($id){
@@ -167,7 +170,7 @@ class AppointmentController extends Controller
     public function confirm(Request $request){
         if($request->has('id')){
             $flight = Appointment::find($request->id);
-            dd($flight);
+            // dd($flight);
             $flight->name = $request->name;
             $flight->phone = $request->phone;
             $flight->note = $request->note;
