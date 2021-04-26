@@ -103,10 +103,14 @@ Bảng xếp lịch
 			//===============
 			//Data loading
 			//===============
+            var dateToStr = scheduler.date.date_to_str("%Y-%m-%d");
 
-			scheduler.init('scheduler_here', new Date(moment().format('l')), "timeline");
-
-
+            scheduler.templates.format_date = function(date){
+                return dateToStr (date);
+            };
+			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
+            console.log(moment().format('l'));
+            // Cần đổi dữ liệu theo sang ngày hiện tại được config từ momentjs
 			scheduler.parse([
 				{ start_date: "2021-04-25 09:00", end_date: "2021-04-25 12:00", text:"Khách Dịu", section_id:1},
 				{ start_date: "2021-04-25 10:00", end_date: "2021-04-25 16:00", text:"Khách Vip Công", section_id:2},
@@ -114,7 +118,7 @@ Bảng xếp lịch
 				{ start_date: "2021-04-25 12:00", end_date: "2021-04-25 13:00", text:"Khách Thi", section_id:4},
 				{ start_date: "2021-04-25 14:00", end_date: "2021-04-25 16:00", text:"Khách Tú", section_id:5},
 				{ start_date: "2021-04-25 16:00", end_date: "2021-04-25 17:00", text:"Khách Hải", section_id:5},
-				{ start_date: "2021-04-25 16:30", end_date: "2021-04-25 18:00", text:"Khách Ninh", section_id:5},
+				{ start_date: "2021-04-26 16:30", end_date: "2021-04-26 18:00", text:"Khách Ninh", section_id:5},
 			]);
 		});
 </script>
