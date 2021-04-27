@@ -57,6 +57,14 @@ Sửa dịch vụ
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="exampleFormControlSelect1">Số buổi thực hiện (phút)</label>
+                            <input type="number" name="total_time" class="form-control" id="formGroupExampleInput"
+                                placeholder="Chọn thời gian" value="{{ old('total_time')}}">
+                            @error('total_time')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="exampleFormControlSelect1">Giá cũ</label>
                             <input type="number" name="price" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nhập giá tiền" value="{{ $data->price }}">

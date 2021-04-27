@@ -9,13 +9,14 @@ Bảng xếp lịch
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
-<script src="{{ asset('jsCalendar/dhtmlxscheduler.js') }}" type="text/javascript" charset="utf-188"></script>
+<script src="{{ asset('jsCalendar/dhtmlxscheduler.js') }}" type="text/javascript" charset="utf-8"></script>
     <script src=" {{ asset('jsCalendar/ext/dhtmlxscheduler_timeline.js') }} " type="text/javascript" charset="utf-8"></script>
-
+    <script src=" {{ asset('jsCalendar/locale/locale_vn.js') }} " type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
-<div class="md:container md:mx-auto px-4 border-green-900 h-5/6  shadow-xl cursor-not-allowed">
-       <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%'>
+<div class="grid grid-cols-3">
+<div class="md:container px-12 border-green-900 h-screen col-span-2 shadow-xl ">
+       <div id="scheduler_here" class="dhx_cal_container px-6" style='width:100%; height:100%'>
                    <div class="dhx_cal_navline">
                        <div class="dhx_cal_prev_button">&nbsp;</div>
                        <div class="dhx_cal_next_button">&nbsp;</div>
@@ -28,48 +29,30 @@ Bảng xếp lịch
        </div>
        <!-- Bảng xếp lịch kết thúc -->
 </div>
+
+<div class="col-span-1 ">
+</div>
+</div>
+
 <br>
 
 
 @section("js")
-<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf-8">
-						
-		window.addEventListener("DOMContentLoaded", function(){
+	var sections = {!!json_encode($seats)!!};
+	var data = {!!json_encode($list)!!};
+	
+	window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
-
+			scheduler.config.multisection = true;
+            scheduler.config.readonly = true;
 			//===============
 			//Configuration
 			//===============
-
-
-			var sections = [
-				{key:1 ,label: "Ghế 1"}
-			];
-           console.log(sections);
-			
-			let apiDetail = '{{route("listSit")}}';
-			$.ajax({
-				url: apiDetail,
-				method: "GET",
-				data: {
-					_token: '{{csrf_token()}}'
-				},
-				dataType: 'json',
-				success: function(response) {
-						if(response.data){
-							for(var i = 0 ; i < response.data.length ; i++ ){
-								sections.push({
-								key: response.data[i].id, 
-								label:  response.data[i].name
-							});	
-							}
-						}
-				}
-
-			})
-
+			//===============================
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
 				hour: 60 * 60 * 1000,
@@ -78,7 +61,6 @@ Bảng xếp lịch
 
 			var get_formatted_duration = function(start, end) {
 				var diff = end - start;
-
 				var days = Math.floor(diff / durations.day);
 				diff -= days * durations.day;
 				var hours = Math.floor(diff / durations.hour);
@@ -112,7 +94,7 @@ Bảng xếp lịch
 				x_start: 9,
 				x_length: 24,
 				y_unit:	sections,
-				y_property:	"section_id",
+				y_property:	"key",
 				render:"bar",
 				event_dy: "full"
 
@@ -122,24 +104,13 @@ Bảng xếp lịch
 			//===============
 			//Data loading
 			//===============
-            var dateToStr = scheduler.date.date_to_str("%Y-%m-%d");
+            var dateToStr = scheduler.date.date_to_str("%d-%m-%Y");
 
             scheduler.templates.format_date = function(date){
                 return dateToStr (date);
             };
-			scheduler.init('scheduler_here', new Date(moment().format('l')), "timeline");
-            // Cần đổi dữ liệu theo sang ngày hiện tại được config từ momentjs
-			scheduler.parse([
-				{ start_date: "2021-04-27 09:00", end_date: "2021-04-27 12:00", text:"Khách Dịu", section_id:1},
-				{ start_date: "2021-04-27 10:00", end_date: "2021-04-27 16:00", text:"Khách Vip Công", section_id:1},
-				{ start_date: "2021-04-27 10:00", end_date: "2021-04-27 14:00", text:"Khách Vinh", section_id:1},
-				{ start_date: "2021-04-27 12:00", end_date: "2021-04-27 13:00", text:"Khách Thi", section_id:5},
-				{ start_date: "2021-04-27 14:00", end_date: "2021-04-27 16:00", text:"Khách Tú", section_id:5},
-				{ start_date: "2021-04-27 16:00", end_date: "2021-04-27 17:00", text:"Khách Hải", section_id:1},
-				{ start_date: "2021-04-28 16:30", end_date: "2021-04-28 18:00", text:"Khách Ninh", section_id:1},
-			]);
-
-			
+			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
+			scheduler.parse(data);
 		});
 </script>
 

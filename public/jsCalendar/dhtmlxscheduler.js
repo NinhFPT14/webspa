@@ -45,8 +45,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             }, this.check
         }, dtmlXMLLoaderObject.prototype.getXMLTopNode = function(t, e) {
             var i;
-            if (this.xmlDoc.responseXML) { var n = this.xmlDoc.responseXML.getElementsByTagName(t); if (0 === n.length && -1 != t.indexOf(":")) var n = this.xmlDoc.responseXML.getElementsByTagName(t.split(":")[1]);
-                i = n[0] } else i = this.xmlDoc.documentElement;
+            if (this.xmlDoc.responseXML) {
+                var n = this.xmlDoc.responseXML.getElementsByTagName(t);
+                if (0 === n.length && -1 != t.indexOf(":")) var n = this.xmlDoc.responseXML.getElementsByTagName(t.split(":")[1]);
+                i = n[0]
+            } else i = this.xmlDoc.documentElement;
             if (i) return this._retry = !1, i;
             if (!this._retry && _isIE) {
                 this._retry = !0;
@@ -68,9 +71,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
         }, dtmlXMLLoaderObject.prototype.destructor = function() {
             return this._filterXPath = null, this._getAllNamedChilds = null, this._retry = null, this.async = null, this.rSeed = null, this.filePath = null, this.onloadAction = null, this.mainObject = null, this.xmlDoc = null, this.doXPath = null, this.doXPathOpera = null, this.doXSLTransToObject = null, this.doXSLTransToString = null, this.loadXML = null, this.loadXMLString = null, this.doSerialization = null, this.xmlNodeToJSON = null,
                 this.getXMLTopNode = null, this.setXSLParamValue = null, null
-        }, dtmlXMLLoaderObject.prototype.xmlNodeToJSON = function(t) { for (var e = {}, i = 0; i < t.attributes.length; i++) e[t.attributes[i].name] = t.attributes[i].value;
-            e._tagvalue = t.firstChild ? t.firstChild.nodeValue : ""; for (var i = 0; i < t.childNodes.length; i++) { var n = t.childNodes[i].tagName;
-                n && (e[n] || (e[n] = []), e[n].push(this.xmlNodeToJSON(t.childNodes[i]))) } return e }, window.dhtmlDragAndDropObject = dhtmlDragAndDropObject,
+        }, dtmlXMLLoaderObject.prototype.xmlNodeToJSON = function(t) {
+            for (var e = {}, i = 0; i < t.attributes.length; i++) e[t.attributes[i].name] = t.attributes[i].value;
+            e._tagvalue = t.firstChild ? t.firstChild.nodeValue : "";
+            for (var i = 0; i < t.childNodes.length; i++) {
+                var n = t.childNodes[i].tagName;
+                n && (e[n] || (e[n] = []), e[n].push(this.xmlNodeToJSON(t.childNodes[i])))
+            }
+            return e
+        }, window.dhtmlDragAndDropObject = dhtmlDragAndDropObject,
         dhtmlDragAndDropObject.prototype.removeDraggableItem = function(t) { t.onmousedown = null, t.dragStarter = null, t.dragLanding = null }, dhtmlDragAndDropObject.prototype.addDraggableItem = function(t, e) { t.onmousedown = this.preCreateDragCopy, t.dragStarter = e, this.addDragLanding(t, e) }, dhtmlDragAndDropObject.prototype.addDragLanding = function(t, e) { t.dragLanding = e }, dhtmlDragAndDropObject.prototype.preCreateDragCopy = function(t) {
             if (!t && !window.event || 2 != (t || event).button) return window.dhtmlDragAndDrop.waitDrag ? (window.dhtmlDragAndDrop.waitDrag = 0, document.body.onmouseup = window.dhtmlDragAndDrop.tempDOMU, document.body.onmousemove = window.dhtmlDragAndDrop.tempDOMM, !1) : (window.dhtmlDragAndDrop.dragNode && window.dhtmlDragAndDrop.stopDrag(t), window.dhtmlDragAndDrop.waitDrag = 1, window.dhtmlDragAndDrop.tempDOMU = document.body.onmouseup, window.dhtmlDragAndDrop.tempDOMM = document.body.onmousemove,
                 window.dhtmlDragAndDrop.dragStartNode = this, window.dhtmlDragAndDrop.dragStartObject = this.dragStarter, document.body.onmouseup = window.dhtmlDragAndDrop.preCreateDragCopy, document.body.onmousemove = window.dhtmlDragAndDrop.callDrag, window.dhtmlDragAndDrop.downtime = (new Date).valueOf(), !(!t || !t.preventDefault) && (t.preventDefault(), !1))
@@ -87,8 +96,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     var i = e.gldragNode;
                     e.gldragNode.old && (i = e.gldragNode.old), i.parentNode.removeChild(i);
                     var n = e.dragNode.pWindow;
-                    if (i.pWindow && i.pWindow.dhtmlDragAndDrop.lastLanding && i.pWindow.dhtmlDragAndDrop.lastLanding.dragLanding._dragOut(i.pWindow.dhtmlDragAndDrop.lastLanding), _isIE) { var a = document.createElement("div");
-                        a.innerHTML = e.dragNode.outerHTML, e.dragNode = a.childNodes[0] } else e.dragNode = e.dragNode.cloneNode(!0);
+                    if (i.pWindow && i.pWindow.dhtmlDragAndDrop.lastLanding && i.pWindow.dhtmlDragAndDrop.lastLanding.dragLanding._dragOut(i.pWindow.dhtmlDragAndDrop.lastLanding), _isIE) {
+                        var a = document.createElement("div");
+                        a.innerHTML = e.dragNode.outerHTML, e.dragNode = a.childNodes[0]
+                    } else e.dragNode = e.dragNode.cloneNode(!0);
                     e.dragNode.pWindow = window, e.gldragNode.old = e.dragNode, document.body.appendChild(e.dragNode), n.dhtmlDragAndDrop.dragNode = e.dragNode
                 }
                 e.dragNode.style.left = t.clientX + 15 + (e.fx ? -1 * e.fx : 0) + (document.body.scrollLeft || document.documentElement.scrollLeft) + "px", e.dragNode.style.top = t.clientY + 3 + (e.fy ? -1 * e.fy : 0) + (document.body.scrollTop || document.documentElement.scrollTop) + "px";
@@ -99,8 +110,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             if (window.name) {
                 for (var e = parent.frames[window.name].frameElement.offsetParent, i = 0, n = 0; e;) i += e.offsetLeft, n += e.offsetTop,
                     e = e.offsetParent;
-                if (parent.dhtmlDragAndDrop) { var a = parent.dhtmlDragAndDrop.calculateFramePosition(1);
-                    i += 1 * a.split("_")[0], n += 1 * a.split("_")[1] }
+                if (parent.dhtmlDragAndDrop) {
+                    var a = parent.dhtmlDragAndDrop.calculateFramePosition(1);
+                    i += 1 * a.split("_")[0], n += 1 * a.split("_")[1]
+                }
                 if (t) return i + "_" + n;
                 this.fx = i, this.fy = n
             }
@@ -159,8 +172,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 a = 1;
             if (!i.length) return [];
             if ("." == i[0]) n = [e];
-            else { if ("" !== i[0]) return [];
-                n = (this.xmlDoc.responseXML || this.xmlDoc).getElementsByTagName(i[a].replace(/\[[^\]]*\]/g, "")), a++ }
+            else {
+                if ("" !== i[0]) return [];
+                n = (this.xmlDoc.responseXML || this.xmlDoc).getElementsByTagName(i[a].replace(/\[[^\]]*\]/g, "")), a++
+            }
             for (a; a < i.length; a++) n = this._getAllNamedChilds(n, i[a]);
             return -1 != i[a - 1].indexOf("[") && (n = this._filterXPath(n, i[a - 1])), n
         }, dtmlXMLLoaderObject.prototype._filterXPath = function(t, e) { for (var i = [], e = e.replace(/[^\[]*\[\@/g, "").replace(/[\[\]\@]*/g, ""), n = 0; n < t.length; n++) t[n].getAttribute(e) && (i[i.length] = t[n]); return i }, dtmlXMLLoaderObject.prototype._getAllNamedChilds = function(t, e) {
@@ -170,8 +185,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 for (var a = 0; a < t[n].childNodes.length; a++) _isKHTML ? t[n].childNodes[a].tagName && t[n].childNodes[a].tagName.toUpperCase() == e && (i[i.length] = t[n].childNodes[a]) : t[n].childNodes[a].tagName == e && (i[i.length] = t[n].childNodes[a]);
             return i
         }, void 0 === window.dhtmlxEvent && (window.dhtmlxEvent = function(t, e, i) { t.addEventListener ? t.addEventListener(e, i, !1) : t.attachEvent && t.attachEvent("on" + e, i) }), dtmlXMLLoaderObject.prototype.xslDoc = null,
-        dtmlXMLLoaderObject.prototype.setXSLParamValue = function(t, e, i) { i || (i = this.xslDoc), i.responseXML && (i = i.responseXML); var n = this.doXPath("/xsl:stylesheet/xsl:variable[@name='" + t + "']", i, "http://www.w3.org/1999/XSL/Transform", "single");
-            n && (n.firstChild.nodeValue = e) }, dtmlXMLLoaderObject.prototype.doXSLTransToObject = function(t, e) {
+        dtmlXMLLoaderObject.prototype.setXSLParamValue = function(t, e, i) {
+            i || (i = this.xslDoc), i.responseXML && (i = i.responseXML);
+            var n = this.doXPath("/xsl:stylesheet/xsl:variable[@name='" + t + "']", i, "http://www.w3.org/1999/XSL/Transform", "single");
+            n && (n.firstChild.nodeValue = e)
+        }, dtmlXMLLoaderObject.prototype.doXSLTransToObject = function(t, e) {
             t || (t = this.xslDoc), t.responseXML && (t = t.responseXML), e || (e = this.xmlDoc), e.responseXML && (e = e.responseXML);
             var i;
             if (_isIE) {
@@ -189,33 +207,51 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 var dhx_catch = [],
                     z = function() {
                         for (var t = !0, e = 0; e < dhx_catch.length; e++)
-                            if (dhx_catch[e]) { var i = dhx_catch[e].apply(obj, arguments);
-                                t = t && i }
+                            if (dhx_catch[e]) {
+                                var i = dhx_catch[e].apply(obj, arguments);
+                                t = t && i
+                            }
                         return t
                     };
                 return z.addEvent = function(ev) { return "function" != typeof ev && (ev = eval(ev)), !!ev && dhx_catch.push(ev) - 1 }, z.removeEvent = function(t) { dhx_catch[t] = null }, z
-            }, obj.detachEvent = function(t) { if (t) { var e = t.split(":");
-                    this[e[0]].removeEvent(e[1]) } }, obj.detachAllEvents = function() { for (var t in this) 0 === t.indexOf("ev_") && (this.detachEvent(t), this[t] = null) }, obj = null
+            }, obj.detachEvent = function(t) {
+                if (t) {
+                    var e = t.split(":");
+                    this[e[0]].removeEvent(e[1])
+                }
+            }, obj.detachAllEvents = function() { for (var t in this) 0 === t.indexOf("ev_") && (this.detachEvent(t), this[t] = null) }, obj = null
         }, window.dhtmlx || (window.dhtmlx = {}),
         function() {
-            function t(t, e) { setTimeout(function() { if (t.box) { var n = t.callback;
-                        i(!1), t.box.parentNode.removeChild(t.box), dhtmlx.callEvent("onAfterMessagePopup", [t.box]), c = t.box = null, n && n(e) } }, 1) }
+            function t(t, e) {
+                setTimeout(function() {
+                    if (t.box) {
+                        var n = t.callback;
+                        i(!1), t.box.parentNode.removeChild(t.box), dhtmlx.callEvent("onAfterMessagePopup", [t.box]), c = t.box = null, n && n(e)
+                    }
+                }, 1)
+            }
 
             function e(e) {
                 if (c) {
                     e = e || event;
                     var i = e.which || event.keyCode,
                         n = !1;
-                    if (dhtmlx.message.keyboard) { if (13 == i || 32 == i) { var a = e.target || e.srcElement;
-                            scheduler._getClassName(a).indexOf("dhtmlx_popup_button") > -1 && a.click ? a.click() : (t(c, !0), n = !0) }
-                        27 == i && (t(c, !1), n = !0) }
+                    if (dhtmlx.message.keyboard) {
+                        if (13 == i || 32 == i) {
+                            var a = e.target || e.srcElement;
+                            scheduler._getClassName(a).indexOf("dhtmlx_popup_button") > -1 && a.click ? a.click() : (t(c, !0), n = !0)
+                        }
+                        27 == i && (t(c, !1), n = !0)
+                    }
                     if (n) return e.preventDefault && e.preventDefault(), !(e.cancelBubble = !0)
                 } else;
             }
 
-            function i(t) { i.cover || (i.cover = document.createElement("div"), i.cover.onkeydown = e, i.cover.className = "dhx_modal_cover", document.body.appendChild(i.cover));
+            function i(t) {
+                i.cover || (i.cover = document.createElement("div"), i.cover.onkeydown = e, i.cover.className = "dhx_modal_cover", document.body.appendChild(i.cover));
                 document.body.scrollHeight;
-                i.cover.style.display = t ? "inline-block" : "none" }
+                i.cover.style.display = t ? "inline-block" : "none"
+            }
 
             function n(t, e, i) { return "<div " + scheduler._waiAria.messageButtonAttrString(t) + "class='dhtmlx_popup_button dhtmlx_" + (i || t || "").toLowerCase().replace(/ /g, "_") + "_button' result='" + e + "' ><div>" + t + "</div></div>" }
 
@@ -234,19 +270,29 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 var o = "",
                     d = !1;
                 if (e.width && (r.style.width = e.width), e.height && (r.style.height = e.height), e.title && (o += '<div class="dhtmlx_popup_title" id="' + s + '">' + e.title + "</div>", d = !0),
-                    o += '<div class="dhtmlx_popup_text" ' + (d ? "" : ' id="' + s + '" ') + "><span>" + (e.content ? "" : e.text) + '</span></div><div  class="dhtmlx_popup_controls">', i) { var l = e.ok || scheduler.locale.labels.message_ok;
-                    void 0 === l && (l = "OK"), o += n(l, !0, "ok") }
-                if (a) { var _ = e.cancel || scheduler.locale.labels.message_cancel;
-                    void 0 === _ && (_ = "Cancel"), o += n(_, !1, "cancel") }
+                    o += '<div class="dhtmlx_popup_text" ' + (d ? "" : ' id="' + s + '" ') + "><span>" + (e.content ? "" : e.text) + '</span></div><div  class="dhtmlx_popup_controls">', i) {
+                    var l = e.ok || scheduler.locale.labels.message_ok;
+                    void 0 === l && (l = "OK"), o += n(l, !0, "ok")
+                }
+                if (a) {
+                    var _ = e.cancel || scheduler.locale.labels.message_cancel;
+                    void 0 === _ && (_ = "Cancel"), o += n(_, !1, "cancel")
+                }
                 if (e.buttons)
                     for (var h = 0; h < e.buttons.length; h++) o += n(e.buttons[h], h);
                 if (o += "</div>", r.innerHTML = o, e.content) {
                     var u = e.content;
                     "string" == typeof u && (u = document.getElementById(u)), "none" == u.style.display && (u.style.display = ""), r.childNodes[e.title ? 1 : 0].appendChild(u)
                 }
-                return r.onclick = function(i) { i = i || event; var n = i.target || i.srcElement,
-                        a = scheduler._getClassName(n); if (a || (n = n.parentNode), a = scheduler._getClassName(n), "dhtmlx_popup_button" == a.split(" ")[0]) { var r = n.getAttribute("result");
-                        r = "true" == r || "false" != r && r, t(e, r) } }, e.box = r, c = e, r
+                return r.onclick = function(i) {
+                    i = i || event;
+                    var n = i.target || i.srcElement,
+                        a = scheduler._getClassName(n);
+                    if (a || (n = n.parentNode), a = scheduler._getClassName(n), "dhtmlx_popup_button" == a.split(" ")[0]) {
+                        var r = n.getAttribute("result");
+                        r = "true" == r || "false" != r && r, t(e, r)
+                    }
+                }, e.box = r, c = e, r
             }
 
             function s(t, n, a) {
@@ -270,9 +316,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             document.attachEvent ? document.attachEvent("onkeydown", e) : document.addEventListener("keydown", e, !0), dhtmlx.alert = function() { var t = _.apply(this, arguments); return t.type = t.type || "confirm", o(t) }, dhtmlx.confirm = function() {
                 var t = _.apply(this, arguments);
                 return t.type = t.type || "alert", d(t)
-            }, dhtmlx.modalbox = function() { var t = _.apply(this, arguments); return t.type = t.type || "alert", l(t) }, dhtmlx.modalbox.hide = function(t) { for (; t && t.getAttribute && !t.getAttribute("dhxbox");) t = t.parentNode;
-                t && (t.parentNode.removeChild(t), i(!1)) }, dhtmlx.modalbox.focus = function(t) { setTimeout(function() { var e = scheduler._getFocusableNodes(t);
-                    e.length && e[0].focus && e[0].focus() }, 1) };
+            }, dhtmlx.modalbox = function() { var t = _.apply(this, arguments); return t.type = t.type || "alert", l(t) }, dhtmlx.modalbox.hide = function(t) {
+                for (; t && t.getAttribute && !t.getAttribute("dhxbox");) t = t.parentNode;
+                t && (t.parentNode.removeChild(t), i(!1))
+            }, dhtmlx.modalbox.focus = function(t) {
+                setTimeout(function() {
+                    var e = scheduler._getFocusableNodes(t);
+                    e.length && e[0].focus && e[0].focus()
+                }, 1)
+            };
             var u = dhtmlx.message = function(t, e, i, n) {
                 switch (t = h.apply(this, arguments), t.type = t.type || "info",
                     t.type.split("-")[0]) {
@@ -283,7 +335,8 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     case "modalbox":
                         return l(t);
                     default:
-                        return a(t) }
+                        return a(t)
+                }
             };
             u.seed = (new Date).valueOf(), u.uid = function() { return u.seed++ }, u.expire = 4e3, u.keyboard = !0, u.position = "top", u.pull = {}, u.timers = {}, u.hideAll = function() { for (var t in u.pull) u.hide(t) }, u.hide = function(t) {
                 var e = u.pull[t];
@@ -304,9 +357,12 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
     };
     dataProcessor.prototype = {
             setTransactionMode: function(t, e) {
-                function i(t, e) { var i = e.toLowerCase(); for (var n in t)
+                function i(t, e) {
+                    var i = e.toLowerCase();
+                    for (var n in t)
                         if (n.toLowerCase() === i) return !0;
-                    return !1 }
+                    return !1
+                }
                 "object" == typeof t ? (this._tMode = t.mode || this._tMode,
                     void 0 !== t.headers && (this._headers = t.headers), void 0 !== t.payload && (this._payload = t.payload)) : (this._tMode = t, this._tSend = e), "REST" == this._tMode && (this._tSend = !1, this._endnm = !0);
                 var n = "Content-Type";
@@ -346,28 +402,54 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 }), this._invalid[t] = e
             },
             checkBeforeUpdate: function(t) { return !0 },
-            sendData: function(t) { if (!this._waitMode || "tree" != this.obj.mytype && !this.obj._h2) { if (this.obj.editStop && this.obj.editStop(), void 0 === t || this._tSend) return this.sendAllData(); if (this._in_progress[t]) return !1; if (this.messages = [], !this.checkBeforeUpdate(t) && this.callEvent("onValidationError", [t, this.messages])) return !1;
-                    this._beforeSendData(this._getRowData(t), t) } },
+            sendData: function(t) {
+                if (!this._waitMode || "tree" != this.obj.mytype && !this.obj._h2) {
+                    if (this.obj.editStop && this.obj.editStop(), void 0 === t || this._tSend) return this.sendAllData();
+                    if (this._in_progress[t]) return !1;
+                    if (this.messages = [], !this.checkBeforeUpdate(t) && this.callEvent("onValidationError", [t, this.messages])) return !1;
+                    this._beforeSendData(this._getRowData(t), t)
+                }
+            },
             _beforeSendData: function(t, e) {
                 if (!this.callEvent("onBeforeUpdate", [e, this.getState(e), t])) return !1;
                 this._sendData(t, e)
             },
-            serialize: function(t, e) { if ("string" == typeof t) return t; if (void 0 !== e) return this.serialize_one(t, ""); var i = [],
-                    n = []; for (var a in t) t.hasOwnProperty(a) && (i.push(this.serialize_one(t[a], a + this.post_delim)), n.push(a)); return i.push("ids=" + this.escape(n.join(","))), (scheduler.security_key || dhtmlx.security_key) && i.push("dhx_security=" + (scheduler.security_key || dhtmlx.security_key)), i.join("&") },
-            serialize_one: function(t, e) { if ("string" == typeof t) return t; var i = []; for (var n in t)
-                    if (t.hasOwnProperty(n)) { if (("id" == n || n == this.action_param) && "REST" == this._tMode) continue;
-                        i.push(this.escape((e || "") + n) + "=" + this.escape(t[n])) }
-                return i.join("&") },
-            _applyPayload: function(t) { var e = this.obj.$ajax; if (this._payload)
-                    for (var i in this._payload) t = t + e.urlSeparator(t) + this.escape(i) + "=" + this.escape(this._payload[i]); return t },
+            serialize: function(t, e) {
+                if ("string" == typeof t) return t;
+                if (void 0 !== e) return this.serialize_one(t, "");
+                var i = [],
+                    n = [];
+                for (var a in t) t.hasOwnProperty(a) && (i.push(this.serialize_one(t[a], a + this.post_delim)), n.push(a));
+                return i.push("ids=" + this.escape(n.join(","))), (scheduler.security_key || dhtmlx.security_key) && i.push("dhx_security=" + (scheduler.security_key || dhtmlx.security_key)), i.join("&")
+            },
+            serialize_one: function(t, e) {
+                if ("string" == typeof t) return t;
+                var i = [];
+                for (var n in t)
+                    if (t.hasOwnProperty(n)) {
+                        if (("id" == n || n == this.action_param) && "REST" == this._tMode) continue;
+                        i.push(this.escape((e || "") + n) + "=" + this.escape(t[n]))
+                    }
+                return i.join("&")
+            },
+            _applyPayload: function(t) {
+                var e = this.obj.$ajax;
+                if (this._payload)
+                    for (var i in this._payload) t = t + e.urlSeparator(t) + this.escape(i) + "=" + this.escape(this._payload[i]);
+                return t
+            },
             _sendData: function(t, e) {
                 if (t) {
                     if (!this.callEvent("onBeforeDataSending", e ? [e, this.getState(e), t] : [null, null, t])) return !1;
                     e && (this._in_progress[e] = (new Date).valueOf());
                     var i = this,
-                        n = function(n) { var a = []; if (e) a.push(e);
+                        n = function(n) {
+                            var a = [];
+                            if (e) a.push(e);
                             else if (t)
-                                for (var r in t) a.push(r); return i.afterUpdate(i, n, a) },
+                                for (var r in t) a.push(r);
+                            return i.afterUpdate(i, n, a)
+                        },
                         a = this.obj.$ajax,
                         r = this.serverProcessor + (this._user ? a.urlSeparator(this.serverProcessor) + ["dhx_user=" + this._user, "dhx_version=" + this.obj.getUserData(0, "version")].join("&") : ""),
                         s = this._applyPayload(r);
@@ -378,9 +460,12 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         headers: this._headers
                     });
                     else if ("POST" == this._tMode) a.query({ url: s, method: "POST", headers: this._headers, data: this.serialize(t, e), callback: n });
-                    else if ("JSON" == this._tMode) { var o = t[this.action_param],
-                            d = {}; for (var l in t) d[l] = t[l];
-                        delete d[this.action_param], delete d.id, delete d.gr_id, a.query({ url: s, method: "POST", headers: this._headers, callback: n, data: JSON.stringify({ id: e, action: o, data: d }) }) } else if ("REST" == this._tMode) {
+                    else if ("JSON" == this._tMode) {
+                        var o = t[this.action_param],
+                            d = {};
+                        for (var l in t) d[l] = t[l];
+                        delete d[this.action_param], delete d.id, delete d.gr_id, a.query({ url: s, method: "POST", headers: this._headers, callback: n, data: JSON.stringify({ id: e, action: o, data: d }) })
+                    } else if ("REST" == this._tMode) {
                         var _ = this.getState(e),
                             h = r.replace(/(\&|\?)editing\=true/, ""),
                             d = "",
@@ -405,8 +490,16 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             }
                 }
             },
-            _getAllData: function(t) { for (var e = {}, i = !1, n = 0; n < this.updatedRows.length; n++) { var a = this.updatedRows[n]; if (!this._in_progress[a] && !this.is_invalid(a)) { var r = this._getRowData(a);
-                        this.callEvent("onBeforeUpdate", [a, this.getState(a), r]) && (e[a] = r, i = !0, this._in_progress[a] = (new Date).valueOf()) } } return i ? e : null },
+            _getAllData: function(t) {
+                for (var e = {}, i = !1, n = 0; n < this.updatedRows.length; n++) {
+                    var a = this.updatedRows[n];
+                    if (!this._in_progress[a] && !this.is_invalid(a)) {
+                        var r = this._getRowData(a);
+                        this.callEvent("onBeforeUpdate", [a, this.getState(a), r]) && (e[a] = r, i = !0, this._in_progress[a] = (new Date).valueOf())
+                    }
+                }
+                return i ? e : null
+            },
             setVerificator: function(t, e) { this.mandatoryFields[t] = e || function(t) { return "" !== t } },
             clearVerificator: function(t) {
                 this.mandatoryFields[t] = !1
@@ -449,15 +542,19 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 if (!d) return this._errorResponse(e, i);
                 var l = n.xpath("//data/action", d);
                 l.length || this._errorResponse(e, i);
-                for (var _ = 0; _ < l.length; _++) { var h = l[_],
+                for (var _ = 0; _ < l.length; _++) {
+                    var h = l[_],
                         r = h.getAttribute("type"),
                         s = h.getAttribute("sid"),
                         o = h.getAttribute("tid");
-                    t.afterUpdateCallback(s, o, r, h) }
+                    t.afterUpdateCallback(s, o, r, h)
+                }
                 t.finalizeUpdate()
             },
-            cleanUpdate: function(t) { if (t)
-                    for (var e = 0; e < t.length; e++) delete this._in_progress[t[e]] },
+            cleanUpdate: function(t) {
+                if (t)
+                    for (var e = 0; e < t.length; e++) delete this._in_progress[t[e]]
+            },
             finalizeUpdate: function() {
                 this._waitMode && this._waitMode--, ("tree" == this.obj.mytype || this.obj._h2) && this.updatedRows.length && this.sendData(), this.callEvent("onAfterUpdateFinish", []), this.updatedRows.length || this.callEvent("onFullSync", [])
             },
@@ -489,16 +586,25 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     var n = t.xpath("//userdata", i);
                     e.obj.setUserData(0, "version", e._v(n[0]));
                     var a = t.xpath("//update", i);
-                    if (a.length) { e._silent_mode = !0; for (var r = 0; r < a.length; r++) { var s = a[r].getAttribute("status"),
+                    if (a.length) {
+                        e._silent_mode = !0;
+                        for (var r = 0; r < a.length; r++) {
+                            var s = a[r].getAttribute("status"),
                                 o = a[r].getAttribute("id"),
-                                d = a[r].getAttribute("parent"); switch (s) {
+                                d = a[r].getAttribute("parent");
+                            switch (s) {
                                 case "inserted":
-                                    e.callEvent("insertCallback", [a[r], o, d]); break;
+                                    e.callEvent("insertCallback", [a[r], o, d]);
+                                    break;
                                 case "updated":
-                                    e.callEvent("updateCallback", [a[r], o, d]); break;
+                                    e.callEvent("updateCallback", [a[r], o, d]);
+                                    break;
                                 case "deleted":
-                                    e.callEvent("deleteCallback", [a[r], o, d]) } }
-                        e._silent_mode = !1 }
+                                    e.callEvent("deleteCallback", [a[r], o, d])
+                            }
+                        }
+                        e._silent_mode = !1
+                    }
                     e._update_busy = !1, e = null
                 })
             }
@@ -547,10 +653,14 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             var i = e(t);
             if (i) {
                 var n = i(t);
-                if (t.css && n.classList.add(t.css), t.width) { var a = t.width;
-                    a === 1 * a && (a += "px"), n.style.width = a }
-                if (t.height) { var a = t.height;
-                    a === 1 * a && (a += "px"), n.style.height = a }
+                if (t.css && n.classList.add(t.css), t.width) {
+                    var a = t.width;
+                    a === 1 * a && (a += "px"), n.style.width = a
+                }
+                if (t.height) {
+                    var a = t.height;
+                    a === 1 * a && (a += "px"), n.style.height = a
+                }
                 if (t.click && n.addEventListener("click", t.click), t.html && (n.innerHTML = t.html), t.align) {
                     var a = "";
                     "right" == t.align ? a = "flex-end" : "left" == t.align && (a = "flex-start"),
@@ -627,9 +737,13 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             document.body.removeChild(t), (S = !("border-box" !== i)) || setTimeout(function() { S = void 0 }, 1e3)
         }
 
-        function f() { if (!g._is_material_skin() && !g._border_box_events()) { var t = S;
+        function f() {
+            if (!g._is_material_skin() && !g._border_box_events()) {
+                var t = S;
                 S = void 0, A = void 0;
-                t !== u() && g.$container && g.getState().mode && g.setCurrentView() } }
+                t !== u() && g.$container && g.getState().mode && g.setCurrentView()
+            }
+        }
         var g = { version: "5.3.11" },
             v = {
                 agenda: "https://docs.dhtmlx.com/scheduler/agenda_view.html",
@@ -688,10 +802,14 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
         };
         var x = null,
             b = null;
-        g._update_nav_bar = function(t, e) { if (t) { var i = !1,
+        g._update_nav_bar = function(t, e) {
+            if (t) {
+                var i = !1,
                     n = !1,
                     r = t.height || g.xy.nav_height;
-                null !== b && b === r || (i = !0), x && JSON.stringify(t) === x || (n = !0), i && (g.xy.nav_height = r), n && (e.innerHTML = "", e.appendChild(a(t))), (i || n) && (g._els = [], g.get_elements(), g.set_actions()), e.style.display = 0 === r ? "none" : "", b = r } }, g._detachDomEvent = function(t, e, i) {
+                null !== b && b === r || (i = !0), x && JSON.stringify(t) === x || (n = !0), i && (g.xy.nav_height = r), n && (e.innerHTML = "", e.appendChild(a(t))), (i || n) && (g._els = [], g.get_elements(), g.set_actions()), e.style.display = 0 === r ? "none" : "", b = r
+            }
+        }, g._detachDomEvent = function(t, e, i) {
             t.removeEventListener ? t.removeEventListener(e, i, !1) : t.detachEvent && t.detachEvent("on" + e, i)
         }, g._init_once = function() {
             function t(t) { for (var e = document.body; t && t != e;) t = t.parentNode; return !(e != t) }
@@ -754,8 +872,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 r > 0 && (this.xy.nav_height = r);
                 var s = this.xy.scale_height + this.xy.nav_height + (this._quirks ? -2 : 0);
                 this.set_xy(this._els.dhx_cal_data[0], t, e - (s + 2), 0, s + 2)
-            }, g.set_xy = function(t, e, i, n, a) { var r = "left";
-                t.style.width = Math.max(0, e) + "px", t.style.height = Math.max(0, i) + "px", arguments.length > 3 && (this.config.rtl && (r = "right"), t.style[r] = n + "px", t.style.top = a + "px") }, g.get_elements = function() {
+            }, g.set_xy = function(t, e, i, n, a) {
+                var r = "left";
+                t.style.width = Math.max(0, e) + "px", t.style.height = Math.max(0, i) + "px", arguments.length > 3 && (this.config.rtl && (r = "right"), t.style[r] = n + "px", t.style.top = a + "px")
+            }, g.get_elements = function() {
                 for (var t = this._obj.getElementsByTagName("DIV"), e = 0; e < t.length; e++) {
                     var i = g._getClassName(t[e]),
                         n = t[e].getAttribute("name") || "";
@@ -764,19 +884,28 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     var a = g.locale.labels[n || i];
                     "string" != typeof a && n && !t[e].innerHTML && (a = n.split("_")[0]), a && (this._waiAria.labelAttr(t[e], a), t[e].innerHTML = a)
                 }
-            }, g.unset_actions = function() { for (var t in this._els)
+            }, g.unset_actions = function() {
+                for (var t in this._els)
                     if (this._click[t])
                         for (var e = 0; e < this._els[t].length; e++) this._els[t][e].onclick = null;
-                this._obj.onselectstart = null, this._obj.onmousemove = null, this._obj.onmousedown = null, this._obj.onmouseup = null, this._obj.ondblclick = null, this._obj.oncontextmenu = null },
+                this._obj.onselectstart = null, this._obj.onmousemove = null, this._obj.onmousedown = null, this._obj.onmouseup = null, this._obj.ondblclick = null, this._obj.oncontextmenu = null
+            },
             g.set_actions = function() {
                 for (var t in this._els)
                     if (this._click[t])
                         for (var e = 0; e < this._els[t].length; e++) this._els[t][e].onclick = g._click[t];
                 this._obj.onselectstart = function(t) { return !1 }, this._obj.onmousemove = function(t) { g._temp_touch_block || g._on_mouse_move(t || event) }, this._obj.onmousedown = function(t) { g._ignore_next_click || g._on_mouse_down(t || event) }, this._obj.onmouseup = function(t) { g._ignore_next_click || g._on_mouse_up(t || event) }, this._obj.ondblclick = function(t) { g._on_dbl_click(t || event) },
-                    this._obj.oncontextmenu = function(t) { var e = t || event,
-                            i = e.target || e.srcElement; return g.callEvent("onContextMenu", [g._locate_event(i), e]) }
-            }, g.select = function(t) { this._select_id != t && (g._close_not_saved(), this.editStop(!1), this.unselect(), this._select_id = t, this.updateEvent(t), this.callEvent("onEventSelected", [t])) }, g.unselect = function(t) { if (!t || t == this._select_id) { var e = this._select_id;
-                    this._select_id = null, e && this.getEvent(e) && this.updateEvent(e), this.callEvent("onEventUnselected", [e]) } },
+                    this._obj.oncontextmenu = function(t) {
+                        var e = t || event,
+                            i = e.target || e.srcElement;
+                        return g.callEvent("onContextMenu", [g._locate_event(i), e])
+                    }
+            }, g.select = function(t) { this._select_id != t && (g._close_not_saved(), this.editStop(!1), this.unselect(), this._select_id = t, this.updateEvent(t), this.callEvent("onEventSelected", [t])) }, g.unselect = function(t) {
+                if (!t || t == this._select_id) {
+                    var e = this._select_id;
+                    this._select_id = null, e && this.getEvent(e) && this.updateEvent(e), this.callEvent("onEventUnselected", [e])
+                }
+            },
             g.getState = function() { return { mode: this._mode, date: new Date(this._date), min_date: new Date(this._min_date), max_date: new Date(this._max_date), editor_id: this._edit_id, lightbox_id: this._lightbox_id, new_event: this._new_event, select_id: this._select_id, expanded: this.expanded, drag_id: this._drag_id, drag_mode: this._drag_mode } }, g._click = {
                 dhx_cal_data: function(t) {
                     if (g._ignore_next_click) return t.preventDefault && t.preventDefault(), t.cancelBubble = !0, g._ignore_next_click = !1, !1;
@@ -786,12 +915,16 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     if (i && g.config.select) { g.select(i); var n = g._getClassName(e); - 1 != n.indexOf("_icon") && g._click.buttons[n.split(" ")[1].replace("icon_", "")](i) } else g._close_not_saved(), (new Date).valueOf() - (g._new_event || 0) > 500 && g.unselect()
                 },
                 dhx_cal_prev_button: function() { g._click.dhx_cal_next_button(0, -1) },
-                dhx_cal_next_button: function(t, e) { var i = 1;
-                    g.config.rtl && (e = -e, i = -i), g.setCurrentView(g.date.add(g.date[g._mode + "_start"](new Date(g._date)), e || i, g._mode)) },
+                dhx_cal_next_button: function(t, e) {
+                    var i = 1;
+                    g.config.rtl && (e = -e, i = -i), g.setCurrentView(g.date.add(g.date[g._mode + "_start"](new Date(g._date)), e || i, g._mode))
+                },
                 dhx_cal_today_button: function() { g.callEvent("onBeforeTodayDisplayed", []) && g.setCurrentView(g._currentDate()) },
-                dhx_cal_tab: function() { var t = this.getAttribute("name"),
+                dhx_cal_tab: function() {
+                    var t = this.getAttribute("name"),
                         e = t.substring(0, t.search("_tab"));
-                    g.setCurrentView(g._date, e) },
+                    g.setCurrentView(g._date, e)
+                },
                 buttons: {
                     delete: function(t) {
                         var e = g.locale.labels.confirm_deleting;
@@ -802,15 +935,20 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     details: function(t) { g.showLightbox(t) },
                     cancel: function(t) { g.editStop(!1) }
                 }
-            }, g._dhtmlx_confirm = function(t, e, i) { if (!t) return i(); var n = { text: t };
-                e && (n.title = e), i && (n.callback = function(t) { t && i() }), dhtmlx.confirm(n) }, g.addEventNow = function(t, e, i) {
+            }, g._dhtmlx_confirm = function(t, e, i) {
+                if (!t) return i();
+                var n = { text: t };
+                e && (n.title = e), i && (n.callback = function(t) { t && i() }), dhtmlx.confirm(n)
+            }, g.addEventNow = function(t, e, i) {
                 var n = {};
                 g._isObject(t) && !g._isDate(t) && (n = t, t = null);
                 var a = 6e4 * (this.config.event_duration || this.config.time_step);
                 t || (t = n.start_date || Math.round(g._currentDate().valueOf() / a) * a);
                 var r = new Date(t);
-                if (!e) { var s = this.config.first_hour;
-                    s > r.getHours() && (r.setHours(s), t = r.valueOf()), e = t.valueOf() + a }
+                if (!e) {
+                    var s = this.config.first_hour;
+                    s > r.getHours() && (r.setHours(s), t = r.valueOf()), e = t.valueOf() + a
+                }
                 var o = new Date(e);
                 r.valueOf() == o.valueOf() && o.setTime(o.valueOf() + a), n.start_date = n.start_date || r, n.end_date = n.end_date || o, n.text = n.text || this.locale.labels.new_event, n.id = this._drag_id = n.id || this.uid(), this._drag_mode = "new-size", this._loading = !0;
                 var d = this.addEvent(n);
@@ -845,8 +983,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             else if (e.parentNode && e != this) return g._on_dbl_click(t, e.parentNode)
                     }
                 }
-            }, g._get_column_index = function(t) { var e = 0; if (this._cols) { for (var i = 0, n = 0; i + this._cols[n] < t && n < this._cols.length;) i += this._cols[n], n++; if (e = n + (this._cols[n] ? (t - i) / this._cols[n] : 0), this._ignores && e >= this._cols.length)
-                        for (; e >= 1 && this._ignores[Math.floor(e)];) e-- } return e }, g._week_indexes_from_pos = function(t) {
+            }, g._get_column_index = function(t) {
+                var e = 0;
+                if (this._cols) {
+                    for (var i = 0, n = 0; i + this._cols[n] < t && n < this._cols.length;) i += this._cols[n], n++;
+                    if (e = n + (this._cols[n] ? (t - i) / this._cols[n] : 0), this._ignores && e >= this._cols.length)
+                        for (; e >= 1 && this._ignores[Math.floor(e)];) e--
+                }
+                return e
+            }, g._week_indexes_from_pos = function(t) {
                 if (this._cols) {
                     var e = this._get_column_index(t.x);
                     return t.x = Math.min(this._cols.length - 1, Math.max(0, Math.ceil(e) - 1)),
@@ -878,9 +1023,17 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         t && (this._drag_id = this._drag_pos = this._drag_mode = null)
                 }
             }, g._correct_shift = function(t, e) { return t -= 6e4 * (new Date(g._min_date).getTimezoneOffset() - new Date(t).getTimezoneOffset()) * (e ? -1 : 1) }, g._is_pos_changed = function(t, e) {
-                function i(t, e, i) { return !!(Math.abs(t - e) > i) } if (!t || !this._drag_pos) return !0; var n = 5; return !!(this._drag_pos.has_moved || !this._drag_pos.timestamp || e.timestamp - this._drag_pos.timestamp > 100 || i(t.ev.clientX, e.ev.clientX, n) || i(t.ev.clientY, e.ev.clientY, n)) },
-            g._correct_drag_start_date = function(t) { var e;
-                g.matrix && (e = g.matrix[g._mode]), e = e || { x_step: 1, x_unit: "day" }, t = new Date(t); var i = 1; return (e._start_correction || e._end_correction) && (i = 60 * (e.last_hour || 0) - (60 * t.getHours() + t.getMinutes()) || 1), 1 * t + (g._get_fictional_event_length(t, i, e) - i) }, g._correct_drag_end_date = function(t, e) {
+                function i(t, e, i) { return !!(Math.abs(t - e) > i) }
+                if (!t || !this._drag_pos) return !0;
+                var n = 5;
+                return !!(this._drag_pos.has_moved || !this._drag_pos.timestamp || e.timestamp - this._drag_pos.timestamp > 100 || i(t.ev.clientX, e.ev.clientX, n) || i(t.ev.clientY, e.ev.clientY, n))
+            },
+            g._correct_drag_start_date = function(t) {
+                var e;
+                g.matrix && (e = g.matrix[g._mode]), e = e || { x_step: 1, x_unit: "day" }, t = new Date(t);
+                var i = 1;
+                return (e._start_correction || e._end_correction) && (i = 60 * (e.last_hour || 0) - (60 * t.getHours() + t.getMinutes()) || 1), 1 * t + (g._get_fictional_event_length(t, i, e) - i)
+            }, g._correct_drag_end_date = function(t, e) {
                 var i;
                 g.matrix && (i = g.matrix[g._mode]), i = i || { x_step: 1, x_unit: "day" };
                 var n = 1 * t + g._get_fictional_event_length(t, e, i);
@@ -908,8 +1061,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             if (i = l.start_date.valueOf(), n = l.end_date.valueOf(), this._table_view) {
                                 var _ = this._min_date.valueOf() + e.y * this.config.time_step * 6e4 + (e.custom ? 0 : 864e5);
                                 if ("month" == this._mode)
-                                    if (_ = this._correct_shift(_, !1), this._drag_from_start) { var h = 864e5;
-                                        _ <= g.date.date_part(new Date(n + h - 1)).valueOf() && (i = _ - h) } else n = _;
+                                    if (_ = this._correct_shift(_, !1), this._drag_from_start) {
+                                        var h = 864e5;
+                                        _ <= g.date.date_part(new Date(n + h - 1)).valueOf() && (i = _ - h)
+                                    } else n = _;
                                 else this.config.preserve_length ? e.resize_from_start ? i = g._correct_drag_start_date(_) : n = g._correct_drag_end_date(_, 0) : e.resize_from_start ? i = _ : n = _
                             } else {
                                 var c = this.date.date_part(new Date(l.end_date.valueOf() - 1)).valueOf(),
@@ -951,16 +1106,22 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                                     n = new Date(E.valueOf() + A), D = new Date(n - 1)
                             }
                         }
-                        if (!this._table_view && !g.config.all_timed && (!g.getView() && e.x != this._get_event_sday({ start_date: new Date(n), end_date: new Date(n) }) || new Date(n).getHours() >= this.config.last_hour)) { var A = n - E,
+                        if (!this._table_view && !g.config.all_timed && (!g.getView() && e.x != this._get_event_sday({ start_date: new Date(n), end_date: new Date(n) }) || new Date(n).getHours() >= this.config.last_hour)) {
+                            var A = n - E,
                                 h = this._min_date.valueOf() + 24 * e.x * 60 * 6e4;
-                            n = g.date.date_part(new Date(h)), n.setHours(this.config.last_hour), D = new Date(n - 1), "move" == this._drag_mode && (E = new Date(+n - A)) }
+                            n = g.date.date_part(new Date(h)), n.setHours(this.config.last_hour), D = new Date(n - 1), "move" == this._drag_mode && (E = new Date(+n - A))
+                        }
                         if (this._table_view || D.getDate() == E.getDate() && D.getHours() < this.config.last_hour || g._allow_dnd)
-                            if (l.start_date = E, l.end_date = new Date(n), this.config.update_render) { var S = g._els.dhx_cal_data[0].scrollTop;
-                                this.update_view(), g._els.dhx_cal_data[0].scrollTop = S } else this.updateEvent(this._drag_id);
+                            if (l.start_date = E, l.end_date = new Date(n), this.config.update_render) {
+                                var S = g._els.dhx_cal_data[0].scrollTop;
+                                this.update_view(), g._els.dhx_cal_data[0].scrollTop = S
+                            } else this.updateEvent(this._drag_id);
                         this._table_view && this.for_rendered(this._drag_id, function(t) { t.className += " dhx_in_move dhx_cal_event_drag" }), this.callEvent("onEventDrag", [this._drag_id, this._drag_mode, t])
                     }
-                } else if (g.checkEvent("onMouseMove")) { var M = this._locate_event(t.target || t.srcElement);
-                    this.callEvent("onMouseMove", [M, t]) }
+                } else if (g.checkEvent("onMouseMove")) {
+                    var M = this._locate_event(t.target || t.srcElement);
+                    this.callEvent("onMouseMove", [M, t])
+                }
             }, g._on_mouse_down = function(t, e) {
                 if (2 != t.button && !this.config.readonly && !this._drag_mode) {
                     e = e || t.target || t.srcElement;
@@ -1055,8 +1216,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     this._els[o] && (this._els[o][0].parentNode.removeChild(this._els[o][0]), this._els[o] = null), this._mode = e, this._date = t, this._table_view = "month" == this._mode, this._dy_shift = 0, this.update_view(), this._set_aria_buttons_attrs();
                 var l = this._els.dhx_cal_tab;
                 if (l)
-                    for (var _ = 0; _ < l.length; _++) { var h = l[_];
-                        h.getAttribute("name") == this._mode + "_tab" ? (h.classList.add("active"), this._waiAria.headerToggleState(h, !0)) : (h.classList.remove("active"), this._waiAria.headerToggleState(h, !1)) }
+                    for (var _ = 0; _ < l.length; _++) {
+                        var h = l[_];
+                        h.getAttribute("name") == this._mode + "_tab" ? (h.classList.add("active"), this._waiAria.headerToggleState(h, !0)) : (h.classList.remove("active"), this._waiAria.headerToggleState(h, !1))
+                    }
                 "number" == typeof d && (this._els[i][0].scrollTop = d), "number" == typeof s && this._els[o] && this._els[o][0] && (this._els[o][0].scrollTop = s)
             }, g.setCurrentView = function(t, e) { this.callEvent("onBeforeViewChange", [this._mode, this._date, e || this._mode, t || this._date]) && (this.updateView(t, e), this.callEvent("onViewChange", [this._mode, this._date])) }, g.render = function(t, e) { g.setCurrentView(t, e) }, g._render_x_header = function(t, e, i, n, a) {
                 a = a || 0;
@@ -1074,17 +1237,25 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     n && (e = n(t)), i = Math.round((e.valueOf() - t.valueOf()) / 864e5)
                 }
                 return i
-            }, g._get_timeunit_start = function() { return this.date[this._mode + "_start"](new Date(this._date.valueOf())) }, g._get_view_end = function() { var t = this._get_timeunit_start(),
-                    e = g.date.add(t, 1, this._mode); if (!g._table_view) { var i = g.date["get_" + g._mode + "_end"];
-                    i && (e = i(t)) } return e }, g._calc_scale_sizes = function(t, e, i) {
+            }, g._get_timeunit_start = function() { return this.date[this._mode + "_start"](new Date(this._date.valueOf())) }, g._get_view_end = function() {
+                var t = this._get_timeunit_start(),
+                    e = g.date.add(t, 1, this._mode);
+                if (!g._table_view) {
+                    var i = g.date["get_" + g._mode + "_end"];
+                    i && (e = i(t))
+                }
+                return e
+            }, g._calc_scale_sizes = function(t, e, i) {
                 var n = this.config.rtl,
                     a = t,
                     r = this._get_columns_num(e, i);
                 this._process_ignores(e, r, "day", 1);
                 for (var s = r - this._ignores_detected, o = 0; o < r; o++) this._ignores[o] ? (this._cols[o] = 0, s++) : this._cols[o] = Math.floor(a / (s - o)), a -= this._cols[o], this._colsS[o] = (this._cols[o - 1] || 0) + (this._colsS[o - 1] || (this._table_view ? 0 : (n ? this.xy.scroll_width : this.xy.scale_width) + 2));
                 this._colsS.col_length = r, this._colsS[r] = this._cols[r - 1] + this._colsS[r - 1] || 0
-            }, g._set_scale_col_size = function(t, e, i) { var n = this.config;
-                this.set_xy(t, e - 1, n.hour_size_px * (n.last_hour - n.first_hour), i + this.xy.scale_width + 1, 0) },
+            }, g._set_scale_col_size = function(t, e, i) {
+                var n = this.config;
+                this.set_xy(t, e - 1, n.hour_size_px * (n.last_hour - n.first_hour), i + this.xy.scale_width + 1, 0)
+            },
             g._render_scales = function(t, e) {
                 var i = new Date(g._min_date),
                     n = new Date(g._max_date),
@@ -1158,8 +1329,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     o = g._currentDate();
                 this.date.date_part(o), this.date.date_part(i),
                     n = n || Math.ceil(Math.round((r.valueOf() - i.valueOf()) / 864e5) / 7);
-                for (var d = [], l = 0; l <= 7; l++) { var _ = (this._cols[l] || 0) - 1;
-                    0 === l && this.config.left_border && (_ -= 1), d[l] = _ + "px" }
+                for (var d = [], l = 0; l <= 7; l++) {
+                    var _ = (this._cols[l] || 0) - 1;
+                    0 === l && this.config.left_border && (_ -= 1), d[l] = _ + "px"
+                }
                 var h = 0,
                     c = document.createElement("table");
                 c.setAttribute("cellpadding", "0"), c.setAttribute("cellspacing", "0");
@@ -1177,9 +1350,13 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             w = "dhx_month_head";
                         if (0 === p && this.config.left_border && (y += " dhx_month_body_border", w += " dhx_month_head_border"),
                             this._ignores_detected && this._ignores[p]) x.appendChild(document.createElement("div")), x.appendChild(document.createElement("div"));
-                        else { this._waiAria.monthCellAttr(x, i); var D = document.createElement("div");
-                            D.className = w, D.innerHTML = this.templates.month_day(i), x.appendChild(D); var E = document.createElement("div");
-                            E.className = y, E.style.height = m + "px", E.style.width = d[p], x.appendChild(E) }
+                        else {
+                            this._waiAria.monthCellAttr(x, i);
+                            var D = document.createElement("div");
+                            D.className = w, D.innerHTML = this.templates.month_day(i), x.appendChild(D);
+                            var E = document.createElement("div");
+                            E.className = y, E.style.height = m + "px", E.style.width = d[p], x.appendChild(E)
+                        }
                         f.push(i);
                         var A = i.getDate();
                         i = this.date.add(i, 1, "day"),
@@ -1188,11 +1365,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     g._colsS.heights[l] = h, h += a(l)
                 }
                 this._min_date = s, this._max_date = i, t.innerHTML = "", t.appendChild(c), this._scales = {};
-                for (var S = t.getElementsByTagName("div"), l = 0; l < f.length; l++) { var t = S[2 * l + 1],
+                for (var S = t.getElementsByTagName("div"), l = 0; l < f.length; l++) {
+                    var t = S[2 * l + 1],
                         M = f[l];
-                    this._scales[+M] = t }
-                for (var l = 0; l < f.length; l++) { var M = f[l];
-                    this.callEvent("onScaleAdd", [this._scales[+M], M]) }
+                    this._scales[+M] = t
+                }
+                for (var l = 0; l < f.length; l++) {
+                    var M = f[l];
+                    this.callEvent("onScaleAdd", [this._scales[+M], M])
+                }
                 return this._max_date
             }, g._reset_month_scale = function(t, e, i, n) {
                 var a = g.date.add(e, 1, "month"),
@@ -1220,9 +1401,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             }, g._lame_copy = function(t, e) { for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]); return t }, g._get_date_from_pos = function(t) { var e = this._min_date.valueOf() + 6e4 * (t.y * this.config.time_step + 24 * (this._table_view ? 0 : t.x) * 60); return new Date(this._correct_shift(e)) }, g.getActionData = function(t) {
                 var e = this._mouse_coords(t);
                 return { date: this._get_date_from_pos(e), section: e.section }
-            }, g._focus = function(t, e) { if (t && t.focus)
+            }, g._focus = function(t, e) {
+                if (t && t.focus)
                     if (this._mobile) window.setTimeout(function() { t.focus() }, 10);
-                    else try { e && t.select && t.offsetWidth && t.select(), t.focus() } catch (t) {} }, g._get_real_event_length = function(t, e, i) {
+                    else try { e && t.select && t.offsetWidth && t.select(), t.focus() } catch (t) {}
+            }, g._get_real_event_length = function(t, e, i) {
                 var n, a = e - t,
                     r = i._start_correction + i._end_correction || 0,
                     s = this["ignore_" + this._mode],
@@ -1236,25 +1419,37 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             }, g._get_fictional_event_length = function(t, e, i, n) {
                 var a = new Date(t),
                     r = n ? -1 : 1;
-                if (i._start_correction || i._end_correction) { var s;
-                    s = n ? 60 * a.getHours() + a.getMinutes() - 60 * (i.first_hour || 0) : 60 * (i.last_hour || 0) - (60 * a.getHours() + a.getMinutes()); var o = 60 * (i.last_hour - i.first_hour),
+                if (i._start_correction || i._end_correction) {
+                    var s;
+                    s = n ? 60 * a.getHours() + a.getMinutes() - 60 * (i.first_hour || 0) : 60 * (i.last_hour || 0) - (60 * a.getHours() + a.getMinutes());
+                    var o = 60 * (i.last_hour - i.first_hour),
                         d = Math.ceil((e / 6e4 - s) / o);
-                    d < 0 && (d = 0), e += d * (1440 - o) * 60 * 1e3 }
+                    d < 0 && (d = 0), e += d * (1440 - o) * 60 * 1e3
+                }
                 var l, _ = new Date(1 * t + e * r),
                     h = this["ignore_" + this._mode],
                     c = 0;
-                for (i.render ? (c = this._get_date_index(i, a), l = this._get_date_index(i, _)) : l = Math.round(e / 60 / 60 / 1e3 / 24); c * r <= l * r;) { var u = g.date.add(a, i.x_step * r, i.x_unit);
-                    h && h(a) && (e += (u - a) * r, l += r), a = u, c += r }
+                for (i.render ? (c = this._get_date_index(i, a), l = this._get_date_index(i, _)) : l = Math.round(e / 60 / 60 / 1e3 / 24); c * r <= l * r;) {
+                    var u = g.date.add(a, i.x_step * r, i.x_unit);
+                    h && h(a) && (e += (u - a) * r, l += r), a = u, c += r
+                }
                 return e
             }, g._get_section_view = function() { return this.getView() }, g._get_section_property = function() { return this.matrix && this.matrix[this._mode] ? this.matrix[this._mode].y_property : this._props && this._props[this._mode] ? this._props[this._mode].map_to : null }, g._is_initialized = function() {
                 var t = this.getState();
                 return this._obj && t.date && t.mode
             }, g._is_lightbox_open = function() { var t = this.getState(); return null !== t.lightbox_id && void 0 !== t.lightbox_id }, g._getClassName = function(t) { if (!t) return ""; var e = t.className || ""; return e.baseVal && (e = e.baseVal), e.indexOf || (e = ""), e || "" }, g.event = function(t, e, i) { t.addEventListener ? t.addEventListener(e, i, !1) : t.attachEvent && t.attachEvent("on" + e, i) }, g.eventRemove = function(t, e, i) { t.removeEventListener ? t.removeEventListener(e, i, !1) : t.detachEvent && t.detachEvent("on" + e, i) },
             function() {
-                function t(t) { var e = !1,
-                        i = !1; if (window.getComputedStyle) { var n = window.getComputedStyle(t, null);
-                        e = n.display, i = n.visibility } else t.currentStyle && (e = t.currentStyle.display, i = t.currentStyle.visibility); var a = !1,
-                        r = g._locate_css({ target: t }, "dhx_form_repeat", !1); return r && (a = !("0px" != r.style.height)), a = a || !t.offsetHeight, "none" != e && "hidden" != i && !a }
+                function t(t) {
+                    var e = !1,
+                        i = !1;
+                    if (window.getComputedStyle) {
+                        var n = window.getComputedStyle(t, null);
+                        e = n.display, i = n.visibility
+                    } else t.currentStyle && (e = t.currentStyle.display, i = t.currentStyle.visibility);
+                    var a = !1,
+                        r = g._locate_css({ target: t }, "dhx_form_repeat", !1);
+                    return r && (a = !("0px" != r.style.height)), a = a || !t.offsetHeight, "none" != e && "hidden" != i && !a
+                }
 
                 function e(t) { return !isNaN(t.getAttribute("tabindex")) && 1 * t.getAttribute("tabindex") >= 0 }
 
@@ -1266,8 +1461,13 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 }
 
                 function n(t) { return !{ input: !0, select: !0, textarea: !0, button: !0, object: !0 }[t.nodeName.toLowerCase()] || !t.hasAttribute("disabled") }
-                g._getFocusableNodes = function(a) { for (var r = a.querySelectorAll(["a[href]", "area[href]", "input", "select", "textarea", "button", "iframe", "object", "embed", "[tabindex]", "[contenteditable]"].join(", ")), s = Array.prototype.slice.call(r, 0), o = 0; o < s.length; o++) { var d = s[o];
-                        (e(d) || n(d) || i(d)) && t(d) || (s.splice(o, 1), o--) } return s }
+                g._getFocusableNodes = function(a) {
+                    for (var r = a.querySelectorAll(["a[href]", "area[href]", "input", "select", "textarea", "button", "iframe", "object", "embed", "[tabindex]", "[contenteditable]"].join(", ")), s = Array.prototype.slice.call(r, 0), o = 0; o < s.length; o++) {
+                        var d = s[o];
+                        (e(d) || n(d) || i(d)) && t(d) || (s.splice(o, 1), o--)
+                    }
+                    return s
+                }
             }(), g._trim = function(t) { return (String.prototype.trim || function() { return this.replace(/^\s+|\s+$/g, "") }).apply(t) }, g._isDate = function(t) { return !(!t || "object" != typeof t) && !!(t.getFullYear && t.getMonth && t.getDate) }, g._isObject = function(t) { return t && "object" == typeof t },
             function() {
                 function t(t) { return (t + "").replace(n, " ").replace(a, " ") }
@@ -1279,10 +1479,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     a = new RegExp(" +", "gm"),
                     r = new RegExp("'", "gm");
                 g._waiAria = {
-                    getAttributeString: function(i) { var n = [" "]; for (var a in i)
-                            if ("function" != typeof i[a] && "object" != typeof i[a]) { var r = e(t(i[a]));
-                                n.push(a + "='" + r + "'") }
-                        return n.push(" "), n.join(" ") },
+                    getAttributeString: function(i) {
+                        var n = [" "];
+                        for (var a in i)
+                            if ("function" != typeof i[a] && "object" != typeof i[a]) {
+                                var r = e(t(i[a]));
+                                n.push(a + "='" + r + "'")
+                            }
+                        return n.push(" "), n.join(" ")
+                    },
                     setAttributes: function(e, i) { for (var n in i) e.setAttribute(n, t(i[n])); return e },
                     labelAttr: function(t, e) { return this.setAttributes(t, { "aria-label": e }) },
                     label: function(t) { return g._waiAria.getAttributeString({ "aria-label": t }) },
@@ -1319,8 +1524,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         })
                     },
                     minicalRow: function(t) { this.setAttributes(t, { role: "row" }) },
-                    minicalDayCell: function(t, e) { var i = e.valueOf() < g._max_date.valueOf() && e.valueOf() >= g._min_date.valueOf();
-                        this.setAttributes(t, { role: "gridcell", "aria-label": g.templates.day_date(e), "aria-selected": i ? "true" : "false" }) },
+                    minicalDayCell: function(t, e) {
+                        var i = e.valueOf() < g._max_date.valueOf() && e.valueOf() >= g._min_date.valueOf();
+                        this.setAttributes(t, { role: "gridcell", "aria-label": g.templates.day_date(e), "aria-selected": i ? "true" : "false" })
+                    },
                     minicalHeadCell: function(t) { this.setAttributes(t, { role: "columnheader" }) },
                     weekAgendaDayCell: function(t, e) {
                         var i = t.querySelector(".dhx_wa_scale_bar"),
@@ -1351,13 +1558,17 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         var e = "";
                         switch (t) {
                             case "%Y":
-                                e = g.locale.labels.year; break;
+                                e = g.locale.labels.year;
+                                break;
                             case "%m":
-                                e = g.locale.labels.month; break;
+                                e = g.locale.labels.month;
+                                break;
                             case "%d":
-                                e = g.locale.labels.day; break;
+                                e = g.locale.labels.day;
+                                break;
                             case "%H:%i":
-                                e = g.locale.labels.hour + " " + g.locale.labels.minute }
+                                e = g.locale.labels.hour + " " + g.locale.labels.minute
+                        }
                         return g._waiAria.getAttributeString({
                             "aria-label": e
                         })
@@ -1378,20 +1589,30 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 for (var s in g._waiAria) g._waiAria[s] = function(t) { return function() { return i() ? " " : t.apply(this, arguments) } }(g._waiAria[s])
             }(), g.utils = {
                 mixin: function(t, e, i) { for (var n in e)(void 0 === t[n] || i) && (t[n] = e[n]); return t },
-                copy: function t(e) { var i, n; if (e && "object" == typeof e) switch (!0) {
+                copy: function t(e) {
+                    var i, n;
+                    if (e && "object" == typeof e) switch (!0) {
                         case h(e):
-                            n = new Date(e); break;
+                            n = new Date(e);
+                            break;
                         case o(e):
-                            for (n = new Array(e.length), i = 0; i < e.length; i++) n[i] = t(e[i]); break;
+                            for (n = new Array(e.length), i = 0; i < e.length; i++) n[i] = t(e[i]);
+                            break;
                         case d(e):
-                            n = new String(e); break;
+                            n = new String(e);
+                            break;
                         case l(e):
-                            n = new Number(e); break;
+                            n = new Number(e);
+                            break;
                         case _(e):
-                            n = new Boolean(e); break;
+                            n = new Boolean(e);
+                            break;
                         default:
-                            n = {}; for (i in e) Object.prototype.hasOwnProperty.apply(e, [i]) && (n[i] = t(e[i])) }
-                    return n || e }
+                            n = {};
+                            for (i in e) Object.prototype.hasOwnProperty.apply(e, [i]) && (n[i] = t(e[i]))
+                    }
+                    return n || e
+                }
             }, g.$domHelpers = {
                 getAbsoluteLeft: function(t) { return this.getOffset(t).left },
                 getAbsoluteTop: function(t) { return this.getOffset(t).top },
@@ -1405,13 +1626,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         a.style.position = "absolute", a.style.left = "0px", a.style.top = "0px", a.style.width = "1px", a.style.height = "1px", document.body.appendChild(a);
                         var r = a.getBoundingClientRect();
                         i = e.top - r.top, n = e.left - r.left, a.parentNode.removeChild(a)
-                    } else { var s = document.body,
+                    } else {
+                        var s = document.body,
                             o = document.documentElement,
                             d = window.pageYOffset || o.scrollTop || s.scrollTop,
                             l = window.pageXOffset || o.scrollLeft || s.scrollLeft,
                             _ = o.clientTop || s.clientTop || 0,
                             h = o.clientLeft || s.clientLeft || 0;
-                        i = e.top + d - _, n = e.left + l - h }
+                        i = e.top + d - _, n = e.left + l - h
+                    }
                     return { top: Math.round(i), left: Math.round(n) }
                 },
                 getOffset: function(t) { return t.getBoundingClientRect ? this.getOffsetRect(t) : this.getOffsetSum(t) },
@@ -1422,10 +1645,17 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             };
         var w;
         if (Element.prototype.closest) w = function(t, e) { return t.closest(e) };
-        else { var D = Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-            w = function(t, e) { var i = t;
-                do { if (D.call(i, e)) return i;
-                    i = i.parentElement || i.parentNode } while (null !== i && 1 === i.nodeType); return null } }
+        else {
+            var D = Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+            w = function(t, e) {
+                var i = t;
+                do {
+                    if (D.call(i, e)) return i;
+                    i = i.parentElement || i.parentNode
+                } while (null !== i && 1 === i.nodeType);
+                return null
+            }
+        }
         g.$env = {
             isIE: navigator.userAgent.indexOf("MSIE") >= 0 || navigator.userAgent.indexOf("Trident") >= 0,
             isIE6: !window.XMLHttpRequest && navigator.userAgent.indexOf("MSIE") >= 0,
@@ -1542,26 +1772,42 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 month_start: function(t) { return t.setDate(1), this.date_part(t) },
                 year_start: function(t) { return t.setMonth(0), this.month_start(t) },
                 day_start: function(t) { return this.date_part(t) },
-                _add_days: function(t, e) { var i = new Date(t.valueOf()); if (i.setDate(i.getDate() + e), e == Math.round(e) && e > 0) { var n = +i - +t,
-                            a = n % 864e5; if (a && t.getTimezoneOffset() == i.getTimezoneOffset()) { var r = a / 36e5;
-                            i.setTime(i.getTime() + 60 * (24 - r) * 60 * 1e3) } } return e >= 0 && !t.getHours() && i.getHours() && (i.getDate() < t.getDate() || i.getMonth() < t.getMonth() || i.getFullYear() < t.getFullYear()) && i.setTime(i.getTime() + 36e5 * (24 - i.getHours())), i },
+                _add_days: function(t, e) {
+                    var i = new Date(t.valueOf());
+                    if (i.setDate(i.getDate() + e), e == Math.round(e) && e > 0) {
+                        var n = +i - +t,
+                            a = n % 864e5;
+                        if (a && t.getTimezoneOffset() == i.getTimezoneOffset()) {
+                            var r = a / 36e5;
+                            i.setTime(i.getTime() + 60 * (24 - r) * 60 * 1e3)
+                        }
+                    }
+                    return e >= 0 && !t.getHours() && i.getHours() && (i.getDate() < t.getDate() || i.getMonth() < t.getMonth() || i.getFullYear() < t.getFullYear()) && i.setTime(i.getTime() + 36e5 * (24 - i.getHours())), i
+                },
                 add: function(t, e, i) {
                     var n = new Date(t.valueOf());
                     switch (i) {
                         case "day":
-                            n = g.date._add_days(n, e); break;
+                            n = g.date._add_days(n, e);
+                            break;
                         case "week":
-                            n = g.date._add_days(n, 7 * e); break;
+                            n = g.date._add_days(n, 7 * e);
+                            break;
                         case "month":
-                            n.setMonth(n.getMonth() + e); break;
+                            n.setMonth(n.getMonth() + e);
+                            break;
                         case "year":
-                            n.setYear(n.getFullYear() + e); break;
+                            n.setYear(n.getFullYear() + e);
+                            break;
                         case "hour":
-                            n.setTime(n.getTime() + 60 * e * 60 * 1e3); break;
+                            n.setTime(n.getTime() + 60 * e * 60 * 1e3);
+                            break;
                         case "minute":
-                            n.setTime(n.getTime() + 60 * e * 1e3); break;
+                            n.setTime(n.getTime() + 60 * e * 1e3);
+                            break;
                         default:
-                            return g.date["add_" + i](t, e, i) }
+                            return g.date["add_" + i](t, e, i)
+                    }
                     return n
                 },
                 to_fixed: function(t) { return t < 10 ? "0" + t : t },
@@ -1834,8 +2080,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
             },
             function() {
                 for (var t = ["text", "Text", "start_date", "StartDate", "end_date", "EndDate"], e = function(t) { return function(e) { return g.getEvent(e)[t] } }, i = function(t) {
-                        return function(e, i) { var n = g.getEvent(e);
-                            n[t] = i, n._changed = !0, n._timed = this.isOneDayEvent(n), g.event_updated(n, !0) }
+                        return function(e, i) {
+                            var n = g.getEvent(e);
+                            n[t] = i, n._changed = !0, n._timed = this.isOneDayEvent(n), g.event_updated(n, !0)
+                        }
                     }, n = 0; n < t.length; n += 2) g["getEvent" + t[n + 1]] = e(t[n]), g["setEvent" + t[n + 1]] = i(t[n])
             }(), g.event_updated = function(t, e) { this.is_visible_events(t) ? this.render_view_data() : this.clear_event(t.id) }, g.is_visible_events = function(t) {
                 if (!this._min_date || !this._max_date) return !1;
@@ -1864,12 +2112,16 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     if (!this._els.dhx_multi_day) { var o = g._commonErrorMessages.unknownView(this._mode); throw new Error(o) }
                     this._rendered_location = this._els.dhx_multi_day[0], this._table_view = !0, this.render_data(s, e), this._table_view = !1,
                         this._rendered_location = this._els.dhx_cal_data[0], this._table_view = !1, this.render_data(r, e)
-                } else { var d = document.createDocumentFragment(),
+                } else {
+                    var d = document.createDocumentFragment(),
                         l = this._els.dhx_cal_data[0];
-                    this._rendered_location = d, this.render_data(t, e), l.appendChild(d), this._rendered_location = l }
+                    this._rendered_location = d, this.render_data(t, e), l.appendChild(d), this._rendered_location = l
+                }
                 i && this.callEvent("onDataRender", [])
-            }, g._view_month_day = function(t) { var e = g.getActionData(t).date;
-                g.callEvent("onViewMoreClick", [e]) && g.setCurrentView(e, "day") }, g._render_month_link = function(t) {
+            }, g._view_month_day = function(t) {
+                var e = g.getActionData(t).date;
+                g.callEvent("onViewMoreClick", [e]) && g.setCurrentView(e, "day")
+            }, g._render_month_link = function(t) {
                 for (var e = this._rendered_location, i = this._lame_clone(t), n = t._sday; n < t._eday; n++) {
                     i._sday = n, i._eday = n + 1;
                     var a = g.date,
@@ -1882,8 +2134,12 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     l.onclick = function(t) { g._view_month_day(t || event) }, l.className = "dhx_month_link", l.style.top = o.y + "px", l.style.left = o.x + "px", l.style.width = d + "px", l.innerHTML = g.templates.month_events_link(r, s),
                         this._rendered.push(l), e.appendChild(l)
                 }
-            }, g._recalculate_timed = function(t) { if (t) { var e;
-                    e = "object" != typeof t ? this._events[t] : t, e && (e._timed = g.isOneDayEvent(e)) } }, g.attachEvent("onEventChanged", g._recalculate_timed), g.attachEvent("onEventAdded", g._recalculate_timed), g.render_data = function(t, e) {
+            }, g._recalculate_timed = function(t) {
+                if (t) {
+                    var e;
+                    e = "object" != typeof t ? this._events[t] : t, e && (e._timed = g.isOneDayEvent(e))
+                }
+            }, g.attachEvent("onEventChanged", g._recalculate_timed), g.attachEvent("onEventAdded", g._recalculate_timed), g.render_data = function(t, e) {
                 t = this._pre_render_events(t, e);
                 for (var i = {}, n = 0; n < t.length; n++)
                     if (this._table_view)
@@ -1892,12 +2148,18 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             var a = g.config.max_month_events;
                             a !== 1 * a || t[n]._sorder < a ? this.render_event_bar(t[n]) : void 0 !== a && t[n]._sorder == a && g._render_month_link(t[n])
                         }
-                else { var r = t[n],
-                        s = g.locate_holder(r._sday); if (!s) continue;
-                    i[r._sday] || (i[r._sday] = { real: s, buffer: document.createDocumentFragment(), width: s.clientWidth }); var o = i[r._sday];
-                    this.render_event(r, o.buffer, o.width) }
-                for (var n in i) { var o = i[n];
-                    o.real && o.buffer && o.real.appendChild(o.buffer) }
+                else {
+                    var r = t[n],
+                        s = g.locate_holder(r._sday);
+                    if (!s) continue;
+                    i[r._sday] || (i[r._sday] = { real: s, buffer: document.createDocumentFragment(), width: s.clientWidth });
+                    var o = i[r._sday];
+                    this.render_event(r, o.buffer, o.width)
+                }
+                for (var n in i) {
+                    var o = i[n];
+                    o.real && o.buffer && o.real.appendChild(o.buffer)
+                }
             }, g._get_first_visible_cell = function(t) {
                 for (var e = 0; e < t.length; e++)
                     if (-1 == (t[e].className || "").indexOf("dhx_scale_ignore")) return t[e];
@@ -1916,15 +2178,20 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                                 a[o]++;
                                 var d = s.rows[o].cells,
                                     l = this._colsS.height - this.xy.month_head_height;
-                                if (a[o] * i > l) { var _ = l;
-                                    1 * this.config.max_month_events !== this.config.max_month_events || a[o] <= this.config.max_month_events ? _ = a[o] * i : (this.config.max_month_events + 1) * i > l && (_ = (this.config.max_month_events + 1) * i); for (var h = 0; h < d.length; h++) d[h].childNodes[1].style.height = _ + "px" }
+                                if (a[o] * i > l) {
+                                    var _ = l;
+                                    1 * this.config.max_month_events !== this.config.max_month_events || a[o] <= this.config.max_month_events ? _ = a[o] * i : (this.config.max_month_events + 1) * i > l && (_ = (this.config.max_month_events + 1) * i);
+                                    for (var h = 0; h < d.length; h++) d[h].childNodes[1].style.height = _ + "px"
+                                }
                                 a[o] = (a[o - 1] || 0) + g._get_first_visible_cell(d).offsetHeight
                             }
                             if (a.unshift(0),
-                                s.parentNode.offsetHeight < s.parentNode.scrollHeight && !g._colsS.scroll_fix && g.xy.scroll_width) { var c = g._colsS,
+                                s.parentNode.offsetHeight < s.parentNode.scrollHeight && !g._colsS.scroll_fix && g.xy.scroll_width) {
+                                var c = g._colsS,
                                     u = c[c.col_length],
                                     f = c.heights.slice();
-                                u -= g.xy.scroll_width || 0, this._calc_scale_sizes(u, this._min_date, this._max_date), g._colsS.heights = f, this.set_xy(this._els.dhx_cal_header[0], u, this.xy.scale_height), g._render_scales(this._els.dhx_cal_header[0]), g._render_month_scale(this._els.dhx_cal_data[0], this._get_timeunit_start(), this._min_date), c.scroll_fix = !0 }
+                                u -= g.xy.scroll_width || 0, this._calc_scale_sizes(u, this._min_date, this._max_date), g._colsS.heights = f, this.set_xy(this._els.dhx_cal_header[0], u, this.xy.scale_height), g._render_scales(this._els.dhx_cal_header[0]), g._render_month_scale(this._els.dhx_cal_data[0], this._get_timeunit_start(), this._min_date), c.scroll_fix = !0
+                            }
                         } else if (t.length || "visible" != this._els.dhx_multi_day[0].style.visibility || (a[0] = -1), t.length || -1 == a[0]) {
                             var v = (s.parentNode.childNodes, (a[0] + 1) * i + 1),
                                 m = v,
@@ -1938,8 +2205,14 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         }
                     }
                 return t
-            }, g._get_event_sday = function(t) { var e = this.date.day_start(new Date(t.start_date)); return Math.round((e.valueOf() - this._min_date.valueOf()) / 864e5) }, g._get_event_mapped_end_date = function(t) { var e = t.end_date; if (this.config.separate_short_events) { var i = (t.end_date - t.start_date) / 6e4;
-                    i < this._min_mapped_duration && (e = this.date.add(e, this._min_mapped_duration - i, "minute")) } return e }, g._pre_render_events_line = function(t, e) {
+            }, g._get_event_sday = function(t) { var e = this.date.day_start(new Date(t.start_date)); return Math.round((e.valueOf() - this._min_date.valueOf()) / 864e5) }, g._get_event_mapped_end_date = function(t) {
+                var e = t.end_date;
+                if (this.config.separate_short_events) {
+                    var i = (t.end_date - t.start_date) / 6e4;
+                    i < this._min_mapped_duration && (e = this.date.add(e, this._min_mapped_duration - i, "minute"))
+                }
+                return e
+            }, g._pre_render_events_line = function(t, e) {
                 t.sort(function(t, e) {
                     return t.start_date.valueOf() == e.start_date.valueOf() ? t.id > e.id ? 1 : -1 : t.start_date > e.start_date ? 1 : -1
                 });
@@ -1962,8 +2235,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                                 if (!(c.valueOf() <= r.start_date.valueOf())) break;
                                 _.splice(_.length - 1, 1)
                             }
-                            for (var u = _.length, f = !1, g = 0; g < _.length; g++) { var h = _[g],
-                                    c = this._get_event_mapped_end_date(h); if (c.valueOf() <= r.start_date.valueOf()) { f = !0, r._sorder = h._sorder, u = g, r._inner = !0; break } }
+                            for (var u = _.length, f = !1, g = 0; g < _.length; g++) {
+                                var h = _[g],
+                                    c = this._get_event_mapped_end_date(h);
+                                if (c.valueOf() <= r.start_date.valueOf()) { f = !0, r._sorder = h._sorder, u = g, r._inner = !0; break }
+                            }
                             if (_.length && (_[_.length - 1]._inner = !0), !f)
                                 if (_.length)
                                     if (_.length <= _[_.length - 1]._sorder) {
@@ -1977,8 +2253,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                                                 if (!v) { r._sorder = g; break }
                                             } else r._sorder = 0;
                                         r._inner = !0
-                                    } else { var p = _[0]._sorder; for (g = 1; g < _.length; g++) _[g]._sorder > p && (p = _[g]._sorder);
-                                        r._sorder = p + 1, r._inner = !1 }
+                                    } else {
+                                        var p = _[0]._sorder;
+                                        for (g = 1; g < _.length; g++) _[g]._sorder > p && (p = _[g]._sorder);
+                                        r._sorder = p + 1, r._inner = !1
+                                    }
                             else r._sorder = 0;
                             _.splice(u, u == _.length ? 0 : 1, r), _.length > (_.max_count || 0) ? (_.max_count = _.length, r._count = _.length) : r._count = r._count ? r._count : 1
                         }(d < this.config.first_hour || l >= this.config.last_hour) && (n.push(r), t[a] = r = this._copy_event(r), d < this.config.first_hour && (r.start_date.setHours(this.config.first_hour),
@@ -1991,13 +2270,21 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 t.sort(function(t, e) {
                     return t.start_date.valueOf() == e.start_date.valueOf() ? t._timed && !e._timed ? 1 : !t._timed && e._timed ? -1 : t.id > e.id ? 1 : -1 : t.start_date > e.start_date ? 1 : -1
                 })
-            }, g._is_any_multiday_cell_visible = function(t, e, i) { var n = this._cols.length,
+            }, g._is_any_multiday_cell_visible = function(t, e, i) {
+                var n = this._cols.length,
                     a = !1,
                     r = t,
                     s = !0,
-                    o = new Date(e); for (g.date.day_start(new Date(e)).valueOf() != e.valueOf() && (o = g.date.day_start(o), o = g.date.add(o, 1, "day")); r < o;) { s = !1; var d = this.locate_holder_day(r, !1, i),
-                        l = d % n; if (!this._ignores[l]) { a = !0; break }
-                    r = g.date.add(r, 1, "day") } return s || a },
+                    o = new Date(e);
+                for (g.date.day_start(new Date(e)).valueOf() != e.valueOf() && (o = g.date.day_start(o), o = g.date.add(o, 1, "day")); r < o;) {
+                    s = !1;
+                    var d = this.locate_holder_day(r, !1, i),
+                        l = d % n;
+                    if (!this._ignores[l]) { a = !0; break }
+                    r = g.date.add(r, 1, "day")
+                }
+                return s || a
+            },
             g._pre_render_events_table = function(t, e) {
                 this._time_order(t);
                 for (var i, n = [], a = [
@@ -2033,14 +2320,20 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     }
                 }
                 return n
-            }, g._copy_dummy = function() { var t = new Date(this.start_date),
+            }, g._copy_dummy = function() {
+                var t = new Date(this.start_date),
                     e = new Date(this.end_date);
-                this.start_date = t, this.end_date = e }, g._copy_event = function(t) { return this._copy_dummy.prototype = t, new this._copy_dummy }, g._rendered = [], g.clear_view = function() {
-                for (var t = 0; t < this._rendered.length; t++) { var e = this._rendered[t];
-                    e.parentNode && e.parentNode.removeChild(e) }
+                this.start_date = t, this.end_date = e
+            }, g._copy_event = function(t) { return this._copy_dummy.prototype = t, new this._copy_dummy }, g._rendered = [], g.clear_view = function() {
+                for (var t = 0; t < this._rendered.length; t++) {
+                    var e = this._rendered[t];
+                    e.parentNode && e.parentNode.removeChild(e)
+                }
                 this._rendered = []
-            }, g.updateEvent = function(t) { var e = this.getEvent(t);
-                this.clear_event(t), e && this.is_visible_events(e) && this.filter_event(t, e) && (this._table_view || this.config.multi_day || e._timed) && (this.config.update_render ? this.render_view_data() : "month" != this.getState().mode || this.getState().drag_id || this.isOneDayEvent(e) ? this.render_view_data([e], !0) : this.render_view_data()) },
+            }, g.updateEvent = function(t) {
+                var e = this.getEvent(t);
+                this.clear_event(t), e && this.is_visible_events(e) && this.filter_event(t, e) && (this._table_view || this.config.multi_day || e._timed) && (this.config.update_render ? this.render_view_data() : "month" != this.getState().mode || this.getState().drag_id || this.isOneDayEvent(e) ? this.render_view_data([e], !0) : this.render_view_data())
+            },
             g.clear_event = function(t) { this.for_rendered(t, function(t, e) { t.parentNode && t.parentNode.removeChild(t), g._rendered.splice(e, 1) }) }, g._y_from_date = function(t) { var e = 60 * t.getHours() + t.getMinutes(); return Math.round((60 * e * 1e3 - 60 * this.config.first_hour * 60 * 1e3) * this.config.hour_size_px / 36e5) % (24 * this.config.hour_size_px) }, g._calc_event_y = function(t, e) {
                 e = e || 0;
                 var i = 60 * t.start_date.getHours() + t.start_date.getMinutes(),
@@ -2080,8 +2373,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             p && (m.className += " " + p);
                             var x = document.createElement("div");
                             this.set_xy(x, h - 6, d - 26), x.style.cssText += ";margin:2px 2px 2px 2px;overflow:hidden;", m.appendChild(x),
-                                this._els.dhx_cal_data[0].appendChild(m), this._rendered.push(m), x.innerHTML = "<textarea class='dhx_cal_editor'>" + t.text + "</textarea>", this._editor = x.querySelector("textarea"), this._quirks7 && (this._editor.style.height = d - 12 + "px"), this._editor.onkeydown = function(t) { if ((t || event).shiftKey) return !0; var e = (t || event).keyCode;
-                                    e == g.keys.edit_save && g.editStop(!0), e == g.keys.edit_cancel && g.editStop(!1), e != g.keys.edit_save && e != g.keys.edit_cancel || t.preventDefault && t.preventDefault() },
+                                this._els.dhx_cal_data[0].appendChild(m), this._rendered.push(m), x.innerHTML = "<textarea class='dhx_cal_editor'>" + t.text + "</textarea>", this._editor = x.querySelector("textarea"), this._quirks7 && (this._editor.style.height = d - 12 + "px"), this._editor.onkeydown = function(t) {
+                                    if ((t || event).shiftKey) return !0;
+                                    var e = (t || event).keyCode;
+                                    e == g.keys.edit_save && g.editStop(!0), e == g.keys.edit_cancel && g.editStop(!1), e != g.keys.edit_save && e != g.keys.edit_cancel || t.preventDefault && t.preventDefault()
+                                },
                                 this._editor.onselectstart = function(t) { return (t || event).cancelBubble = !0, !0 }, g._focus(this._editor, !0), this._els.dhx_cal_data[0].scrollLeft = 0
                         }
                         if (0 !== this.xy.menu_width && this._select_id == t.id) {
@@ -2134,8 +2430,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 e && (n = i[i.col_length] - i[t._eday] + i[0], a = i[i.col_length] - i[t._sday] + i[0]), a == n && (a = i[t._eday + 1]);
                 var r = this.xy.bar_height,
                     s = t._sorder;
-                if (t.id == this._drag_id) { var o = i.heights[t._sweek + 1] - i.heights[t._sweek] - this.xy.month_head_height;
-                    s = g._get_dnd_order(s, r, o) }
+                if (t.id == this._drag_id) {
+                    var o = i.heights[t._sweek + 1] - i.heights[t._sweek] - this.xy.month_head_height;
+                    s = g._get_dnd_order(s, r, o)
+                }
                 var d = s * r;
                 return { x: n, x2: a, y: i.heights[t._sweek] + (i.height ? this.xy.month_scale_height + 2 : 2) + d }
             }, g.render_event_bar = function(t) {
@@ -2167,16 +2465,35 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 }
             }, g._locate_event = function(t) { for (var e = null; t && !e && t.getAttribute;) e = t.getAttribute("event_id"), t = t.parentNode; return e }, g._locate_css = function(t, e, i) {
                 void 0 === i && (i = !0);
-                for (var n = t.target || t.srcElement, a = ""; n;) { if (a = g._getClassName(n)) { var r = a.indexOf(e); if (r >= 0) { if (!i) return n; var s = 0 === r || !g._trim(a.charAt(r - 1)),
-                                o = r + e.length >= a.length || !g._trim(a.charAt(r + e.length)); if (s && o) return n } }
-                    n = n.parentNode }
+                for (var n = t.target || t.srcElement, a = ""; n;) {
+                    if (a = g._getClassName(n)) {
+                        var r = a.indexOf(e);
+                        if (r >= 0) {
+                            if (!i) return n;
+                            var s = 0 === r || !g._trim(a.charAt(r - 1)),
+                                o = r + e.length >= a.length || !g._trim(a.charAt(r + e.length));
+                            if (s && o) return n
+                        }
+                    }
+                    n = n.parentNode
+                }
                 return null
-            }, g.edit = function(t) { this._edit_id != t && (this.editStop(!1, t), this._edit_id = t, this.updateEvent(t)) }, g.editStop = function(t, e) { if (!e || this._edit_id != e) { var i = this.getEvent(this._edit_id);
-                    i && (t && (i.text = this._editor.value), this._edit_id = null, this._editor = null, this.updateEvent(i.id), this._edit_stop_event(i, t)) } }, g._edit_stop_event = function(t, e) {
+            }, g.edit = function(t) { this._edit_id != t && (this.editStop(!1, t), this._edit_id = t, this.updateEvent(t)) }, g.editStop = function(t, e) {
+                if (!e || this._edit_id != e) {
+                    var i = this.getEvent(this._edit_id);
+                    i && (t && (i.text = this._editor.value), this._edit_id = null, this._editor = null, this.updateEvent(i.id), this._edit_stop_event(i, t))
+                }
+            }, g._edit_stop_event = function(t, e) {
                 this._new_event ? (e ? this.callEvent("onEventAdded", [t.id, t]) : t && this.deleteEvent(t.id, !0),
                     this._new_event = null) : e && this.callEvent("onEventChanged", [t.id, t])
-            }, g.getEvents = function(t, e) { var i = []; for (var n in this._events) { var a = this._events[n];
-                    a && (!t && !e || a.start_date < e && a.end_date > t) && i.push(a) } return i }, g.getRenderedEvent = function(t) { if (t) { for (var e = g._rendered, i = 0; i < e.length; i++) { var n = e[i]; if (n.getAttribute("event_id") == t) return n } return null } }, g.showEvent = function(t, e) {
+            }, g.getEvents = function(t, e) {
+                var i = [];
+                for (var n in this._events) {
+                    var a = this._events[n];
+                    a && (!t && !e || a.start_date < e && a.end_date > t) && i.push(a)
+                }
+                return i
+            }, g.getRenderedEvent = function(t) { if (t) { for (var e = g._rendered, i = 0; i < e.length; i++) { var n = e[i]; if (n.getAttribute("event_id") == t) return n } return null } }, g.showEvent = function(t, e) {
                 var i;
                 t && "object" == typeof t && (e = t.mode, i = t.section, t = t.section);
                 var n = "number" == typeof t || "string" == typeof t ? g.getEvent(t) : t;
@@ -2193,8 +2510,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             l = d.y_property,
                             _ = g.getEvent(n.id);
                         if (_) {
-                            if (!i) { var i = _[l];
-                                Array.isArray(i) ? i = i[0] : "string" == typeof i && g.config.section_delimiter && i.indexOf(g.config.section_delimiter) > -1 && (i = i.split(g.config.section_delimiter)[0]) }
+                            if (!i) {
+                                var i = _[l];
+                                Array.isArray(i) ? i = i[0] : "string" == typeof i && g.config.section_delimiter && i.indexOf(g.config.section_delimiter) > -1 && (i = i.split(g.config.section_delimiter)[0])
+                            }
                             var h = d.posFromSection(i),
                                 c = d.posFromDate(_.start_date),
                                 u = g.$container.querySelector(".dhx_timeline_data_wrapper");
@@ -2203,17 +2522,24 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     }
                     g.callEvent("onAfterEventDisplay", [n, e])
                 }
-            }, g._append_drag_marker = function(t) { if (!t.parentNode) { var e = g._els.dhx_cal_data[0],
+            }, g._append_drag_marker = function(t) {
+                if (!t.parentNode) {
+                    var e = g._els.dhx_cal_data[0],
                         i = e.lastChild,
                         n = g._getClassName(i);
-                    n.indexOf("dhx_scale_holder") < 0 && i.previousSibling && (i = i.previousSibling), n = g._getClassName(i), i && 0 === n.indexOf("dhx_scale_holder") && i.appendChild(t) } }, g._update_marker_position = function(t, e) {
+                    n.indexOf("dhx_scale_holder") < 0 && i.previousSibling && (i = i.previousSibling), n = g._getClassName(i), i && 0 === n.indexOf("dhx_scale_holder") && i.appendChild(t)
+                }
+            }, g._update_marker_position = function(t, e) {
                 var i = g._calc_event_y(e, 0);
                 t.style.top = i.top + "px",
                     t.style.height = i.height + "px"
-            }, g.highlightEventPosition = function(t) { var e = document.createElement("div");
-                e.setAttribute("event_id", t.id), this._rendered.push(e), this._update_marker_position(e, t); var i = this.templates.drag_marker_class(t.start_date, t.end_date, t),
+            }, g.highlightEventPosition = function(t) {
+                var e = document.createElement("div");
+                e.setAttribute("event_id", t.id), this._rendered.push(e), this._update_marker_position(e, t);
+                var i = this.templates.drag_marker_class(t.start_date, t.end_date, t),
                     n = this.templates.drag_marker_content(t.start_date, t.end_date, t);
-                e.className = "dhx_drag_marker", i && (e.className += " " + i), n && (e.innerHTML = n), this._append_drag_marker(e) }, g._loaded = {}, g._load = function(t, e) {
+                e.className = "dhx_drag_marker", i && (e.className += " " + i), n && (e.innerHTML = n), this._append_drag_marker(e)
+            }, g._loaded = {}, g._load = function(t, e) {
                 function i(t) {
                     g.on_load(t),
                         g.callEvent("onLoadEnd", [])
@@ -2253,8 +2579,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         var r = n[a].getAttribute("for"),
                             s = g.serverList[r];
                         s || (g.serverList[r] = s = []), s.splice(0, s.length);
-                        for (var o = g.$ajax.xpath(".//item", n[a]), d = 0; d < o.length; d++) { for (var l = o[d], _ = l.attributes, h = { key: o[d].getAttribute("value"), label: o[d].getAttribute("label") }, c = 0; c < _.length; c++) { var u = _[c]; "value" != u.nodeName && "label" != u.nodeName && (h[u.nodeName] = u.nodeValue) }
-                            s.push(h) }
+                        for (var o = g.$ajax.xpath(".//item", n[a]), d = 0; d < o.length; d++) {
+                            for (var l = o[d], _ = l.attributes, h = { key: o[d].getAttribute("value"), label: o[d].getAttribute("label") }, c = 0; c < _.length; c++) { var u = _[c]; "value" != u.nodeName && "label" != u.nodeName && (h[u.nodeName] = u.nodeValue) }
+                            s.push(h)
+                        }
                     }
                     n.length && g.callEvent("onOptionsLoad", []);
                     for (var f = g.$ajax.xpath("//userdata", t.xmlDoc), a = 0; a < f.length; a++) {
@@ -2263,13 +2591,18 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     }
                     var m = [];
                     e = g.$ajax.xpath("//event", t.xmlDoc);
-                    for (var a = 0; a < e.length; a++) { var p = m[a] = g._xmlNodeToJSON(e[a]);
-                        g._init_event(p) }
+                    for (var a = 0; a < e.length; a++) {
+                        var p = m[a] = g._xmlNodeToJSON(e[a]);
+                        g._init_event(p)
+                    }
                     return m
                 }
             }, g.json = g._parsers.json = {
-                canParse: function(t) { if (t && "object" == typeof t) return !0; if ("string" == typeof t) try { var e = JSON.parse(t); return "[object Object]" === Object.prototype.toString.call(e) || "[object Array]" === Object.prototype.toString.call(e) } catch (t) { return !1 }
-                    return !1 },
+                canParse: function(t) {
+                    if (t && "object" == typeof t) return !0;
+                    if ("string" == typeof t) try { var e = JSON.parse(t); return "[object Object]" === Object.prototype.toString.call(e) || "[object Array]" === Object.prototype.toString.call(e) } catch (t) { return !1 }
+                    return !1
+                },
                 parse: function(t) {
                     var e = [];
                     "string" == typeof t && (t = JSON.parse(t)), e = "[object Array]" === Object.prototype.toString.call(t) ? t : t ? t.data : [], e = e || [], t.dhx_security && (window.dhtmlx && (dhtmlx.security_key = t.dhx_security), g.security_key = t.dhx_security);
@@ -2293,8 +2626,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             }
                         }
                     n && g.callEvent("onOptionsLoad", []);
-                    for (var h = [], c = 0; c < e.length; c++) { var u = e[c];
-                        g._init_event(u), h.push(u) }
+                    for (var h = [], c = 0; c < e.length; c++) {
+                        var u = e[c];
+                        g._init_event(u), h.push(u)
+                    }
                     return h
                 }
             }, g.ical = g._parsers.ical = {
@@ -2303,8 +2638,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     var e = t.match(RegExp(this.c_start + "[^\f]*" + this.c_end, ""));
                     if (e.length) {
                         e[0] = e[0].replace(/[\r\n]+ /g, ""), e[0] = e[0].replace(/[\r\n]+(?=[a-z \t])/g, " "), e[0] = e[0].replace(/\;[^:\r\n]*:/g, ":");
-                        for (var i, n = [], a = RegExp("(?:" + this.e_start + ")([^\f]*?)(?:" + this.e_end + ")", "g"); null !== (i = a.exec(e));) { for (var r, s = {}, o = /[^\r\n]+[\r\n]+/g; null !== (r = o.exec(i[1]));) this.parse_param(r.toString(), s);
-                            s.uid && !s.id && (s.id = s.uid), n.push(s) }
+                        for (var i, n = [], a = RegExp("(?:" + this.e_start + ")([^\f]*?)(?:" + this.e_end + ")", "g"); null !== (i = a.exec(e));) {
+                            for (var r, s = {}, o = /[^\r\n]+[\r\n]+/g; null !== (r = o.exec(i[1]));) this.parse_param(r.toString(), s);
+                            s.uid && !s.id && (s.id = s.uid), n.push(s)
+                        }
                         return n
                     }
                 },
@@ -2317,11 +2654,15 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             a = this.parse_date(a, 0, 0)), e[n] = a
                     }
                 },
-                parse_date: function(t, e, i) { var n = t.split("T"),
+                parse_date: function(t, e, i) {
+                    var n = t.split("T"),
                         a = !1;
-                    n[1] && (e = n[1].substr(0, 2), i = n[1].substr(2, 2), a = !("Z" != n[1][6])); var r = n[0].substr(0, 4),
+                    n[1] && (e = n[1].substr(0, 2), i = n[1].substr(2, 2), a = !("Z" != n[1][6]));
+                    var r = n[0].substr(0, 4),
                         s = parseInt(n[0].substr(4, 2), 10) - 1,
-                        o = n[0].substr(6, 2); return g.config.server_utc || a ? new Date(Date.UTC(r, s, o, e, i)) : new Date(r, s, o, e, i) },
+                        o = n[0].substr(6, 2);
+                    return g.config.server_utc || a ? new Date(Date.UTC(r, s, o, e, i)) : new Date(r, s, o, e, i)
+                },
                 c_start: "BEGIN:VCALENDAR",
                 e_start: "BEGIN:VEVENT",
                 e_end: "END:VEVENT",
@@ -2332,8 +2673,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     n = !1;
                 for (var a in this._parsers) {
                     var r = this._parsers[a];
-                    if (r.canParse(t.xmlDoc.responseText, t.xmlDoc)) { try { var s = t.xmlDoc.responseText; "xml" === a && (s = t), e = r.parse(s), e || (i = !0) } catch (t) { i = !0 }
-                        n = !0; break }
+                    if (r.canParse(t.xmlDoc.responseText, t.xmlDoc)) {
+                        try { var s = t.xmlDoc.responseText; "xml" === a && (s = t), e = r.parse(s), e || (i = !0) } catch (t) { i = !0 }
+                        n = !0;
+                        break
+                    }
                 }
                 if (!n)
                     if (this._process && this[this._process]) try { e = this[this._process].parse(t.xmlDoc.responseText) } catch (t) { i = !0 } else i = !0;
@@ -2358,21 +2702,37 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             var d = r[o],
                                 l = { key: d.value, label: d.label };
                             for (var _ in d)
-                                if (d.hasOwnProperty(_)) { if ("value" == _ || "label" == _) continue;
-                                    l[_] = d[_] }
+                                if (d.hasOwnProperty(_)) {
+                                    if ("value" == _ || "label" == _) continue;
+                                    l[_] = d[_]
+                                }
                             s.push(l)
                         }
                     }
                 n && g.callEvent("onOptionsLoad", []);
-                for (var h = [], c = 0; c < e.length; c++) { var u = e[c];
-                    g._init_event(u), h.push(u) }
+                for (var h = [], c = 0; c < e.length; c++) {
+                    var u = e[c];
+                    g._init_event(u), h.push(u)
+                }
                 return h
             }, g.parse = function(t, e) { this._process = e, this.on_load({ xmlDoc: { responseText: t } }) }, g.load = function(t, e) { "string" == typeof e && (this._process = e, e = arguments[2]), this._load_url = t, this._after_call = e, this._load(t, this._date) }, g.setLoadMode = function(t) { "all" == t && (t = ""), this._load_mode = t },
-            g.serverList = function(t, e) { return e ? (this.serverList[t] = e.slice(0), this.serverList[t]) : (this.serverList[t] = this.serverList[t] || [], this.serverList[t]) }, g._userdata = {}, g._xmlNodeToJSON = function(t) { for (var e = {}, i = 0; i < t.attributes.length; i++) e[t.attributes[i].name] = t.attributes[i].value; for (var i = 0; i < t.childNodes.length; i++) { var n = t.childNodes[i];
-                    1 == n.nodeType && (e[n.tagName] = n.firstChild ? n.firstChild.nodeValue : "") } return e.text || (e.text = t.firstChild ? t.firstChild.nodeValue : ""), e },
-            g.attachEvent("onXLS", function() { if (!0 === this.config.show_loading) { var t;
-                    t = this.config.show_loading = document.createElement("div"), t.className = "dhx_loading", t.style.left = Math.round((this._x - 128) / 2) + "px", t.style.top = Math.round((this._y - 15) / 2) + "px", this._obj.appendChild(t) } }), g.attachEvent("onXLE", function() { var t = this.config.show_loading;
-                t && "object" == typeof t && (t.parentNode && t.parentNode.removeChild(t), this.config.show_loading = !0) }), g._lightbox_controls = {}, g.formSection = function(t) {
+            g.serverList = function(t, e) { return e ? (this.serverList[t] = e.slice(0), this.serverList[t]) : (this.serverList[t] = this.serverList[t] || [], this.serverList[t]) }, g._userdata = {}, g._xmlNodeToJSON = function(t) {
+                for (var e = {}, i = 0; i < t.attributes.length; i++) e[t.attributes[i].name] = t.attributes[i].value;
+                for (var i = 0; i < t.childNodes.length; i++) {
+                    var n = t.childNodes[i];
+                    1 == n.nodeType && (e[n.tagName] = n.firstChild ? n.firstChild.nodeValue : "")
+                }
+                return e.text || (e.text = t.firstChild ? t.firstChild.nodeValue : ""), e
+            },
+            g.attachEvent("onXLS", function() {
+                if (!0 === this.config.show_loading) {
+                    var t;
+                    t = this.config.show_loading = document.createElement("div"), t.className = "dhx_loading", t.style.left = Math.round((this._x - 128) / 2) + "px", t.style.top = Math.round((this._y - 15) / 2) + "px", this._obj.appendChild(t)
+                }
+            }), g.attachEvent("onXLE", function() {
+                var t = this.config.show_loading;
+                t && "object" == typeof t && (t.parentNode && t.parentNode.removeChild(t), this.config.show_loading = !0)
+            }), g._lightbox_controls = {}, g.formSection = function(t) {
                 var e = this.config.lightbox.sections,
                     i = 0;
                 for (i; i < e.length && e[i].name != t; i++);
@@ -2396,12 +2756,17 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     focus: function(t) {}
                 },
                 textarea: {
-                    render: function(t) { var e = g._lightbox_controls.defaults.textarea,
-                            i = e ? e.height : 200; return "<div class='dhx_cal_ltext' style='height:" + (t.height || i || "130") + "px;'><textarea></textarea></div>" },
+                    render: function(t) {
+                        var e = g._lightbox_controls.defaults.textarea,
+                            i = e ? e.height : 200;
+                        return "<div class='dhx_cal_ltext' style='height:" + (t.height || i || "130") + "px;'><textarea></textarea></div>"
+                    },
                     set_value: function(t, e, i) { g.form_blocks.textarea._get_input(t).value = e || "" },
                     get_value: function(t, e) { return g.form_blocks.textarea._get_input(t).value },
-                    focus: function(t) { var e = g.form_blocks.textarea._get_input(t);
-                        g._focus(e, !0) },
+                    focus: function(t) {
+                        var e = g.form_blocks.textarea._get_input(t);
+                        g._focus(e, !0)
+                    },
                     _get_input: function(t) { return t.getElementsByTagName("textarea")[0] }
                 },
                 select: {
@@ -2411,8 +2776,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     },
                     set_value: function(t, e, i, n) { var a = t.firstChild;!a._dhx_onchange && n.onchange && (a.onchange = n.onchange, a._dhx_onchange = !0), void 0 === e && (e = (a.options[0] || {}).value), a.value = e || "" },
                     get_value: function(t, e) { return t.firstChild.value },
-                    focus: function(t) { var e = t.firstChild;
-                        g._focus(e, !0) }
+                    focus: function(t) {
+                        var e = t.firstChild;
+                        g._focus(e, !0)
+                    }
                 },
                 time: {
                     render: function(t) {
@@ -2449,8 +2816,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                                     l = "dhx_lightbox_time_select", t._time_format_order[0] = o;
                                     var v = r,
                                         m = n.getDate();
-                                    for (t._time_values = []; v < a;) { _ += "<option value='" + v + "'>" + this.templates.time_picker(n) + "</option>", t._time_values.push(v), n.setTime(n.valueOf() + 60 * this.config.time_step * 1e3);
-                                        v = 24 * (n.getDate() != m ? 1 : 0) * 60 + 60 * n.getHours() + n.getMinutes() }
+                                    for (t._time_values = []; v < a;) {
+                                        _ += "<option value='" + v + "'>" + this.templates.time_picker(n) + "</option>", t._time_values.push(v), n.setTime(n.valueOf() + 60 * this.config.time_step * 1e3);
+                                        v = 24 * (n.getDate() != m ? 1 : 0) * 60 + 60 * n.getHours() + n.getMinutes()
+                                    }
                             }
                             if (_) {
                                 var p = g._waiAria.lightboxSelectAttrString(d);
@@ -2483,8 +2852,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             }
                             var h = t.previousSibling.getElementsByTagName("input")[0];
                             h.checked = 0 === g.date.time_part(i.start_date) && 0 === g.date.time_part(i.end_date), d[l[0]].disabled = h.checked, d[l[0] + d.length / 2].disabled = h.checked, h.onclick = function() {
-                                if (h.checked) { var e = {};
-                                    g.form_blocks.time.get_value(t, e, n), r = g.date.date_part(e.start_date), s = g.date.date_part(e.end_date), (+s == +r || +s >= +r && (0 !== i.end_date.getHours() || 0 !== i.end_date.getMinutes())) && (s = g.date.add(s, 1, "day")) } else r = null, s = null;
+                                if (h.checked) {
+                                    var e = {};
+                                    g.form_blocks.time.get_value(t, e, n), r = g.date.date_part(e.start_date), s = g.date.date_part(e.end_date), (+s == +r || +s >= +r && (0 !== i.end_date.getHours() || 0 !== i.end_date.getMinutes())) && (s = g.date.add(s, 1, "day"))
+                                } else r = null, s = null;
                                 d[l[0]].disabled = h.checked, d[l[0] + d.length / 2].disabled = h.checked, a(d, 0, r || i.start_date), a(d, 4, s || i.end_date)
                             }
                         }
@@ -2495,8 +2866,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     get_value: function(t, e, i) {
                         var n = t.getElementsByTagName("select"),
                             a = i._time_format_order;
-                        if (e.start_date = new Date(n[a[3]].value, n[a[2]].value, n[a[1]].value, 0, n[a[0]].value), e.end_date = new Date(n[a[3] + 4].value, n[a[2] + 4].value, n[a[1] + 4].value, 0, n[a[0] + 4].value), !n[a[3]].value || !n[a[3] + 4].value) { var r = g.getEvent(g._lightbox_id);
-                            r && (e.start_date = r.start_date, e.end_date = r.end_date) }
+                        if (e.start_date = new Date(n[a[3]].value, n[a[2]].value, n[a[1]].value, 0, n[a[0]].value), e.end_date = new Date(n[a[3] + 4].value, n[a[2] + 4].value, n[a[1] + 4].value, 0, n[a[0] + 4].value), !n[a[3]].value || !n[a[3] + 4].value) {
+                            var r = g.getEvent(g._lightbox_id);
+                            r && (e.start_date = r.start_date, e.end_date = r.end_date)
+                        }
                         return e.end_date <= e.start_date && (e.end_date = g.date.add(e.start_date, g.config.time_step, "minute")), { start_date: new Date(e.start_date), end_date: new Date(e.end_date) }
                     },
                     focus: function(t) {
@@ -2512,41 +2885,60 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         document.documentElement.scrollWidth > document.body.offsetWidth ? t.style.left = Math.round(i + (document.body.offsetWidth - t.offsetWidth) / 2) + "px" : t.style.left = Math.round((document.body.offsetWidth - t.offsetWidth) / 2) + "px"
                 }
             }, g.showCover = function(t) { t && (t.style.display = "block", this._setLbPosition(t)), g.config.responsive_lightbox && (document.documentElement.classList.add("dhx_cal_overflow_container"), document.body.classList.add("dhx_cal_overflow_container")), this.show_cover() }, g.showLightbox = function(t) {
-                if (t) { if (!this.callEvent("onBeforeLightbox", [t])) return void(this._new_event && (this._new_event = null)); var e = this.getLightbox();
-                    this.showCover(e), this._fill_lightbox(t, e), this._waiAria.lightboxVisibleAttr(e), this.callEvent("onLightbox", [t]) }
+                if (t) {
+                    if (!this.callEvent("onBeforeLightbox", [t])) return void(this._new_event && (this._new_event = null));
+                    var e = this.getLightbox();
+                    this.showCover(e), this._fill_lightbox(t, e), this._waiAria.lightboxVisibleAttr(e), this.callEvent("onLightbox", [t])
+                }
             }, g._fill_lightbox = function(t, e) {
                 var i = this.getEvent(t),
                     n = e.getElementsByTagName("span"),
                     a = [];
-                if (g.templates.lightbox_header) { a.push(""); var r = g.templates.lightbox_header(i.start_date, i.end_date, i);
-                    a.push(r), n[1].innerHTML = "", n[2].innerHTML = r } else {
+                if (g.templates.lightbox_header) {
+                    a.push("");
+                    var r = g.templates.lightbox_header(i.start_date, i.end_date, i);
+                    a.push(r), n[1].innerHTML = "", n[2].innerHTML = r
+                } else {
                     var s = this.templates.event_header(i.start_date, i.end_date, i),
                         o = (this.templates.event_bar_text(i.start_date, i.end_date, i) || "").substr(0, 70);
                     a.push(s), a.push(o), n[1].innerHTML = s, n[2].innerHTML = o
                 }
                 this._waiAria.lightboxHeader(e, a.join(" "));
-                for (var d = this.config.lightbox.sections, l = 0; l < d.length; l++) { var _ = d[l],
+                for (var d = this.config.lightbox.sections, l = 0; l < d.length; l++) {
+                    var _ = d[l],
                         h = g._get_lightbox_section_node(_),
                         c = this.form_blocks[_.type],
                         u = void 0 !== i[_.map_to] ? i[_.map_to] : _.default_value;
-                    c.set_value.call(this, h, u, i, _), d[l].focus && c.focus.call(this, h) }
+                    c.set_value.call(this, h, u, i, _), d[l].focus && c.focus.call(this, h)
+                }
                 g._lightbox_id = t
-            }, g._get_lightbox_section_node = function(t) { return document.getElementById(t.id).nextSibling }, g._lightbox_out = function(t) { for (var e = this.config.lightbox.sections, i = 0; i < e.length; i++) { var n = document.getElementById(e[i].id);
-                    n = n ? n.nextSibling : n; var a = this.form_blocks[e[i].type],
-                        r = a.get_value.call(this, n, t, e[i]); "auto" != e[i].map_to && (t[e[i].map_to] = r) } return t }, g._empty_lightbox = function(t) {
+            }, g._get_lightbox_section_node = function(t) { return document.getElementById(t.id).nextSibling }, g._lightbox_out = function(t) {
+                for (var e = this.config.lightbox.sections, i = 0; i < e.length; i++) {
+                    var n = document.getElementById(e[i].id);
+                    n = n ? n.nextSibling : n;
+                    var a = this.form_blocks[e[i].type],
+                        r = a.get_value.call(this, n, t, e[i]);
+                    "auto" != e[i].map_to && (t[e[i].map_to] = r)
+                }
+                return t
+            }, g._empty_lightbox = function(t) {
                 var e = g._lightbox_id,
                     i = this.getEvent(e);
                 this.getLightbox();
                 this._lame_copy(i, t), this.setEvent(i.id, i),
                     this._edit_stop_event(i, !0), this.render_view_data()
             }, g.hide_lightbox = function(t) { g.endLightbox(!1, this.getLightbox()) }, g.hideLightbox = g.hide_lightbox, g.hideCover = function(t) { t && (t.style.display = "none"), this.hide_cover(), g.config.responsive_lightbox && (document.documentElement.classList.remove("dhx_cal_overflow_container"), document.body.classList.remove("dhx_cal_overflow_container")) }, g.hide_cover = function() { this._cover && this._cover.parentNode.removeChild(this._cover), this._cover = null },
-            g.show_cover = function() { this._cover || (this._cover = document.createElement("div"), this._cover.className = "dhx_cal_cover", document.body.appendChild(this._cover)) }, g.save_lightbox = function() { var t = this._lightbox_out({}, this._lame_copy(this.getEvent(this._lightbox_id)));
-                this.checkEvent("onEventSave") && !this.callEvent("onEventSave", [this._lightbox_id, t, this._new_event]) || (this._empty_lightbox(t), this.hide_lightbox()) }, g.startLightbox = function(t, e) {
+            g.show_cover = function() { this._cover || (this._cover = document.createElement("div"), this._cover.className = "dhx_cal_cover", document.body.appendChild(this._cover)) }, g.save_lightbox = function() {
+                var t = this._lightbox_out({}, this._lame_copy(this.getEvent(this._lightbox_id)));
+                this.checkEvent("onEventSave") && !this.callEvent("onEventSave", [this._lightbox_id, t, this._new_event]) || (this._empty_lightbox(t), this.hide_lightbox())
+            }, g.startLightbox = function(t, e) {
                 this._lightbox_id = t, this._custom_lightbox = !0,
                     this._temp_lightbox = this._lightbox, this._lightbox = e, this.showCover(e)
-            }, g.endLightbox = function(t, e) { var e = e || g.getLightbox(),
+            }, g.endLightbox = function(t, e) {
+                var e = e || g.getLightbox(),
                     i = g.getEvent(this._lightbox_id);
-                i && this._edit_stop_event(i, t), t && g.render_view_data(), this.hideCover(e), this._custom_lightbox && (this._lightbox = this._temp_lightbox, this._custom_lightbox = !1), this._temp_lightbox = this._lightbox_id = null, this._waiAria.lightboxHiddenAttr(e), this.callEvent("onAfterLightbox", []) }, g.resetLightbox = function() {
+                i && this._edit_stop_event(i, t), t && g.render_view_data(), this.hideCover(e), this._custom_lightbox && (this._lightbox = this._temp_lightbox, this._custom_lightbox = !1), this._temp_lightbox = this._lightbox_id = null, this._waiAria.lightboxHiddenAttr(e), this.callEvent("onAfterLightbox", [])
+            }, g.resetLightbox = function() {
                 g._lightbox && !g._custom_lightbox && g._lightbox.parentNode.removeChild(g._lightbox), g._lightbox = null
             }, g.cancel_lightbox = function() { this.callEvent("onEventCancel", [this._lightbox_id, this._new_event]), this.hide_lightbox() }, g._init_lightbox_events = function() {
                 this.getLightbox().onclick = function(t) {
@@ -2579,21 +2971,36 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         (t || e).keyCode) {
                         case 32:
                             if ((t || e).shiftKey) return;
-                            n && n.click && n.click(); break;
+                            n && n.click && n.click();
+                            break;
                         case g.keys.edit_save:
                             if ((t || e).shiftKey) return;
-                            n && n.click ? n.click() : g.save_lightbox(); break;
+                            n && n.click ? n.click() : g.save_lightbox();
+                            break;
                         case g.keys.edit_cancel:
-                            g.cancel_lightbox() }
+                            g.cancel_lightbox()
+                    }
                 }
-            }, g.setLightboxSize = function() { var t = this._lightbox; if (t) { var e = t.childNodes[1];
-                    e.style.height = "0px", e.style.height = e.scrollHeight + "px", t.style.height = e.scrollHeight + g.xy.lightbox_additional_height + "px", e.style.height = e.scrollHeight + "px" } }, g._init_dnd_events = function() {
+            }, g.setLightboxSize = function() {
+                var t = this._lightbox;
+                if (t) {
+                    var e = t.childNodes[1];
+                    e.style.height = "0px", e.style.height = e.scrollHeight + "px", t.style.height = e.scrollHeight + g.xy.lightbox_additional_height + "px", e.style.height = e.scrollHeight + "px"
+                }
+            }, g._init_dnd_events = function() {
                 g.event(document.body, "mousemove", g._move_while_dnd), g.event(document.body, "mouseup", g._finish_dnd), g._init_dnd_events = function() {}
-            }, g._move_while_dnd = function(t) { if (g._dnd_start_lb) { document.dhx_unselectable || (document.body.className += " dhx_unselectable", document.dhx_unselectable = !0); var e = g.getLightbox(),
+            }, g._move_while_dnd = function(t) {
+                if (g._dnd_start_lb) {
+                    document.dhx_unselectable || (document.body.className += " dhx_unselectable", document.dhx_unselectable = !0);
+                    var e = g.getLightbox(),
                         i = t && t.target ? [t.pageX, t.pageY] : [event.clientX, event.clientY];
-                    e.style.top = g._lb_start[1] + i[1] - g._dnd_start_lb[1] + "px", e.style.left = g._lb_start[0] + i[0] - g._dnd_start_lb[0] + "px" } },
-            g._ready_to_dnd = function(t) { var e = g.getLightbox();
-                g._lb_start = [parseInt(e.style.left, 10), parseInt(e.style.top, 10)], g._dnd_start_lb = t && t.target ? [t.pageX, t.pageY] : [event.clientX, event.clientY] }, g._finish_dnd = function() { g._lb_start && (g._lb_start = g._dnd_start_lb = !1, document.body.className = document.body.className.replace(" dhx_unselectable", ""), document.dhx_unselectable = !1) }, g.getLightbox = function() {
+                    e.style.top = g._lb_start[1] + i[1] - g._dnd_start_lb[1] + "px", e.style.left = g._lb_start[0] + i[0] - g._dnd_start_lb[0] + "px"
+                }
+            },
+            g._ready_to_dnd = function(t) {
+                var e = g.getLightbox();
+                g._lb_start = [parseInt(e.style.left, 10), parseInt(e.style.top, 10)], g._dnd_start_lb = t && t.target ? [t.pageX, t.pageY] : [event.clientX, event.clientY]
+            }, g._finish_dnd = function() { g._lb_start && (g._lb_start = g._dnd_start_lb = !1, document.body.className = document.body.className.replace(" dhx_unselectable", ""), document.dhx_unselectable = !1) }, g.getLightbox = function() {
                 if (!this._lightbox) {
                     var t = document.createElement("div");
                     t.className = "dhx_cal_light",
@@ -2612,8 +3019,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                         if (o) {
                             s[a].id = "area_" + this.uid();
                             var d = "";
-                            if (s[a].button) { var n = g._waiAria.lightboxSectionButtonAttrString(this.locale.labels["button_" + s[a].button]);
-                                d = "<div " + n + " class='dhx_custom_button' index='" + a + "'><div class='dhx_custom_button_" + s[a].button + "'></div><div>" + this.locale.labels["button_" + s[a].button] + "</div></div>" }
+                            if (s[a].button) {
+                                var n = g._waiAria.lightboxSectionButtonAttrString(this.locale.labels["button_" + s[a].button]);
+                                d = "<div " + n + " class='dhx_custom_button' index='" + a + "'><div class='dhx_custom_button_" + s[a].button + "'></div><div>" + this.locale.labels["button_" + s[a].button] + "</div></div>"
+                            }
                             this.config.wide_form && (e += "<div class='dhx_wrap_section'>");
                             var l = this.locale.labels["section_" + s[a].name];
                             "string" != typeof l && (l = s[a].name), e += "<div id='" + s[a].id + "' class='dhx_cal_lsection'>" + d + "<label>" + l + "</label></div>" + o.render.call(this, s[a]), e += "</div>"
@@ -2630,12 +3039,18 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     if (i.id && document.getElementById(i.id)) {
                         for (var n = document.getElementById(i.id), a = n.querySelector("label"), r = g._get_lightbox_section_node(i); r && !r.querySelector;) r = r.nextSibling;
                         var s = !0;
-                        if (r) { var o = r.querySelector("input, select, textarea");
-                            o && (i.inputId = o.id || "input_" + g.uid(), o.id || (o.id = i.inputId), a.setAttribute("for", i.inputId), s = !1) }
+                        if (r) {
+                            var o = r.querySelector("input, select, textarea");
+                            o && (i.inputId = o.id || "input_" + g.uid(), o.id || (o.id = i.inputId), a.setAttribute("for", i.inputId), s = !1)
+                        }
                         if (s) {
-                            g.form_blocks[i.type].focus && (a.onclick = function(t) { return function() { var e = g.form_blocks[t.type],
+                            g.form_blocks[i.type].focus && (a.onclick = function(t) {
+                                return function() {
+                                    var e = g.form_blocks[t.type],
                                         i = g._get_lightbox_section_node(t);
-                                    e && e.focus && e.focus.call(g, i) } }(i))
+                                    e && e.focus && e.focus.call(g, i)
+                                }
+                            }(i))
                         }
                     }
                 }
@@ -2705,10 +3120,22 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     }), n(this._els.dhx_cal_data[0], t[2], function(t) {
                         if (document && document.body && document.body.classList.remove("dhx_cal_touch_active"), !i(t)) return g.config.touch_swipe_dates && !_ && a(o, d, 200, 100) && (g._block_next_stop = !0), _ && (g._ignore_next_click = !0, setTimeout(function() { g._ignore_next_click = !1 }, 100)), s(t), g._block_next_stop ? (g._block_next_stop = !1, t.preventDefault && t.preventDefault(), t.cancelBubble = !0, !1) : void 0
                     }), g.event(document.body, t[2], s)
-            }, g._show_global_tip = function() { g._hide_global_tip(); var t = g._global_tip = document.createElement("div");
-                t.className = "dhx_global_tip", g._update_global_tip(1), document.body.appendChild(t) },
-            g._update_global_tip = function(t) { var e = g._global_tip; if (e) { var i = ""; if (g._drag_id && !t) { var n = g.getEvent(g._drag_id);
-                        n && (i = "<div>" + (n._timed ? g.templates.event_header(n.start_date, n.end_date, n) : g.templates.day_date(n.start_date, n.end_date, n)) + "</div>") } "create" == g._drag_mode || "new-size" == g._drag_mode ? e.innerHTML = (g.locale.labels.drag_to_create || "Drag to create") + i : e.innerHTML = (g.locale.labels.drag_to_move || "Drag to move") + i } }, g._hide_global_tip = function() {
+            }, g._show_global_tip = function() {
+                g._hide_global_tip();
+                var t = g._global_tip = document.createElement("div");
+                t.className = "dhx_global_tip", g._update_global_tip(1), document.body.appendChild(t)
+            },
+            g._update_global_tip = function(t) {
+                var e = g._global_tip;
+                if (e) {
+                    var i = "";
+                    if (g._drag_id && !t) {
+                        var n = g.getEvent(g._drag_id);
+                        n && (i = "<div>" + (n._timed ? g.templates.event_header(n.start_date, n.end_date, n) : g.templates.day_date(n.start_date, n.end_date, n)) + "</div>")
+                    }
+                    "create" == g._drag_mode || "new-size" == g._drag_mode ? e.innerHTML = (g.locale.labels.drag_to_create || "Drag to create") + i : e.innerHTML = (g.locale.labels.drag_to_move || "Drag to move") + i
+                }
+            }, g._hide_global_tip = function() {
                 var t = g._global_tip;
                 t && t.parentNode && (t.parentNode.removeChild(t), g._global_tip = 0)
             }, g._dp_init = function(t) {
@@ -2720,9 +3147,18 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                     i = function(t) { var e = g.utils.copy(t); for (var n in e) 0 === n.indexOf("_") ? delete e[n] : e[n] && (e[n].getUTCFullYear ? e[n] = this.obj._helpers.formatDate(e[n]) : "object" == typeof e[n] && (e[n] = i(e[n]))); return e };
                 t._getRowData = function(t, n) { var a = this.obj.getEvent(t); return "JSON" == this._tMode ? i.call(this, a) : e.call(this, a) }, t._clearUpdateFlag = function() {}, t.attachEvent("insertCallback", g._update_callback), t.attachEvent("updateCallback", g._update_callback), t.attachEvent("deleteCallback", function(t, e) { this.obj.getEvent(e) ? (this.obj.setUserData(e, this.action_param, "true_deleted"), this.obj.deleteEvent(e)) : this.obj._add_rec_marker && this.obj._update_callback(t, e) })
             }, g._validId = function(t) { return !0 },
-            g.setUserData = function(t, e, i) { if (t) { var n = this.getEvent(t);
-                    n && (n[e] = i) } else this._userdata[e] = i }, g.getUserData = function(t, e) { if (t) { var i = this.getEvent(t); return i ? i[e] : null } return this._userdata[e] }, g._set_event_text_style = function(t, e) { if (g.getEvent(t)) { this.for_rendered(t, function(t) { t.style.cssText += ";" + e }); var i = this.getEvent(t);
-                    i._text_style = e, this.event_updated(i) } }, g._update_callback = function(t, e) {
+            g.setUserData = function(t, e, i) {
+                if (t) {
+                    var n = this.getEvent(t);
+                    n && (n[e] = i)
+                } else this._userdata[e] = i
+            }, g.getUserData = function(t, e) { if (t) { var i = this.getEvent(t); return i ? i[e] : null } return this._userdata[e] }, g._set_event_text_style = function(t, e) {
+                if (g.getEvent(t)) {
+                    this.for_rendered(t, function(t) { t.style.cssText += ";" + e });
+                    var i = this.getEvent(t);
+                    i._text_style = e, this.event_updated(i)
+                }
+            }, g._update_callback = function(t, e) {
                 var i = g._xmlNodeToJSON(t.firstChild);
                 "none" == i.rec_type && (i.rec_pattern = "none"),
                     i.text = i.text || i._tagvalue, i.start_date = g._helpers.parseDate(i.start_date), i.end_date = g._helpers.parseDate(i.end_date), g.addEvent(i), g._add_rec_marker && g.setCurrentView()
@@ -2750,8 +3186,10 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 if (!g.skin || "classic" !== g.skin && "glossy" !== g.skin || (n = 1), g._is_material_skin()) {
                     var a = g.config.buttons_left.$inital,
                         r = g.config.buttons_right.$inital;
-                    if (a && g.config.buttons_left.slice().join() == a && r && g.config.buttons_right.slice().join() == r) { var s = g.config.buttons_left.slice();
-                        g.config.buttons_left = g.config.buttons_right.slice(), g.config.buttons_right = s }
+                    if (a && g.config.buttons_left.slice().join() == a && r && g.config.buttons_right.slice().join() == r) {
+                        var s = g.config.buttons_left.slice();
+                        g.config.buttons_left = g.config.buttons_right.slice(), g.config.buttons_right = s
+                    }
                     g.xy.event_header_height = 18, g.xy.week_agenda_scale_height = 35, g.xy.map_icon_width = 38, g._lightbox_controls.defaults.textarea.height = 64, g._lightbox_controls.defaults.time.height = "auto"
                 }
                 if (this._configure(g.config, g._skin_settings, n), this._configure(g.xy, g._skin_xy, n),
@@ -2774,13 +3212,17 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                                 if (l) {
                                     switch (d.style.right = "auto", l) {
                                         case "day_tab":
-                                            d.style.left = r[0] + "px", d.className += " dhx_cal_tab_first"; break;
+                                            d.style.left = r[0] + "px", d.className += " dhx_cal_tab_first";
+                                            break;
                                         case "week_tab":
-                                            d.style.left = r[1] + "px"; break;
+                                            d.style.left = r[1] + "px";
+                                            break;
                                         case "month_tab":
-                                            d.style.left = r[2] + "px", d.className += " dhx_cal_tab_last"; break;
+                                            d.style.left = r[2] + "px", d.className += " dhx_cal_tab_last";
+                                            break;
                                         default:
-                                            d.style.left = a + "px", d.className += " dhx_cal_tab_standalone", a = a + s + d.offsetWidth }
+                                            d.style.left = a + "px", d.className += " dhx_cal_tab_standalone", a = a + s + d.offsetWidth
+                                    }
                                     d.className += " " + l
                                 } else 0 === (d.className || "").indexOf("dhx_minical_icon") && d.parentNode == g._els.dhx_cal_navline[0] && (n = d)
                             }
@@ -2828,9 +3270,11 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                             i.call(s, e, r), s.callEvent("onViewChange", [s._mode, s._date]), window.clearTimeout(n), a = 0
                         }, g.config.delay_render)
                     },
-                    s = function(e, r) { var s = this,
+                    s = function(e, r) {
+                        var s = this,
                             o = arguments;
-                        t(this, e, r), window.clearTimeout(n), n = setTimeout(function() { a || i.apply(s, o) }, g.config.delay_render) };
+                        t(this, e, r), window.clearTimeout(n), n = setTimeout(function() { a || i.apply(s, o) }, g.config.delay_render)
+                    };
                 g.attachEvent("onSchedulerReady", function() { g.config.delay_render ? (g.setCurrentView = r, g.updateView = s) : (g.setCurrentView = e, g.updateView = i) })
             }();
         for (var M = 0; M < Scheduler._schedulerPlugins.length; M++) Scheduler._schedulerPlugins[M](g);
@@ -2842,10 +3286,12 @@ This software is covered by DHTMLX Evaluation License. Contact sales@dhtmlx.com 
                 i = 60 * e,
                 n = 24 * i,
                 a = 90 * n;
-            if ("undefined" != typeof 1618296326000) { var r = function() { return Date.now() - 1618296326000 > a },
+            if ("undefined" != typeof 1618296326000) {
+                var r = function() { return Date.now() - 1618296326000 > a },
                     s = function(t, e) { return Math.floor(Math.random() * (e - t + 1)) + t },
                     o = function() { setTimeout(function() { r() && window.alert(t), o() }, s(2 * e, 4 * e)) };
-                o() }
+                o()
+            }
         }, 1)
     }), window.Scheduler = Scheduler, Scheduler.plugin(function(t) {
         var e = ["XcKFC14sw5o=", "wp4Uw5xBwp/CrsK/", "LsK7w4bCgBs=", "w5TDjlzChB/Dh8OewqnClsOBwr/DqMKNSsO2J8O+woIbw4NnUcOQwootwrnCkwVjN0nDqsKYw6HDrQ7CiMKWDsOfw6UdcMOUw5VMwoUfwpnCnmsoDzp1", "w5xjRC3DhxZRwq/CpcKkwpVvaxxww6fDtmNpw5F5w7rChGcYccK3elA4w41FccOVwpXDv8KOQcO+wrnCqcOvcsOow6XCixXDusK2M8KfWMKqYsKOw6ozwqIowp3DgUTCgj0oPMKuc3AvHygrNcOlMMOowqPChV3DtFfDmsOLwpLClsKVw4vDscKuwpHCmcOzw7DDuSnDpknDvBrCksKHUCxCOMKEXVslw6hMwobDol7CtXXCtwp2UDPCqsKYw4ZVMWzCshwrwpjDucOJU0vDi8OH", "AUM7KcKETsOAw5UiwqYtw7g7w5vDtlbCqDnDtsOUYX3CtC/Dn8Obwo8ew5zDrcK2w79vL1NnwqvCq0ANw60wwqjCqG0Nw6/DpTQGw4hOwoDDiMOjw6jCpgzDryMtw6HDoR/DssK7QcO5wpM1wpAxwrIKw7gnw4gXw5A0w6AAXnYBw6jClmzDjcKDw5PCjS3CqcKjw6h/DDdhFV4/IQfDgyzDkMObasKew4PDiMK1wpc+w5Qdwoc=", "AcOZwq7Cjg==", "w484c8Ok", "bUHDkHnClXMOwrMF", "P3fCsA==", "wq46wrZ2w4k="];
