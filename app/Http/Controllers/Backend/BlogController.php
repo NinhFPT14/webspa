@@ -17,14 +17,14 @@ class BlogController extends Controller
 
     public function index()
     {
-        $data = Post::where('status','<',2)->paginate(8);
+        $data = Post::where('status','<',2)->paginate(5);
         // dd($data);
         return view('backend.blog.list', ['data'=> $data ]);
     }
 
     public function create()
     {
-        $category = Category::get();
+        $category = Category::where('type',2)->where('status',0)->get();
         // dd($category);
         return view('backend.blog.add', [
             'category' => $category
@@ -60,7 +60,7 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        $category = Category::all();
+        $category = Category::where('type',2)->where('status',0)->get();
         $post = Post::where('id',$id)->get();
         // dd(compact('category','post'));
         return view('backend.blog.edit',compact('category','post'));
@@ -80,6 +80,8 @@ class BlogController extends Controller
               'post_image', $filename, 'public'
             );
             $data['avatar'] = "storage/".$path;  
+           }else{
+
            }
            Post::where('id',$id)->update($data);
            Post::where('id',$post->id)->update(['slug'=> Str::slug($data['title'].$post->id.'-')]);

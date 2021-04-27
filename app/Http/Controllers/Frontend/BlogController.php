@@ -12,7 +12,7 @@ use DB;
 class BlogController extends Controller
 {
     public function list(){
-        $data = Post::where('status',0)->orderBy('view')->pagpate(5);
+        $data = Post::where('status',0)->orderBy('view')->paginate(5);
         return view('frontend.blog', compact('data'));
     }
 
