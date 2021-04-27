@@ -24,14 +24,32 @@ class AppointmentController extends Controller
         $mytime = Carbon::now();
         $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
-        $location = Location::select('id','name')->get()->toArray();
+        $location = Location::select('id','name')->get();
+        $seats = [];
+        foreach ($location as $key => $value) {
+            $seats[] = [
+                "key" => $value->id,
+                "label" => $value->name
+            ];
+        }// End for Seats
         // dd($location);
-        return view('backend.services.sortAppointment',compact('appointment','services','location'));
+        $data = SortAppointment::get();
+        $list = [];
+        foreach ($data as $key => $value) {
+            $list[] = [
+                "id" => $value->id,
+                "start_date" => $value->time_start,
+                "end_date" => $value->time_end,
+                "text" => $value->name_service,
+                "key" => $value->location_id
+            ];
+        }
+        return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list'));
     }
 
     public function listSit(){
         try {
-            $data = Location::where('status',0)->get();
+            $data = Location::select('name','id')->where('status',0)->get();
             return response()->json(['status' => true, 'data' => $data]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);

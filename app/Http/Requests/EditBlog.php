@@ -31,7 +31,7 @@ class EditBlog extends FormRequest
             'category_id' =>'required',
             'description' =>'required|max:65535',
             'detail' =>'required|max:65535',
-            'avatar' =>'required|image|max:10000',
+            'avatar' =>'image|max:10000',
         ];
     }
 
