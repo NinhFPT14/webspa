@@ -23,7 +23,6 @@ class CreateServicesTable extends Migration
             $table->string('slug');
             $table->string('time_working')->comment('thời gian làm');
             $table->string('total_time')->comment('tổng số lần làm');
-            $table->string('time_distance')->comment('khoảng cách làm giữa các buổi theo ngày');
             $table->integer('status');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');

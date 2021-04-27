@@ -47,6 +47,8 @@ Bảng xếp lịch
 			var sections = [
 				{key:1 ,label: "Ghế 1"}
 			];
+           console.log(sections);
+			
 			let apiDetail = '{{route("listSit")}}';
 			$.ajax({
 				url: apiDetail,
@@ -63,16 +65,10 @@ Bảng xếp lịch
 								label:  response.data[i].name
 							});	
 							}
-						}else{
-							console.log('fdsd');
 						}
 				}
 
 			})
-
-			console.log(sections);
-
-			
 
 			var durations = {
 				day: 24 * 60 * 60 * 1000,
@@ -137,8 +133,8 @@ Bảng xếp lịch
 				{ start_date: "2021-04-27 09:00", end_date: "2021-04-27 12:00", text:"Khách Dịu", section_id:1},
 				{ start_date: "2021-04-27 10:00", end_date: "2021-04-27 16:00", text:"Khách Vip Công", section_id:1},
 				{ start_date: "2021-04-27 10:00", end_date: "2021-04-27 14:00", text:"Khách Vinh", section_id:1},
-				{ start_date: "2021-04-27 12:00", end_date: "2021-04-27 13:00", text:"Khách Thi", section_id:1},
-				{ start_date: "2021-04-27 14:00", end_date: "2021-04-27 16:00", text:"Khách Tú", section_id:1},
+				{ start_date: "2021-04-27 12:00", end_date: "2021-04-27 13:00", text:"Khách Thi", section_id:5},
+				{ start_date: "2021-04-27 14:00", end_date: "2021-04-27 16:00", text:"Khách Tú", section_id:5},
 				{ start_date: "2021-04-27 16:00", end_date: "2021-04-27 17:00", text:"Khách Hải", section_id:1},
 				{ start_date: "2021-04-28 16:30", end_date: "2021-04-28 18:00", text:"Khách Ninh", section_id:1},
 			]);
