@@ -39,6 +39,15 @@ class AppointmentController extends Controller
         }
     }
 
+    public function listDo(){
+        try {
+            $data = Appointment::get();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+
     public function sortAppointment(addSortAppointment $request ,$id){
         $appointment = Appointment::find($id);
         $service = Service::find($request->service_id);
