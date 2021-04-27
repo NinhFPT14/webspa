@@ -20,8 +20,6 @@ class CreateServiceVouchersTable extends Migration
             $table->dateTime('time_start')->comment('thời gian bắt đầu');
             $table->dateTime('time_end')->comment('thời gian kết thúc');
             $table->integer('status')->comment('trạng thái bật tắt voucher 0: hoạt động , 1: tắt');
-            $table->unsignedBigInteger('service_id')->comment('id dịch vụ');
-            $table->foreign('service_id')->references('id')->on('services');
             $table->timestamps();
         });
     }
