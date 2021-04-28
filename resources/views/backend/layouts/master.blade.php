@@ -60,9 +60,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-
-    @include('sweetalert::alert')
-
     <!-- Bootstrap core JavaScript-->
     <script src="backEnd/vendor/jquery/jquery.min.js"></script>
     <script src="backEnd/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

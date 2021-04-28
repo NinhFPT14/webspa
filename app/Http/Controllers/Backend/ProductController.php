@@ -164,7 +164,7 @@ class ProductController extends Controller
             }
            }
            alert()->success('Tạo thành công sản phẩm');
-        return redirect()->route('addProduct');
+        return redirect()->route('listProduct');
     }
 
     public function delete($id){
@@ -223,7 +223,7 @@ class ProductController extends Controller
             }
            }
            alert()->success('Sửa thành công sản phẩm');
-           return redirect()->route('editProduct',['id'=>$product->id]);
+           return redirect()->route('listProduct');
     }
 
     public function search(Request $request){
