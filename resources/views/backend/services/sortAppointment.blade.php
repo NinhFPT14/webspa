@@ -14,11 +14,12 @@ Bảng xếp lịch
     <script src=" {{ asset('jsCalendar/locale/locale_vn.js') }} " type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
+
 <div class="p-4">
     <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3">
+        <div class="col-span-3 z-0">
 		 <!-- Bảng xếp lịch bắt đầu -->
-			<div class="md:container px-12 border-green-900 h-screen col-span-2 shadow-xl ">
+			<div class="md:container px-12 border-green-900 h-screen col-span-2 z-0 shadow-xl ">
 				<div id="scheduler_here" class="dhx_cal_container px-6" style='width:100%; height:100%'>
 							<div class="dhx_cal_navline">
 								<div class="dhx_cal_prev_button">&nbsp;</div>
@@ -154,14 +155,23 @@ Bảng xếp lịch
 				</select>
 				<p id="thong_bao_location" class="text-danger"></p>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Thời gian bắt đầu</label>
-				<input type="datetime-local" class="form-control" id="time_start" >
+			<div>
+			<label for="exampleInputPassword1">Thời gian bắt đầu</label>
+			<div class="form-group grid grid-cols-4 ">
+			
+
+		
+					
+					<input id="time-24h-picker" data-input-style="outline" data-label-style="stacked" placeholder="chọn giờ.." class=" mbsc-ios mbsc-ltr  mbsc-textfield mbsc-textfield-outline mbsc-textfield-stacked mbsc-textfield-outline-stacked" type="text" readonly="">
 				
-				<p id="thong_bao_time" class="text-danger"></p>
-			</div>
+					<input type="date" class="form-control col-span-3 h-14">
+				
+				<div class="col-span-3">
+					</div>
+				
 			<p id="thong_bao_fail" class="text-danger"></p>
 		</div>
+	</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-success btn_xep_lich" >Tạo</button>
 		</div>
@@ -172,6 +182,13 @@ Bảng xếp lịch
 @section("js")
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+	mobiscroll.datepicker('#time-24h-picker', {
+		controls: ['time'],
+		timeFormat: 'HH:mm',
+		touchUi: true
+	});
+</script>
 <script>
 	$(document).ready(function() {
 
