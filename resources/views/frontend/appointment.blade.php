@@ -6,6 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                
                 <div class="breadcrumb_content">
                     <h1 class="text-center "
                         style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;margin-top:40px;">
