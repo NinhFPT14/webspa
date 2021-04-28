@@ -188,6 +188,11 @@ Bảng xếp lịch
 		timeFormat: 'HH:mm',
 		touchUi: true
 	});
+	 mobiscroll.setOptions({
+            locale: mobiscroll.localeEn,
+            theme: 'ios',
+            themeVariant: 'light'
+        });
 </script>
 <script>
 	$(document).ready(function() {
