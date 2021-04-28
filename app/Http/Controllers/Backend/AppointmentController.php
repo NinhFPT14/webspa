@@ -120,8 +120,8 @@ class AppointmentController extends Controller
         ->get();
         if(count($data) == 0){
             $date_today =date('Y-m-d', strtotime($request->time_start));
-            $newdate = $newdate = strtotime ( '+22 hour' , strtotime ( $date_today )) ;
-            $newdate2 = $newdate = strtotime ( '+8 hour' , strtotime ( $date_today )) ;
+            $newdate =strtotime ( '+22 hour' , strtotime ( $date_today )) ;
+            $newdate2 =strtotime ( '+8 hour' , strtotime ( $date_today )) ;
             
             $time_start2 =date ( 'Y-m-d H:i' , $newdate2 );
             $time_end2 =date ( 'Y-m-d H:i' , $newdate );
