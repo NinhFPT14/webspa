@@ -21,9 +21,14 @@ use Carbon\Carbon;
 class AppointmentController extends Controller
 {
 
-    public function listSortAppointment(){
+    public function listSortAppointment(Request $request){
         $mytime = Carbon::now();
-        $appointment = Appointment::where('status',1)->where('call_confirmation',1)->orderByDesc('id')->paginate(10);
+        if(!$request->has('time')){
+            $appointment = Appointment::where('status',1)->where('call_confirmation',1)->orderByDesc('id')->paginate(10);
+        }else{
+            $appointment = Appointment::where('status',1)->where('time_start',$request->time)->where('call_confirmation',1)->orderByDesc('id')->paginate(10);
+        }
+        $time = $request->time;
         $services = Service::where('status',0)->get();
         $location = Location::select('id','name')->get();
         $seats = [];
@@ -47,7 +52,7 @@ class AppointmentController extends Controller
         }
         // dd($list);
 
-        return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list'));
+        return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list','time'));
     }
 
     public function listServiceAppointment(Request $request){

@@ -37,10 +37,10 @@ Bảng xếp lịch
 		</div>
 
         <div>
-            <form action="{{route('searchTimeAppointment')}}" method="POST">
+            <form action="" method="GET">
                 @csrf
                 <div class="flex">
-                    <input type="date" name="time" class="form-control" value="" placeholder=""
+                    <input type="date" name="time" class="form-control" value="{{$time}}" placeholder=""
                         aria-label="First name">
                     <button type="submit" class="form-control btn btn-primary">Tìm kiếm</button>
                 </div>
