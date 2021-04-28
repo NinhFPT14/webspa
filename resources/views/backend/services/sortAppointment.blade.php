@@ -14,12 +14,11 @@ Bảng xếp lịch
     <script src=" {{ asset('jsCalendar/locale/locale_vn.js') }} " type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
-
 <div class="p-4">
     <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3 z-0">
+        <div class="col-span-3">
 		 <!-- Bảng xếp lịch bắt đầu -->
-			<div class="md:container px-12 border-green-900 h-screen col-span-2 z-0 shadow-xl ">
+			<div class="md:container px-12 border-green-900 h-screen col-span-2 shadow-xl ">
 				<div id="scheduler_here" class="dhx_cal_container px-6" style='width:100%; height:100%'>
 							<div class="dhx_cal_navline">
 								<div class="dhx_cal_prev_button">&nbsp;</div>
@@ -155,194 +154,14 @@ Bảng xếp lịch
 				</select>
 				<p id="thong_bao_location" class="text-danger"></p>
 			</div>
-			<div>
-			<label for="exampleInputPassword1">Thời gian bắt đầu</label>
-			<div class="form-group grid grid-cols-4 ">
-			
-
-				<div class="col-span-1 form-control float-left ">
-					<select class="dhx_lightbox_time_select   " aria-label="Giờ Phút">
-			
-						<option value="480">08:00</option>
-						<option value="485">08:05</option>
-						<option value="490">08:10</option>
-						<option value="495">08:15</option>
-						<option value="500">08:20</option>
-						<option value="505">08:25</option>
-						<option value="510">08:30</option>
-						<option value="515">08:35</option>
-						<option value="520">08:40</option>
-						<option value="525">08:45</option>
-						<option value="530">08:50</option>
-						<option value="535">08:55</option>
-						<option value="540">09:00</option>
-						<option value="545">09:05</option>
-						<option value="550">09:10</option>
-						<option value="555">09:15</option>
-						<option value="560">09:20</option>
-						<option value="565">09:25</option>
-						<option value="570">09:30</option>
-						<option value="575">09:35</option>
-						<option value="580">09:40</option>
-						<option value="585">09:45</option>
-						<option value="590">09:50</option>
-						<option value="595">09:55</option>
-						<option value="600">10:00</option>
-						<option value="605">10:05</option>
-						<option value="610">10:10</option>
-						<option value="615">10:15</option>
-						<option value="620">10:20</option>
-						<option value="625">10:25</option>
-						<option value="630">10:30</option>
-						<option value="635">10:35</option>
-						<option value="640">10:40</option>
-						<option value="645">10:45</option>
-						<option value="650">10:50</option>
-						<option value="655">10:55</option>
-						<option value="660">11:00</option>
-						<option value="665">11:05</option>
-						<option value="670">11:10</option>
-						<option value="675">11:15</option>
-						<option value="680">11:20</option>
-						<option value="685">11:25</option>
-						<option value="690">11:30</option>
-						<option value="695">11:35</option>
-						<option value="700">11:40</option>
-						<option value="705">11:45</option>
-						<option value="710">11:50</option>
-						<option value="715">11:55</option>
-						<option value="720">12:00</option>
-						<option value="725">12:05</option>
-						<option value="730">12:10</option>
-						<option value="735">12:15</option>
-						<option value="740">12:20</option>
-						<option value="745">12:25</option>
-						<option value="750">12:30</option>
-						<option value="755">12:35</option>
-						<option value="760">12:40</option>
-						<option value="765">12:45</option>
-						<option value="770">12:50</option>
-						<option value="775">12:55</option>
-						<option value="780">13:00</option>
-						<option value="785">13:05</option>
-						<option value="790">13:10</option>
-						<option value="795">13:15</option>
-						<option value="800">13:20</option>
-						<option value="805">13:25</option>
-						<option value="810">13:30</option>
-						<option value="815">13:35</option>
-						<option value="820">13:40</option>
-						<option value="825">13:45</option>
-						<option value="830">13:50</option>
-						<option value="835">13:55</option>
-						<option value="840">14:00</option>
-						<option value="845">14:05</option>
-						<option value="850">14:10</option>
-						<option value="855">14:15</option>
-						<option value="860">14:20</option>
-						<option value="865">14:25</option>
-						<option value="870">14:30</option>
-						<option value="875">14:35</option>
-						<option value="880">14:40</option>
-						<option value="885">14:45</option>
-						<option value="890">14:50</option>
-						<option value="895">14:55</option>
-						<option value="900">15:00</option>
-						<option value="905">15:05</option>
-						<option value="910">15:10</option>
-						<option value="915">15:15</option>
-						<option value="920">15:20</option>
-						<option value="925">15:25</option>
-						<option value="930">15:30</option>
-						<option value="935">15:35</option>
-						<option value="940">15:40</option>
-						<option value="945">15:45</option>
-						<option value="950">15:50</option>
-						<option value="955">15:55</option>
-						<option value="960">16:00</option>
-						<option value="965">16:05</option>
-						<option value="970">16:10</option>
-						<option value="975">16:15</option>
-						<option value="980">16:20</option>
-						<option value="985">16:25</option>
-						<option value="990">16:30</option>
-						<option value="995">16:35</option>
-						<option value="1000">16:40</option>
-						<option value="1005">16:45</option>
-						<option value="1010">16:50</option>
-						<option value="1015">16:55</option>
-						<option value="1020">17:00</option>
-						<option value="1025">17:05</option>
-						<option value="1030">17:10</option>
-						<option value="1035">17:15</option>
-						<option value="1040">17:20</option>
-						<option value="1045">17:25</option>
-						<option value="1050">17:30</option>
-						<option value="1055">17:35</option>
-						<option value="1060">17:40</option>
-						<option value="1065">17:45</option>
-						<option value="1070">17:50</option>
-						<option value="1075">17:55</option>
-						<option value="1080">18:00</option>
-						<option value="1085">18:05</option>
-						<option value="1090">18:10</option>
-						<option value="1095">18:15</option>
-						<option value="1100">18:20</option>
-						<option value="1105">18:25</option>
-						<option value="1110">18:30</option>
-						<option value="1115">18:35</option>
-						<option value="1120">18:40</option>
-						<option value="1125">18:45</option>
-						<option value="1130">18:50</option>
-						<option value="1135">18:55</option>
-						<option value="1140">19:00</option>
-						<option value="1145">19:05</option>
-						<option value="1150">19:10</option>
-						<option value="1155">19:15</option>
-						<option value="1160">19:20</option>
-						<option value="1165">19:25</option>
-						<option value="1170">19:30</option>
-						<option value="1175">19:35</option>
-						<option value="1180">19:40</option>
-						<option value="1185">19:45</option>
-						<option value="1190">19:50</option>
-						<option value="1195">19:55</option>
-						<option value="1200">20:00</option>
-						<option value="1205">20:05</option>
-						<option value="1210">20:10</option>
-						<option value="1215">20:15</option>
-						<option value="1220">20:20</option>
-						<option value="1225">20:25</option>
-						<option value="1230">20:30</option>
-						<option value="1235">20:35</option>
-						<option value="1240">20:40</option>
-						<option value="1245">20:45</option>
-						<option value="1250">20:50</option>
-						<option value="1255">20:55</option>
-						<option value="1260">21:00</option>
-						<option value="1265">21:05</option>
-						<option value="1270">21:10</option>
-						<option value="1275">21:15</option>
-						<option value="1280">21:20</option>
-						<option value="1285">21:25</option>
-						<option value="1290">21:30</option>
-						<option value="1295">21:35</option>
-						<option value="1300">21:40</option>
-						<option value="1305">21:45</option>
-						<option value="1310">21:50</option>
-						<option value="1315">21:55</option>
-						<option value="1320">22:00</option>
-						
-					 </select>
-				</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">Thời gian bắt đầu</label>
+				<input type="datetime-local" class="form-control" id="time_start" >
 				
-				<div class="col-span-3">
-					<input type="date" class="form-control" id="time_start" >	
-					</div>
-				
+				<p id="thong_bao_time" class="text-danger"></p>
+			</div>
 			<p id="thong_bao_fail" class="text-danger"></p>
 		</div>
-	</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-success btn_xep_lich" >Tạo</button>
 		</div>
