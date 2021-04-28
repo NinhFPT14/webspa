@@ -53,17 +53,6 @@ Tạo Voucher
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Chọn dịch vụ</label>
-                            <select class="form-control" name="service_id" id="exampleFormControlSelect1">
-                               @foreach($service as $value)
-                                <option value="{{ $value->id}}">{{$value->name}}</option>
-                                @endforeach
-                            </select>
-                            @error('status')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                             <label for="exampleFormControlSelect1">Trạng Thái</label>
                             <select class="form-control" name="status" id="exampleFormControlSelect1">
                                 <option value="0">Dùng luôn</option>

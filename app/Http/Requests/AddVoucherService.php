@@ -29,7 +29,6 @@ class AddVoucherService extends FormRequest
             'time_start' => 'required|after_or_equal:today',
             'time_end' => 'required|after:time_start',
             'status' => 'required|numeric',
-            'service_id' => 'required|numeric',
             
         ];
     }
@@ -53,7 +52,6 @@ class AddVoucherService extends FormRequest
             'time_start' => 'Thời gian bắt đầu',
             'time_end' => 'Thời gian kết thúc',
             'status' => 'Trạng thái',
-            'service_id' => 'Dịch vụ',
         ];
     }
 }

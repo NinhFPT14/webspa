@@ -180,7 +180,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/trang-sua/{id}', 'Backend\VoucherController@edit')->name('editVoucherService');
         Route::post('/cap-nhat/{id}', 'Backend\VoucherController@update')->name('updateVoucherService');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\VoucherController@status')->name('statusVoucherService');
-        Route::post('/tim-kiem','Backend\VoucherController@search')->name('VoucherService.search');
     });
 
     // Ghế làm locationCOntroller

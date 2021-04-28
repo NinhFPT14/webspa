@@ -7,6 +7,7 @@ use App\Model\Service;
 use App\Model\ServiceVoucher;
 use App\Http\Requests\AddVoucherService;
 use App\Http\Requests\EditVoucherService;
+use Carbon\Carbon;
 
 class VoucherController extends Controller
 {
@@ -22,9 +23,34 @@ class VoucherController extends Controller
       return redirect()->route('listVoucherService');
     }
 
-    public function list (){
-        $data = ServiceVoucher::paginate(10);
-        return view('backend.voucher_service.list',compact('data'));
+    public function list (Request $request){
+
+      if(!$request->hasAny(['key', 'from_time', 'to_time'])){
+        $data = ServiceVoucher::where('status','!=',3)->paginate(10);
+      }else{
+          if($request->has('key')){
+              $query = ServiceVoucher::where('status','!=',3)->where(function($q2) use ($request){
+                  $q2->where("code", "like", "%".$request->key."%")
+                      ->orWhere("discount", "like", "%".$request->key."%");
+              });
+          }
+          if($request->from_time != null && $request->to_time != null){
+              $query = $query->whereBetween('time_start', [
+                  Carbon::createFromFormat('d/m/Y', $request->from_time)->format('Y-m-d'),
+                  Carbon::createFromFormat('d/m/Y', $request->to_time)->format('Y-m-d')
+              ]);
+          }
+          if($request->has('type')){
+              $query =  $query->where("status",$request->type);
+          }
+          $data = $query->orderByDesc('id')->paginate(10);
+      }
+      $key = $request->key;
+      $from_time = $request->from_time;
+      $to_time = $request->to_time;
+      $type = $request->type;
+      
+        return view('backend.voucher_service.list',compact('data','key','from_time','to_time','type'));
      }
 
      public function status ($id,$status){
@@ -38,7 +64,8 @@ class VoucherController extends Controller
      }
      public function delete($id){
         $data = ServiceVoucher::find($id);
-        $data->delete();
+        $data->status = 3;
+        $data->save();
         alert()->error('Xóa thành công'); 
         return redirect()->route('listVoucherService');
         }
@@ -56,10 +83,5 @@ class VoucherController extends Controller
         alert()->success('Sửa thành công voucher'); 
         return redirect()->route('listVoucherService');
     }  
-    
-  
-  public function search(Request $request){
-    $data = ServiceVoucher::where('code', 'like', '%' . $request->name . '%')->paginate(10);
-    return view('backend.voucher_service.list',compact('data'));
-}
+ 
 }
