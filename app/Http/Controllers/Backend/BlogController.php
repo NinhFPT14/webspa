@@ -17,14 +17,14 @@ class BlogController extends Controller
 
     public function index()
     {
-        $data = Post::paginate(8);
+        $data = Post::where('status','<',2)->paginate(5);
         // dd($data);
         return view('backend.blog.list', ['data'=> $data ]);
     }
 
     public function create()
     {
-        $category = Category::get();
+        $category = Category::where('type',2)->where('status',0)->get();
         // dd($category);
         return view('backend.blog.add', [
             'category' => $category
@@ -50,7 +50,7 @@ class BlogController extends Controller
            $post = Post::create( $data);
            Post::where('id',$post->id)->update(['slug'=> Str::slug($post->title.$post->id.'-')]);
            alert()->success('Đăng bài viết mới thành công');
-        return redirect()->route('baiviet');
+        return redirect()->route('listBaiviet');
     }
 
     public function show($id)
@@ -60,7 +60,7 @@ class BlogController extends Controller
 
     public function edit($id)
     {
-        $category = Category::all();
+        $category = Category::where('type',2)->where('status',0)->get();
         $post = Post::where('id',$id)->get();
         // dd(compact('category','post'));
         return view('backend.blog.edit',compact('category','post'));
@@ -80,6 +80,8 @@ class BlogController extends Controller
               'post_image', $filename, 'public'
             );
             $data['avatar'] = "storage/".$path;  
+           }else{
+
            }
            Post::where('id',$id)->update($data);
            Post::where('id',$post->id)->update(['slug'=> Str::slug($data['title'].$post->id.'-')]);
@@ -90,10 +92,10 @@ class BlogController extends Controller
     public function destroy($id)
     {
         $data = Post::find($id);
-        File::delete($data->avatar);
-        $data->delete();
+        $data->status = 2 ;
+        $data->save();
         alert()->success('Xóa bài viết thành công'); 
-        return redirect()->route('baiviet');
+        return redirect()->route('listBaiviet');
     }
 
     public function search(Request $request) {
@@ -105,6 +107,6 @@ class BlogController extends Controller
         $flight->status = $status;
         $flight->save();
         alert()->success('Cập nhật trạng thái thành công'); 
-        return redirect()->route('baiviet',['type'=>$flight->type]);
+        return redirect()->route('listBaiviet',['type'=>$flight->type]);
     }
 }

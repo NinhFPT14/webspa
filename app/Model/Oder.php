@@ -8,5 +8,5 @@ class Oder extends Model
 {
     protected  $table = "oders";
     public $timestamps = true;
-    protected  $fillable =['name','phone_number','address','note','total_monney','status'];
+    protected  $fillable =['name','phone_number','address','note','total_monney','status','tax'];
 }

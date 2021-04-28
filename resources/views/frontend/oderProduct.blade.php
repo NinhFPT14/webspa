@@ -80,8 +80,12 @@ Sản phẩm
                                  </tbody>
                                  <tfoot>
                                      <tr class="order_total">
+                                         <th>Thuế VAT 10%</th>
+                                         <td><strong>{{number_format(($total_monney * 10) /100)}}VNĐ</strong></td>
+                                     </tr>
+                                     <tr class="order_total">
                                          <th>Tổng tiền</th>
-                                         <td><strong>{{number_format($total_monney)}}VNĐ</strong></td>
+                                         <td><strong>{{number_format($total_monney + (($total_monney * 10) /100))}}VNĐ</strong></td>
                                      </tr>
                                  </tfoot>
                              </table>     

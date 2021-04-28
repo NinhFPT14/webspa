@@ -36,9 +36,6 @@
                         <?php
                             $service = DB::table('services')->where('status',0)->where('category_id', $value->id)->get();
                         ?>
-                         @if(count( $service) >=1)
-                           <optgroup label="{{$value->name}}"></optgroup>
-                         @endif
                         @foreach($service as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach

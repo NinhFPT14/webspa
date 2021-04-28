@@ -10,13 +10,30 @@ Danh sách đơn đặt hàng
             <li class="breadcrumb-item active" aria-current="page"><a href="{{route('product.order.admin')}}">Danh sách đơn đặt hàng</a></li>
         </ol>
     </nav>
+    
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <form action="{{route('product.order.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."
-                        aria-label="Search" aria-describedby="basic-addon2" name="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
+                    </div>
+                    <div class="input-group input-daterange">
+                        <input type="text" class="form-control" name="from_time" autocomplete="off" value="{{$from_time}}">
+                        <div class="input-group-addon">đến</div>
+                        <input type="text" class="form-control" name="to_time" autocomplete="off" value="{{$to_time}}">
+                    </div>
+                    <div class="form-group">
+                        <select  name="type" class="form-control">
+                            <option value="0" {{$type == 0 ? 'selected':''}} >Chờ xác nhận</option>
+                            <option value="1" {{$type == 1 ? 'selected':''}}>Đã lên đơn </option>
+                            <option value="2"{{$type == 2 ? 'selected':''}}>Đã gửi hàng</option>
+                            <option value="3"{{$type == 3 ? 'selected':''}}>Đã nhận hàng</option>
+                            <option value="4"{{$type == 4 ? 'selected':''}}>Từ chối đơn</option>
+                            <option value="6"{{$type == 6 ? 'selected':''}}>Hoàn trả</option>
+                        </select>
+                    </div>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -34,8 +51,9 @@ Danh sách đơn đặt hàng
                             <th scope="col">Họ tên</th>
                             <th scope="col">Số điện thoại</th>
                             <th scope="col">Trạng thái </th>
+                            <th scope="col">Ngày</th>
                             <th scope="col">Chi tiết</th>
-
+                            <th scope="col">Sửa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,8 +64,8 @@ Danh sách đơn đặt hàng
                             <th>{{$value->phone_number}}</th>
                             <th>
                                 <div class="form-group">
-                                    <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
-                                        <option value="0"  {{$value->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
+                                    <select  name="type" class="form-control">
+                                        <option value="0" {{$value->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Đã lên đơn </option>
                                         <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã gửi hàng</option>
                                         <option value="3"{{$value->status == 3 ? 'selected':''}}>Đã nhận hàng</option>
@@ -56,8 +74,12 @@ Danh sách đơn đặt hàng
                                     </select>
                                 </div>
                             </th>
+                            <th>{{date("d/m/Y H:i", strtotime($value->created_at))}}</th>
                             <td>
                                 <a class="btn btn-primary detail_oder" data-orderid="{{$value->id}}">Xem</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning " href="{{route('product.order.edit',['id'=>$value->id])}}">Sửa</a>
                             </td>
                         </tr>
                     @endforeach
@@ -110,13 +132,11 @@ Danh sách đơn đặt hàng
                     <tbody id="modal_tbody">
                     </tbody>
                     <thead>
-                        <tr>
-                        <th scope="col">Tổng tiền </th>
-                        <th scope="col"></th>
-                        <th scope="col" class="modal_total_monney_detail"></th>
-                        </tr>
+                        
                     </thead>
                 </table>
+                <p class="modal_tax"></p>
+                <p class="modal_total_monney_detail"></p>
                 <p class="modal_created_at"></p>
       </div>
       <div class="modal-footer">
@@ -130,6 +150,12 @@ Danh sách đơn đặt hàng
 @section('js')
 <script>
 $(document).ready(function() {
+    $('.input-daterange input').each(function() {
+        $(this).datepicker({
+            clearDates: true,
+            format: "dd/mm/yyyy"
+        });
+    });
     $('.detail_oder').on('click', function() {
         $('#staticBackdrop').modal('show')
         let order_id = $(this).data('orderid');
@@ -148,8 +174,9 @@ $(document).ready(function() {
                     $("#modal_address").val(response.data.address);
                     $("#modal_phone").val(response.data.phone_number);
                     $("#modal_note").val(response.data.note);
-                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY h:mm'));
-                    $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
+                    $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:mm'));
+                    $("p.modal_tax").html('  Thuế VAT 10 % :' +new Intl.NumberFormat().format(response.data.tax)+ ' VNĐ');
+                    $("p.modal_total_monney_detail").html('  Tổng tiền :' + new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
                 }
                 if(response.product){
                     let output = "";
@@ -169,36 +196,6 @@ $(document).ready(function() {
            }
            
        })
-    })
-
-
-    $('.btn_doi_trang_thai').on('change', function() {
-        let status = $(this).val();
-        let oder_id = $(this).data('orderid');
-        let apiOderEdit = '{{route("product.edit.admin")}}';
-        $.ajax({
-            url: apiOderEdit,
-            method: "POST",
-            data: {
-                id: oder_id,
-                status: status,
-                _token: '{{csrf_token()}}'
-            },
-            dataType: 'json',
-            success: function(response) {
-                    if(response.data){
-                        swal({
-                        title: "Thành công!",
-                        text: "Chuyển thành công trạng thái đơn đặt hàng #"+response.data,
-                        icon: "success",
-                        button: "OK",
-                        });
-                    }else{
-                        swal("Đơn đặt hàng không tồn tại", "", "warning");
-                    }
-            }
-            
-        })
     })
 
 })

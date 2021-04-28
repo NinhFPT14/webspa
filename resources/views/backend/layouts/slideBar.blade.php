@@ -1,11 +1,15 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+<ul class="navbar-nav  sidebar sidebar-dark accordion toggled" id="accordionSidebar" style ="background-color:#008080">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboard')}}">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon">
+                <?php 
+                    $logo = DB::table('logos')->where('status',0)->get();
+                    ?>
+                    @foreach ($logo as $value)
+                    <img width="120" height="50" src="{{$value->image}}" alt="">
+                    @endforeach
         </div>
-        <div class="sidebar-brand-text mx-3" >Queen Spa</div>
     </a>
 
     <!-- Divider -->
@@ -63,7 +67,8 @@
         <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
-                <a class="collapse-item" href="{{ route('sortAppointment')}}">Bảng xếp lịch</a>
+                <a class="collapse-item" href="{{ route('listAppointment') }}">Đơn đặt lịch</a>
+                <a class="collapse-item" href="{{ route('listSortAppointment')}}">Bảng xếp lịch</a>
                 <a class="collapse-item" href="{{ route('listLocation')}}">Ghế làm</a>
                 <a class="collapse-item" href="{{ route('listStaff')}}">Nhân viên</a>
             </div>
@@ -71,7 +76,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('baiviet')}}" aria-controls="service">
+        <a class="nav-link collapsed" href="{{route('listBaiviet')}}" aria-controls="service">
             <i class="fas fa-fw fa-file"></i>
             <span>Bài viết </span>
         </a>

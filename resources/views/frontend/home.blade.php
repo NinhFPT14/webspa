@@ -326,45 +326,52 @@ Trang chủ
 
 
 
-<div class="testimonial_area pt-0 red-violet_color">
-    <div class="section_title title_style3">
-        <h3>Ý Kiến Đóng Góp</h3>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1 col-md-12">
-                <div class="testimonial_container testimonial_active owl-carousel">
-                    <div class="single_testimonial">
-                        <div class="testimonial_thumb">
-                            <a href="#"><img src="frontEnd/img/about/testimonial.jpg" alt=""></a>
-                        </div>
-                        <div class="testimonial_content">
-                            <h3><a href="#">Nguyễn Thanh Tâm</a></h3>
-                            <i class="ion-quote"></i>
-                            <p>Spa làm việc uy tín trách nhiệm</p>
-                        </div>
-                    </div>
-                    <div class="single_testimonial">
-                        <div class="testimonial_thumb">
-                            <a href="#"><img src="frontEnd/img/about/testimonial.jpg" alt=""></a>
+    <div class="testimonial_area pt-0 red-violet_color">
+        <div class="section_title title_style3">
+            <h3>Khách hàng nói gì về chúng tôi</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1 col-md-12">
+                    <div class="testimonial_container testimonial_active owl-carousel">
+                        <div class="single_testimonial">
+                            <div class="testimonial_thumb">
+                                <a href="#"><img class="rounded-circle" src="frontEnd/img/about/khach-hang1.jpg" alt=""></a>
+                            </div>
+                            <div class="testimonial_content">
+                                <h3><a href="#">Chị Bích Thủy</a></h3>
+                                <i class="ion-quote"></i>
+                                <p>Làm đẹp đòi hỏi sự nhân lại, có thể lúc đầu sẽ chưa thấy rõ kết quả nhưng dần dần mới cảm nhận những biến chuyển. Da khỏe lên theo thời gian, cết nhăn mờ dần. Tôi thực sự hài lòng</p>
+                            </div>
                         </div>
                         <div class="single_testimonial">
                             <div class="testimonial_thumb">
-                                <a href="#"><img src="frontEnd/img/about/testimonial.jpg" alt=""></a>
+                                <a href="#"><img class="rounded-circle" src="frontEnd/img/about/khach-hang2.jpg" alt=""></a>
                             </div>
                             <div class="testimonial_content">
-                                <h3><a href="#">Nguyễn Thanh Tâm</a></h3>
+                                <h3><a href="#">Chị Khánh Linh</a></h3>
                                 <i class="ion-quote"></i>
-                                <p>Spa làm việc uy tín trách nhiệm</p>
+                                <p>Bạn bè tôi ai cũng bị nám. Chúng tôi  ở nhiều nơi, dùng nhiều cách nhưng da mặt vẫn không tiến triển. 
+    May làm sao tôi rất hợp với liệu trình cuả Venesa. Đến bây giờ da vẫn đẹp, chẳng thấy bị nám nữa. Tôi bảo cả bạn bè sang Venesa làm rồi</p>
+                            </div>
+                        </div>
+                        <div class="single_testimonial">
+                            <div class="testimonial_thumb">
+                                <a href="#"><img class="rounded-circle" src="frontEnd/img/about/khach-hang3.jpg" alt=""></a>
+                            </div>
+                            <div class="testimonial_content">
+                                <h3><a href="#">Chị Hoảng Yến</a></h3>
+                                <i class="ion-quote"></i>
+                                <p>Bản thân chị thì hài lòng vô cùng. Chị khổ lắm em, khổ vì nám đó. Thử đủ mọi cách từ đông sang tây luôn.
+    Cũng mai làm sao có người ta giới thiệu tới đây. Lúc đầu cũng lo lắm chớ, mà đúng làm làm xong lại tiếc quá mà . Tiếc vì không đến đây sớm hơn đó (cười).</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Load Facebook SDK for JavaScript -->
     </div>
-    <!-- Load Facebook SDK for JavaScript -->
-</div>
 
     <!-- Call -->
     @include('sweetalert::alert')

@@ -33,6 +33,7 @@ Danh sách dịch vụ
                             <th scope="col">Giá cũ</th>
                             <th scope="col">Giá mới</th>
                             <th scope="col">Thời gian thực hiện</th>
+                            <th scope="col">Số buổi</th>
                             <th scope="col">Chi tiết</th>
                             <th scope="col">Trạng thái</th>
                             <th scope="col">Hành động</th>
@@ -50,6 +51,7 @@ Danh sách dịch vụ
                             <td scope="col">{{ number_format($value->price) }}đ</td>
                             <td scope="col">{{ number_format($value->discount) }}đ</td>
                             <td scope="col">{{ $value->time_working }} phút</td>
+                            <td scope="col">{{ $value->total_time }} buổi</td>
                             <td>
                                 <a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}"
                                     class="btn btn-primary" target="_blank">Xem</a>
