@@ -86,4 +86,5 @@ Danh sách sản phẩm
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection

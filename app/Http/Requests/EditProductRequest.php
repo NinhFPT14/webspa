@@ -34,7 +34,7 @@ class EditProductRequest extends FormRequest
          'description' =>'required|max:65535',
          'detail' =>'required|max:65535',
          'price' =>'required|digits_between:4,11',
-         'discount' =>'required|digits_between:4,11',
+         'discount' =>'required|lt:price',
          'quality' =>'required|digits_between:1,11',
          'image' =>'',
          'image.*' =>'image|max:10000',
@@ -50,6 +50,7 @@ class EditProductRequest extends FormRequest
             'digits_between'=>':attribute phải là số và từ 4 đến 11 số',
             'max' => ':attribute kích thước không được vượt quá :max',
             'image' => ':attribute phải là ảnh',
+            'lt'=>':attribute nhỏ hơn giá giá cũ',
         ];
     }
 
