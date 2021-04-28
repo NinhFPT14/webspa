@@ -63,7 +63,20 @@ Danh sách đơn đặt hàng
                             <th>{{$value->name}}</th>
                             <th>{{$value->phone_number}}</th>
                             <th>
-                                <div class="form-group">
+                                @if($value->status == 0)
+                                <p style="color:#FFCC33">Chờ xác nhận<p>
+                                @elseif($value->status == 1)
+                                <p style="color:#00aeff">Đã lên đơn<p>
+                                @elseif($value->status == 2)
+                                <p style="color:#00FFCC">Đã gửi hàng<p>
+                                @elseif($value->status == 3)
+                                <p style="color:#009966">Đã nhận hàng<p>
+                                @elseif($value->status == 4)
+                                <p style="color:#FF0033">Từ chối đơn<p>
+                                @elseif($value->status == 6)
+                                <p style="color:#0000FF">Hoàn trả<p>
+                                @endif
+                                {{-- <div class="form-group">
                                     <select  name="type" class="form-control">
                                         <option value="0" {{$value->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Đã lên đơn </option>
@@ -72,7 +85,7 @@ Danh sách đơn đặt hàng
                                         <option value="4"{{$value->status == 4 ? 'selected':''}}>Từ chối đơn</option>
                                         <option value="6"{{$value->status == 6 ? 'selected':''}}>Hoàn trả</option>
                                     </select>
-                                </div>
+                                </div> --}}
                             </th>
                             <th>{{date("d/m/Y H:i", strtotime($value->created_at))}}</th>
                             <td>

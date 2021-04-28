@@ -105,7 +105,8 @@ Sửa đơn đặt hàng
                             @endforeach
                             </tbody>
                           </table>
-                          <p class=""><strong>Thuế :</strong> {{number_format($data->tax)}} VNĐ</p>
+                          <p class=""><strong>Tạm tính :</strong> {{number_format($data->total_monney-$data->tax)}} VNĐ</p>
+                          <p class=""><strong>VAT(10%) :</strong> {{number_format($data->tax)}} VNĐ</p>
                           <p class=""><strong>Tổng tiền  :</strong>{{number_format($data->total_monney)}} VNĐ</p>
                           <form action="{{route('product.order.add',['id'=>$data->id])}}" method="POST">
                             @csrf
