@@ -64,7 +64,7 @@ Danh sách đơn đặt hàng
                             <th>{{$value->phone_number}}</th>
                             <th>
                                 <div class="form-group">
-                                    <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
+                                    <select  name="type" class="form-control">
                                         <option value="0" {{$value->status == 0 ? 'selected':''}} >Chờ xác nhận</option>
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Đã lên đơn </option>
                                         <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã gửi hàng</option>
@@ -196,36 +196,6 @@ $(document).ready(function() {
            }
            
        })
-    })
-
-
-    $('.btn_doi_trang_thai').on('change', function() {
-        let status = $(this).val();
-        let oder_id = $(this).data('orderid');
-        let apiOderEdit = '{{route("product.edit.admin")}}';
-        $.ajax({
-            url: apiOderEdit,
-            method: "POST",
-            data: {
-                id: oder_id,
-                status: status,
-                _token: '{{csrf_token()}}'
-            },
-            dataType: 'json',
-            success: function(response) {
-                    if(response.data){
-                        swal({
-                        title: "Thành công!",
-                        text: "Chuyển thành công trạng thái đơn đặt hàng #"+response.data,
-                        icon: "success",
-                        button: "OK",
-                        });
-                    }else{
-                        swal("Đơn đặt hàng không tồn tại", "", "warning");
-                    }
-            }
-            
-        })
     })
 
 })
