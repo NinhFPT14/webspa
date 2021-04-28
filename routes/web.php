@@ -126,7 +126,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
 
         // oder
         Route::get('/danh-sach-don-dat-hang','Backend\ProductController@listOrder')->name('product.order.admin');
-        Route::post('/doi-trang-thai-don-hang','Backend\ProductController@editStatus')->name('product.edit.admin');
         Route::get('/trang-sua-don-hang/{id}','Backend\ProductController@editOrder')->name('product.order.edit');
         Route::post('/them-sam-pham/{id}','Backend\ProductController@addProductOrder')->name('product.order.add');
         Route::get('/xoa-sam-pham/{id}/{productOder}','Backend\ProductController@deleteProductOrder')->name('product.order.delete');
@@ -163,11 +162,13 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/tim-kiem-don-theo-thoi-gian','Backend\AppointmentController@searchTimeAppointment')->name('searchTimeAppointment');
         Route::post('/xac-nhan-don','Backend\AppointmentController@confirm')->name('confirmAppointment');
         Route::get('/sua-don-dat-lich/{id}','Backend\AppointmentController@edit')->name('editAppointment');
-        Route::post('/xep-lich-lam/{id}','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
         Route::get('/huy-lich-lam/{id}','Backend\AppointmentController@cancelAppointment')->name('cancelAppointment');
 
-        Route::get('/list-ghe-lam','Backend\AppointmentController@listSit')->name('listSit');
-        Route::get('/list-lich-lam','Backend\AppointmentController@listDo')->name('listDo');
+        Route::post('/xep-lich','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
+        Route::post('/chuyen-trang-thai-don','Backend\AppointmentController@statusAppointment')->name('statusAppointment');
+        Route::post('/danh-sach-dich-vu-don-dat-lich','Backend\AppointmentController@listServiceAppointment')->name('listServiceAppointment');
+        // Route::get('/list-ghe-lam','Backend\AppointmentController@listSit')->name('listSit');
+        // Route::get('/list-lich-lam','Backend\AppointmentController@listDo')->name('listDo');
     });
 
     // vouchers service

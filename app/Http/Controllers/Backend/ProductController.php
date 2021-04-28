@@ -136,15 +136,6 @@ class ProductController extends Controller
 
         return redirect()->route('product.order.edit',['id'=>$id]);
     }
-
-    public function editStatus(Request $request){
-        try {
-            Oder::where('id',$request->id)->update(['status'=>$request->status]);
-            return response()->json(['status' => true, 'data' => $request->id]);
-        } catch (Exception $e) {
-            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
-        }
-    }
     
     public function store(AddProductRequest $request){
         $data = $request->all();

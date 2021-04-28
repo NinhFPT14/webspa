@@ -85,81 +85,24 @@ Sửa đơn đặt lịch
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Thanh toán</label>
+                            <label for="formGroupExampleInput">Gọi xác nhận</label>
                             <select class="form-control" name="time_ficked">
-                                <option selected disabled value="">Chọn trạng thái thanh toán</option>
-                                <option  value="0">Thanh toán chuyển khoản</option>
-                                <option  value="1">Thanh toán tiền mặt</option>
+                                <option selected disabled value="">Chọn trạng thái</option>
+                                <option  value="1">Đã gọi</option>
+                                <option  value="2">Không nghe</option>
                             </select>
                             @error('name')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Mã giảm giá</label>
-                            <input type="text" name="name" class="form-control">
-                            @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <button type="submit" class="btn btn-warning float-right ">Sửa</button>
+                        <button type="submit" class="btn btn-warning float-right ">Lưu</button>
                     </form>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-6 mb-4">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Xếp lịch</h6>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST"  action="{{route('sortAppointment',['id'=>$data->id])}}">
-                            @csrf
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Chọn dịch vụ</label>
-                            <select class="form-control " name="service_id" >
-                                @foreach($serviceAppointment as $item)
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
-                            @error('service_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Ghế làm</label>
-                            <select class="form-control" name="location_id">
-                                <option selected disabled value="">Chọn trạng dịch vụ</option>
-                                @foreach($location as $value)
-                                <option  value="{{$value->id}}" {{old('location_id') == $value->id ? 'selected':''}}>{{$value->name}}</option>
-                                @endforeach
-                            </select>
-                            @error('location_id')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Chọn thời gian bắt đầu</label>
-                            <input type="datetime-local" name="time_start" class="form-control" value="{{ old('time_start')}}"  >
-                            @error('time_start')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Chọn thời gian kết thúc</label>
-                            <input type="datetime-local" name="time_end" class="form-control" value="{{ old('time_end')}}"  >
-                            @error('time_end')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        @if(session('thongbao'))
-                        <div class="alert alert-danger">{{session('thongbao')}}</div>
-                        @endif
-                        <button type="submit" class="btn btn-primary float-right ">Tạo</button>
-                    </form>
-                    </div>
-                </div>
+
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
