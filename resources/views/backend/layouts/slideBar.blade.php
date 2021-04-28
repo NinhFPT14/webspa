@@ -64,7 +64,7 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Dịch vụ</span>
         </a>
-        <div id="service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="service" class="collapse z-40" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('listService') }}">Danh sách</a>
                 <a class="collapse-item" href="{{ route('listAppointment') }}">Đơn đặt lịch</a>

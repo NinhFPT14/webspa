@@ -11,7 +11,7 @@ Danh sách đơn đặt lịch
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Danh sách đơn đặt lịch</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listAppointment')}}">Danh sách đơn đặt lịch</a></li>
         </ol>
     </nav>
 
@@ -69,15 +69,25 @@ Danh sách đơn đặt lịch
                             <td scope="col">{{$value->time_ficked}}</td>
                             <td scope="col">{{date('d/m/Y',strtotime($value->time_start))}}</td>
                             <td>
+                                @if($value->status == 1)
+                                <p style="color:#FFCC33">Chờ lên lịch<p>
+                                @elseif($value->status == 2)
+                                <p style="color:#00aeff">Đã lên lịch<p>
+                                @elseif($value->status == 3)
+                                <p style="color:#00FFCC">Làm xong<p>
+                                @elseif($value->status == 4)
+                                <p style="color:#FF0033">Từ chối<p>
+                                @endif
+
+{{-- 
                                 <div class="form-group">
                                     <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
-                    
                                         <option value="1" {{$value->status == 1 ? 'selected':''}}>Chờ lên lịch</option>
                                         <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã lên lịch</option>
                                         <option value="3"{{$value->status == 3 ? 'selected':''}}>Làm xong</option>
                                         <option value="4"{{$value->status == 4 ? 'selected':''}}>Từ chối</option>
                                     </select>
-                                </div>
+                                </div> --}}
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-xem-chi-tiet" data-appointmentid="{{$value->id}}" target="_blank">Xem</a>
