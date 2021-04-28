@@ -14,12 +14,18 @@ Bảng xếp lịch
     <script src=" {{ asset('jsCalendar/locale/locale_vn.js') }} " type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
-
 <div class="p-4">
+	<!-- DataTales Example -->
+    
     <div class="grid grid-cols-4 gap-4 pt-2 ">
         <div class="col-span-3 z-0">
 		 <!-- Bảng xếp lịch bắt đầu -->
 			<div class="md:container px-12 border-green-900 h-screen col-span-2 z-0 shadow-xl ">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item active" aria-current="page"><a href="{{route('listSortAppointment')}}">Bảng xếp lịch</a></li>
+					</ol>
+				</nav>
 				<div id="scheduler_here" class="dhx_cal_container px-6" style='width:100%; height:100%'>
 							<div class="dhx_cal_navline">
 								<div class="dhx_cal_prev_button">&nbsp;</div>
