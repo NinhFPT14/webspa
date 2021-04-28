@@ -33,7 +33,6 @@ class EditVoucherService extends FormRequest
             'time_start' => 'required|before:time_end',
             'time_end' => 'required|after:time_start',
             'status' => 'required|numeric',
-            'service_id' => 'required|numeric',
             
         ];
     }
@@ -57,7 +56,6 @@ class EditVoucherService extends FormRequest
             'time_start' => 'Thời gian bắt đầu',
             'time_end' => 'Thời gian kết thúc',
             'status' => 'Trạng thái',
-            'service_id' => 'Dịch vụ',
         ];
     }
 }

@@ -15,11 +15,24 @@ Danh Sách Voucher
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="{{route('addVoucherService')}}" class="btn btn-primary" role="button">Tạo Mới</a>
-            <form action="{{route('VoucherService.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            
+            <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."
-                        aria-label="Search" aria-describedby="basic-addon2" name="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
+                    </div>
+                    <div class="input-group input-daterange">
+                        <input type="text" class="form-control" name="from_time" autocomplete="off" value="{{$from_time}}">
+                        <div class="input-group-addon">đến</div>
+                        <input type="text" class="form-control" name="to_time" autocomplete="off" value="{{$to_time}}">
+                    </div>
+                    <div class="form-group">
+                        <select  name="type" class="form-control">
+                            <option value="0" {{$type == 0 ? 'selected':''}} >Bật </option>
+                            <option value="1" {{$type == 1 ? 'selected':''}}>Tắt</option>
+                        </select>
+                    </div>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -76,4 +89,18 @@ Danh Sách Voucher
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
+@endsection
+
+@section('js')
+<script>
+$(document).ready(function() {
+    $('.input-daterange input').each(function() {
+        $(this).datepicker({
+            clearDates: true,
+            format: "dd/mm/yyyy"
+        });
+    });
+})
+</script>
 @endsection
