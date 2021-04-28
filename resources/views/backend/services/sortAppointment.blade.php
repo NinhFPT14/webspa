@@ -14,10 +14,9 @@ Bảng xếp lịch
     <script src=" {{ asset('jsCalendar/locale/locale_vn.js') }} " type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 
-
-	<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2021.1.330/styles/kendo.default-v2.min.css"/>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="https://kendo.cdn.telerik.com/2021.1.330/js/kendo.all.min.js"></script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 @endsection
 <div class="p-4">
@@ -163,12 +162,23 @@ Bảng xếp lịch
 			<div class="form-group">
 				<label for="exampleInputPassword1">Thời gian bắt đầu</label>
 				<input type="datetime-local" class="form-control" id="time_start" >
-				<input id="timepicker" />
-					<script>
-					$("#timepicker").kendoTimePicker();
-					var timepicker = $("#timepicker").data("kendoTimePicker");
-					timepicker.min(new Date(2000, 0, 1, 8, 0, 0));
-					</script>
+				<input type="text" name="time" id="timepickerexample">
+    
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$('#timepickerexample').timepicker({
+							timeFormat: 'H:mm p',
+							interval: 1,
+							minTime: '07:00',
+							maxTime: '21:00',
+							defaultTime: '08',
+							startTime: '08:00',
+							dynamic: false,
+							dropdown: true,
+							scrollbar: true
+						});
+					});
+				</script>
 				<p id="thong_bao_time" class="text-danger"></p>
 			</div>
 			<p id="thong_bao_fail" class="text-danger"></p>
@@ -432,7 +442,3 @@ Bảng xếp lịch
 
 @endsection
 @endsection
-
-
-
-
