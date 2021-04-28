@@ -14,11 +14,12 @@ Bảng xếp lịch
     <script src=" {{ asset('jsCalendar/locale/locale_vn.js') }} " type="text/javascript" charset="utf-8"></script>
     <link rel='stylesheet' type='text/css' href="{{ asset('jsCalendar/dhtmlxscheduler_material.css') }}">
 @endsection
+
 <div class="p-4">
     <div class="grid grid-cols-4 gap-4 pt-2 ">
-        <div class="col-span-3">
+        <div class="col-span-3 z-0">
 		 <!-- Bảng xếp lịch bắt đầu -->
-			<div class="md:container px-12 border-green-900 h-screen col-span-2 shadow-xl ">
+			<div class="md:container px-12 border-green-900 h-screen col-span-2 z-0 shadow-xl ">
 				<div id="scheduler_here" class="dhx_cal_container px-6" style='width:100%; height:100%'>
 							<div class="dhx_cal_navline">
 								<div class="dhx_cal_prev_button">&nbsp;</div>
@@ -150,18 +151,22 @@ Bảng xếp lịch
 			<div class="form-group ">
 				<label for="exampleInputPassword1">Ghế làm</label>
 				<select class="form-select modal_location" aria-label="Default select example">
-					
 				</select>
 				<p id="thong_bao_location" class="text-danger"></p>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputPassword1">Thời gian bắt đầu</label>
-				<input type="datetime-local" class="form-control" id="time_start" >
-				
-				<p id="thong_bao_time" class="text-danger"></p>
+			<div>
+			<label for="exampleInputPassword1">Thời gian bắt đầu</label>
+			<div class="form-group grid grid-cols-4 ">
+				<input id="time-24h-picker" data-input-style="outline" data-label-style="stacked" placeholder="chọn giờ.." class=" mbsc-ios mbsc-ltr  mbsc-textfield mbsc-textfield-outline mbsc-textfield-stacked mbsc-textfield-outline-stacked" type="text" readonly="">
+				<input type="date" id="time_start" class="form-control col-span-3 h-14">
+		
 			</div>
-			<p id="thong_bao_fail" class="text-danger"></p>
-		</div>
+			<div class="form-group ">
+				<p id="thong_bao_hour" class="text-danger"></p>
+				<p id="thong_bao_date" class="text-danger"></p>
+				<p id="thong_bao_fail" class="text-danger"></p>
+			</div>
+	</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-success btn_xep_lich" >Tạo</button>
 		</div>
@@ -172,6 +177,13 @@ Bảng xếp lịch
 @section("js")
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
 <script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<script>
+	mobiscroll.datepicker('#time-24h-picker', {
+		controls: ['time'],
+		timeFormat: 'HH:mm',
+		touchUi: true
+	});
+</script>
 <script>
 	$(document).ready(function() {
 
@@ -219,10 +231,12 @@ Bảng xếp lịch
 
 		$('.btn_modal_xep_lich').on('click', function() {
 			$("p#thong_bao_service" ).html('');
-			$("p#thong_bao_time" ).html('');
+			$("p#thong_bao_hour" ).html('');
+			$("p#thong_bao_date" ).html('');
 			$("p#thong_bao_location" ).html('');
 			$("p#thong_bao_fail" ).html('');
 			$('#time_start').val('');
+			$('#time-24h-picker').val('');
 			$('#modal_sort').modal('show')
 			let id = $(this).data('appointmentid');
 			let apiService = '{{route("listServiceAppointment")}}';
@@ -261,13 +275,15 @@ Bảng xếp lịch
 
 		$('.btn_xep_lich').on('click', function() {
 			$("p#thong_bao_service" ).html('');
-			$("p#thong_bao_time" ).html('');
+			$("p#thong_bao_hour" ).html('');
+			$("p#thong_bao_date" ).html('');
 			$("p#thong_bao_location" ).html('');
 			$("p#thong_bao_fail" ).html('');
 			let id =  $(this).attr('name');
 			let service_id = $('.modal_list_service').val();
 			let location = $('.modal_location').val();
-			let time_start = $('#time_start').val();
+			let hour = $('#time-24h-picker').val();
+			let date =  $('#time_start').val();
 			let apiSort = '{{route("sortAppointment")}}';
 			$.ajax({
 				url: apiSort,
@@ -275,7 +291,8 @@ Bảng xếp lịch
 				data: {
 					id: id,
 					service_id:service_id,
-					time_start:time_start,
+					hour:hour,
+					date:date,
 					location:location,
 					_token: '{{csrf_token()}}'
 				},
@@ -290,9 +307,13 @@ Bảng xếp lịch
 							if(response.messages.service_id){
 								$("p#thong_bao_service" ).html('- ' + response.messages.service_id);
 							}
-							if(response.messages.time_start){
-								$("p#thong_bao_time" ).html('- ' + response.messages.time_start);
+							if(response.messages.hour){
+								$("p#thong_bao_hour" ).html('- ' + response.messages.hour);
 							}
+							if(response.messages.date){
+								$("p#thong_bao_date" ).html('- ' + response.messages.date);
+							}
+							
 							if(response.messages.location){
 								$("p#thong_bao_location" ).html('- ' + response.messages.location);
 							}

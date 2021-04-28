@@ -86,15 +86,17 @@ class AppointmentController extends Controller
         $time =Carbon::now();
         $validate = Validator::make($request->all(), 
         [
-            'time_start' => "required|date|after_or_equal:$time",
+            'date' => "required|date|after_or_equal:$time",
             'service_id' => "required",
             'location' => "required",
+            'hour' => "required",
         ],
         [
-        'time_start.required' => "Thời gian không được để trống",
+        'date.required' => "Thời gian không được để trống",
         'location.required' => "Ghế làm không được để trống",
         'service_id.required' => "Dịch vụ không được để trống",
-        'time_start.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
+        'date.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
+        'hour.required' => "Giờ không được để trống",
         ]);
 
         if($validate->fails()){
@@ -104,14 +106,15 @@ class AppointmentController extends Controller
             ]);
         }
 
+
         $appointment = Appointment::find($request->id);
         $service = Service::find($request->service_id);
         $location = Location::find($request->location);
         $staff = Staff::find($location->staff_id);
 
-        $newdate = strtotime ( "+$service->time_working minute" , strtotime ( $request->time_start ) ) ;
+        $time_start = $request->date.' '. $request->hour;
+        $newdate = strtotime ( "+$service->time_working minute" , strtotime ($time_start) ) ;
         $time_end = date ( 'Y-m-d H:i' , $newdate );
-        $time_start =date('Y-m-d H:i', strtotime($request->time_start));
 
         $data =SortAppointment::where('location_id',$request->location)
         ->where('time_end','>=',$time_start)
@@ -119,16 +122,19 @@ class AppointmentController extends Controller
         ->where('status','<',2)
         ->get();
         if(count($data) == 0){
-            $date_today =date('Y-m-d', strtotime($request->time_start));
+            $date_today =date('Y-m-d', strtotime($time_start));
             $newdate =strtotime ( '+22 hour' , strtotime ( $date_today )) ;
             $newdate2 =strtotime ( '+8 hour' , strtotime ( $date_today )) ;
             
             $time_start2 =date ( 'Y-m-d H:i' , $newdate2 );
             $time_end2 =date ( 'Y-m-d H:i' , $newdate );
+
+            $time_start_format = date("H:i d-m-Y", strtotime($time_start));
+            $time_end_format = date("H:i d-m-Y", strtotime($time_end));
             if($time_start < $time_start2){
-                return response()->json(['status' => false, 'fail' => "Từ $time_start đến  $time_end chưa đến giờ làm việc"]);
+                return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến   $time_end_format chưa đến giờ làm việc"]);
             }elseif($time_end > $time_end2 ){
-                return response()->json(['status' => false, 'fail' => "Từ $time_start đến  $time_end đã hết giờ làm việc"]);
+                return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến   $time_end_format đã hết giờ làm việc"]);
             }else{
                 $sort = new SortAppointment();
                 $sort->appointment_id = $request->id;
@@ -143,7 +149,7 @@ class AppointmentController extends Controller
                 $sort->save();
                    //  Gửi otp
                 $phones =[$appointment->phone];
-                $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ : $service->name của bạn vào $time_start và dự kiến kết thúc $time_end ";
+                $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ : $service->name của bạn vào $time_start_format và dự kiến kết thúc  $time_end_format ";
                 $type = 2;
                 $sender = "981c320db4992b97";
                 $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
@@ -152,17 +158,17 @@ class AppointmentController extends Controller
             }
 
         }else{
-            return response()->json(['status' => false, 'fail' => "Từ $time_start đến  $time_end ghế đã hết"]);
+            return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến  $time_end_format ghế đã hết"]);
         }
 
     }
 
     public function listAppointment(Request $request){
         if(!$request->hasAny(['key', 'from_time', 'to_time'])){
-            $appointment = Appointment::paginate(10);
+            $appointment = Appointment::where("status",'!=',0)->orderByDesc('id')->paginate(10);
         }else{
             if($request->has('key')){
-                $query = Appointment::where(function($q2) use ($request){
+                $query = Appointment::where("status",'!=',0)->where(function($q2) use ($request){
                     $q2->where("name", "like", "%".$request->key."%")
                         ->orWhere("phone", "like", "%".$request->key."%");
                 });
@@ -176,7 +182,7 @@ class AppointmentController extends Controller
             if($request->has('type')){
                 $query =  $query->where("status",$request->type);
             }
-            $appointment = $query->paginate(10);
+            $appointment = $query->orderByDesc('id')->paginate(10);
         }
         $key = $request->key;
         $from_time = $request->from_time;
