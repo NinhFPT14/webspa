@@ -197,6 +197,20 @@ Danh sách đơn đặt lịch
                     <label for="exampleInputPassword1">Lời nhắn</label>
                     <textarea class="form-control"  name="note" id="modal_detail_note" rows="5"></textarea>
                 </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tam_tinh">Tạm tính : </th>
+                        <tr>
+                        <th scope="col" class="thue_vat">VAT(10%):</th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="ma_giam_gia">Mã giảm giá :</th>
+                        <tr>
+                        <th scope="col" class="tong_tien">Tổng tiền : </th>
+                        </tr>
+                    </thead>
+                </table>
               </form>
         </div>
         <div class="modal-footer">
@@ -436,6 +450,11 @@ $(document).ready(function() {
                             $(timeFicked[i]).prop('selected', false);
                         }
                     }
+
+                    $('.tam_tinh').html("Tạm Tính : " + new Intl.NumberFormat().format(response.data.total_money)+ ' VNĐ');
+                    $('.thue_vat').html("VAT(10%) : " + new Intl.NumberFormat().format((response.data.total_money*10)/100)+ ' VNĐ');
+                    $('.ma_giam_gia').html("Mã giảm giá : " + new Intl.NumberFormat().format(response.data.discount_money)+ ' VNĐ');
+                    $('.tong_tien').html("Tổng Tiền : " + new Intl.NumberFormat().format((response.data.total_money)+(response.data.total_money*10)/100 - (response.data.discount_money))+ ' VNĐ');
                 $(".mul-select").select2();
                 }else{
                     swal("Đơn đặt lịch không tồn tại", "", "warning");
