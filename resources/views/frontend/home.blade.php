@@ -5,7 +5,6 @@ Trang chủ
 @section('content')
 
 <!--slider area start-->
-
 <section class="slider_section slider_section_three">
     <div class="slider_area owl-carousel">
         @foreach ($slide as $value)
@@ -302,13 +301,13 @@ Trang chủ
                             </div>
                         </div>
                         
-                        <div class="blog_content">
+                        <div class="blog_content ">
                             <h4><a href="{{route('detailBlog',['id'=>$item->id])}}">{!! $item->title !!}</a></h4>
                             <span> ngày đăng: {{ $item->created_at }}</a></span>
                             <p>
                             {!! $item->description !!}
                             </p>
-                            <a class="btn btn-info" href="{{route('detailBlog',['id'=>$item->id])}}">Đọc Thêm</a>
+                            <a class="btn btn-info hover:bg-green-400 no-underline"  href="{{route('detailBlog',['id'=>$item->id])}}">Đọc Thêm</a>
                         </div>
                     </div>
                 </div>

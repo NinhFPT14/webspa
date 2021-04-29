@@ -1092,7 +1092,7 @@ textarea:-ms-input-placeholder {
     position: relative;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1px) {
+@media only screen and (min-width: 992px) and (max-width: 1920px) {
     .main_menu {
         margin-left: 28px;
     }
@@ -1290,7 +1290,7 @@ textarea:-ms-input-placeholder {
 
 /*main menu css end*/
 
-@media only screen and (min-width: 76px) and (max-width: 991px) {
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     .logo {
         margin: 0 auto;
     }
@@ -1312,7 +1312,7 @@ textarea:-ms-input-placeholder {
     }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1920px) {
     .header_container {
         border: 0;
     }
@@ -1926,13 +1926,13 @@ textarea:-ms-input-placeholder {
     padding: 0 36px;
 }
 
-@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+@media only screen and (min-width: 1336px) and (max-width: 1920px) {
     .header_container_two {
         padding: 0 75px;
     }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+@media only screen and (min-width: 1336px) and (max-width: 1920px) {
     .header_container_two {
         padding: 0 12px;
     }
@@ -1949,7 +1949,7 @@ textarea:-ms-input-placeholder {
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+@media only screen and (min-width: 1336px) and (max-width: 1920px) {
     .header_container_two .logo {
         padding: 30px 0;
     }
