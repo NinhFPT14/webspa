@@ -20,10 +20,9 @@ class ServiceController extends Controller
     }
 
     public function store(AddServiceRequest $request){
+        // dd($request->all());
         $data = $request->all();
         unset($data['_token']);
-        $data['total_time'] = 0;
-        $data['time_distance'] = 0;
         $data['slug'] = Str::slug($request->name.$request->id.'-');
 
         if($request->hasFile('image')){

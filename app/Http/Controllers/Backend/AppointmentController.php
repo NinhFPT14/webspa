@@ -15,7 +15,6 @@ use App\Model\SortAppointment;
 use App\Http\Requests\addSortAppointment;
 use App\Http\Requests\AddAppointment;
 use App\Http\Sms\SpeedSMSAPI;
-use Illuminate\Support\Facades\Validator;
 use DB;
 use Carbon\Carbon;
 
@@ -43,12 +42,15 @@ class AppointmentController extends Controller
         $data = SortAppointment::get();
         $list = [];
         foreach ($data as $key => $value) {
+            $appointment1 = Appointment::find($value->appointment_id);
             $list[] = [
                 "id" => $value->id,
                 "start_date" => $value->time_start,
                 "end_date" => $value->time_end,
                 "text" => $value->name_service,
-                "key" => $value->location_id
+                "key" => $value->location_id,
+                "sdt" => $appointment1->phone,
+                "name" => $appointment1->name,
             ];
         }
         // dd($list);
@@ -99,31 +101,17 @@ class AppointmentController extends Controller
     
     public function listServiceAppointment(Request $request){
         try {
-
-            $service_id = NumberService::where('appointment_id',$request->id)->get();
-            $sort = SortAppointment::where('appointment_id',$request->id)->get();
-            $arr = [];
-            $arr2 = [];
-            foreach($service_id as $value){
-                $arr[] = $value->service_id;
-            }
-            foreach($sort as $value){
-                $arr2[] = $value->service_id;
-            }
-            $arrId = array_diff($arr, $arr2);
-            $data = Service::whereIn('id', $arrId)->get();
-            $location = Location::where('status',0)->get();
-            return response()->json(['status' => true, 'data' => $data ,'id'=>$request->id ,'location'=>$location]);
+            $data = Location::select('name','id')->where('status',0)->get();
+            return response()->json(['status' => true, 'data' => $data]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
     }
-    public function statusAppointment(Request $request){
+
+    public function listDo(){
         try {
-            $data = Appointment::find($request->id);
-            $data->status = 2;
-            $data->save();
-            return response()->json(['status' => true, 'data' => $request->id]);
+            $data = Appointment::get();
+            return response()->json(['status' => true, 'data' => $data]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
@@ -156,7 +144,7 @@ class AppointmentController extends Controller
 
         $appointment = Appointment::find($request->id);
         $service = Service::find($request->service_id);
-        $location = Location::find($request->location);
+        $location = Location::find($request->location_id);
         $staff = Staff::find($location->staff_id);
 
         $time_start = $request->date.' '. $request->hour;
@@ -207,7 +195,6 @@ class AppointmentController extends Controller
         }else{
             return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến  $time_end_format ghế đã hết"]);
         }
-
     }
 
     public function listAppointment(Request $request){

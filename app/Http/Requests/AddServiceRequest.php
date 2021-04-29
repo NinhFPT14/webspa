@@ -27,10 +27,11 @@ class AddServiceRequest extends FormRequest
             'name' =>'required|max:255|unique:services',
             'image' => 'required',
             'time_working' => 'required|max:255|digits_between:0,9999999',
+            'total_time' => 'required|max:255|digits_between:0,99',
             'price' => 'required||digits_between:0,9999999',
             'description' => 'required|max:65535',
             'detail' => 'required|max:65535',
-            'discount' => 'required|max:255|digits_between:0,9999999',
+            'discount' => 'required|max:255|digits_between:0,9999999|lt:price',
             'category_id' => 'required'
             
         ];
@@ -46,7 +47,8 @@ class AddServiceRequest extends FormRequest
             'size' => ':attribute có độ dài lớn hơn 10 ký tự',
             'time_working' => ':attribute không được vượt quá :max',
             'description' => ':attribute không vượt quá :max',
-            'digits_between' => ':attribute phải lớn hơn 0'
+            'digits_between' => ':attribute phải lớn hơn 0',
+            'lt' => ':attribute phải nhỏ giá cũ'
 
         ];
     }
@@ -58,9 +60,10 @@ class AddServiceRequest extends FormRequest
             'description' =>'Mô tả',
             'detail' =>'Chi tiết',
             'price' =>'Giá cũ',
-            'discount' =>'Giá giảm',
+            'discount' =>'Giá mới',
             'time_working' => 'Thời gian làm',
-            'category_id' => 'Loại danh mục'
+            'category_id' => 'Loại danh mục',
+            'total_time' => 'Số buổi thực hiện'
         ];
     }
 }

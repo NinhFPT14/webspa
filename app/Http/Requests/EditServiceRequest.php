@@ -33,10 +33,11 @@ class EditServiceRequest extends FormRequest
             ],
             'image' => 'image|max:10000',
             'time_working' => 'required|max:255',
+            'total_time' => 'required|max:255|digits_between:0,99',
             'price' => 'required|max:10000|digits_between:0,9999999',
             'description' => 'required|max:65535',
             'detail' => 'required|max:65535',
-            'discount' => 'required|max:255|digits_between:0,9999999',
+            'discount' => 'required|max:255|digits_between:0,9999999|lt:price',
             'category_id' => 'required'
         ];
     }
@@ -49,7 +50,8 @@ class EditServiceRequest extends FormRequest
             'image' => ':attribute phải là ảnh',
             'size' => ':attribute có độ dài lớn hơn 10 ký tự',
             'time_working' => ':attribute không được vượt quá :max',
-            'digits_between' => ':attribute phải lớn hơn 0'
+            'digits_between' => ':attribute phải lớn hơn 0',
+            'lt' => 'Giá mới phải nhỏ hơn giá cũ'
         ];
     }
 
@@ -62,7 +64,8 @@ class EditServiceRequest extends FormRequest
             'price' =>'Giá cũ',
             'discount' =>'Giá giảm',
             'time_working' => 'Thời gian làm',
-            'category_id' => 'Danh mục'
+            'category_id' => 'Danh mục',
+            'total_time' => 'Số buổi thực hiện'
         ];
     }
 }

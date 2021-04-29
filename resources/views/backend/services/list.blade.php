@@ -67,8 +67,8 @@ Danh sách dịch vụ
                             </td>
 
 
-                            <td><a href="{{route('deleteService',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
-                                <a href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
+                            <td><a onclick="confirm('Bạn chắc chắn xóa chứ !?')" href="{{route('deleteService',['id'=>$value->id])}}" class="btn btn-danger">Xóa</a>
+                                <a onclick="confirm('Bạn chắc chắn chứ !?')" href="{{route('editService',['id'=>$value->id])}}" class="btn btn-warning">Sửa</a>
                             </td>
                         </tr>
                         @endforeach
@@ -84,4 +84,6 @@ Danh sách dịch vụ
         </div>
     </div>
 </div>
+
+@include('sweetalert::alert')
 @endsection

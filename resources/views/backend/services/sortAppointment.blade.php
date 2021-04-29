@@ -137,7 +137,6 @@ Bảng xếp lịch
 	</div>
   </div>
 
-
 <!-- Modal chi tiết-->
 <div class="modal fade" id="modal_sort" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -379,10 +378,15 @@ Bảng xếp lịch
 <script type="text/javascript" charset="utf-8">
 	var sections = {!!json_encode($seats)!!};
 	var data = {!!json_encode($list)!!};
+	console.log(data);
 	
 	window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
+			scheduler.config.drag_move = false;
+			scheduler.config.drag_out = false;
+			scheduler.config.drag_resize = false;
+			
 			// scheduler.config.multisection = true;
             // scheduler.config.readonly = true;
 			//===============
@@ -441,13 +445,32 @@ Bảng xếp lịch
 			//Data loading
 			//===============
             var dateToStr = scheduler.date.date_to_str("%d-%m-%Y");
+			scheduler.config.lightbox.sections = [
+				// {name:"descretion", type:"text" , focus:false , map_to:"text"},
+				{name:"Khách hàng", type:"textarea" , focus:false , map_to:"name"},
+				{name:"Phone", type:"textarea" , focus:false , map_to:"sdt"},
+
+			];
+
 
             scheduler.templates.format_date = function(date){
                 return dateToStr (date);
             };
-			console.log(data);
+			scheduler.config.buttons_left = [];
+			scheduler.locale.labels["custom_btn_info"] = "Sửa";
+			scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
+				if(button_id == "custom_btn_info"){
+					var ev = scheduler.formSection('id');
+					alert(ev);
+				}
+    });
+			scheduler.config.buttons_right = ["dhx_cancel_btn","custom_btn_info"];
+			// console.log(data);
 			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
 			scheduler.parse(data);
+			scheduler.attachEvent("onLightbox", function (){
+				console.log('ấn 2 lần vào nó sẽ hiện ở đây')				
+			});
 		});
 </script>
 
