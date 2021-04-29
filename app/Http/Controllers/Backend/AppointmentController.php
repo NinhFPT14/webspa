@@ -54,6 +54,7 @@ class AppointmentController extends Controller
                 "key" => $value->location_id,
                 "sdt" => $appointment1->phone,
                 "name" => $appointment1->name,
+                "appointment_id" => $appointment1->id
             ];
         }
 

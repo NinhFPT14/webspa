@@ -415,7 +415,7 @@ Bảng xếp lịch
 <script type="text/javascript" charset="utf-8">
 	var sections = {!!json_encode($seats)!!};
 	var data = {!!json_encode($list)!!};
-	
+	console.log(data)
 	window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
 			scheduler.locale.labels.section_custom = "Section";
@@ -486,8 +486,8 @@ Bảng xếp lịch
 				// {name:"descretion", type:"text" , focus:false , map_to:"text"},
 				{name:"Khách hàng", type:"textarea" , focus:false , map_to:"name"},
 				{name:"Phone", type:"textarea" , focus:false , map_to:"sdt"},
-				{name:"Mã đơn", type:"textarea" , focus:false , map_to:"id"},
-
+				{name:"Mã đơn", type:"textarea" , focus:false , map_to:"appointment_id"},
+				{name:"Mã xếp lịch", type:"textarea" , focus:false , map_to:"id"},
 			];
 
 
@@ -497,10 +497,9 @@ Bảng xếp lịch
 			scheduler.config.buttons_left = [];  // Bố cục nút bên trái bảng sự kiện
 			
          
-			scheduler.attachEvent("onEventSave",function(id,data,is_new_event){ // Xử lý sự kiện khi ấn chuyển lịch
+			scheduler.attachEvent("onEventSave",function(id,data,is_new_event,date){ // Xử lý sự kiện khi ấn chuyển lịch
 				var custom_value1 = scheduler.getEvent(id).custom_event_property;
 				var custom_form = 	$('#modal_sort').modal('show');
-				console.log(custom_form)
 				if(id){
 					scheduler.hideLightbox(true,custom_form);
 				}
@@ -526,13 +525,31 @@ Bảng xếp lịch
 					alert('Lịch không tồn tại')
 				}
 			});
+			scheduler.config.buttons_right = ["dhx_cancel_btn","dhx_save_btn","dhx_delete_btn"]
+			console.log(typeof scheduler.config.buttons_right)
+			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline"); //Format & Hiển thị thơi gian cho bảng
+			scheduler.parse(data); // Hiển thị các Sự Kiện Trên bảng
+			// Click nút thay đổi
+			// scheduler.config.buttons_right = ["dhx_cancel_btn","dhx_save_btn","dhx_delete_btn"]
 
+			scheduler.attachEvent("onViewChange", function(old_mode,old_date,mode,date,new_date){
+				var dateNow =  new Date()
+				if(dateNow.getTime() <= old_date.getTime()){
+					// alert('đúng')
+					// scheduler.config.buttons_right = []
+					scheduler.config.buttons_right = ["dhx_cancel_btn","dhx_save_btn","dhx_delete_btn"]
+					// delete scheduler.config.buttons_right[1,2]
+				}
+				else{
+					alert('sai')
+					// scheduler.config.buttons_right = []
+					scheduler.config.buttons_right = ["dhx_cancel_btn"]
 
-			scheduler.config.buttons_right = ["dhx_cancel_btn","dhx_save_btn","dhx_delete_btn"];
-			// console.log(data);
-			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
-			scheduler.parse(data);
+				}
 	
+			});	
+			scheduler.config.buttons_right
+
 		});
 </script>
 
