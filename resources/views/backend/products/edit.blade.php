@@ -4,6 +4,7 @@ Tạo sản phẩm
 @endsection
 @section('content')
 
+
 <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
 <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 <div class="container-fluid">
@@ -147,5 +148,6 @@ Tạo sản phẩm
      filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}'
  });
 </script>
+@include('sweetalert::alert')
 @endsection
 @endsection

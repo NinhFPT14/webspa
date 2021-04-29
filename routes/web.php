@@ -223,9 +223,9 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
     
         //BlogController-Back-End
     Route::group(['prefix' => 'bai-viet'], function() {
-        Route::get('/','BackEnd\BlogController@index')->name('listBaiviet');
+        Route::get('/','Backend\BlogController@index')->name('listBaiviet');
         Route::get('/thay-doi-trang-thai/{id}/{status}','Backend\BlogController@status')->name('statusBaiviet');
-        Route::get('/tao-moi','BackEnd\BlogController@create')->name('addBaiviet');
+        Route::get('/tao-moi','Backend\BlogController@create')->name('addBaiviet');
         Route::post('/luu-tao-moi','Backend\BlogController@store')->name('storeBaiviet');
         Route::get('/xoa/{id}','Backend\BlogController@destroy')->name('deleteBaiviet');
         Route::get('/trang-edit/{id}','Backend\BlogController@edit')->name('editBaiviet');
