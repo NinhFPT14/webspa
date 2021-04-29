@@ -178,10 +178,8 @@ Bảng xếp lịch
 	  </div>
 	</div>
   </div>
-
-
-
-<!-- Modal chuyển lịch-->
+</div>
+<!-- Modal Chuyển lịch-->
 <div class="modal fade" id="modal_change" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
@@ -193,28 +191,31 @@ Bảng xếp lịch
 			<div class="form-group ">
 				<label for="exampleInputPassword1">Ghế làm</label>
 				<select class="form-select modal_location_change" aria-label="Default select example">
+					@foreach($location as $value)
+					<option value="{{$value->id}}">{{$value->name}}</option>
+					@endforeach
 				</select>
 				<p id="thong_bao_location_change" class="text-danger"></p>
 			</div>
 			<div>
 			<label for="exampleInputPassword1">Thời gian bắt đầu</label>
 			<div class="form-group grid grid-cols-4 ">
-				<input id="time-24h-picker_change" data-input-style="outline" data-label-style="stacked" placeholder="chọn giờ.." class=" mbsc-ios mbsc-ltr  mbsc-textfield mbsc-textfield-outline mbsc-textfield-stacked mbsc-textfield-outline-stacked" type="text" readonly="">
+				<input id="time-24h-picker-change" data-input-style="outline" data-label-style="stacked" placeholder="chọn giờ.." class=" mbsc-ios mbsc-ltr  mbsc-textfield mbsc-textfield-outline mbsc-textfield-stacked mbsc-textfield-outline-stacked" type="text" readonly="">
 				<input type="date" id="time_start_change" class="form-control col-span-3 h-14">
-		
 			</div>
 			<div class="form-group ">
 				<p id="thong_bao_hour_change" class="text-danger"></p>
 				<p id="thong_bao_date_change" class="text-danger"></p>
 				<p id="thong_bao_fail_change" class="text-danger"></p>
 			</div>
-	</div>
+			</div>
 		<div class="modal-footer">
-		  <button type="button" class="btn btn-success" >Tạo</button>
+		  <button type="button" class="btn btn-success btn_chuyen_lich" >Chuyển</button>
 		</div>
 	  </div>
 	</div>
   </div>
+</div>
 
 @section("js")
 <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
@@ -225,11 +226,18 @@ Bảng xếp lịch
 		timeFormat: 'HH:mm',
 		touchUi: true
 	});
+
+	mobiscroll.datepicker('#time-24h-picker-change', {
+		controls: ['time'],
+		timeFormat: 'HH:mm',
+		touchUi: true
+	});
+	
 	 mobiscroll.setOptions({
             locale: mobiscroll.localeEn,
             theme: 'ios',
             themeVariant: 'light'
-        });
+    });
 </script>
 <script>
 	$(document).ready(function() {
@@ -390,6 +398,7 @@ Bảng xếp lịch
 			},
 			function(){
 		    let apiStatus = '{{route("statusAppointment")}}';
+			
 			$.ajax({
 				url: apiStatus,
 				method: "POST",
@@ -406,6 +415,57 @@ Bảng xếp lịch
 	
 			})
 			});
+		})
+
+		$('.btn_chuyen_lich').on('click', function() {
+
+			$("p#thong_bao_hour_change" ).html('');
+			$("p#thong_bao_date_change" ).html('');
+			$("p#thong_bao_location_change" ).html('');
+			$("p#thong_bao_fail_change" ).html('');
+
+			let id = $(this).attr('name');
+			let hour =  $('#time-24h-picker-change').val();
+			let date =  $('#time_start_change').val();
+			let location =  $('.modal_location_change').val();
+		    let apiChange = '{{route("changeAppointment")}}';
+			$.ajax({
+				url: apiChange,
+				method: "POST",
+				data: {
+					id: id,
+					hour:hour,
+					date:date,
+					location:location,
+					_token: '{{csrf_token()}}'
+				},
+				dataType: 'json',
+				success: function(response) {
+						if(response.data){
+							$('#modal_change').modal('hide');
+							swal("Chuyển lịch làm thành công", "", "success");
+						}
+						if(response.messages){
+							if(response.messages.hour){
+								$("p#thong_bao_hour_change" ).html('- ' + response.messages.hour);
+							}
+							if(response.messages.date){
+								$("p#thong_bao_date_change" ).html('- ' + response.messages.date);
+							}
+							
+							if(response.messages.location){
+								$("p#thong_bao_location_change" ).html('- ' + response.messages.location);
+							}
+						}else{
+							if(response.fail){
+								$("p#thong_bao_fail_change" ).html('- ' + response.fail);
+							}
+
+						}
+					
+					}
+	
+			})
 		})
 	
 	})
@@ -486,7 +546,8 @@ Bảng xếp lịch
 				// {name:"descretion", type:"text" , focus:false , map_to:"text"},
 				{name:"Khách hàng", type:"textarea" , focus:false , map_to:"name"},
 				{name:"Phone", type:"textarea" , focus:false , map_to:"sdt"},
-				{name:"Mã đơn", type:"textarea" , focus:false , map_to:"id"},
+				{name:"Mã đơn", type:"textarea" , focus:false , map_to:"appointment_id"},
+				{name:"Mã xếp lịch", type:"textarea" , focus:false , map_to:"id"},
 
 			];
 
@@ -499,10 +560,20 @@ Bảng xếp lịch
          
 			scheduler.attachEvent("onEventSave",function(id,data,is_new_event){ // Xử lý sự kiện khi ấn chuyển lịch
 				var custom_value1 = scheduler.getEvent(id).custom_event_property;
-				var custom_form = 	$('#modal_sort').modal('show');
+				var custom_form = 	$('#modal_change').modal('show');
 				console.log(custom_form)
 				if(id){
+					
 					scheduler.hideLightbox(true,custom_form);
+					$("p#thong_bao_service" ).html('');
+					$("p#thong_bao_hour" ).html('');
+					$("p#thong_bao_date" ).html('');
+					$("p#thong_bao_location" ).html('');
+					$("p#thong_bao_fail" ).html('');
+					$(".btn_chuyen_lich" ).attr('name', id);
+					$('#time_start_change').val('');
+					$('#time-24h-picker-change').val('');
+
 				}
 			});
 
@@ -518,7 +589,9 @@ Bảng xếp lịch
 						},
 						dataType: 'json',
 						success: function(response) {
-							
+							if(response.data){
+								swal("Xoá lịch làm thành công", "", "warning");
+							}
 						}
 			
 					})
