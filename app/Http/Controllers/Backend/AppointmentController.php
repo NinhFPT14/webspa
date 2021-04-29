@@ -52,7 +52,7 @@ class AppointmentController extends Controller
 
     public function listServiceAppointment(Request $request){
         try {
-
+            dd($request_all());
             $service_id = NumberService::where('appointment_id',$request->id)->get();
             $sort = SortAppointment::where('appointment_id',$request->id)->get();
             $arr = [];
