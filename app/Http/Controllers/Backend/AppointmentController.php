@@ -101,21 +101,23 @@ class AppointmentController extends Controller
     
     public function listServiceAppointment(Request $request){
         try {
+            dd( $request->all());
             $data = Location::select('name','id')->where('status',0)->get();
+            $location = Location::select('name','id')->where('status',0)->get();
             return response()->json(['status' => true, 'data' => $data]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
     }
 
-    public function listDo(){
-        try {
-            $data = Appointment::get();
-            return response()->json(['status' => true, 'data' => $data]);
-        } catch (Exception $e) {
-            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
-        }
-    }
+    // public function listDo(){
+    //     try {
+    //         $data = Appointment::get();
+    //         return response()->json(['status' => true, 'data' => $data]);
+    //     } catch (Exception $e) {
+    //         return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+    //     }
+    // }
 
     public function sortAppointment(Request $request){
         $time =Carbon::now();
