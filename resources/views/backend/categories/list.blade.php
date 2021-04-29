@@ -84,4 +84,5 @@ Danh sách danh mục
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection

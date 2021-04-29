@@ -11,11 +11,11 @@ class ServiceController extends Controller
     public function service($id){
         $category = DB::table('categories')->where('status',0)->where('type',1)->get();
         if($id === "all"){
-            $data = DB::table('services')->where('status', 0)->paginate(6);
+            $data = DB::table('services')->where('status', 0)->orderByDesc('id')->paginate(6);
         }else{
-            $data = DB::table('services')->where('status', 0)->where('category_id', $id)->paginate(5);
+            $data = DB::table('services')->where('status', 0)->where('category_id', $id)->orderByDesc('id')->paginate(5);
         }
-        $serviceAll = DB::table('services')->where('status', 0)->get();
+        $serviceAll = DB::table('services')->where('status', 0)->orderByDesc('id')->get();
         return view('frontend.service',compact('data','category','serviceAll'));
     }
 
@@ -24,15 +24,15 @@ class ServiceController extends Controller
         $category = DB::table('categories')->where('status',0)->where('type',1)->get();
         $data = DB::table('services')->where('status',0)->find($id);
         $view = $data->view + 1;
-        $serviceAll = DB::table('services')->where('status', 0)->get();
+        $serviceAll = DB::table('services')->where('status', 0)->orderByDesc('id')->get();
         DB::table('services')->where('id',$id)->update(['view' => $view]);
         return view('frontend.detailService',compact('data','category','serviceAll'));
     }
 
     public function search(Request $request){
         $category = DB::table('categories')->where('status',0)->where('type',1)->get();
-        $data = DB::table('services')->where('status', 0)->where('name', 'like', '%' . $request->name . '%')->paginate(5);
-        $serviceAll = DB::table('services')->where('status', 0)->get();
+        $data = DB::table('services')->where('status', 0)->where('name', 'like', '%' . $request->name . '%')->orderByDesc('id')->paginate(5);
+        $serviceAll = DB::table('services')->where('status', 0)->orderByDesc('id')->get();
         return view('frontend.service',compact('data','category','serviceAll'));
     }
 

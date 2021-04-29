@@ -14,9 +14,9 @@ class ProductController extends Controller
 {
     public function product($id){
         if($id === "all"){
-            $data = DB::table('products')->where('status', 0)->paginate(9);
+            $data = DB::table('products')->where('status', 0)->orderByDesc('id')->paginate(9);
         }else{
-            $data = DB::table('products')->where('status', 0)->where('category_id', $id)->paginate(9);
+            $data = DB::table('products')->where('status', 0)->where('category_id', $id)->orderByDesc('id')->paginate(9);
         }
         return view('frontend.product',compact('data'));
     }
@@ -154,7 +154,7 @@ class ProductController extends Controller
         }
     }
     public function detailProduct($slug,$id){
-        $data = DB::table('products')->orderBy('view')->where('status','==',0)->find($id);
+        $data = DB::table('products')->orderBy('view')->where('status','==',0)->orderByDesc('id')->find($id);
         $view = $data->view + 1;
         // dd($view);
         DB::table('products')->where('id',$id)->update(['view' => $view]);
@@ -167,7 +167,7 @@ class ProductController extends Controller
     }
 
     public function search(Request $request){
-        $data = Product::where('status', 0)->where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        $data = Product::where('status', 0)->where('name', 'like', '%' . $request->name . '%')->orderByDesc('id')->paginate(9);
         return view('frontend.product',compact('data'));
     }
 }

@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected  $table = "categories";
     public $timestamps = true;
-    protected  $fillable =['name','type','statu\';m s'];
+    protected  $fillable =['name','type','status'];
 
     public function Product()
     {

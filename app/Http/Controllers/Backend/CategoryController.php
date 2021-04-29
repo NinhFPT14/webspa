@@ -25,7 +25,7 @@ class CategoryController extends Controller
         $data['status'] = 0;
         $category = Category::create($data);
         alert()->success('Thành công', "Tạo thành công danh mục $request->name"); 
-        return redirect()->route('addCategory');
+        return redirect()->route('listCategory',['type'=>$request->type]);
     }
     
 
