@@ -15,6 +15,7 @@ use App\Model\SortAppointment;
 use App\Http\Requests\addSortAppointment;
 use App\Http\Requests\AddAppointment;
 use App\Http\Sms\SpeedSMSAPI;
+use Illuminate\Support\Facades\Validator;
 use DB;
 use Carbon\Carbon;
 
@@ -101,23 +102,25 @@ class AppointmentController extends Controller
     
     public function listServiceAppointment(Request $request){
         try {
-            dd( $request->all());
-            $data = Location::select('name','id')->where('status',0)->get();
-            $location = Location::select('name','id')->where('status',0)->get();
-            return response()->json(['status' => true, 'data' => $data]);
+
+            $service_id = NumberService::where('appointment_id',$request->id)->get();
+            $sort = SortAppointment::where('appointment_id',$request->id)->get();
+            $arr = [];
+            $arr2 = [];
+            foreach($service_id as $value){
+                $arr[] = $value->service_id;
+            }
+            foreach($sort as $value){
+                $arr2[] = $value->service_id;
+            }
+            $arrId = array_diff($arr, $arr2);
+            $data = Service::whereIn('id', $arrId)->get();
+            $location = Location::where('status',0)->get();
+            return response()->json(['status' => true, 'data' => $data ,'id'=>$request->id ,'location'=>$location]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
     }
-
-    // public function listDo(){
-    //     try {
-    //         $data = Appointment::get();
-    //         return response()->json(['status' => true, 'data' => $data]);
-    //     } catch (Exception $e) {
-    //         return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
-    //     }
-    // }
 
     public function sortAppointment(Request $request){
         $time =Carbon::now();
@@ -143,16 +146,14 @@ class AppointmentController extends Controller
             ]);
         }
 
-
         $appointment = Appointment::find($request->id);
         $service = Service::find($request->service_id);
-        $location = Location::find($request->location_id);
+        $location = Location::find($request->location);
         $staff = Staff::find($location->staff_id);
 
         $time_start = $request->date.' '. $request->hour;
         $newdate = strtotime ( "+$service->time_working minute" , strtotime ($time_start) ) ;
         $time_end = date ( 'Y-m-d H:i' , $newdate );
-
         $data =SortAppointment::where('location_id',$request->location)
         ->where('time_end','>=',$time_start)
         ->where('time_start','<=',$time_end)
