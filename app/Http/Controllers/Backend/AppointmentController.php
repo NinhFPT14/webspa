@@ -77,6 +77,16 @@ class AppointmentController extends Controller
          return back()->with('message', 'Mã giảm giá không tồn tại');
         }
     }
+    public function statusAppointment(Request $request){
+        try {
+            $data = Appointment::find($request->id);
+            $data->status = 2;
+            $data->save();
+            return response()->json(['status' => true, 'data' => $request->id]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
 
     public function updateAppointment(AddAppointment $request ,$id){
         try {
