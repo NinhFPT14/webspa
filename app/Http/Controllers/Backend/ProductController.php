@@ -19,9 +19,26 @@ use File;
 
 class ProductController extends Controller
 {
-    public function list(){
-        $data = Product::where('status','<',2)->paginate(9);
-        return view('backend.products.list',compact('data'));
+    public function list(Request $request){
+        if(!$request->hasAny(['key', 'type'])){
+             $data = Product::where('status','<',2)->orderByDesc('id')->paginate(9);
+        }else{
+            if($request->has('key')){
+                $query = Product::where('status','<',2)->where(function($q2) use ($request){
+                    $q2->where("name", "like", "%".$request->key."%")
+                        ->orWhere("discount", "like", "%".$request->key."%");
+                });
+            }
+            if($request->has('type')){
+                $query =  $query->where("category_id",$request->type);
+            }
+            $data = $query->orderByDesc('id')->paginate(10);
+        }
+
+        $category = Category::where('status',0)->where('type',0)->get();
+        $key = $request->key;
+        $type = $request->type;
+        return view('backend.products.list',compact('data','category','key','type'));
     }
     public function add(){
         $category = Category::where('type',0)->get();

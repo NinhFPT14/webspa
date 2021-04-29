@@ -66,4 +66,5 @@ Danh sách nhân viên
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection

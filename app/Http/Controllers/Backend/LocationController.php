@@ -24,22 +24,22 @@ class LocationController extends Controller
     }
 
     public function list(){
-        $data = Location::paginate(10);
+        $data = Location::where('status','!=',2)->paginate(10);
         return view('backend.locations.list' ,compact('data'));   
     }
 
     public function status($id ,$status){
         Location::where('id',$id)->update(['status'=>$status]);
-        $data = Location::paginate(10);
         alert()->success('Sửa trạng thái thành công'); 
-        return view('backend.locations.list' ,compact('data'));   
+        return redirect()->route('listLocation');   
     }
 
     public function delete($id){
-        Location::destroy($id);
-        $data = Location::paginate(10);
+        $location = Location::find($id);
+        $location->status = 2;
+        $location->save();
         alert()->error('Xóa thành công'); 
-        return view('backend.locations.list' ,compact('data'));   
+        return redirect()->route('listLocation'); 
     }
 
     public function edit($id){
@@ -53,11 +53,10 @@ class LocationController extends Controller
         unset($data['_token']);
         Location::where('id',$id)->update($data);
         alert()->success('Sửa thành công'); 
-        $data = Location::paginate(10);
-        return view('backend.locations.list' ,compact('data'));  
+        return redirect()->route('listLocation'); 
     }
     public function search(Request $request){
-        $data = Location::where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        $data = Location::where('name', 'like', '%' . $request->name . '%')->where('status','!=',2)->paginate(9);
         return view('backend.locations.list' ,compact('data'));   
     }
     

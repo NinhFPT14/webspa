@@ -43,6 +43,7 @@ Dịch Vụ
                                             <h2><a href="{{ route('detailService',['slug'=>$value->slug,'id'=>$value->id]) }}">{{$value->name}}</a></h2>
                                         </div>
                                         <p class="blog_desc">{!! $value->description !!}</p>
+                                        <p class=""> Số buổi làm :{{ $value->total_time }}</p>
                                         <div class="blog_post">
                                             <ul>
                                                 <li class="post_author">{{number_format($value->discount)}} vnđ</li>

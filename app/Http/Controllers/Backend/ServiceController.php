@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Service;
+use App\Model\Category;
 use App\Http\Requests\AddServiceRequest;
 use App\Http\Requests\EditServiceRequest;
 use Illuminate\Support\Str;
@@ -39,10 +40,27 @@ class ServiceController extends Controller
         return redirect()->route('listService');
     }
 
-    public function list(){
-        $data = Service::where('status','<',2)->paginate(10);
-        // dd($data);
-        return view('backend.services.list',compact('data'));
+    public function list(Request $request){
+        if(!$request->hasAny(['key', 'type'])){
+            $data = Service::where('status','<',2)->orderByDesc('id')->paginate(10);
+        }else{
+            if($request->has('key')){
+                $query = Service::where('status','<',2)->where(function($q2) use ($request){
+                    $q2->where("name", "like", "%".$request->key."%")
+                        ->orWhere("discount", "like", "%".$request->key."%");
+                });
+            }
+            if($request->has('type')){
+                $query =  $query->where("category_id",$request->type);
+            }
+            $data = $query->orderByDesc('id')->paginate(10);
+        }
+
+
+        $category = Category::where('status',0)->where('type',1)->get();
+        $key = $request->key;
+        $type = $request->type;
+        return view('backend.services.list',compact('data','category','type','key'));
     }
 
     public function status($id ,$status){
@@ -88,12 +106,6 @@ class ServiceController extends Controller
         alert()->success('Sửa thành công dịch vụ');
         return redirect()->route('listService');
     }
-
-    public function search(Request $request){
-        $data = Service::where('name', 'like', '%' . $request->name . '%')->paginate(9);
-        return view('backend.services.list',compact('data'));
-    }
-
     
 }
 

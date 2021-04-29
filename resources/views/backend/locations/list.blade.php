@@ -69,4 +69,5 @@ Danh sách ghế
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection

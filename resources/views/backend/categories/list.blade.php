@@ -7,13 +7,13 @@ Danh sách danh mục
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Danh sách danh mục</li>
+            <li class="breadcrumb-item active" aria-current="page">Danh mục</li>
             @if($type == 0)
-            <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listCategory',['type'=>0])}}">Sản phẩm</a></li>
             @elseif($type == 1)
-            <li class="breadcrumb-item active" aria-current="page">Dịch vụ</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listCategory',['type'=>1])}}">Dịch vụ</a></li>
             @elseif($type == 2)
-            <li class="breadcrumb-item active" aria-current="page">Bài viết</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listCategory',['type'=>2])}}">Bài viết</a></li>
             @endif
         </ol>
     </nav>

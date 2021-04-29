@@ -32,11 +32,7 @@ Chi tiết dịch vụ
 
                                 <ul>
                             <li class="post_image"><img src="{{ $data->image }}" alt="" sizes="" srcset=""></li>
-
-                                    <?php 
-                                    $name_category = DB::table('categories')->find($data->category_id);
-                                    ?>
-                                    <li><p>Loại danh mục : {{$name_category->name}} </p></li>
+                                    <li><p>Số buổi làm : {{$data->total_time}} </p></li>
                                     <li class="post_author"> {{number_format($data->discount)}} vnđ </li>
                                     <li class="post_date" style="text-decoration-line:line-through">{{number_format($data->price)}} vnđ</li>
                                     <li><a class="button data_service" style="margin-left:50px" data-orderid="{{$data->id}}" data-toggle="modal" data-target="#exampleModal">Đặt lịch</a></li>

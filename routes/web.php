@@ -152,7 +152,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::get('/xoa/{id}','Backend\ServiceController@delete')->name('deleteService');
         Route::get('/trang-sua/{id}','Backend\ServiceController@edit')->name('editService');
         Route::post('/cap-nhat/{id}','Backend\ServiceController@update')->name('updateService');
-        Route::post('/tim-kiem-dich-vu','Backend\ServiceController@search')->name('service.search');
 
 
         Route::get('/danh-sach-dat-lich','Backend\AppointmentController@listAppointment')->name('listAppointment');
@@ -162,7 +161,6 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/tim-kiem-don-theo-thoi-gian','Backend\AppointmentController@searchTimeAppointment')->name('searchTimeAppointment');
         Route::post('/xac-nhan-don','Backend\AppointmentController@confirm')->name('confirmAppointment');
         Route::get('/sua-don-dat-lich/{id}','Backend\AppointmentController@edit')->name('editAppointment');
-        Route::get('/huy-lich-lam/{id}','Backend\AppointmentController@cancelAppointment')->name('cancelAppointment');
 
         Route::post('/su-dung-ma-giam-gia/{id}','Backend\AppointmentController@voucherAppointment')->name('voucherAppointment');
         Route::post('/sua-va-thanh-toan-don-dat-lich/{id}','Backend\AppointmentController@updateAppointment')->name('updateAppointment');

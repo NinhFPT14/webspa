@@ -30,7 +30,7 @@ class CategoryController extends Controller
     
 
     public function list($type){
-        $data = Category::where('type',$type)->where('status','<',2)->paginate(10);
+        $data = Category::where('type',$type)->where('status','<',2)->orderByDesc('id')->paginate(10);
         return view('backend.categories.list',compact('data','type'));
     }
 
@@ -88,7 +88,7 @@ class CategoryController extends Controller
         return redirect()->route('listCategory',['type'=>$data['type']]);
     }
     public function search(Request $request ,$type){
-      $data = Category::where('type',$type)->where('name', 'like', '%' . $request->name . '%')->paginate(10);
+      $data = Category::where('type',$type)->where('status','<',2)->where('name', 'like', '%' . $request->name . '%')->orderByDesc('id')->paginate(10);
       return view('backend.categories.list',compact('data','type'));
     }
 }

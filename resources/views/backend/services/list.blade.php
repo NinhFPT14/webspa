@@ -5,15 +5,29 @@ Danh sách dịch vụ
 @section('content')
 <div class="container-fluid">
     <!-- DataTales Example -->
-
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active" aria-current="page">Dịch vụ</li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listService')}}">Danh sách dịch vụ</a></li>
+        </ol>
+      </nav>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <a href="{{route('addService')}}" class="btn btn-primary" role="button">Tạo Mới</a>
-            <form action="{{route('service.search')}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
                 @csrf
                 <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập từ khóa tìm kiếm ..."
-                        aria-label="Search" aria-describedby="basic-addon2" name="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
+                    </div>
+                    <div class="form-group">
+                        <select  name="type" class="form-control">
+                            <option selected disabled>Chọn danh mục</option>
+                            @foreach($category as $value)
+                            <option value="{{$value->id}}" {{$type == $value->id ? 'selected':''}}>{{$value->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>

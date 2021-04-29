@@ -25,26 +25,26 @@ class StaffController extends Controller
            }
            Staff::create($data);
         alert()->success('Thêm thành công'); 
-        return view('backend.staffs.add');    
+        return redirect()->route('listStaff');    
     }
 
     public function list(){
-        $data = Staff::paginate(10);
+        $data = Staff::where('status','!=',2)->paginate(10);
         return view('backend.staffs.list',compact('data'));   
     }
 
     public function status($id ,$status){
         Staff::where('id',$id)->update(['status'=>$status]);
-        $data = Staff::paginate(10);
         alert()->success('Sửa trạng thái thành công'); 
-        return view('backend.staffs.list',compact('data'));   
+        return redirect()->route('listStaff');  
     }
 
     public function delete($id){
-        Staff::destroy($id);
-        $data = Staff::paginate(10);
+        $data = Staff::find($id);
+        $data->status = 2;
+        $data->save();
         alert()->error('Xóa thành công'); 
-        return view('backend.staffs.list',compact('data'));   
+        return redirect()->route('listStaff'); 
     }
 
     public function edit($id){
@@ -65,12 +65,11 @@ class StaffController extends Controller
             $data['image'] = "storage/".$path;  
             } 
         Staff::where('id',$id)->update($data);
-        $data = Staff::paginate(10);
         alert()->success('Sửa thành công'); 
-        return view('backend.staffs.list',compact('data'));   
+        return redirect()->route('listStaff');  
     }
     public function search(Request $request){
-        $data = Staff::where('name', 'like', '%' . $request->name . '%')->paginate(9);
+        $data = Staff::where('name', 'like', '%' . $request->name . '%')->where('status','!=',2)->paginate(9);
         return view('backend.staffs.list',compact('data'));     
     }
     

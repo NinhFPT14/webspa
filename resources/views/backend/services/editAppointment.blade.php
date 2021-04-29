@@ -150,29 +150,19 @@ Sửa đơn đặt lịch
                                 <th scope="col">Dịch vụ</th>
                                 <th scope="col">Bắt đầu</th>
                                 <th scope="col">Kết thúc</th>
-                                <th scope="col">Trạng thái</th>
                                 <th scope="col">Huỷ lịch</th>
                               </tr>
                             </thead>
                             <tbody>
                                 @foreach($sort as $value)
-                                <tr>
+                                <tr id="key{{$value->id}}">
                                     <th scope="row">{{$value->name_location}}</th>
                                     <td>{{$value->name_service}}</td>
                                     <td>{{$value->time_start}}</td>
                                     <td>{{$value->time_end}}</td>
                                     <td>
                                         @if($value->status == 0)
-                                        <p style="color:#FFCC33">Chờ đến làm<p>
-                                        @elseif($value->status == 1)
-                                        <p style="color:#00aeff">Đang làm<p>
-                                        @elseif($value->status == 2)
-                                        <p style="color:#00FFCC">Đã xong<p>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if($value->status == 0)
-                                        {{-- <a href="{{route('cancelAppointment',['id'=>$value->id])}}" class="text-danger">Huỷ</a> --}}
+                                        <a  data-appointmentid="{{$value->id}}" class="text-danger btn_xoa_lich">Xoá</a>
                                         @endif
                                     </td>
                                 </tr>
@@ -207,9 +197,45 @@ Sửa đơn đặt lịch
 
 
 @section('js')
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <script>
 $(document).ready(function() {
     $(".mul-select").select2();
+    $('.btn_xoa_lich').on('click', function() {
+    let id = $(this).data('appointmentid');
+    let apiDelete = '{{route("deleteSortAppointment")}}';
+    swal({
+        title: "Xoá lịch làm",
+        text: "Nếu chắc chắn muốn xoá lịch làm ấn ĐỒNG Ý không ấn TỪ CHỐI!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: 'success',
+        cancelButtonText: 'Từ chối',
+        confirmButtonText: 'Đồng ý',
+        closeOnConfirm: true,
+    },
+    function(){
+        $.ajax({
+        url: apiDelete,
+        method: "POST",
+        data: {
+            id: id,
+            _token: '{{csrf_token()}}'
+        },
+        dataType: 'json',
+        success: function(response) {
+                if(response.data){
+                    swal("Xoá lịch làm thành công", "", "warning");
+                    location.reload();
+                }
+            
+            }
+
+    })
+    });
+    
+})
 })
 </script>
 @endsection

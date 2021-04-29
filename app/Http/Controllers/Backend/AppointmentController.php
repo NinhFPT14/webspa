@@ -347,13 +347,6 @@ class AppointmentController extends Controller
         $sort = SortAppointment::where('appointment_id',$id)->orderBy('time_start', 'asc')->get();
         return view('backend.services.editAppointment',compact('data','service_id','location','sort','serviceAppointment'));
     }
-    public function cancelAppointment($id){
-        $SortAppointment = SortAppointment::find($id);
-        $SortAppointment->status = 3;
-        $SortAppointment->save();
-        alert()->error('Huỷ lịch thành công');
-        return redirect()->route('editAppointment',['id'=>$SortAppointment->appointment_id]);
-    }
 
 
     public function detailAppointment(Request $request){

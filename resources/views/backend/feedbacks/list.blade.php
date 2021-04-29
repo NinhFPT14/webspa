@@ -8,11 +8,36 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item active" aria-current="page">Phản hồi</li>
-          <li class="breadcrumb-item active" aria-current="page">Danh sách phản hồi</li>
+          <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listFeedback')}}">Danh sách phản hồi</a></li>
         </ol>
       </nav>
     <div class="card shadow mb-4">
         <div class="card-body">
+          <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" >
+            @csrf
+            <div class="input-group">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm ..." name="key" value="{{$key}}">
+                </div>
+                <div class="input-group input-daterange">
+                    <input type="text" class="form-control" name="from_time" autocomplete="off" value="{{$from_time}}">
+                    <div class="input-group-addon">đến</div>
+                    <input type="text" class="form-control" name="to_time" autocomplete="off" value="{{$to_time}}">
+                </div>
+                <div class="form-group">
+                    <select  name="type" class="form-control">
+                        <option selected disabled>Chọn trạng thái</option>
+                        <option value="0" {{$type == 0 ? 'selected':''}} >Chưa xem</option>
+                        <option value="1" {{$type == 1 ? 'selected':''}}>Đã xem</option>
+                    </select>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -99,6 +124,12 @@
 <script src="momentjs/moment.min.js"></script>
 <script>
 $(document).ready(function() {
+  $('.input-daterange input').each(function() {
+        $(this).datepicker({
+            clearDates: true,
+            format: "dd/mm/yyyy"
+        });
+    });
     $('.chi-tiet').on('click', function() {
         let id = $(this).data('orderid');
         console.log(id);

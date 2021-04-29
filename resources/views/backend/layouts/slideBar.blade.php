@@ -83,16 +83,10 @@
     </li>
     
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#voucher_service" aria-expanded="true"
-            aria-controls="voucher_service">
+        <a class="nav-link collapsed" href="{{ route('listVoucherService') }}" aria-controls="service">
             <i class="fas fa-fw fa-qrcode"></i>
-            <span>Voucher</span>
+            <span>Voucher </span>
         </a>
-        <div id="voucher_service" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('listVoucherService') }}">Dịch vụ</a>
-            </div>
-        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{route('listFeedback')}}" aria-controls="service">
