@@ -59,7 +59,7 @@ Sửa dịch vụ
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Số buổi thực hiện (phút)</label>
                             <input type="number" name="total_time" class="form-control" id="formGroupExampleInput"
-                                placeholder="Chọn thời gian" value="{{ old('total_time')}}">
+                                placeholder="Chọn thời gian" value="{{ $data->total_time }}">
                             @error('total_time')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
