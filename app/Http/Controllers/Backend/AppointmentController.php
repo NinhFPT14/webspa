@@ -13,6 +13,7 @@ use App\Model\Location;
 use App\Model\Staff;
 use App\Model\SortAppointment;
 use App\Http\Requests\addSortAppointment;
+use App\Http\Requests\AddAppointment;
 use App\Http\Sms\SpeedSMSAPI;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -54,7 +55,48 @@ class AppointmentController extends Controller
 
         return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list','time'));
     }
+    public function voucherAppointment(Request $request ,$id){
+        $mytime = Carbon::now();
+        $data = ServiceVoucher::where('code',$request->code)->where('status',0)->get();
+        if(count($data) >= 1){
+           foreach($data as $value){
+               if($mytime < $value->time_end){
+                  $appointment = Appointment::find($id);
+                  $appointment->voucher_id = $value->id;
+                  $appointment->discount_money = $value->discount;
+                  $appointment->save();
+                  return back();
+               }else{
+                return back()->with('message', 'Mã giảm giá đã hết hạn');
+               }
+           }
+        }else{
+         return back()->with('message', 'Mã giảm giá không tồn tại');
+        }
+    }
 
+    public function updateAppointment(AddAppointment $request ,$id){
+        try {
+            $data = $request->all();
+            unset($data['_token'],$data['service_id']);
+            $service = NumberService::where('appointment_id',$id)->delete();
+            $total_money = 0;
+            for($i= 0 ; $i < count($request->service_id) ; $i++){
+                $updateService = new NumberService;
+                $updateService->appointment_id = $id;
+                $updateService->service_id = $request->service_id[$i];
+                $updateService->save();
+                $price = Service::find($request->service_id[$i]);
+                $total_money += $price->discount;
+            }
+            $data['total_money'] = $total_money;
+            $appointment = Appointment::where('id',$id)->update( $data);
+            return back();
+        } catch (Exception $e) {
+            return back()->with('message', 'Lỗi không sửa được đơn đặt lịch');
+        }
+    }
+    
     public function listServiceAppointment(Request $request){
         try {
 
