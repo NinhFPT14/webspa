@@ -25,7 +25,7 @@ Sửa đơn đặt lịch
                         <h6 class="m-0 font-weight-bold text-primary">Thông tin đơn</h6>
                     </div>
                     <div class="card-body">
-                        <form method="POST"  action="{{route('storeProduct')}}" enctype="multipart/form-data">
+                        <form method="POST" id="myform"  action="{{route('updateAppointment',['id'=>$data->id])}}" enctype="multipart/form-data">
                             @csrf
                         <div class="form-group">
                             <select class="mul-select form-control " id="modal_service" name="service_id[]" multiple>
@@ -43,6 +43,9 @@ Sửa đơn đặt lịch
                                 @endforeach
                                 @endforeach
                             </select>
+                            @error('service_id')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Họ tên</label>
@@ -53,8 +56,8 @@ Sửa đơn đặt lịch
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Số điện thoại</label>
-                            <input type="text" name="name" class="form-control" value="{{$data->phone}}" >
-                            @error('name')
+                            <input type="text" name="phone" class="form-control" value="{{$data->phone}}" >
+                            @error('phone')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -66,37 +69,68 @@ Sửa đơn đặt lịch
                                 <option  value="Chiều" {{$data->time_ficked == 'Chiều' ? 'selected':''}}>Chiều</option>
                                 <option  value="Tối" {{$data->time_ficked == 'Tối' ? 'selected':''}}>Tối</option>
                             </select>
-                            @error('name')
+                            @error('time_ficked')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Ngày làm</label>
-                            <input type="date" name="name" class="form-control" value="{{date("Y-m-d", strtotime($data->time_start))}}" >
-                            @error('name')
+                            <input type="date" name="time_start" class="form-control" value="{{date("Y-m-d", strtotime($data->time_start))}}" >
+                            @error('time_start')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Lời nhắn</label>
-                            <textarea class="form-control" name="description" id="descs" cols="30" rows="4">{{$data->note}}</textarea>
-                            @error('description')
+                            <textarea class="form-control" name="note" id="descs" cols="30" rows="4">{{$data->note}}</textarea>
+                            @error('note')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Gọi xác nhận</label>
-                            <select class="form-control" name="time_ficked">
-                                <option selected disabled value="">Chọn trạng thái</option>
-                                <option  value="1">Đã gọi</option>
-                                <option  value="2">Không nghe</option>
+                            <select class="form-control" name="call_confirmation">
+                                <option selected disabled value=""></option>
+                                <option  value="1" {{$data->call_confirmation == 1 ? 'selected':''}}>Đã gọi</option>
+                                <option  value="2" {{$data->call_confirmation == 2 ? 'selected':''}}>Không nghe</option>
                             </select>
-                            @error('name')
+                            @error('call_confirmation')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-warning float-right ">Lưu</button>
-                    </form>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Thanh toán</label>
+                            <select class="form-control" name="payment_methods">
+                                <option selected disabled value=""></option>
+                                <option  value="1" {{$data->payment_methods == 1 ? 'selected':''}}>Thanh toán chuyển khoản</option>
+                                <option  value="2" {{$data->payment_methods == 2 ? 'selected':''}}>Thanh toán tiền mặt</option>
+                            </select>
+                            @error('payment_methods')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Trạng thái đơn</label>
+                            <select  name="status" class="form-control">
+                                <option value="1" {{$data->status == 1 ? 'selected':''}} >Chờ lên lịch</option>
+                                <option value="2" {{$data->status == 2 ? 'selected':''}}>Đã lên lịch</option>
+                                <option value="3" {{$data->status == 3 ? 'selected':''}}>Làm xong</option>
+                                <option value="4" {{$data->status == 4 ? 'selected':''}}>Từ chối</option>
+                            </select>
+                        </div>
+                       </form>
+                       <form method="POST"  action="{{route('voucherAppointment',['id'=>$data->id])}}">
+                           @csrf
+                            <div class="input-group mb-3">
+                                <input type="text" name="code" class="form-control" placeholder="Nhập mã giảm giá" >
+                                <button class="btn btn-success" type="submit" id="button-addon2">Áp dụng</button>
+                            </div>
+                             
+                            @if (\Session::has('message'))
+                                <div class="alert alert-danger">{!! \Session::get('message') !!}</div>
+                             @endif
+                      </form>
+                        <button type="submit" form="myform" class="btn btn-warning float-right ">Lưu</button>
                     </div>
                 </div>
             </div>
@@ -128,26 +162,39 @@ Sửa đơn đặt lịch
                                     <td>{{$value->time_start}}</td>
                                     <td>{{$value->time_end}}</td>
                                     <td>
-                                        <div class="form-group">
-                                            <select class="form-control" name="time_ficked">
-                                                <option  value="0" {{$value->status == 0 ? 'selected':''}}>Chờ đến làm </option>
-                                                <option  value="1" {{$value->status == 1 ? 'selected':''}}>Đang làm</option>
-                                                <option  value="2" {{$value->status == 2 ? 'selected':''}}>Làm xong</option>
-                                                <option  value="3" {{$value->status == 3 ? 'selected':''}}>Đã huỷ</option>
-                                            </select>
-                                            @error('name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>    
+                                        @if($value->status == 0)
+                                        <p style="color:#FFCC33">Chờ đến làm<p>
+                                        @elseif($value->status == 1)
+                                        <p style="color:#00aeff">Đang làm<p>
+                                        @elseif($value->status == 2)
+                                        <p style="color:#00FFCC">Đã xong<p>
+                                        @endif
                                     </td>
                                     <td>
                                         @if($value->status == 0)
-                                        <a href="{{route('cancelAppointment',['id'=>$value->id])}}" class="text-danger">Huỷ</a>
+                                        {{-- <a href="{{route('cancelAppointment',['id'=>$value->id])}}" class="text-danger">Huỷ</a> --}}
                                         @endif
                                     </td>
                                 </tr>
                               @endforeach
                             </tbody>
+                          </table>
+
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">Tạm tính : {{number_format($data->total_money)}} VNĐ</th>
+                              </tr>
+                              <tr>
+                                <th scope="col">VAT(10%) : {{number_format(($data->total_money*10)/100)}} VNĐ</th>
+                              </tr>
+                              <tr>
+                                <th scope="col">Mã giảm giá : {{number_format($data->discount_money)}} VNĐ</th>
+                              </tr>
+                              <tr>
+                                <th scope="col">Tổng tiền : {{number_format($data->total_money +(($data->total_money*10)/100)- ($data->discount_money))}} VNĐ </th>
+                              </tr>
+                            </thead>
                           </table>
                     </div>
                 </div>

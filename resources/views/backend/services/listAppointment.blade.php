@@ -11,7 +11,7 @@ Danh sách đơn đặt lịch
     <!-- DataTales Example -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">Danh sách đơn đặt lịch</li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('listAppointment')}}">Danh sách đơn đặt lịch</a></li>
         </ol>
     </nav>
 
@@ -69,15 +69,15 @@ Danh sách đơn đặt lịch
                             <td scope="col">{{$value->time_ficked}}</td>
                             <td scope="col">{{date('d/m/Y',strtotime($value->time_start))}}</td>
                             <td>
-                                <div class="form-group">
-                                    <select  name="type" class="form-control btn_doi_trang_thai" data-orderid="{{$value->id}}">
-                    
-                                        <option value="1" {{$value->status == 1 ? 'selected':''}}>Chờ lên lịch</option>
-                                        <option value="2"{{$value->status == 2 ? 'selected':''}}>Đã lên lịch</option>
-                                        <option value="3"{{$value->status == 3 ? 'selected':''}}>Làm xong</option>
-                                        <option value="4"{{$value->status == 4 ? 'selected':''}}>Từ chối</option>
-                                    </select>
-                                </div>
+                                @if($value->status == 1)
+                                <p style="color:#FFCC33">Chờ lên lịch<p>
+                                @elseif($value->status == 2)
+                                <p style="color:#00aeff">Đã lên lịch<p>
+                                @elseif($value->status == 3)
+                                <p style="color:#00FFCC">Làm xong<p>
+                                @elseif($value->status == 4)
+                                <p style="color:#FF0033">Từ chối<p>
+                                @endif
                             </td>
                             <td>
                                 <a class="btn btn-primary btn-xem-chi-tiet" data-appointmentid="{{$value->id}}" target="_blank">Xem</a>
@@ -142,8 +142,26 @@ Danh sách đơn đặt lịch
                     </tbody>
                     <thead>
                         <tr>
-                        <th scope="col">Tổng tiền </th>
-                        <th scope="col" class="modal_total_monney_detail"></th>
+                            <th scope="col"> </th>
+                            <th scope="col"></th>
+                        </tr>
+
+                        <tr>
+                            <th scope="col">Tạm tính </th>
+                            <th scope="col" class="tam_tinh"></th>
+                        </tr>
+
+                        <tr>
+                            <th scope="col">VAT(10%)</th>
+                            <th scope="col" class="thue_vat"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Mã giảm giá</th>
+                            <th scope="col" class="ma_giam_gia"></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Tổng tiền </th>
+                            <th scope="col" class="modal_total_monney_detail"></th>
                         </tr>
                     </thead>
                 </table>
@@ -199,7 +217,10 @@ $(document).ready(function() {
                     }
 
                     $("#modal_tbody").html(output);
-                    $(".modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_money) + ' VNĐ');
+                    $(".tam_tinh").html(new Intl.NumberFormat().format(response.data.total_money) + ' VNĐ');
+                    $(".thue_vat").html(new Intl.NumberFormat().format((response.data.total_money*10)/100) + ' VNĐ');
+                    $(".ma_giam_gia").html(new Intl.NumberFormat().format(response.data.discount_money) + ' VNĐ');
+                    $(".modal_total_monney_detail").html(new Intl.NumberFormat().format((response.data.total_money)+(response.data.total_money*10)/100-(response.data.discount_money)) + ' VNĐ');
                     }else{
                         swal("Đơn đặt hàng không tồn tại", "", "warning");
                     }
