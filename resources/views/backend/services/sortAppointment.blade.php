@@ -378,7 +378,6 @@ Bảng xếp lịch
 <script type="text/javascript" charset="utf-8">
 	var sections = {!!json_encode($seats)!!};
 	var data = {!!json_encode($list)!!};
-	console.log(data);
 	
 	window.addEventListener("DOMContentLoaded", function(){
 			scheduler.locale.labels.timeline_tab = "Timeline";
@@ -386,6 +385,7 @@ Bảng xếp lịch
 			scheduler.config.drag_move = false;
 			scheduler.config.drag_out = false;
 			scheduler.config.drag_resize = false;
+			scheduler.config.drag_lightbox = false;
 			
 			// scheduler.config.multisection = true;
             // scheduler.config.readonly = true;
@@ -449,6 +449,7 @@ Bảng xếp lịch
 				// {name:"descretion", type:"text" , focus:false , map_to:"text"},
 				{name:"Khách hàng", type:"textarea" , focus:false , map_to:"name"},
 				{name:"Phone", type:"textarea" , focus:false , map_to:"sdt"},
+				{name:"Mã đơn", type:"textarea" , focus:false , map_to:"id"},
 
 			];
 
@@ -457,20 +458,28 @@ Bảng xếp lịch
                 return dateToStr (date);
             };
 			scheduler.config.buttons_left = [];
-			scheduler.locale.labels["custom_btn_info"] = "Sửa";
-			scheduler.attachEvent("onLightboxButton", function(button_id, node, e){
-				if(button_id == "custom_btn_info"){
-					var ev = scheduler.formSection('id');
-					alert(ev);
+			
+
+			scheduler.attachEvent("onEventSave",function(id,data,is_new_event){
+				console.log(data)
+				console.log(id)
+				var custom_value1 = scheduler.getEvent(id).custom_event_property;
+				console.log(is_new_event)
+				if(id){
+					alert('id của bạn là'+ id)
+					scheduler.hideLightbox(true, document.getElementById("modal_sort"));
 				}
-    });
-			scheduler.config.buttons_right = ["dhx_cancel_btn","custom_btn_info"];
+			});
+			scheduler.attachEvent("onEventDeleted", function(id,ev){
+				alert('Bạn đang xóa Sự kiện' + id)
+			});
+
+
+			scheduler.config.buttons_right = ["dhx_cancel_btn","dhx_save_btn","dhx_delete_btn"];
 			// console.log(data);
 			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
 			scheduler.parse(data);
-			scheduler.attachEvent("onLightbox", function (){
-				console.log('ấn 2 lần vào nó sẽ hiện ở đây')				
-			});
+	
 		});
 </script>
 

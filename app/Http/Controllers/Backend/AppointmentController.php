@@ -30,9 +30,10 @@ class AppointmentController extends Controller
         }
         $time = $request->time;
         $services = Service::where('status',0)->get();
-        $location = Location::select('id','name')->get();
+        $location = Location::where('status',0)->get();
+        $ghelam = Location::select('id','name','status')->get();
         $seats = [];
-        foreach ($location as $key => $value) {
+        foreach ($ghelam as $key => $value) {
             $seats[] = [
                 "key" => $value->id,
                 "label" => $value->name
@@ -53,7 +54,6 @@ class AppointmentController extends Controller
                 "name" => $appointment1->name,
             ];
         }
-        // dd($list);
 
         return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list','time'));
     }
@@ -101,7 +101,8 @@ class AppointmentController extends Controller
     
     public function listServiceAppointment(Request $request){
         try {
-            $data = Location::select('name','id')->where('status',0)->get();
+            dd($request->id);
+            $data = Location::where('status',0)->get();
             return response()->json(['status' => true, 'data' => $data]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
