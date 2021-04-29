@@ -494,19 +494,19 @@ Bảng xếp lịch
             scheduler.templates.format_date = function(date){
                 return dateToStr (date);
             };
-			scheduler.config.buttons_left = [];
+			scheduler.config.buttons_left = [];  // Bố cục nút bên trái bảng sự kiện
 			
          
-			scheduler.attachEvent("onEventSave",function(id,data,is_new_event){
+			scheduler.attachEvent("onEventSave",function(id,data,is_new_event){ // Xử lý sự kiện khi ấn chuyển lịch
 				var custom_value1 = scheduler.getEvent(id).custom_event_property;
+				var custom_form = 	$('#modal_sort').modal('show');
+				console.log(custom_form)
 				if(id){
-					scheduler.hideLightbox(true, document.getElementById("modal_sort"));
-					
-					scheduler.showCover($('#modal_change').modal('show'));
+					scheduler.hideLightbox(true,custom_form);
 				}
 			});
 
-			scheduler.attachEvent("onEventDeleted", function(id,ev){
+			scheduler.attachEvent("onEventDeleted", function(id,ev){ // Xử lý sự kiện khi ấn nút xóa
 				if(id){
 					let apiDelete = '{{route("deleteSortAppointment")}}';
 					$.ajax({

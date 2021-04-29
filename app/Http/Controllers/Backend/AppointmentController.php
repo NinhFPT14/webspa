@@ -32,12 +32,13 @@ class AppointmentController extends Controller
         $time = $request->time;
         $services = Service::where('status',0)->get();
         $location = Location::where('status',0)->get();
-        $ghelam = Location::select('id','name','status')->get();
+        $ghelam = Location::get();
         $seats = [];
         foreach ($ghelam as $key => $value) {
+            $nhanvien = Staff::find($value->staff_id);
             $seats[] = [
                 "key" => $value->id,
-                "label" => $value->name
+                "label" => $value->name .'('.$nhanvien->name.')'
             ];
         }// End for Seats
         // dd($location);
