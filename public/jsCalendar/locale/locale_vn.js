@@ -18,7 +18,7 @@ Scheduler.plugin(function(e) {
             month_tab: "Tháng",
             new_event: "Sự kiện mới",
             icon_save: "Lưu",
-            icon_cancel: "Hủy",
+            icon_cancel: "Tắt",
             icon_details: "Chi tiết",
             icon_edit: "Chỉnh sửa",
             icon_delete: "Xóa",

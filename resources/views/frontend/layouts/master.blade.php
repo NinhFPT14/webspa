@@ -20,7 +20,6 @@
     <link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
     
 </head>
-
 <body class="home-five_wrapper">
 
     <!--header area start-->

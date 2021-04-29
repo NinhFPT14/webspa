@@ -14,7 +14,6 @@ use App\Model\Staff;
 use App\Model\SortAppointment;
 use App\Http\Requests\addSortAppointment;
 use App\Http\Sms\SpeedSMSAPI;
-use Illuminate\Support\Facades\Validator;
 use DB;
 use Carbon\Carbon;
 
@@ -23,7 +22,7 @@ class AppointmentController extends Controller
 
     public function listSortAppointment(){
         $mytime = Carbon::now();
-        $appointment = Appointment::where('status',1)->where('call_confirmation',1)->orderByDesc('id')->paginate(10);
+        $appointment = Appointment::orderByDesc('id')->paginate(10);
         $services = Service::where('status',0)->get();
         $location = Location::select('id','name')->get();
         $seats = [];
@@ -37,124 +36,72 @@ class AppointmentController extends Controller
         $data = SortAppointment::get();
         $list = [];
         foreach ($data as $key => $value) {
+            $appointment1 = Appointment::find($value->appointment_id);
             $list[] = [
                 "id" => $value->id,
                 "start_date" => $value->time_start,
                 "end_date" => $value->time_end,
                 "text" => $value->name_service,
-                "key" => $value->location_id
+                "key" => $value->location_id,
+                "sdt" => $appointment1->phone,
+                "name" => $appointment1->name,
             ];
         }
-        // dd($list);
-
         return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list'));
     }
 
-    public function listServiceAppointment(Request $request){
+    public function listSit(){
         try {
-
-            $service_id = NumberService::where('appointment_id',$request->id)->get();
-            $sort = SortAppointment::where('appointment_id',$request->id)->get();
-            $arr = [];
-            $arr2 = [];
-            foreach($service_id as $value){
-                $arr[] = $value->service_id;
-            }
-            foreach($sort as $value){
-                $arr2[] = $value->service_id;
-            }
-            $arrId = array_diff($arr, $arr2);
-            $data = Service::whereIn('id', $arrId)->get();
-            $location = Location::where('status',0)->get();
-            return response()->json(['status' => true, 'data' => $data ,'id'=>$request->id ,'location'=>$location]);
-        } catch (Exception $e) {
-            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
-        }
-    }
-    public function statusAppointment(Request $request){
-        try {
-            $data = Appointment::find($request->id);
-            $data->status = 2;
-            $data->save();
-            return response()->json(['status' => true, 'data' => $request->id]);
+            $data = Location::select('name','id')->where('status',0)->get();
+            return response()->json(['status' => true, 'data' => $data]);
         } catch (Exception $e) {
             return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
     }
 
-    public function sortAppointment(Request $request){
-        $time =Carbon::now();
-        $validate = Validator::make($request->all(), 
-        [
-            'time_start' => "required|date|after_or_equal:$time",
-            'service_id' => "required",
-            'location' => "required",
-        ],
-        [
-        'time_start.required' => "Thời gian không được để trống",
-        'location.required' => "Ghế làm không được để trống",
-        'service_id.required' => "Dịch vụ không được để trống",
-        'time_start.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
-        ]);
-
-        if($validate->fails()){
-            return json_encode([
-                'status' => false,
-                'messages' => $validate->errors()
-            ]);
+    public function listDo(){
+        try {
+            $data = Appointment::get();
+            return response()->json(['status' => true, 'data' => $data]);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
         }
+    }
 
-        $appointment = Appointment::find($request->id);
+    public function sortAppointment(addSortAppointment $request ,$id){
+        $appointment = Appointment::find($id);
         $service = Service::find($request->service_id);
-        $location = Location::find($request->location);
+        $location = Location::find($request->location_id);
         $staff = Staff::find($location->staff_id);
-
-        $newdate = strtotime ( "+$service->time_working minute" , strtotime ( $request->time_start ) ) ;
-        $time_end = date ( 'Y-m-d H:i' , $newdate );
-        $time_start =date('Y-m-d H:i', strtotime($request->time_start));
-
-        $data =SortAppointment::where('location_id',$request->location)
-        ->where('time_end','>=',$time_start)
-        ->where('time_start','<=',$time_end)
+        $data =SortAppointment::where('location_id',$request->location_id)
+        ->where('time_end','>=',$request->time_start)
+        ->where('time_start','<=',$request->time_end)
         ->where('status','<',2)
         ->get();
         if(count($data) == 0){
-            $date_today =date('Y-m-d', strtotime($request->time_start));
-            $newdate = $newdate = strtotime ( '+22 hour' , strtotime ( $date_today )) ;
-            $newdate2 = $newdate = strtotime ( '+8 hour' , strtotime ( $date_today )) ;
-            
-            $time_start2 =date ( 'Y-m-d H:i' , $newdate2 );
-            $time_end2 =date ( 'Y-m-d H:i' , $newdate );
-            if($time_start < $time_start2){
-                return response()->json(['status' => false, 'fail' => "Từ $time_start đến  $time_end chưa đến giờ làm việc"]);
-            }elseif($time_end > $time_end2 ){
-                return response()->json(['status' => false, 'fail' => "Từ $time_start đến  $time_end đã hết giờ làm việc"]);
-            }else{
-                $sort = new SortAppointment();
-                $sort->appointment_id = $request->id;
-                $sort->service_id = $request->service_id;
-                $sort->location_id = $request->location;
-                $sort->time_start = $time_start;
-                $sort->time_end = $time_end;
-                $sort->status = 0;
-                $sort->name_service =$service->name;
-                $sort->name_location = $location->name;
-                $sort->name_staff = $staff->name;
-                $sort->save();
-                   //  Gửi otp
-                $phones =[$appointment->phone];
-                $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ : $service->name của bạn vào $time_start và dự kiến kết thúc $time_end ";
-                $type = 2;
-                $sender = "981c320db4992b97";
-                $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
-                $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
-                return response()->json(['status' => true, 'data' => 'thành công']);
-            }
-
+            $sort = new SortAppointment();
+            $sort->appointment_id = $id;
+            $sort->service_id = $request->service_id;
+            $sort->location_id = $request->location_id;
+            $sort->time_start = $request->time_start;
+            $sort->time_end = $request->time_end;
+            $sort->status = 0;
+            $sort->name_service =$service->name;
+            $sort->name_location = $location->name;
+            $sort->name_staff = $staff->name;
+            $sort->save();
+               //  Gửi otp
+            $phones =[$appointment->phone];
+            $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ $service->name vào $request->time_start và dự kiến kết thúc $request->time_end ";
+            $type = 2;
+            $sender = "981c320db4992b97";
+            $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
+            $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+            alert()->success('Xếp lịch thành công');
+             return redirect()->route('editAppointment',['id'=>$id]);
         }else{
-            return response()->json(['status' => false, 'fail' => "Từ $time_start đến  $time_end ghế đã hết"]);
+            return redirect()->route('editAppointment',['id'=>$id])->with('thongbao',"Từ $request->time_start đến  $request->time_end ghế đã hết");
         }
-
     }
 
     public function listAppointment(Request $request){
