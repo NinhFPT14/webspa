@@ -88,6 +88,39 @@ class AppointmentController extends Controller
         }
     }
 
+    public function deleteSortAppointment(Request $request){
+        try {
+            $data = SortAppointment::find($request->id);
+            $price = Service::find( $data->service_id);
+            $service = NumberService::where('appointment_id',$data->appointment_id)->where('service_id',$data->service_id)->delete();
+            $appointment = Appointment::find($data->appointment_id);
+            $appointment->total_money = $appointment->total_money -  $price->discount;
+            $appointment->save();
+            $data->delete();
+            return response()->json(['status' => true, 'data' => 'thành công']);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+
+    public function changeAppointment(Request $request){
+        dd($request->all());
+        try {
+            $data = SortAppointment::find($request->id);
+            $price = Service::find( $data->service_id);
+            $service = NumberService::where('appointment_id',$data->appointment_id)->where('service_id',$data->service_id)->delete();
+            $appointment = Appointment::find($data->appointment_id);
+            $appointment->total_money = $appointment->total_money -  $price->discount;
+            $appointment->save();
+            $data->delete();
+            return response()->json(['status' => true, 'data' => 'thành công']);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'fail' => 'Thất bại' ]);
+        }
+    }
+    
+    
+
     public function updateAppointment(AddAppointment $request ,$id){
         try {
             $data = $request->all();

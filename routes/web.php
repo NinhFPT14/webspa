@@ -169,6 +169,9 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         Route::post('/xep-lich','Backend\AppointmentController@sortAppointment')->name('sortAppointment');
         Route::post('/chuyen-trang-thai-don','Backend\AppointmentController@statusAppointment')->name('statusAppointment');
         Route::post('/danh-sach-dich-vu-don-dat-lich','Backend\AppointmentController@listServiceAppointment')->name('listServiceAppointment');
+
+        Route::post('/xoa-xep-lich','Backend\AppointmentController@deleteSortAppointment')->name('deleteSortAppointment');
+        Route::post('/chuyen-lich-lam','Backend\AppointmentController@changeAppointment')->name('changeAppointment');
         
     });
 

@@ -137,7 +137,7 @@ Bảng xếp lịch
 	</div>
   </div>
 
-<!-- Modal chi tiết-->
+<!-- Modal xếp lịch-->
 <div class="modal fade" id="modal_sort" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 	<div class="modal-dialog">
 	  <div class="modal-content">
@@ -174,6 +174,43 @@ Bảng xếp lịch
 	</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-success btn_xep_lich" >Tạo</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+
+
+<!-- Modal chuyển lịch-->
+<div class="modal fade" id="modal_change" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header btn-success">
+		  <h5 class="modal-title" id="staticBackdropLabel">CHUYỂN LỊCH</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<div class="form-group ">
+				<label for="exampleInputPassword1">Ghế làm</label>
+				<select class="form-select modal_location_change" aria-label="Default select example">
+				</select>
+				<p id="thong_bao_location_change" class="text-danger"></p>
+			</div>
+			<div>
+			<label for="exampleInputPassword1">Thời gian bắt đầu</label>
+			<div class="form-group grid grid-cols-4 ">
+				<input id="time-24h-picker_change" data-input-style="outline" data-label-style="stacked" placeholder="chọn giờ.." class=" mbsc-ios mbsc-ltr  mbsc-textfield mbsc-textfield-outline mbsc-textfield-stacked mbsc-textfield-outline-stacked" type="text" readonly="">
+				<input type="date" id="time_start_change" class="form-control col-span-3 h-14">
+		
+			</div>
+			<div class="form-group ">
+				<p id="thong_bao_hour_change" class="text-danger"></p>
+				<p id="thong_bao_date_change" class="text-danger"></p>
+				<p id="thong_bao_fail_change" class="text-danger"></p>
+			</div>
+	</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-success" >Tạo</button>
 		</div>
 	  </div>
 	</div>
@@ -459,19 +496,35 @@ Bảng xếp lịch
             };
 			scheduler.config.buttons_left = [];
 			
-
+         
 			scheduler.attachEvent("onEventSave",function(id,data,is_new_event){
-				console.log(data)
-				console.log(id)
 				var custom_value1 = scheduler.getEvent(id).custom_event_property;
-				console.log(is_new_event)
 				if(id){
-					alert('id của bạn là'+ id)
 					scheduler.hideLightbox(true, document.getElementById("modal_sort"));
+					
+					scheduler.showCover($('#modal_change').modal('show'));
 				}
 			});
+
 			scheduler.attachEvent("onEventDeleted", function(id,ev){
-				alert('Bạn đang xóa Sự kiện' + id)
+				if(id){
+					let apiDelete = '{{route("deleteSortAppointment")}}';
+					$.ajax({
+						url: apiDelete,
+						method: "POST",
+						data: {
+							id: id,
+							_token: '{{csrf_token()}}'
+						},
+						dataType: 'json',
+						success: function(response) {
+							
+						}
+			
+					})
+				}else{
+					alert('Lịch không tồn tại')
+				}
 			});
 
 
