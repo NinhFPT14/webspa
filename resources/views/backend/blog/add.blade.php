@@ -112,6 +112,7 @@ Bài viết mới
      filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
      uiColor: '#CCEAEE'
  });
-</script>    
+</script>
+@include('sweetalert::alert')    
 @endsection
 

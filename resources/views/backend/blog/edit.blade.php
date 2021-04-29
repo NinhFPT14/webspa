@@ -116,5 +116,5 @@ Sửa bài viết
      uiColor: '#CCEAEE'
  });
 </script>
-
+@include('sweetalert::alert')
 @endsection
