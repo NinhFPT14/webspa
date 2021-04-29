@@ -80,4 +80,5 @@ Back-Danh sách bài viết
         </div>
     </div>
 </div>
+@include('sweetalert::alert')
 @endsection

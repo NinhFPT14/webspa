@@ -31,9 +31,10 @@ class AppointmentController extends Controller
         }
         $time = $request->time;
         $services = Service::where('status',0)->get();
-        $location = Location::select('id','name')->get();
+        $location = Location::where('status',0)->get();
+        $ghelam = Location::select('id','name','status')->get();
         $seats = [];
-        foreach ($location as $key => $value) {
+        foreach ($ghelam as $key => $value) {
             $seats[] = [
                 "key" => $value->id,
                 "label" => $value->name
@@ -54,7 +55,6 @@ class AppointmentController extends Controller
                 "name" => $appointment1->name,
             ];
         }
-        // dd($list);
 
         return view('backend.services.sortAppointment',compact('appointment','services','location','data', 'seats','list','time'));
     }
