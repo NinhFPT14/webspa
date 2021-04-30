@@ -123,6 +123,7 @@ Bảng xếp lịch
 					  <thead>
 						  <tr>
 						  <th>Tên dịch vụ </th>
+						  <th>Số buổi</th>
 						  </tr>
 					  </thead>
 					  <tbody id="modal_tbody">
@@ -269,6 +270,7 @@ Bảng xếp lịch
 							var price = new Intl.NumberFormat().format(obj.discount);
 							output += `<tr>
 							<th scope="row"> `+obj.name+`</th>
+							<th scope="row"> `+obj.total_time+`</th>
 							</tr>`;
 							
 						}

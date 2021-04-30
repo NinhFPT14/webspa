@@ -215,7 +215,10 @@ class AppointmentController extends Controller
                 $arr[] = $value->service_id;
             }
             foreach($sort as $value){
-                $arr2[] = $value->service_id;
+                $service = Service::find($value->service_id);
+                if(count($sort) >= $service->total_time){
+                    $arr2[] = $value->service_id;
+                }
             }
             $arrId = array_diff($arr, $arr2);
             $data = Service::whereIn('id', $arrId)->get();
