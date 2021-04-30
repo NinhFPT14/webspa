@@ -12,6 +12,7 @@ use App\Http\Requests\editAppointment;
 use App\Http\Requests\checkOtpRequest;
 use App\Model\NumberService;
 use App\Http\Sms\SpeedSMSAPI;
+use App\Model\Sms;
 
 class CheckoutController extends Controller
 {
@@ -70,11 +71,12 @@ class CheckoutController extends Controller
         $flight->payment_methods = $request->check_method;
         $flight->save();
         // Gửi otp 
+        $sms = Sms::find(1);
+        $sender = $sms->code_devices;
+        $smsAPI = new SpeedSMSAPI($sms->code_api);
         $phones =[ $request->phone];
         $content ="Mã otp xác thực đặt lịch của bạn là  ".$otp;
         $type = 2;
-        $sender = "981c320db4992b97";
-        $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
         $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
         return redirect()->route('appointment.otp',['token'=>$flight->token,'id'=>$id]);
     }

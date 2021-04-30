@@ -13,6 +13,7 @@ use App\Http\Requests\editAppointment;
 use App\Http\Requests\AddAppointment;
 use Carbon\Carbon;
 use App\Http\Sms\SpeedSMSAPI;
+use App\Model\Sms;
 use App\Model\Service;
 use App\Http\Requests\checkOtpRequest;
 use Session;
@@ -83,11 +84,14 @@ class AppointmentController extends Controller
         $flight = Appointment::find($request->id);
         $flight->otp = $otp;
         $flight->save();
+
+        $sms = Sms::find(1);
+        $sender = $sms->code_devices;
+        $smsAPI = new SpeedSMSAPI($sms->code_api);
+
         $phones =[$flight->phone];
         $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Mã otp chuyển lịch của quý khách là : ".$otp." Mã đơn chuyển lịch $flight->id ";
         $type = 2;
-        $sender = "981c320db4992b97";
-        $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
         $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
         return response()->json(['status' => true, 'data' => $flight->id ]);
     } catch (Exception $e) {
@@ -165,11 +169,13 @@ class AppointmentController extends Controller
         $array_json=json_encode($user);
 
         //  Gửi otp 
+        $sms = Sms::find(1);
+        $sender = $sms->code_devices;
+        $smsAPI = new SpeedSMSAPI($sms->code_api);
+
         $phones =[$request->phone];
         $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Mã otp đặt lịch của quý khách là : ".$otp." Mã đơn đặt lịch $flight->id ";
         $type = 2;
-        $sender = "981c320db4992b97";
-        $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
         $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
         return response()->json(['status' => true, 'data' => $flight->id ])->withCookie(cookie()->forever('appointmentId',$array_json));
     }

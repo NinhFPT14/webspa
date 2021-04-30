@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Sms\SpeedSMSAPI;
+use App\Model\Sms;
 
 class LoginController extends Controller
 {
@@ -16,11 +17,13 @@ class LoginController extends Controller
            $user->phone_code = $otp;
            $user->save();
 
+           $sms = Sms::find(1);
+           $sender = $sms->code_devices;
+           $smsAPI = new SpeedSMSAPI($sms->code_api);
+
            $phones =[$user->phone_number];
            $content ="Mã otp đổi mật khẩu của bạn là : ".$otp;
            $type = 2;
-           $sender = "981c320db4992b97";
-           $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
            $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
            return response()->json(['status' => true, 'data' => 'thành công']);
     }
@@ -102,11 +105,14 @@ class LoginController extends Controller
                 $user = User::find($value->id);
                 $user->phone_code = $otp;
                 $user->save();
+
+                $sms = Sms::find(1);
+                $sender = $sms->code_devices;
+                $smsAPI = new SpeedSMSAPI($sms->code_api);
+
                 $phones =[$value->phone_number];
                 $content ="Mã cấp lại mật khẩu của bạn là : ".$otp;
                 $type = 2;
-                $sender = "981c320db4992b97";
-                $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
                 $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
                 return response()->json(['status' => true, 'data' =>  $user->id]);
             }
@@ -138,11 +144,13 @@ class LoginController extends Controller
             $user->password = bcrypt($password);
             $user->save();
 
+            $sms = Sms::find(1);
+            $sender = $sms->code_devices;
+            $smsAPI = new SpeedSMSAPI($sms->code_api);
+
             $phones =[$user->phone_number];
             $content =" Mật khẩu mới của bạn là : ".$password ." Vui lòng đăng nhập và đổi lại mật khẩu";
             $type = 2;
-            $sender = "981c320db4992b97";
-            $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
             $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
             return response()->json(['status' => true, 'data' => 'thành công' ]);
 

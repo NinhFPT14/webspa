@@ -236,5 +236,13 @@ Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
         
     });
 
+    Route::group(['prefix' => 'sms'], function() {
+        Route::get('/','Backend\SmsController@list')->name('listSms');
+        Route::get('/sua-cau-hinh-sms/{id}','Backend\SmsController@edit')->name('editSms');
+        Route::get('/tao-moi-cau-hinh-sms','Backend\SmsController@add')->name('addSms');
+
+        
+    });
+
 });
 

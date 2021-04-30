@@ -119,6 +119,7 @@
                 <a class="collapse-item"  href="{{route('listSlide')}}">Slide</a>
                 <a class="collapse-item"  href="{{route('listLogo')}}">Logo</a>
                 <a class="collapse-item"  href="{{route('listMap')}}">Bản đồ</a>
+                <a class="collapse-item"  href="{{route('listSms')}}">SMS</a>
             </div>
         </div>
     </li>

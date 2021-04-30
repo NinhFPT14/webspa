@@ -17,6 +17,7 @@ use App\Http\Requests\AddAppointment;
 use App\Http\Sms\SpeedSMSAPI;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use App\Model\Sms;
 use Carbon\Carbon;
 
 class AppointmentController extends Controller
@@ -161,12 +162,15 @@ class AppointmentController extends Controller
                 $data->time_start = $time_start;
                 $data->time_end = $time_end;
                 $data->save();
-    
+                
+        
+                $sms = Sms::find(1);
+                $sender = $sms->code_devices;
+                $smsAPI = new SpeedSMSAPI($sms->code_api);
+
                 $phones =[$appointment->phone];
                 $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Chuyển lịch làm dịch vụ : $service->name của bạn vào $time_start_format và dự kiến kết thúc  $time_end_format ";
                 $type = 2;
-                $sender = "981c320db4992b97";
-                $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
                 $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
                 return response()->json(['status' => true, 'data' => 'thành công']);
             }
@@ -287,11 +291,14 @@ class AppointmentController extends Controller
                 $sort->name_staff = $staff->name;
                 $sort->save();
                    //  Gửi otp
+
+                $sms = Sms::find(1);
+                $sender = $sms->code_devices;
+                $smsAPI = new SpeedSMSAPI($sms->code_api);
+
                 $phones =[$appointment->phone];
                 $content ="Cảm ơn quý khách hàng đã tin tưởng và sử dụng dịch vụ của QueenSpa , Lịch làm dịch vụ : $service->name của bạn vào $time_start_format và dự kiến kết thúc  $time_end_format ";
                 $type = 2;
-                $sender = "981c320db4992b97";
-                $smsAPI = new SpeedSMSAPI("C774uYmPE8i08NoNNqdfMTSFbP3esizy");
                 $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
                 return response()->json(['status' => true, 'data' => 'thành công']);
             }
