@@ -358,6 +358,7 @@ Bảng xếp lịch
 						if(response.data){
 							$('#modal_sort').modal('hide');
 							swal("Xếp lịch thành công", " ", "success");
+							location.reload();
                             // window.location.href = '{{route("listSortAppointment")}}';
 						}
 						if(response.messages){
@@ -375,9 +376,7 @@ Bảng xếp lịch
 								$("p#thong_bao_location" ).html('- ' + response.messages.location);
 							}
 						}else{
-							if(response.fail){
 								$("p#thong_bao_fail" ).html('- ' + response.fail);
-							}
 
 						}
 						}

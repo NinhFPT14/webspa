@@ -53,11 +53,6 @@ class BlogController extends Controller
         return redirect()->route('listBaiviet');
     }
 
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $category = Category::where('type',2)->where('status',0)->get();
