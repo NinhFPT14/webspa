@@ -483,6 +483,9 @@ Bảng xếp lịch
 			scheduler.config.drag_out = false;
 			scheduler.config.drag_resize = false;
 			scheduler.config.drag_lightbox = false;
+			scheduler.config.drag_in = false;
+			scheduler.config.drag_create = false;
+			scheduler.config.dblclick_create = false;
 			
 			// scheduler.config.multisection = true;
             // scheduler.config.readonly = true;
@@ -600,9 +603,8 @@ Bảng xếp lịch
 				}
 			});
 
-
 			scheduler.config.buttons_right = ["dhx_cancel_btn","dhx_save_btn","dhx_delete_btn"];
-			// console.log(data);
+			
 			scheduler.init('scheduler_here', new Date(moment().format('LL')), "timeline");
 			scheduler.parse(data);
 	
