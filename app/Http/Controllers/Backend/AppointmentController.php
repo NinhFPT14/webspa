@@ -112,14 +112,13 @@ class AppointmentController extends Controller
         // dd($time , $request->date);
         $validate = Validator::make($request->all(), 
         [
-            'date' => "required|date|after_or_equal:$time",
+            'date' => "required|date",
             'location' => "required",
             'hour' => "required",
         ],
         [
         'date.required' => "Thời gian không được để trống",
         'location.required' => "Ghế làm không được để trống",
-        'date.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
         'hour.required' => "Giờ không được để trống",
         ]);
 
@@ -233,7 +232,7 @@ class AppointmentController extends Controller
         $time =date("Y-m-d", strtotime(Carbon::now()));
         $validate = Validator::make($request->all(), 
         [
-            'date' => "required|date|after_or_equal:$time",
+            'date' => "required|date",
             'service_id' => "required",
             'location' => "required",
             'hour' => "required",
@@ -242,7 +241,6 @@ class AppointmentController extends Controller
         'date.required' => "Thời gian không được để trống",
         'location.required' => "Ghế làm không được để trống",
         'service_id.required' => "Dịch vụ không được để trống",
-        'date.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
         'hour.required' => "Giờ không được để trống",
         ]);
 
