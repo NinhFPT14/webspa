@@ -32,8 +32,8 @@ Tạo Voucher
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="formGroupExampleInput2" >Giảm giá</label>
-                                <input type="text" maxlength="7" name="discount" class="form-control" id="formGroupExampleInput" value="{{ old('code')}}">
+                            <label for="formGroupExampleInput2" >Giảm giá (VNĐ)</label>
+                                <input type="text" maxlength="7" name="discount" class="form-control" id="formGroupExampleInput" value="{{ old('discount')}}">
                             @error('discount')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

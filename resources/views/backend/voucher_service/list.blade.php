@@ -48,7 +48,7 @@ Danh Sách Voucher
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Mã code</th>
-                            <th scope="col">Giảm giá</th>
+                            <th scope="col">Giảm giá (VNĐ)</th>
                             <th scope="col">Ngày bắt đầu</th>
                             <th scope="col">Ngày kết thúc</th>
                             <th scope="col">Trạng thái</th>

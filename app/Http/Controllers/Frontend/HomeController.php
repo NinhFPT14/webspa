@@ -8,12 +8,12 @@ use App\Model\Slide;
 use App\Model\Footer;
 use DB;
 use Session;
+use Carbon;
 class HomeController extends Controller
 {
     public function home(){
-        // dd(bcrypt('123456789'));
+        
         $service = DB::table('services')->where('status',0)->get('name');
-        // dd($service);
         $slide = Slide::where('status', 0)->get();
         $serviceLike = DB::table('services')->where('status',0)->orderBy('view')->get();
         $blog = DB::table('posts')->where('status',0)->orderBy('view')->get();
@@ -24,6 +24,8 @@ class HomeController extends Controller
     public function about(){
         return view('frontend.about');
     }
+
+    
 
 
 }
