@@ -369,15 +369,15 @@ var chart = AmCharts.makeChart("chartdiv2", {
   "dataProvider": [{
     "country": "Hôm Nay",
     "visits": {!!$tong_sp_today!!},
-    "color": "#00a8ff"
+    "color": "#EAB543"
   },{
     "country": "7 Ngày",
     "visits": {!!$tong_sp_7!!},
-    "color": "#fbc531"
+    "color": "#25CCF7"
   }, {
     "country": "30 Ngày",
     "visits": {!!$tong_sp_30!!},
-    "color": "#9c88ff"
+    "color": "#FEA47F"
   }],
   "startDuration": 1,
   "graphs": [{
