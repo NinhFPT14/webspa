@@ -123,6 +123,7 @@ Bảng xếp lịch
 					  <thead>
 						  <tr>
 						  <th>Tên dịch vụ </th>
+						  <th>Số buổi</th>
 						  </tr>
 					  </thead>
 					  <tbody id="modal_tbody">
@@ -269,6 +270,7 @@ Bảng xếp lịch
 							var price = new Intl.NumberFormat().format(obj.discount);
 							output += `<tr>
 							<th scope="row"> `+obj.name+`</th>
+							<th scope="row"> `+obj.total_time+`</th>
 							</tr>`;
 							
 						}
@@ -356,6 +358,7 @@ Bảng xếp lịch
 						if(response.data){
 							$('#modal_sort').modal('hide');
 							swal("Xếp lịch thành công", " ", "success");
+							location.reload();
                             // window.location.href = '{{route("listSortAppointment")}}';
 						}
 						if(response.messages){
@@ -373,9 +376,7 @@ Bảng xếp lịch
 								$("p#thong_bao_location" ).html('- ' + response.messages.location);
 							}
 						}else{
-							if(response.fail){
 								$("p#thong_bao_fail" ).html('- ' + response.fail);
-							}
 
 						}
 						}

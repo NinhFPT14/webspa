@@ -112,14 +112,13 @@ class AppointmentController extends Controller
         // dd($time , $request->date);
         $validate = Validator::make($request->all(), 
         [
-            'date' => "required|date|after_or_equal:$time",
+            'date' => "required|date",
             'location' => "required",
             'hour' => "required",
         ],
         [
         'date.required' => "Thời gian không được để trống",
         'location.required' => "Ghế làm không được để trống",
-        'date.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
         'hour.required' => "Giờ không được để trống",
         ]);
 
@@ -154,9 +153,9 @@ class AppointmentController extends Controller
         ->where('id','!=',$request->id)
         ->get();
         if(count($dataAp) == 0){
-            if($time_start < $time_start2){
+            if( (strtotime ($time_start) * 1000) < (strtotime ($time_start2) * 1000)){
                 return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến   $time_end_format chưa đến giờ làm việc"]);
-            }elseif($time_end > $time_end2 ){
+            }elseif((strtotime ($time_end) * 1000) > (strtotime ($time_end2) * 1000)){
                 return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến   $time_end_format đã hết giờ làm việc"]);
             }else{
                 $data->time_start = $time_start;
@@ -215,7 +214,10 @@ class AppointmentController extends Controller
                 $arr[] = $value->service_id;
             }
             foreach($sort as $value){
-                $arr2[] = $value->service_id;
+                $service = Service::find($value->service_id);
+                if(count($sort) >= $service->total_time){
+                    $arr2[] = $value->service_id;
+                }
             }
             $arrId = array_diff($arr, $arr2);
             $data = Service::whereIn('id', $arrId)->get();
@@ -230,7 +232,7 @@ class AppointmentController extends Controller
         $time =date("Y-m-d", strtotime(Carbon::now()));
         $validate = Validator::make($request->all(), 
         [
-            'date' => "required|date|after_or_equal:$time",
+            'date' => "required|date",
             'service_id' => "required",
             'location' => "required",
             'hour' => "required",
@@ -239,7 +241,6 @@ class AppointmentController extends Controller
         'date.required' => "Thời gian không được để trống",
         'location.required' => "Ghế làm không được để trống",
         'service_id.required' => "Dịch vụ không được để trống",
-        'date.after_or_equal' => "Thời gian bắt đầu phải sau thời gian hiện tại",
         'hour.required' => "Giờ không được để trống",
         ]);
 
@@ -264,19 +265,21 @@ class AppointmentController extends Controller
         ->where('time_start','<=',$time_end)
         ->where('status','<',2)
         ->get();
-        if(count($data) == 0){
-            $date_today =date('Y-m-d', strtotime($time_start));
-            $newdate =strtotime ( '+22 hour' , strtotime ( $date_today )) ;
-            $newdate2 =strtotime ( '+8 hour' , strtotime ( $date_today )) ;
-            
-            $time_start2 =date ( 'Y-m-d H:i' , $newdate2 );
-            $time_end2 =date ( 'Y-m-d H:i' , $newdate );
+        $date_today =date('Y-m-d', strtotime($time_start));
+        $newdate =strtotime ( '+22 hour' , strtotime ( $date_today )) ;
+        $newdate2 =strtotime ( '+8 hour' , strtotime ( $date_today )) ;
+        
+        $time_start2 =date ( 'Y-m-d H:i' , $newdate2 );
+        $time_end2 =date ( 'Y-m-d H:i' , $newdate );
 
-            $time_start_format = date("H:i d-m-Y", strtotime($time_start));
-            $time_end_format = date("H:i d-m-Y", strtotime($time_end));
-            if($time_start < $time_start2){
+        $time_start_format = date("H:i d-m-Y", strtotime($time_start));
+        $time_end_format = date("H:i d-m-Y", strtotime($time_end));
+
+        // dd(strtotime ($time_start) * 1000);
+        if(count($data) == 0){
+            if( (strtotime ($time_start) * 1000) < (strtotime ($time_start2) * 1000)){
                 return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến   $time_end_format chưa đến giờ làm việc"]);
-            }elseif($time_end > $time_end2 ){
+            }elseif((strtotime ($time_end) * 1000) > (strtotime ($time_end2) * 1000)){
                 return response()->json(['status' => false, 'fail' => "Từ $time_start_format đến   $time_end_format đã hết giờ làm việc"]);
             }else{
                 $sort = new SortAppointment();
