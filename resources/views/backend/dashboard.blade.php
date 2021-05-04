@@ -16,19 +16,14 @@ Thống kê
    <div class="row">
       <?php
          //Sản phẩm
-             $cho_xac_nhan = DB::table('oders')->where('status',0)->get()->count();
-             $da_giao = DB::table('oders')->where('status',3)->get()->count();
-             $dang_giao = DB::table('oders')->where('status',2)->get()->count();
-             $don_hang = DB::table('oders')->get()->count();
-             $don_tra_hang = DB::table('oders')->where('status',6)->get()->count();
-             $don_huy = DB::table('oders')->where('status',4)->get()->count();
+             $cho_xac_nhan = DB::table('oders')->where('status',0)->get()->count(); // Đơn hàng mới lên, đợi xác nhận từ cửa hàng
+             $da_giao = DB::table('oders')->where('status',3)->get()->count(); // Đơn hàng được hoàn thành
+             $dang_giao = DB::table('oders')->where('status',2)->get()->count(); // Đơn hàng đang được shiper
+             $don_hang = DB::table('oders')->get()->count(); // Tất cả các đơn hàng
+             $don_tra_hang = DB::table('oders')->where('status',6)->get()->count(); // Các đơn hàng đổi trả
+             $don_huy = DB::table('oders')->where('status',4)->get()->count(); // Đơn bị hủy bị bom
              // dd($pro_oder);
-         // Dịch vụ
-            $all_don = DB::table('appointments')->get()->count();
-            $don_wait = DB::table('appointments')->where('status',1)->get()->count();
-            $don_da_len = DB::table('appointments')->where('status',2)->get()->count();
-            $don_lam_xong = DB::table('appointments')->where('status',3)->get()->count();
-            $don_tu_choi = DB::table('appointments')->where('status',4)->get()->count();
+         
          ?>
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-2 col-md-6 mb-4">
@@ -39,10 +34,10 @@ Thống kê
                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Đơn đặt hàng
                      </div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_hang + $all_don }} </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_hang }} </div>
                   </div>
                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                     <i class="fab fa-shopify fa-2x text-gray-300"></i>
                   </div>
                </div>
             </div>
@@ -56,10 +51,10 @@ Thống kê
                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Đơn chờ xác nhận
                      </div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $cho_xac_nhan + $don_wait }} </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $cho_xac_nhan }} </div>
                   </div>
                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                     <i class="fas fa-user-clock fa-2x text-gray-300"></i>
                   </div>
                </div>
             </div>
@@ -77,7 +72,7 @@ Thống kê
                      <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $dang_giao }} </div>
                   </div>
                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                     <i class="fas fa-route fa-2x text-gray-300"></i>
                   </div>
                </div>
             </div>
@@ -91,11 +86,11 @@ Thống kê
                   <div class="col mr-2">
                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Đơn đã hoàn thành
                      </div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_lam_xong + $da_giao }} </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $da_giao }} </div>
                      <br>
                   </div>
                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                     <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
                   </div>
                </div>
             </div>
@@ -109,10 +104,10 @@ Thống kê
                   <div class="col mr-2">
                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Đơn hủy
                      </div>
-                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_huy + $don_tu_choi }} </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_huy}} </div>
                   </div>
                   <div class="col-auto">
-                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                     <i class="far fa-times-circle fa-2x text-gray-300"></i>
                   </div>
                </div>
             </div>
@@ -128,7 +123,100 @@ Thống kê
                      <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_tra_hang }} </div>
                   </div>
                   <div class="col-auto">
+                  <i class="fas fa-sign-language fa-2x text-gray-300"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+<!-- // Tổng dịch vụ -->
+<?php
+// Dịch vụ
+$all_don = DB::table('appointments')->get()->count(); // tất cả các đơn hàng dịch vụ
+$don_wait = DB::table('appointments')->where('status',1)->get()->count();
+$don_da_len = DB::table('appointments')->where('status',2)->get()->count();
+$don_lam_xong = DB::table('appointments')->where('status',3)->get()->count();
+$don_huy_lich = DB::table('appointments')->where('status',4)->get()->count();
+?>       
+      <div class="col-xl-2 col-md-6 mb-4">
+         <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Đơn dịch vụ
+                     </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $all_don }} </div>
+                  </div>
+                  <div class="col-auto">
                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-xl-2 col-md-6 mb-4">
+         <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Đơn chờ lên lịch
+                     </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_tra_hang }} </div>
+                  </div>
+                  <div class="col-auto">
+                     <i class="far fa-paper-plane fa-2x text-gray-300"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-xl-2 col-md-6 mb-4">
+         <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Đơn đã lên lịch
+                     </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_da_len }} </div>
+                  </div>
+                  <div class="col-auto">
+                  <i class="fas fa-check fa-2x text-gray-300"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-xl-2 col-md-6 mb-4">
+         <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Đơn đã làm xong
+                     </div>
+                     <div class="h5 mb-0 font-weight-bold text-black-800"> {{ $don_lam_xong }} </div>
+                  </div>
+                  <div class="col-auto">
+                     <i class="fas fa-clipboard-check fa-2x text-gray-300"></i>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="col-xl-2 col-md-6 mb-4">
+         <div class="card border-left-danger shadow h-100 py-2">
+            <div class="card-body">
+               <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Đơn hủy lịch
+                     </div>
+                     <div class="h5 mb-0 font-weight-bold text-gray-800"> {{ $don_huy_lich }} </div>
+                  </div>
+                  <div class="col-auto">
+                  <i class="fas fa-calendar-times fa-2x text-gray-300"></i>
                   </div>
                </div>
             </div>
@@ -238,7 +326,7 @@ Thống kê
             <div class="card-header ">
                <div class="row align-items-center">
                   <div class="col">
-                     <h2 class="h4 text-center text-success">Mã Giảm Giá</h2>
+                     <h2 class="h4 text-center text-success">>> Mã Giảm Giá <<</h2>
                   </div>
                </div>
             </div>
