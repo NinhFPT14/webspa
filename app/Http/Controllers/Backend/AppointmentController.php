@@ -317,7 +317,8 @@ class AppointmentController extends Controller
         }else{
             if($request->has('key')){
                 $query = Appointment::where("status",'!=',0)->where(function($q2) use ($request){
-                    $q2->where("name", "like", "%".$request->key."%")
+                    $q2->orWhere("id",$request->key)
+                        ->orWhere("name", "like", "%".$request->key."%")
                         ->orWhere("phone", "like", "%".$request->key."%");
                 });
             }

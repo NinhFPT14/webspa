@@ -41,6 +41,12 @@ Trang chủ
                                 <div class="product_sale">
                                     <span>Queen Beauty nơi gửi gắm niềm tin</span>
                                 </div>
+                                <div class="product_desc">
+                                    <p>
+                                        Yêu cái đẹp là thưởng thức. Tạo ra cái đẹp là nghệ thuật.
+Không phải những người đẹp là người hạnh phúc, mà những người hạnh phúc là những người đẹp.
+                                    </p>
+                                </div>
 
                             </div>
                             <div class="product_caption">

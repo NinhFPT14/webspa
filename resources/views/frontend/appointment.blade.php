@@ -9,10 +9,10 @@
                 
                 <div class="breadcrumb_content">
                     <h1 class="text-center "
-                        style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;margin-top:40px;">
+                        style="font-weight:bold;font-family:'Times New Roman', Times, serif;font-size:30px;margin-top:-16px;">
                         ĐẶT
                         LỊCH HẸN</h1>
-                    <p class="text-center pt-6">KHUYẾN KHÍCH ĐẶT LỊCH HẸN TRƯỚC. XIN VUI LÒNG LIÊN HỆ VỚI CHÚNG TÔI NẾU
+                    <p class="text-center pt-4">KHUYẾN KHÍCH ĐẶT LỊCH HẸN TRƯỚC. XIN VUI LÒNG LIÊN HỆ VỚI CHÚNG TÔI NẾU
                         QUÝ KHÁCH CÓ
                         BẤT KỲ THẮC MẮC NÀO
                         LIÊN QUAN ĐẾN <br> CÁC GÓI DỊCH VỤ </p>
