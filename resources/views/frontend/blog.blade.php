@@ -54,18 +54,7 @@ Bài viết
                                         <div class="blog_content">
                                             <p class="blog_desc">{!! $value->description !!}</p>
                                             <a href="{{route('detailBlog',['id'=> $value->id])}}">Đọc Thêm</a>
-                                            <div class="blog_footer">
-                                                <div class="blog_social">
-                                                    <h3>Chia sẻ với</h3>
-                                                    <ul>
-                                                        <li><a href="#" title="Facebook"><i class="ion-social-facebook"></i></a></li>
-                                                        <li><a href="#" title="youtube"><i class="ion-social-youtube"></i></a></li>
-                                                        <li><a href="#" title="intagram"><i class="ion-social-instagram"></i></i></a></li>
-                                                       
-                                                    </ul>
-                                                </div>
-                                                
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
