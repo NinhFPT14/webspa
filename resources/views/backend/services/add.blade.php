@@ -70,7 +70,7 @@ Tạo dịch vụ
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Số buổi thực hiện (phút)</label>
-                            <input type="number" name="total_time" class="form-control" id="formGroupExampleInput"
+                            <input type="number" name="total_time" value="1" class="form-control" id="formGroupExampleInput"
                                 placeholder="Chọn thời gian" value="{{ old('total_time')}}">
                             @error('total_time')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -96,7 +96,8 @@ Tạo dịch vụ
                             <label for="exampleFormControlTextarea1">Tiêu đề</label>
                             
                             <textarea class="form-control" name="description" id="description"
-                                rows="2" data-sample-short>>{{ old('description')}}</textarea>
+                                rows="2" data-sample-short> {{ old('description')}}
+                            </textarea>
                             @error('description')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
@@ -128,16 +129,16 @@ Tạo dịch vụ
         filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
         filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
         filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
-        uiColor: '#CCEAEE',
-        
+        uiColor: '#CCEAEE', 
     } );
-    CKEDITOR.replace( 'description',
- {
-     filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
-     filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
-     filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
-     filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}'
- });
+    CKEDITOR.replace( 'description', {
+        filebrowserBrowseUrl: '{{ asset('ckfinder/ckfinder.html') }}',
+        filebrowserImageBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Images') }}',
+        filebrowserFlashBrowseUrl: '{{ asset('ckfinder/ckfinder.html?type=Flash') }}',
+        filebrowserUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
+        filebrowserImageUploadUrl: '{{ asset('ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
+        uiColor: '#CCEAEE', 
+    } );
 </script>
 
     

@@ -10,6 +10,7 @@ use RealRashid\SweetAlert\Facades\Alert;
     
     // HomeController
     Route::get('/','Frontend\HomeController@home')->name('home');
+
     Route::get('hi',function(){
         alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
     return view('frontend.contact');
@@ -73,9 +74,11 @@ use RealRashid\SweetAlert\Facades\Alert;
     Route::post('/cap-lai-mat-khau','Backend\LoginController@renewPassword')->name('login.renew.password');
     
 Route::group(['prefix' => 'admin','middleware' => 'CheckAdmin'], function() {
+    
     Route::get('/',function(){
         return view('backend.dashboard');
     })->name('dashboard');
+
     Route::get('danh-sach-phan-hoi','Backend\FeedbackController@list')->name('listFeedback');
     Route::post('chi-tiet-phan-hoi','Backend\FeedbackController@detail')->name('feedback.detail');
 

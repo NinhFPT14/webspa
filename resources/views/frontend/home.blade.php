@@ -351,7 +351,7 @@ Trang chủ
                                 <h3><a href="#">Chị Khánh Linh</a></h3>
                                 <i class="ion-quote"></i>
                                 <p>Bạn bè tôi ai cũng bị nám. Chúng tôi  ở nhiều nơi, dùng nhiều cách nhưng da mặt vẫn không tiến triển. 
-    May làm sao tôi rất hợp với liệu trình cuả Venesa. Đến bây giờ da vẫn đẹp, chẳng thấy bị nám nữa. Tôi bảo cả bạn bè sang Venesa làm rồi</p>
+    May làm sao tôi rất hợp với liệu trình cuả Queen Spa. Đến bây giờ da vẫn đẹp, chẳng thấy bị nám nữa. Tôi bảo cả bạn bè sang Queen Spa làm rồi</p>
                             </div>
                         </div>
                         <div class="single_testimonial">

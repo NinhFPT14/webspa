@@ -1,0 +1,42 @@
+/* Biều dồ bắt đầu CSS */
+
+.chartdiv {
+    width: 900px;
+    height: 700px;
+    border: 1px solid #ccc;
+    margin: 10px auto;
+}
+
+.chartdiv1 {
+    float: left;
+}
+
+.chartgap {
+    width: 1px;
+    margin: 10px auto;
+}
+
+
+/* Biều dồ kết thúc CSS */
+
+
+/* Biều dồ bắt đầu CSS */
+
+.chartdiv1 {
+    width: 900px;
+    height: 700px;
+    border: 1px solid #ccc;
+    margin: 10px auto;
+}
+
+.chartdiv2 {
+    float: left;
+}
+
+.chartgap1 {
+    width: 1px;
+    margin: 10px auto;
+}
+
+
+/* Biều dồ kết thúc CSS */
