@@ -342,7 +342,7 @@ $don_huy_lich = DB::table('appointments')->where('status',4)->get()->count();
                   <tbody>
                      <?php
                         $now = Carbon::today();
-                        $voucher = DB::table('service_vouchers')->where('time_end','>=',$now)->get();
+                        $voucher = DB::table('service_vouchers')->where('time_end','>=',$now)->where('status',0)->get();
                         ?>
                      @foreach($voucher as $value)
                      <tr>

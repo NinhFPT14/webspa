@@ -166,8 +166,9 @@ $(document).ready(function() {
                     $("#modal_name").val(response.data.name);
                     $("#modal_address").val(response.data.address);
                     $("#modal_phone").val(response.data.phone_number);
-                    $("#modal_note").val(response.data.note);
                     $("p.modal_created_at").html('Thời gian đặt : ' + moment(response.data.created_at).format('DD-MM-YYYY HH:mm'));
+                    $("#modal_detail_note").val(response.data.note);
+                    
                     $("th.modal_total_monney_detail").html(new Intl.NumberFormat().format(response.data.total_monney)+ ' VNĐ');
                     $("th.modal_tax").html(new Intl.NumberFormat().format(response.data.tax)+ ' VNĐ');
                 }
