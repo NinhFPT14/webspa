@@ -57,14 +57,15 @@ class StaffController extends Controller
         $data = $request->all();
         unset($data['_token']);
         if($request->hasFile('image')){
-        File::delete($flight->image);
+            $flight = Staff::find($id);
+            File::delete($flight->image);
             $extension = $request->image->extension();
             $filename =  uniqid(). "." . $extension;
             $path = $request->image->storeAs(
                 'image_slide', $filename, 'public'
             );
             $data['image'] = "storage/".$path;  
-            } 
+        } 
         Staff::where('id',$id)->update($data);
         alert()->success('Sửa thành công'); 
         return redirect()->route('listStaff');  
