@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\addStaffRequest;
 use App\Http\Requests\editStaffRequest;
 use App\Model\Staff;
+use File;
 class StaffController extends Controller
 {
     public function add(){
